@@ -6,80 +6,42 @@ export type Item = {
 
 export const demos: { name: string; items: Item[] }[] = [
   {
-    name: 'Layouts',
+    name: 'About',
     items: [
       {
-        name: 'Nested Layouts',
-        slug: 'layouts',
-        description: 'Create UI that is shared across routes',
+        name: 'Me',
+        slug: 'me',
+        description: 'replace with a description',
       },
       {
-        name: 'Grouped Layouts',
-        slug: 'route-groups',
-        description: 'Organize routes without affecting URL paths',
+        name: 'Skills',
+        slug: 'skills',
+        description: 'replace with a description',
       },
       {
-        name: 'Parallel Routes',
-        slug: 'parallel-routes',
-        description: 'Render multiple pages in the same layout',
+        name: 'Experience',
+        slug: 'experience',
+        description: 'replace with a description',
       },
     ],
   },
   {
-    name: 'File Conventions',
+    name: 'Portfolio',
     items: [
       {
-        name: 'Loading',
-        slug: 'loading',
-        description:
-          'Create meaningful Loading UI for specific parts of an app',
+        name: 'Art',
+        slug: 'art',
+        description: 'Visual art, graphic design, and other creative projects',
       },
       {
-        name: 'Error',
-        slug: 'error-handling',
-        description: 'Create Error UI for specific parts of an app',
+        name: 'Code',
+        slug: 'code',
+        description: 'Open source projects and code snippets',
       },
       {
-        name: 'Not Found',
-        slug: 'not-found',
-        description: 'Create Not Found UI for specific parts of an app',
-      },
-    ],
-  },
-  {
-    name: 'Data Fetching',
-    items: [
-      {
-        name: 'Streaming with Suspense',
-        slug: 'streaming',
-        description:
-          'Streaming data fetching from the server with React Suspense',
-      },
-      {
-        name: 'Static Data',
-        slug: 'ssg',
-        description: 'Generate static pages',
-      },
-      {
-        name: 'Dynamic Data',
-        slug: 'ssr',
-        description: 'Server-render pages',
-      },
-      {
-        name: 'Incremental Static Regeneration',
-        slug: 'isr',
-        description: 'Get the best of both worlds between static & dynamic',
-      },
-    ],
-  },
-  {
-    name: 'Components',
-    items: [
-      {
-        name: 'Client Context',
-        slug: 'context',
-        description:
-          'Pass context between Client Components that cross Server/Client Component boundary',
+        name: 'Music',
+        slug: 'music',
+        description: 'Music production and compositions',
       },
     ],
   },
@@ -87,18 +49,18 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'Misc',
     items: [
       {
-        name: 'Client Component Hooks',
-        slug: 'hooks',
-        description: 'Preview the routing hooks available in Client Components',
+        name: 'Replace1',
+        slug: 'replace1',
+        description: 'Visual art, graphic design, and other creative projects',
       },
       {
-        name: 'CSS and CSS-in-JS',
-        slug: 'styling',
+        name: 'Replace2',
+        slug: 'replace2',
         description: 'Preview the supported styling solutions',
       },
       {
-        name: 'Code Snippets',
-        slug: 'snippets',
+        name: 'Replace3',
+        slug: 'replace3',
         description: 'A collection of useful App Router code snippets',
       },
     ],

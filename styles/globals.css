@@ -1,3 +1,199 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Black.ttf') format('truetype');
+  font-weight: 900; /* Black weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-BlackIt.ttf') format('truetype');
+  font-weight: 900; /* Black weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-BoldIt.ttf') format('truetype');
+  font-weight: 700; /* Bold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-ExtraBold.ttf') format('truetype');
+  font-weight: 800; /* ExtraBold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-ExtraBoldIt.ttf') format('truetype');
+  font-weight: 800; /* ExtraBold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Book.ttf') format('truetype');
+  font-weight: 400; /* Book weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-BookIt.ttf') format('truetype');
+  font-weight: 400; /* Book weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Light.ttf') format('truetype');
+  font-weight: 300; /* Light weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-LightIt.ttf') format('truetype');
+  font-weight: 300; /* Light weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-MediumIt.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-SemiBold.ttf') format('truetype');
+  font-weight: 600; /* SemiBold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-SemiBoldIt.ttf') format('truetype');
+  font-weight: 600; /* SemiBold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Thin.ttf') format('truetype');
+  font-weight: 100; /* Thin weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-ThinIt.ttf') format('truetype');
+  font-weight: 100; /* Thin weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-Regular.ttf') format('truetype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre';
+  src: url('/fonts/Cygre-RegularIt.ttf') format('truetype');
+  font-weight: 400; /* Regular weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gyanko';
+  src: url('/fonts/Gyanko-Regular.otf') format('opentype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Bold 700.ttf') format('truetype');
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Extra Bold 800.ttf') format('truetype');
+  font-weight: 800; /* ExtraBold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Extra-Light 200.ttf') format('truetype');
+  font-weight: 200; /* ExtraLight weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Light 300.ttf') format('truetype');
+  font-weight: 300; /* Light weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Medium 500.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Normal 400.ttf') format('truetype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Semi-Bold 600.ttf') format('truetype');
+  font-weight: 600; /* SemiBold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Thin 100.ttf') format('truetype');
+  font-weight: 100; /* Thin weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mosk';
+  src: url('/fonts/Mosk Ultra-Bold 900.ttf') format('truetype');
+  font-weight: 900; /* UltraBold weight */
+  font-style: normal;
+}

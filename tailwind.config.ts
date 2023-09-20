@@ -30,7 +30,13 @@ export default {
         'vc-border-gradient': `radial-gradient(at left top, ${theme(
           'colors.gray.500',
         )}, 50px, ${theme('colors.gray.800')} 50%)`,
+        custom: `url('/bg.png')`,
       }),
+      fontFamily: {
+        cygre: ['Cygre', 'sans-serif'],
+        mosk: ['Mosk', 'sans-serif'],
+        gyanko: ['Gyanko', 'sans-serif'],
+      },
       keyframes: ({ theme }) => ({
         rerender: {
           '0%': {
