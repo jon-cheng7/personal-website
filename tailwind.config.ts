@@ -38,6 +38,17 @@ export default {
         gyanko: ['Gyanko', 'sans-serif'],
       },
       keyframes: ({ theme }) => ({
+        fadeIn: {
+          '0%': {
+            opacity: '0',
+          },
+          '40%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
         rerender: {
           '0%': {
             ['border-color']: theme('colors.vercel.pink'),
@@ -90,6 +101,9 @@ export default {
           },
         },
       }),
+      animation: {
+        fadeIn: 'fadeIn 1s ease-in-out ',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
