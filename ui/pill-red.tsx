@@ -1,3 +1,5 @@
+import React, { ForwardRefRenderFunction } from 'react';
+
 type PillRedProps = {
   className?: string; // optional className prop
   strokeDashoffset?: number;

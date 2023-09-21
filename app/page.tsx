@@ -7,13 +7,17 @@ import { useEffect, useState, useRef } from 'react';
 import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
+import ExpandingCircle from '#/ui/expanding-circle';
 import Image from 'next/image';
 
 export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
+  const [offsetGray2, setOffsetGray2] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
+  const [strokeWidth2, setStrokeWidth2] = useState(0);
+  const [translation, setTranslation] = useState(20);
 
   //inView variables
   const [inView1, setInView1] = useState(false);
@@ -26,6 +30,7 @@ export default function Page() {
     setOffsetBlue(-((scrollPosition - 0 - 0) / 1.3));
     setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
     setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
+    setStrokeWidth2(scrollPosition < 400 ? 125 : 10 + (scrollPosition - 400));
   };
 
   useEffect(() => {
@@ -68,7 +73,7 @@ export default function Page() {
         <div className="z-5 flex justify-center">
           <InViewObserver onInViewChange={(isInView) => setInView2(isInView)}>
             <div
-              className={`text-3sm font-mosk z-[13] mt-[-1.5rem] w-[90%] text-left font-extralight ${
+              className={`text-3sm font-mosk z-[13] mt-[-1.5rem] w-[90%] text-center font-extralight ${
                 inView2 ? 'animate-[fadeIn_2s_ease-in-out]' : 'opacity-0'
               }`}
             >
@@ -92,8 +97,18 @@ export default function Page() {
           strokeWidth={strokeWidth}
         />
       </div>
-      <div className="h-screen"></div>
-      <div className="h-screen">hello</div>
+      <div className="h-[140vh]">
+        <div className="relative flex justify-center">
+          <ExpandingCircle
+            offset={763}
+            className={`absolute mt-[190px] -translate-y-[100px]`}
+          />
+        </div>
+      </div>
+      {/* BUFFER */}
+      <div className="h-[50vh] bg-[#B7B0A4]"></div>
+      <div className=" h-screen"></div>
+      <></>
     </div>
   );
 }
