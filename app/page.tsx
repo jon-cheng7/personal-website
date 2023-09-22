@@ -126,14 +126,15 @@ export default function Page() {
           i code.
         </div>
         <TechList
-          className={`sticky top-[12%] z-[50] mt-[20%] flex flex-col`}
-        />
-        <Button route="/code" className={`mt-[330%]`}>
-          see my projects
-        </Button>
+          start={900}
+          end={1600}
+          className={`sticky top-[10%] z-[50] mt-[20%] flex flex-col`}
+        ></TechList>
       </div>
       {/* BUFFER */}
-      <div className="h-[15vh] bg-[#B7B0A4]"></div>
+      <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
+        <Button route="/code">see my projects</Button>
+      </div>
       <div className="h-screen overflow-y-scroll bg-[url(/collage.png)] bg-cover">
         <div className="font-gothic text-8xl text-white">I DESIGN.</div>
       </div>
