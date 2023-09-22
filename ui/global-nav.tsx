@@ -7,6 +7,7 @@ import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
 import Byline from './byline';
+import Image from 'next/image';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,10 @@ export function GlobalNav() {
   return (
     <div className="max-w-screen fixed top-0 z-[100] flex w-[100%] flex-col overflow-x-hidden border-b border-gray-800 bg-black">
       <div className="flex h-10 items-center px-4 py-2">
-        {/* Your logo or title can go here if needed */}
+        {/* insert image */}
+        <Link href="/">
+          <Image src="/Signature.png" alt="logo" width={50} height={50} />
+        </Link>
       </div>
       <button
         type="button"

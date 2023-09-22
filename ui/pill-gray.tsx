@@ -19,7 +19,7 @@ export function PillGray(props: PillGrayProps) {
       <path
         d="M63 63L63 344C63 488.5 249 468.5 249 608C249 754 249 882.833 249 929"
         stroke="#B7B0A4"
-        stroke-width={props.strokeWidth}
+        strokeWidth={props.strokeWidth}
         stroke-linecap="round"
         stroke-dasharray="100 10000"
         stroke-dashoffset={props.strokeDashoffset}
