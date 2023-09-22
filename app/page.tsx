@@ -7,6 +7,8 @@ import { useEffect, useState, useRef } from 'react';
 import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
+import { TechList } from '#/ui/tech-stack';
+import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
 import Image from 'next/image';
 
@@ -14,10 +16,8 @@ export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
-  const [offsetGray2, setOffsetGray2] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
-  const [strokeWidth2, setStrokeWidth2] = useState(0);
-  const [translation, setTranslation] = useState(20);
+  const [isFixed, setIsFixed] = useState(false);
 
   //inView variables
   const [inView1, setInView1] = useState(false);
@@ -26,11 +26,19 @@ export default function Page() {
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     //-((scrollPosition - minScroll - offsetAdjustment) / speedFactor)
-    setOffsetRed(-((scrollPosition - 0 - 0) / 0.7));
-    setOffsetBlue(-((scrollPosition - 0 - 0) / 1.3));
-    setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
-    setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
-    setStrokeWidth2(scrollPosition < 400 ? 125 : 10 + (scrollPosition - 400));
+    if (scrollPosition < 600) {
+      setOffsetRed(-((scrollPosition - 0 - 0) / 0.7));
+      setOffsetBlue(-((scrollPosition - 0 - 0) / 1.3));
+    }
+    if (scrollPosition < 800) {
+      setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
+      setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
+    }
+    if (scrollPosition > 1000 && scrollPosition < 1500) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
   };
 
   useEffect(() => {
@@ -63,7 +71,7 @@ export default function Page() {
         </div>
         <InViewObserver onInViewChange={(isInView) => setInView1(isInView)}>
           <div
-            className={`z-1 font-cygre z-[13] mt-[-6rem] text-center text-6xl font-black text-gray-300 ${
+            className={`font-cygre z-[13] mt-[-6rem] text-center text-6xl font-black text-gray-300 ${
               inView1 ? 'animate-fadeIn' : 'opacity-0'
             }`}
           >
@@ -97,13 +105,19 @@ export default function Page() {
           strokeWidth={strokeWidth}
         />
       </div>
-      <div className="h-[140vh]">
-        <div className="relative flex justify-center">
+      <div className="relative flex h-[140vh] flex-col items-center space-x-0">
+        <div className="justify-items relative flex">
           <ExpandingCircle
             offset={763}
-            className={`absolute mt-[190px] -translate-y-[100px]`}
+            className={`absolute mt-[190px] flex-grow -translate-y-[100px]`}
           />
         </div>
+        <div className="font-cygre z-[13] mt-[50%] w-screen flex-none text-clip whitespace-nowrap pl-[1.5rem] text-left text-[3.5rem] font-black text-black">
+          i code.
+        </div>
+
+        <TechList className={`z-[50] mt-[40%] flex flex-col`} />
+        <Button className="mt-[10%]">see my projects</Button>
       </div>
       {/* BUFFER */}
       <div className="h-[50vh] bg-[#B7B0A4]"></div>

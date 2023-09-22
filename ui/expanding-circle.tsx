@@ -30,8 +30,6 @@ const ExpandingCircle: React.FC<ExpandingProps> = ({
     };
   }, []);
 
-  // This line calculates the circle size using the absolute scrolled value.
-  // Adjust the multiplier (8 in this case) as necessary.
   const circleSize =
     scrolledValue * 2 < 315 ? `${scrolledValue * 2}vw` : '315vw';
 

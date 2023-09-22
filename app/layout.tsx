@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: {
     default: 'Jonathan Cheng',
-    template: '%s | Next.js App Router',
+    template: '%s | Portfolio',
   },
   description: 'Personal Website',
   openGraph: {
@@ -31,7 +31,7 @@ export default function RootLayout({
         <GlobalNav />
         <div className="mx-auto space-y-8 overflow-x-hidden pt-[3.5rem] lg:px-8 lg:py-20">
           {children}
-          <Byline className="fixed sm:hidden" />
+          {/* <Byline className="fixed sm:hidden" /> */}
         </div>
       </body>
     </html>

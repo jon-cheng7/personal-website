@@ -1,19 +1,34 @@
 import clsx from 'clsx';
 
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  bgColor?: string;
+  hoverColor?: string;
+  textColor?: string;
+  hoverTextColor?: string;
+};
+
 export default function Button({
-  kind = 'default',
+  bgColor = 'bg-black',
+  hoverColor = 'bg-white',
+  textColor = 'text-white',
+  hoverTextColor = 'text-black',
+  className,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  kind?: 'default' | 'error';
-}) {
+}: ButtonProps) {
   return (
     <button
-      className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
-        'bg-gray-700 text-gray-100 hover:bg-gray-500 hover:text-white':
-          kind === 'default',
-        'bg-vercel-pink text-red-50 hover:bg-pink-600 hover:text-white':
-          kind === 'error',
-      })}
+      className={clsx(
+        'font-cygre transform rounded-full px-8 py-4 text-sm font-medium transition-all duration-300',
+        bgColor,
+        textColor,
+        {
+          [`hover:${hoverColor}`]: hoverColor,
+          [`hover:${hoverTextColor}`]: hoverTextColor,
+          'hover:scale-105': true,
+          'active:scale-95': true,
+        },
+        className,
+      )}
       {...props}
     />
   );
