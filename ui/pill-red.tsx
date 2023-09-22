@@ -18,10 +18,10 @@ export function PillRed(props: PillRedProps) {
       <path
         d="M75 75L75 522"
         stroke="#ED5151"
-        stroke-width="150"
-        stroke-linecap="round"
-        stroke-dasharray="100 10000"
-        stroke-dashoffset={props.strokeDashoffset}
+        strokeWidth="150"
+        strokeLinecap="round"
+        strokeDasharray="100 10000"
+        strokeDashoffset={props.strokeDashoffset}
       />
     </svg>
   );
