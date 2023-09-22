@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@heroicons/react':
     specifier: 1.0.6
@@ -13,6 +17,9 @@ dependencies:
   dinero.js:
     specifier: 2.0.0-alpha.8
     version: 2.0.0-alpha.8
+  locomotive-scroll:
+    specifier: 4.1.4
+    version: 4.1.4
   ms:
     specifier: 3.0.0-canary.1
     version: 3.0.0-canary.1
@@ -1104,6 +1111,7 @@ packages:
         integrity: sha512-0QZ8qP/3RLDVBwBFoWAwCtgcDZJVwA5LUJRZU8x2YFfKNuFq161wK3cuGrALu5yiPu+vzwTAg/sMWVNeWeNyaw==,
       }
     engines: { node: '>=6.9.0' }
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -5301,6 +5309,13 @@ packages:
       }
     dev: false
 
+  /bezier-easing@2.1.0:
+    resolution:
+      {
+        integrity: sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==,
+      }
+    dev: false
+
   /big.js@5.2.2:
     resolution:
       {
@@ -5314,6 +5329,13 @@ packages:
         integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==,
       }
     engines: { node: '>=8' }
+
+  /bindall-standalone@1.0.5:
+    resolution:
+      {
+        integrity: sha512-HDI7YBWXVJk/eoGz+e4lYQQJnYp1ZHcUvAY71lVptLMhQnDm86vD73AGPw2qIlgYR3P0bjmoAcXiA8qhFejBhA==,
+      }
+    dev: false
 
   /bindings@1.5.0:
     resolution:
@@ -8808,6 +8830,13 @@ packages:
       language-subtag-registry: 0.3.22
     dev: true
 
+  /lethargy@1.0.9:
+    resolution:
+      {
+        integrity: sha512-nFM8blpCF9rqIL5mRAaTGc78W8oQixVtsD86jbEPvcI13+lDUYJf3R7DZQQL7tCiBpbGpGKMX2gwJFO9hiaOkg==,
+      }
+    dev: false
+
   /levn@0.3.0:
     resolution:
       {
@@ -8920,6 +8949,17 @@ packages:
     engines: { node: '>=10' }
     dependencies:
       p-locate: 5.0.0
+
+  /locomotive-scroll@4.1.4:
+    resolution:
+      {
+        integrity: sha512-6i98cFF2SKg6wIPpwVPuo2FG8qL3USsdDeew78TEYZyLoqleMWNfkSDpWA6mPym4dOfTIBXc678VmGlkgx3fTA==,
+      }
+    dependencies:
+      bezier-easing: 2.1.0
+      smoothscroll-polyfill: 0.4.4
+      virtual-scroll: 1.5.2
+    dev: false
 
   /lodash.camelcase@4.3.0:
     resolution:
@@ -9960,6 +10000,7 @@ packages:
       {
         integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==,
       }
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -11631,6 +11672,13 @@ packages:
     engines: { node: '>= 6.0.0', npm: '>= 3.0.0' }
     dev: false
 
+  /smoothscroll-polyfill@0.4.4:
+    resolution:
+      {
+        integrity: sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==,
+      }
+    dev: false
+
   /socks-proxy-agent@5.0.1:
     resolution:
       {
@@ -12174,6 +12222,13 @@ packages:
     engines: { node: '>=10' }
     dependencies:
       convert-hrtime: 3.0.0
+    dev: false
+
+  /tiny-emitter@1.2.0:
+    resolution:
+      {
+        integrity: sha512-rWjF00inHeWtT5UbQYAXoMI4hL6TRMqohuKCsODyPYYmfAxqfMnXLsIeNrbdPEkNxlk++rojVilTnI9IVmEBtA==,
+      }
     dev: false
 
   /tiny-glob@0.2.9:
@@ -12766,6 +12821,18 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
+    dev: false
+
+  /virtual-scroll@1.5.2:
+    resolution:
+      {
+        integrity: sha512-7jDHwlKbHUho7CYU/HojE/VKFH8GV9P5fVWP2HCa7dRUOpVvwl93OBOKIIcb2mKd+vqsbVR/0zl0X70+3sUZqA==,
+      }
+    dependencies:
+      bindall-standalone: 1.0.5
+      lethargy: 1.0.9
+      object-assign: 4.1.1
+      tiny-emitter: 1.2.0
     dev: false
 
   /vite-node@0.28.5(@types/node@18.11.17):

@@ -116,7 +116,9 @@ export default function Page() {
           i code.
         </div>
 
-        <TechList className={`z-[50] mt-[40%] flex flex-col`} />
+        <TechList
+          className={`sticky top-[40%] z-[50] mt-[40%] flex flex-col`}
+        />
         <Button className="mt-[10%]">see my projects</Button>
       </div>
       {/* BUFFER */}
