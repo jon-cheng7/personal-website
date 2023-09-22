@@ -197,3 +197,24 @@
   font-weight: 900; /* UltraBold weight */
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'FieldGothic';
+  src: url('/fonts/FieldGothicTEST-No.21.otf') format('opentype');
+  font-weight: 300; /* Light weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FieldGothic';
+  src: url('/fonts/FieldGothicTEST-No.25.otf') format('opentype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FieldGothic';
+  src: url('/fonts/FieldGothicTEST-No.27.otf') format('opentype');
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}

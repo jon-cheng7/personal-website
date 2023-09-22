@@ -36,6 +36,7 @@ export default {
         cygre: ['Cygre', 'sans-serif'],
         mosk: ['Mosk', 'sans-serif'],
         gyanko: ['Gyanko', 'sans-serif'],
+        gothic: ['FieldGothic', 'sans-serif'],
       },
       keyframes: ({ theme }) => ({
         fadeIn: {

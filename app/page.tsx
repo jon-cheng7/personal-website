@@ -134,7 +134,9 @@ export default function Page() {
       </div>
       {/* BUFFER */}
       <div className="h-[15vh] bg-[#B7B0A4]"></div>
-      <div className="h-screen"></div>
+      <div className="h-screen overflow-y-scroll bg-[url(/collage.png)] bg-cover">
+        <div className="font-gothic text-8xl text-white">I DESIGN.</div>
+      </div>
       <></>
     </div>
   );
