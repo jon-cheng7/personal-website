@@ -1,26 +1,24 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   bgColor?: string;
   hoverColor?: string;
   textColor?: string;
   hoverTextColor?: string;
-  route?: string;
 };
+
 export default function Button({
   bgColor = 'bg-black',
   hoverColor = 'bg-white',
   textColor = 'text-white',
   hoverTextColor = 'text-black',
   className,
-  route, // Destructure the new route prop
   ...props
 }: ButtonProps) {
-  const buttonContent = (
+  return (
     <button
       className={clsx(
-        'font-cygre flex transform items-center justify-center rounded-full px-8 py-4 text-sm font-medium leading-none transition-all duration-300',
+        'font-cygre transform rounded-full px-8 py-4 text-sm font-medium transition-all duration-300',
         bgColor,
         textColor,
         {
@@ -34,6 +32,4 @@ export default function Button({
       {...props}
     />
   );
-
-  return route ? <Link href={route}>{buttonContent}</Link> : buttonContent;
 }

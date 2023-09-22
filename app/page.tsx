@@ -18,7 +18,6 @@ export default function Page() {
   const [offsetGray, setOffsetGray] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
   const [isFixed, setIsFixed] = useState(false);
-  const [isBlack, setIsBlack] = useState(true);
 
   //inView variables
   const [inView1, setInView1] = useState(false);
@@ -39,11 +38,6 @@ export default function Page() {
       setIsFixed(true);
     } else {
       setIsFixed(false);
-    }
-    if (scrollPosition > 1000) {
-      setIsBlack(false);
-    } else {
-      setIsBlack(true);
     }
   };
 
@@ -111,11 +105,7 @@ export default function Page() {
           strokeWidth={strokeWidth}
         />
       </div>
-      <div
-        className={`relative flex h-[180vh] flex-col items-center space-x-0 ${
-          isBlack ? '' : 'bg-[#B7B0A4]'
-        }`}
-      >
+      <div className="relative flex h-[140vh] flex-col items-center space-x-0">
         <div className="justify-items relative flex">
           <ExpandingCircle
             offset={763}
@@ -125,12 +115,9 @@ export default function Page() {
         <div className="font-cygre z-[13] mt-[50%] w-screen flex-none text-clip whitespace-nowrap pl-[1.5rem] text-left text-[3.5rem] font-black text-black">
           i code.
         </div>
-        <TechList
-          className={`sticky top-[12%] z-[50] mt-[20%] flex flex-col`}
-        />
-        <Button route="/code" className={`mt-[330%]`}>
-          see my projects
-        </Button>
+
+        <TechList className={`z-[50] mt-[40%] flex flex-col`} />
+        <Button className="mt-[10%]">see my projects</Button>
       </div>
       {/* BUFFER */}
       <div className="h-[15vh] bg-[#B7B0A4]"></div>
