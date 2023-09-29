@@ -112,7 +112,7 @@ export default function Page() {
         />
       </div>
       <div
-        className={`relative flex h-[180vh] flex-col items-center space-x-0 ${
+        className={`relative flex h-[280vh] flex-col items-center space-x-0 ${
           isBlack ? '' : 'bg-[#B7B0A4]'
         }`}
       >
@@ -127,7 +127,7 @@ export default function Page() {
         </div>
         <TechList
           start={900}
-          end={1600}
+          end={2150}
           className={`sticky top-[10%] z-[50] mt-[20%] flex flex-col`}
         ></TechList>
       </div>
@@ -135,10 +135,26 @@ export default function Page() {
       <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
         <Button route="/code">see my projects</Button>
       </div>
-      <div className="h-screen overflow-y-scroll bg-[url(/collage.png)] bg-cover">
-        <div className="font-gothic text-8xl text-white">I DESIGN.</div>
+      <div className="sticky top-0 h-[200vh] overflow-x-hidden bg-[url(/collage.png)] bg-cover">
+        <div className="font-gothic absolute text-[20rem] text-white">D</div>
+        <div className="font-gothic absolute ml-[70px] mt-[50px] text-[20rem] text-white">
+          E
+        </div>
+        <div className="font-gothic absolute ml-[120px] text-[20rem] text-white">
+          S
+        </div>
+        <div className="font-gothic absolute ml-[190px] mt-[20px] text-[20rem] text-white">
+          I
+        </div>
+        <div className="font-gothic absolute ml-[215px] mt-[80px] text-[20rem] text-white">
+          G
+        </div>
+        <div className="font-gothic absolute ml-[285px] mt-[0px] text-[20rem] text-white">
+          N
+        </div>
       </div>
-      <></>
+      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}>hello</div>
+      <div className="h-screen bg-red-400"></div>
     </div>
   );
 }
