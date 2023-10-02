@@ -13,14 +13,15 @@ import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
 import Image from 'next/image';
+import { useSpring, animated } from '@react-spring/web';
 
 export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
   const [offsetDesign, setOffsetDesign] = useState(0);
+  const [translateDesign, setTranslateDesign] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
-  const [isFixed, setIsFixed] = useState(false);
   const [isBlack, setIsBlack] = useState(true);
 
   //inView variables
@@ -40,20 +41,19 @@ export default function Page() {
       setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
       setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
     }
-    if (scrollPosition > 2400) {
+    if (scrollPosition > 3180 && scrollPosition < 5000) {
+      setTranslateDesign(scrollPosition - 3180);
+    }
+    if (scrollPosition > 2400 && scrollPosition < 5000) {
       setOffsetDesign((4000 - scrollPosition) / 0.1);
     }
-    if (scrollPosition > 3500 && scrollPosition < 8000) {
+
+    if (scrollPosition > 3300 && scrollPosition < 8000) {
       setInView4(true);
     } else {
       setInView4(false);
     }
 
-    if (scrollPosition > 1000 && scrollPosition < 1500) {
-      setIsFixed(true);
-    } else {
-      setIsFixed(false);
-    }
     if (scrollPosition > 1000) {
       setIsBlack(false);
     } else {
@@ -77,6 +77,14 @@ export default function Page() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const [props, api] = useSpring(
+    () => ({
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    }),
+    [],
+  );
 
   return (
     <div>
@@ -149,18 +157,21 @@ export default function Page() {
       <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
         <Button route="/code">see my projects</Button>
       </div>
-      <div className="sticky top-0 h-[200vh] overflow-x-hidden bg-[url(/collage.png)] bg-cover">
-        <div className="font-gothic text-[20rem] text-white mix-blend-difference">
+      <div className="h-[200vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
+        <div
+          className="mt-[30%]"
+          style={{ transform: `translateY(calc(30% + ${translateDesign}px))` }}
+        >
           <DesignStroke
-            className="absolute mt-[30%]"
+            className={`absolute mix-blend-difference`}
             strokeDashoffset={offsetDesign}
           />
+          <Design
+            className={`absolute ${
+              inView4 ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
+            }`}
+          />
         </div>
-        <Design
-          className={`fixed top-[7.35rem] ${
-            inView4 ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
-          }`}
-        />
         <InViewObserver onInViewChange={(isInView) => setInView3(isInView)}>
           <div
             className={`font-mosk z-[13] float-right mr-3 mt-[30rem] w-[80%] text-right text-sm ${
@@ -176,7 +187,7 @@ export default function Page() {
         </InViewObserver>
       </div>
       <div className={`left-0 top-0 h-screen w-screen bg-green-400`}></div>
-      <div className="h-screen bg-red-400"></div>
+      <animated.div className="h-screen bg-red-400"></animated.div>
     </div>
   );
 }
