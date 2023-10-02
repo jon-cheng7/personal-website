@@ -8,6 +8,8 @@ import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
 import { TechList } from '#/ui/tech-stack';
+import { Design } from '#/ui/designSVG';
+import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
 import Image from 'next/image';
@@ -16,6 +18,7 @@ export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
+  const [offsetDesign, setOffsetDesign] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
   const [isFixed, setIsFixed] = useState(false);
   const [isBlack, setIsBlack] = useState(true);
@@ -23,6 +26,8 @@ export default function Page() {
   //inView variables
   const [inView1, setInView1] = useState(false);
   const [inView2, setInView2] = useState(false);
+  const [inView3, setInView3] = useState(false);
+  const [inView4, setInView4] = useState(false);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -35,6 +40,15 @@ export default function Page() {
       setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
       setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
     }
+    if (scrollPosition > 2400) {
+      setOffsetDesign((4000 - scrollPosition) / 0.1);
+    }
+    if (scrollPosition > 3500 && scrollPosition < 8000) {
+      setInView4(true);
+    } else {
+      setInView4(false);
+    }
+
     if (scrollPosition > 1000 && scrollPosition < 1500) {
       setIsFixed(true);
     } else {
@@ -136,24 +150,32 @@ export default function Page() {
         <Button route="/code">see my projects</Button>
       </div>
       <div className="sticky top-0 h-[200vh] overflow-x-hidden bg-[url(/collage.png)] bg-cover">
-        <div className="font-gothic absolute text-[20rem] text-white">D</div>
-        <div className="font-gothic absolute ml-[70px] mt-[50px] text-[20rem] text-white">
-          E
+        <div className="font-gothic text-[20rem] text-white mix-blend-difference">
+          <DesignStroke
+            className="absolute mt-[30%]"
+            strokeDashoffset={offsetDesign}
+          />
         </div>
-        <div className="font-gothic absolute ml-[120px] text-[20rem] text-white">
-          S
-        </div>
-        <div className="font-gothic absolute ml-[190px] mt-[20px] text-[20rem] text-white">
-          I
-        </div>
-        <div className="font-gothic absolute ml-[215px] mt-[80px] text-[20rem] text-white">
-          G
-        </div>
-        <div className="font-gothic absolute ml-[285px] mt-[0px] text-[20rem] text-white">
-          N
-        </div>
+        <Design
+          className={`fixed top-[7.35rem] ${
+            inView4 ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
+          }`}
+        />
+        <InViewObserver onInViewChange={(isInView) => setInView3(isInView)}>
+          <div
+            className={`font-mosk z-[13] float-right mr-3 mt-[30rem] w-[80%] text-right text-sm ${
+              inView3 ? 'animate-fadeIn' : 'opacity-0'
+            }`}
+          >
+            I’ve always had a creative side that complemented my more analytical
+            and technical half. I have a deep passion for intelligent design
+            that not only captures attention but inspired thought. While I don’t
+            have formal schooling in design, my dream is to be able to merge
+            these two halves
+          </div>
+        </InViewObserver>
       </div>
-      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}>hello</div>
+      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}></div>
       <div className="h-screen bg-red-400"></div>
     </div>
   );

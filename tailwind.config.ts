@@ -50,6 +50,17 @@ export default {
             opacity: '1',
           },
         },
+        fadeOut: {
+          '0%': {
+            opacity: '1',
+          },
+          '40%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0',
+          },
+        },
         rerender: {
           '0%': {
             ['border-color']: theme('colors.vercel.pink'),
@@ -103,7 +114,8 @@ export default {
         },
       }),
       animation: {
-        fadeIn: 'fadeIn 1s ease-in-out',
+        fadeIn: 'fadeIn 1.5s ease-in-out',
+        fadeOut: 'fadeOut 1s ease-in-out',
       },
     },
   },
