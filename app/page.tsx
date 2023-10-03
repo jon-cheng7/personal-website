@@ -41,14 +41,14 @@ export default function Page() {
       setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
       setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
     }
-    if (scrollPosition > 3180 && scrollPosition < 5000) {
-      setTranslateDesign(scrollPosition - 3180);
+    if (scrollPosition > 2900 && scrollPosition < 5000) {
+      setTranslateDesign(scrollPosition - 2900);
     }
     if (scrollPosition > 2400 && scrollPosition < 5000) {
       setOffsetDesign((4000 - scrollPosition) / 0.1);
     }
 
-    if (scrollPosition > 3300 && scrollPosition < 8000) {
+    if (scrollPosition > 3300 && scrollPosition < 6000) {
       setInView4(true);
     } else {
       setInView4(false);
@@ -157,13 +157,13 @@ export default function Page() {
       <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
         <Button route="/code">see my projects</Button>
       </div>
-      <div className="h-[200vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
+      <div className="h-[250vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
         <div
-          className="mt-[30%]"
+          className="mt-[30%] mix-blend-difference"
           style={{ transform: `translateY(calc(30% + ${translateDesign}px))` }}
         >
           <DesignStroke
-            className={`absolute mix-blend-difference`}
+            className={`absolute`}
             strokeDashoffset={offsetDesign}
           />
           <Design
@@ -174,15 +174,13 @@ export default function Page() {
         </div>
         <InViewObserver onInViewChange={(isInView) => setInView3(isInView)}>
           <div
-            className={`font-mosk z-[13] float-right mr-3 mt-[30rem] w-[80%] text-right text-sm ${
+            className={`font-mosk z-[100] float-right mr-3 mt-[265%] w-[90%] text-right text-[1rem] ${
               inView3 ? 'animate-fadeIn' : 'opacity-0'
             }`}
           >
             I’ve always had a creative side that complemented my more analytical
             and technical half. I have a deep passion for intelligent design
-            that not only captures attention but inspired thought. While I don’t
-            have formal schooling in design, my dream is to be able to merge
-            these two halves
+            that not only captures attention but inspired thought.
           </div>
         </InViewObserver>
       </div>
