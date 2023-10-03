@@ -19,7 +19,7 @@ export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
-  const [offsetDesign, setOffsetDesign] = useState(0);
+  const [offsetDesign, setOffsetDesign] = useState(22000);
   const [translateDesign, setTranslateDesign] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
   const [isBlack, setIsBlack] = useState(true);
@@ -45,7 +45,7 @@ export default function Page() {
       setTranslateDesign(scrollPosition - 2900);
     }
     if (scrollPosition > 2400 && scrollPosition < 5000) {
-      setOffsetDesign((4000 - scrollPosition) / 0.1);
+      setOffsetDesign((3500 - scrollPosition) / 0.05);
     }
 
     if (scrollPosition > 3300 && scrollPosition < 6000) {
@@ -159,7 +159,7 @@ export default function Page() {
       </div>
       <div className="h-[250vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
         <div
-          className="mt-[30%] mix-blend-difference"
+          className="mt-[30%]"
           style={{ transform: `translateY(calc(30% + ${translateDesign}px))` }}
         >
           <DesignStroke
