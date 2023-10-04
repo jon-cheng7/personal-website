@@ -8,6 +8,7 @@ import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
 import { TechList } from '#/ui/tech-stack';
+import Carousel from '#/ui/carousel';
 import { Design } from '#/ui/designSVG';
 import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';
@@ -30,6 +31,14 @@ export default function Page() {
   const [inView3, setInView3] = useState(false);
   const [inView4, setInView4] = useState(false);
 
+  const imageList = [
+    '/blueperiod1.png',
+    '/shyboy.png',
+    '/hands.PNG',
+    '/shave.jpeg',
+    '/devil.jpg',
+  ];
+
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     //-((scrollPosition - minScroll - offsetAdjustment) / speedFactor)
@@ -41,11 +50,17 @@ export default function Page() {
       setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
       setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
     }
-    if (scrollPosition > 2900 && scrollPosition < 5000) {
+    if (scrollPosition > 2900 && scrollPosition < 3450) {
       setTranslateDesign(scrollPosition - 2900);
     }
-    if (scrollPosition > 2400 && scrollPosition < 5000) {
-      setOffsetDesign((3500 - scrollPosition) / 0.05);
+    if (scrollPosition > 1000 && scrollPosition < 5000) {
+      setOffsetDesign((4000 - scrollPosition) / 0.1);
+    }
+
+    if (scrollPosition > 2800 && scrollPosition < 6000) {
+      setInView3(true);
+    } else {
+      setInView3(false);
     }
 
     if (scrollPosition > 3300 && scrollPosition < 6000) {
@@ -157,9 +172,17 @@ export default function Page() {
       <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
         <Button route="/code">see my projects</Button>
       </div>
-      <div className="h-[250vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
+      <div className="relative h-[250vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
         <div
-          className="mt-[30%]"
+          className={`absolute z-0 mx-auto mt-[240%] aspect-[1/1] w-screen max-w-[1200px] ${
+            inView3 ? 'animate-fadeIn' : 'opacity-0'
+          }`}
+        >
+          <Carousel images={imageList} />
+        </div>
+
+        <div
+          className="z-[50] mt-[35%] "
           style={{ transform: `translateY(calc(30% + ${translateDesign}px))` }}
         >
           <DesignStroke
@@ -172,19 +195,15 @@ export default function Page() {
             }`}
           />
         </div>
-        <InViewObserver onInViewChange={(isInView) => setInView3(isInView)}>
-          <div
-            className={`font-mosk z-[100] float-right mr-3 mt-[265%] w-[90%] text-right text-[1rem] ${
-              inView3 ? 'animate-fadeIn' : 'opacity-0'
-            }`}
-          >
+      </div>
+
+      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}>
+        {/* <div className='font-mosk z-[100] float-right mr-3 w-[90%] text-right text-[1rem]'> 
             I’ve always had a creative side that complemented my more analytical
             and technical half. I have a deep passion for intelligent design
             that not only captures attention but inspired thought.
-          </div>
-        </InViewObserver>
+          </div> */}
       </div>
-      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}></div>
       <animated.div className="h-screen bg-red-400"></animated.div>
     </div>
   );
