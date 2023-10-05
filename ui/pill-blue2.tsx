@@ -1,9 +1,9 @@
-type PillRed2Props = {
+type PillBlue2Props = {
   className?: string;
   strokeDashoffset?: number;
 };
 
-export function PillRed2(props: PillRed2Props) {
+export function PillBlue2(props: PillBlue2Props) {
   return (
     <svg
       width="846"
@@ -14,8 +14,8 @@ export function PillRed2(props: PillRed2Props) {
       className={props.className}
     >
       <path
-        d="M780.315 65.2049L65.471 451.337"
-        stroke="#ED5151"
+        d="M780.39 65.4726L65.5452 451.605"
+        stroke="#4C4F6C"
         strokeWidth="130"
         strokeLinecap="round"
         strokeDasharray="1000 10000"

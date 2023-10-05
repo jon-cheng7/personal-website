@@ -10,6 +10,8 @@ import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
 import { PillRed2 } from '#/ui/pill-red2';
+import { PillBlue2 } from '#/ui/pill-blue2';
+import { PillGray2 } from '#/ui/pill-gray2';
 import { TechList } from '#/ui/tech-stack';
 import Carousel from '#/ui/carousel';
 import { Design } from '#/ui/designSVG';
@@ -24,6 +26,11 @@ export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(0);
   const [offsetGray, setOffsetGray] = useState(0);
+
+  const [offsetRed2, setOffsetRed2] = useState(-909);
+  const [offsetBlue2, setOffsetBlue2] = useState(-909);
+  const [offsetGray2, setOffsetGray2] = useState(-909);
+
   const [offsetDesign, setOffsetDesign] = useState(22000);
   const [translateDesign, setTranslateDesign] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(125);
@@ -65,6 +72,13 @@ export default function Page() {
       setOffsetGray(-((scrollPosition - 0 - 0) / 1.3));
       setStrokeWidth(scrollPosition < 400 ? 125 : 125 + (scrollPosition - 400));
     }
+
+    if (scrollPosition > 4000) {
+      setOffsetGray2(-((scrollPosition - 4850 - 0) / 1.1));
+      setOffsetRed2(-((scrollPosition - 4600 - 0) / 0.7));
+      setOffsetBlue2(-((scrollPosition - 4900 - 0) / 0.9));
+    }
+
     if (scrollPosition > 2900 && scrollPosition < 3450) {
       setTranslateDesign(scrollPosition - 2900);
     }
@@ -110,8 +124,8 @@ export default function Page() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.05,
-      wheelMultiplier: 0.5,
+      lerp: 0.07,
+      wheelMultiplier: 0.8,
     });
 
     lenis.on('scroll', (e: Event) => {
@@ -254,7 +268,18 @@ export default function Page() {
       </div>
 
       <div className={`relative h-screen w-screen bg-black`}>
-        <PillRed2 className="absolute ml-[50%] mt-[-50%]" />
+        <PillGray2
+          className="absolute ml-[-30%] mt-[-110%]"
+          strokeDashoffset={offsetGray2}
+        />
+        <PillRed2
+          className="absolute ml-[-30%] mt-[-90%]"
+          strokeDashoffset={offsetRed2}
+        />
+        <PillBlue2
+          className="absolute ml-[-30%] mt-[-70%]"
+          strokeDashoffset={offsetBlue2}
+        />
       </div>
     </div>
   );

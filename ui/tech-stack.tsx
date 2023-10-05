@@ -34,9 +34,9 @@ type TechListProps = {
 
 const TechItem: React.FC<TechItemProps> = ({ children, isHighlighted }) => (
   <div
-    className={`font-cygre duration-40 h-[2.1rem] w-screen pl-5 text-left font-black tracking-tighter transition-all ease-in-out ${
+    className={`font-cygre duration-40 h-[2.1rem] w-screen pl-5 text-left font-black tracking-tighter transition-all ease-[2s] ${
       isHighlighted
-        ? 'z-[51] -translate-y-[10px] text-6xl text-red-400'
+        ? 'z-[51] -translate-y-[5px] text-6xl text-red-400'
         : 'z-[50] text-5xl text-black'
     }`}
   >
