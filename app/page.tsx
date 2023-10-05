@@ -29,7 +29,7 @@ export default function Page() {
 
   const [offsetRed2, setOffsetRed2] = useState(-909);
   const [offsetBlue2, setOffsetBlue2] = useState(-909);
-  const [offsetGray2, setOffsetGray2] = useState(-909);
+  const [offsetGray2, setOffsetGray2] = useState(-900);
 
   const [offsetDesign, setOffsetDesign] = useState(22000);
   const [translateDesign, setTranslateDesign] = useState(0);
@@ -267,19 +267,49 @@ export default function Page() {
         </Button>
       </div>
 
-      <div className={`relative h-screen w-screen bg-black`}>
+      <div className={`relative h-[130vh] w-screen bg-black`}>
         <PillGray2
-          className="absolute ml-[-30%] mt-[-110%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-110%]"
           strokeDashoffset={offsetGray2}
         />
         <PillRed2
-          className="absolute ml-[-30%] mt-[-90%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-90%]"
           strokeDashoffset={offsetRed2}
         />
         <PillBlue2
-          className="absolute ml-[-30%] mt-[-70%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-70%]"
           strokeDashoffset={offsetBlue2}
         />
+        <div className="flex h-[125vh] flex-col items-center justify-center gap-10">
+          <div className="h-[10rem]"></div>
+          <div className="font-cygre text-center text-[4rem] font-black leading-[2.5rem]">
+            let's connect
+          </div>
+          <a
+            href="mailto:jonathan.ch126@gmail.com"
+            className="rounded-full outline outline-[0.1rem]"
+          >
+            <button className="font-mosk p-5">message me</button>
+          </a>
+        </div>
+
+        <div className="absolute left-1/2 mb-[10%] flex w-[90%] -translate-x-1/2 justify-between">
+          <a
+            href="https://linkedin.com/in/cheng-jonathan"
+            className="flex-shrink-0"
+          >
+            <div className="font-mosk text-sm font-black">IN</div>
+          </a>
+          <a href="https://github.com/jon-cheng7" className="flex-shrink-0">
+            <div className="font-mosk text-sm font-black">GH</div>
+          </a>
+          <a
+            href="https://instagram.com/artwithjon?igshid=OGQ5ZDc2ODk2ZA=="
+            className="flex-shrink-0"
+          >
+            <div className="font-mosk text-sm font-black">IG</div>
+          </a>
+        </div>
       </div>
     </div>
   );

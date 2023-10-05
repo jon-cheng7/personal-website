@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="[color-scheme:dark]">
-      <body className="bg-black pb-36">
+      <body className="bg-black">
         {/*[url('/grid.svg')]*/}
         <GlobalNav />
         <div className="mx-auto space-y-8 overflow-x-clip pt-[3.5rem] lg:px-8 lg:py-20">
