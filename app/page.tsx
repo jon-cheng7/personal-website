@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from 'react';
 import { PillRed } from '#/ui/pill-red';
 import { PillBlue } from '#/ui/pill-blue';
 import { PillGray } from '#/ui/pill-gray';
+import { PillRed2 } from '#/ui/pill-red2';
 import { TechList } from '#/ui/tech-stack';
 import Carousel from '#/ui/carousel';
 import { Design } from '#/ui/designSVG';
@@ -228,8 +229,9 @@ export default function Page() {
         </Button>
       </div>
 
-      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}></div>
-      <animated.div className="h-screen bg-red-400"></animated.div>
+      <div className={`relative h-screen w-screen bg-green-400`}>
+        <PillRed2 className="absolute ml-[50%] mt-[-50%]" />
+      </div>
     </div>
   );
 }
