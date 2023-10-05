@@ -114,7 +114,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       </button>
       <div className="absolute bottom-[-1.5rem] left-[50%] flex -translate-x-[50%] gap-[0.25rem] hover:scale-[1.2]">
         {images.map((_, idx) => (
-          <button onClick={() => setImageIndex(idx)}>
+          <button key={idx} onClick={() => setImageIndex(idx)}>
             {idx === imageIndex ? <Circle /> : <DoubleCircle />}
           </button>
         ))}
