@@ -2,6 +2,8 @@
 
 import { demos } from '#/lib/demos';
 import Link from 'next/link';
+import Lenis from '@studio-freight/lenis';
+
 import InViewObserver from '#/ui/view-observer';
 import { useEffect, useState, useRef } from 'react';
 import { PillRed } from '#/ui/pill-red';
@@ -103,6 +105,28 @@ export default function Page() {
     });
     return () => {
       window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.05,
+      wheelMultiplier: 0.5,
+    });
+
+    lenis.on('scroll', (e: Event) => {
+      console.log(e);
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
     };
   }, []);
 
@@ -229,7 +253,7 @@ export default function Page() {
         </Button>
       </div>
 
-      <div className={`relative h-screen w-screen bg-green-400`}>
+      <div className={`relative h-screen w-screen bg-black`}>
         <PillRed2 className="absolute ml-[50%] mt-[-50%]" />
       </div>
     </div>
