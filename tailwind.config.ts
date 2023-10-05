@@ -117,11 +117,16 @@ export default {
             transform: 'scale(1.4)',
           },
         },
+        slide: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-126%)' },
+        },
       }),
       animation: {
         fadeIn: 'fadeIn 1s ease-in-out',
         fadeOut: 'fadeOut 0.5s ease-in-out',
         squish: 'squish 200ms ease-in-out',
+        slide: 'slide 10s linear infinite',
       },
     },
   },

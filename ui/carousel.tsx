@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowSmLeftIcon, ArrowSmRightIcon } from '@heroicons/react/solid';
+import { Circle } from './circleSVG';
+import { DoubleCircle } from './doubleCircleSVG';
 
 type CarouselProps = {
   images: string[];
@@ -110,28 +112,15 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       >
         <ArrowSmRightIcon />
       </button>
+      <div className="absolute bottom-[-1.5rem] left-[50%] flex -translate-x-[50%] gap-[0.25rem] hover:scale-[1.2]">
+        {images.map((_, idx) => (
+          <button onClick={() => setImageIndex(idx)}>
+            {idx === imageIndex ? <Circle /> : <DoubleCircle />}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default Carousel;
-
-// import React from "react";
-
-// type CarouselProps = {
-//     images: string[];
-// };
-
-// const Carousel: React.FC<CarouselProps> = ({ images }) => {
-//     return (
-//         <div className="overflow-x-scroll w-full flex snap-x snap-mandatory">
-//             {images.map((imgSrc, idx) => (
-//                 <div key={idx} className="flex-none snap-center w-[90%]">
-//                     <img src={imgSrc} alt={`carousel-item-${idx}`} className="object-cover rounded-[5rem] w-full" />
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// }
-
-// export default Carousel;

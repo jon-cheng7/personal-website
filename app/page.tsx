@@ -13,6 +13,7 @@ import { Design } from '#/ui/designSVG';
 import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
+import LogoSlide from '#/ui/logoSlide';
 import Image from 'next/image';
 import { useSpring, animated } from '@react-spring/web';
 
@@ -32,11 +33,22 @@ export default function Page() {
   const [inView4, setInView4] = useState(false);
 
   const imageList = [
-    '/blueperiod1.png',
-    '/shyboy.png',
-    '/hands.PNG',
-    '/shave.jpeg',
-    '/devil.jpg',
+    '/art/blueperiod1.png',
+    '/art/blueperiod2.png',
+    '/art/shyboy.png',
+    '/art/hands.PNG',
+    '/art/shave.jpeg',
+  ];
+
+  const logos = [
+    '/logos/photoshop.svg',
+    '/logos/illustrator.svg',
+    '/logos/indesign.svg',
+    '/logos/XD.svg',
+    '/logos/figma.svg',
+    '/logos/blender.svg',
+    '/logos/procreate.svg',
+    '/logos/framer.svg',
   ];
 
   const handleScroll = () => {
@@ -172,7 +184,7 @@ export default function Page() {
       <div className="flex h-[20vh] items-center justify-center bg-[#B7B0A4]">
         <Button route="/code">see my projects</Button>
       </div>
-      <div className="relative h-[250vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
+      <div className="relative h-[220vh] overflow-hidden bg-[url(/collage.png)] bg-cover">
         <div
           className={`absolute z-0 mx-auto mt-[240%] aspect-[1/1] w-screen max-w-[1200px] ${
             inView3 ? 'animate-fadeIn' : 'opacity-0'
@@ -195,15 +207,28 @@ export default function Page() {
             }`}
           />
         </div>
-      </div>
-
-      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}>
-        {/* <div className='font-mosk z-[100] float-right mr-3 w-[90%] text-right text-[1rem]'> 
+        <div className="absolute mt-[315%] flex w-screen justify-center">
+          <div className=" font-mosk w-[90%] text-center text-[0.8rem]">
             I’ve always had a creative side that complemented my more analytical
             and technical half. I have a deep passion for intelligent design
-            that not only captures attention but inspired thought.
-          </div> */}
+            that not only captures attention but inspires thought.
+          </div>
+        </div>
+        <div className="absolute mt-[340%]">
+          <LogoSlide logos={logos} className="" />
+        </div>
+        <Button
+          route="/art"
+          bgColor="bg-white"
+          textColor="text-black"
+          hoverColor="bg-[#4C4F6C]"
+          className="absolute left-[50%] mt-[360%] -translate-x-[50%]"
+        >
+          see more
+        </Button>
       </div>
+
+      <div className={`left-0 top-0 h-screen w-screen bg-green-400`}></div>
       <animated.div className="h-screen bg-red-400"></animated.div>
     </div>
   );
