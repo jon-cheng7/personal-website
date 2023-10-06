@@ -20,6 +20,7 @@ import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
 import LogoSlide from '#/ui/logoSlide';
+import CardStack from '#/ui/cardStack';
 import Image from 'next/image';
 
 export default function Page() {
@@ -76,7 +77,11 @@ export default function Page() {
     if (scrollPosition > 4000) {
       setOffsetGray2(-((scrollPosition - 4850 - 0) / 1.1));
       setOffsetRed2(-((scrollPosition - 4600 - 0) / 0.7));
-      setOffsetBlue2(-((scrollPosition - 4900 - 0) / 0.9));
+      setOffsetBlue2(-((scrollPosition - 4950 - 0) / 0.9));
+    } else {
+      setOffsetGray2(-910);
+      setOffsetRed2(-910);
+      setOffsetBlue2(-910);
     }
 
     if (scrollPosition > 2900 && scrollPosition < 3450) {
@@ -125,7 +130,7 @@ export default function Page() {
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.07,
-      wheelMultiplier: 0.8,
+      wheelMultiplier: 0.5,
     });
 
     lenis.on('scroll', (e: Event) => {
@@ -221,7 +226,8 @@ export default function Page() {
             inView3 ? 'animate-fadeIn' : 'opacity-0'
           }`}
         >
-          <Carousel images={imageList} />
+          {/* <Carousel images={imageList} /> */}
+          <CardStack />
         </div>
 
         <div
@@ -261,15 +267,15 @@ export default function Page() {
 
       <div className={`relative h-[130vh] w-screen bg-black`}>
         <PillGray2
-          className="pointer-events-none absolute ml-[-30%] mt-[-110%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-100%]"
           strokeDashoffset={offsetGray2}
         />
         <PillRed2
-          className="pointer-events-none absolute ml-[-30%] mt-[-90%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-80%]"
           strokeDashoffset={offsetRed2}
         />
         <PillBlue2
-          className="pointer-events-none absolute ml-[-30%] mt-[-70%]"
+          className="pointer-events-none absolute ml-[-30%] mt-[-60%]"
           strokeDashoffset={offsetBlue2}
         />
         <div className="flex h-[125vh] flex-col items-center justify-center gap-10">
