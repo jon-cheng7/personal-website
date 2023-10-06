@@ -3,6 +3,7 @@
 import { demos } from '#/lib/demos';
 import Link from 'next/link';
 import Lenis from '@studio-freight/lenis';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 import InViewObserver from '#/ui/view-observer';
 import { useEffect, useState, useRef } from 'react';
@@ -20,7 +21,6 @@ import Button from '#/ui/button';
 import ExpandingCircle from '#/ui/expanding-circle';
 import LogoSlide from '#/ui/logoSlide';
 import Image from 'next/image';
-import { useSpring, animated } from '@react-spring/web';
 
 export default function Page() {
   const [offsetRed, setOffsetRed] = useState(0);
@@ -143,14 +143,6 @@ export default function Page() {
       lenis.destroy();
     };
   }, []);
-
-  const [props, api] = useSpring(
-    () => ({
-      from: { opacity: 0 },
-      to: { opacity: 1 },
-    }),
-    [],
-  );
 
   return (
     <div>
