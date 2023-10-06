@@ -1,5 +1,4 @@
 import '#/styles/globals.css';
-import Byline from '#/ui/byline';
 import { GlobalNav } from '#/ui/global-nav';
 import { Metadata } from 'next';
 
