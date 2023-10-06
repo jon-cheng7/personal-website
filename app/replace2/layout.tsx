@@ -1,7 +1,7 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
-const title = 'Styling';
+const title = 'replace2';
 
 export const metadata = {
   title,

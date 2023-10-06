@@ -4,7 +4,7 @@ import { TabGroup } from '#/ui/tab-group';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
-const title = 'Art';
+const title = 'art';
 
 export const metadata = {
   title,

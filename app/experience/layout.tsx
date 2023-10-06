@@ -1,4 +1,4 @@
-const title = 'Parallel Routes';
+const title = 'experience';
 
 export const metadata = {
   title,

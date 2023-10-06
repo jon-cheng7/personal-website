@@ -3,7 +3,7 @@ import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
-const title = 'Error Handling';
+const title = 'code';
 
 export const metadata = {
   title,
