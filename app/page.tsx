@@ -275,7 +275,7 @@ export default function Page() {
         <div className="flex h-[125vh] flex-col items-center justify-center gap-10">
           <div className="h-[10rem]"></div>
           <div className="font-cygre text-center text-[4rem] font-black leading-[2.5rem]">
-            let's connect
+            let&apos;s connect
           </div>
           <a
             href="mailto:jonathan.ch126@gmail.com"
