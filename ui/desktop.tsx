@@ -19,9 +19,6 @@ export default function Mobile() {
   const [offsetBlue, setOffsetBlue] = useState(-800);
   const [open, setOpen] = useState(true);
 
-  //i code
-  const codeRef = useRef(null);
-
   const imageList = [
     '/art/blueperiod1.png',
     '/art/blueperiod2.png',
@@ -41,6 +38,41 @@ export default function Mobile() {
     '/logos/framer.svg',
   ];
 
+  function smoothScroll(target: HTMLElement, duration: number) {
+    console.log('Smooth scrolling...');
+    const targetPosition =
+      target.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    let startTime: number | null = null;
+
+    function animation(currentTime: number): void {
+      console.log('Animating...', currentTime);
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = linear(
+        timeElapsed,
+        startPosition,
+        targetPosition - startPosition,
+        duration,
+      );
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function ease(t: number, b: number, c: number, d: number): number {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    function linear(t: number, b: number, c: number, d: number): number {
+      return (c * t) / d + b;
+    }
+
+    requestAnimationFrame(animation);
+  }
+
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     //-((scrollPosition - minScroll - offsetAdjustment) / speedFactor)
@@ -59,14 +91,6 @@ export default function Mobile() {
       setIsDiff(false);
     } else {
       setIsDiff(true);
-    }
-
-    //auto-scrolling
-    if (scrollPosition > 600) {
-      window.scrollTo({
-        top: 2600, // Target scroll position
-        behavior: 'smooth',
-      });
     }
   };
 
