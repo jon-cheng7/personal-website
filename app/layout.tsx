@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className="bg-black">
         {/*[url('/grid.svg')]*/}
         <GlobalNav />
-        <div className="mx-auto space-y-8 overflow-x-clip pt-[3.5rem] lg:px-8 lg:py-20">
+        <div className="mx-auto space-y-8 overflow-x-clip pt-[3.5rem]">
           {children}
           {/* <Byline className="fixed sm:hidden" /> */}
         </div>

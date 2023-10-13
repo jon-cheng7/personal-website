@@ -3,12 +3,12 @@
 import Lenis from '@studio-freight/lenis';
 import InViewObserver from '#/ui/view-observer';
 import { useEffect, useState, useRef } from 'react';
-import { PillRed } from '#/ui/pill-red';
-import { PillBlue } from '#/ui/pill-blue';
-import { PillGray } from '#/ui/pill-gray';
-import { PillRed2 } from '#/ui/pill-red2';
-import { PillBlue2 } from '#/ui/pill-blue2';
-import { PillGray2 } from '#/ui/pill-gray2';
+import { PillRed } from '#/ui/mobile/pill-red';
+import { PillBlue } from '#/ui/mobile/pill-blue';
+import { PillGray } from '#/ui/mobile/pill-gray';
+import { PillRed2 } from '#/ui/mobile/pill-red2';
+import { PillBlue2 } from '#/ui/mobile/pill-blue2';
+import { PillGray2 } from '#/ui/mobile/pill-gray2';
 import { TechList } from '#/ui/tech-stack';
 import { Design } from '#/ui/designSVG';
 import { DesignStroke } from '#/ui/DesignStroke';

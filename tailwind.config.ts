@@ -39,6 +39,19 @@ export default {
         gothic: ['FieldGothic', 'sans-serif'],
       },
       keyframes: ({ theme }) => ({
+        brownian: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '10%': { transform: 'translate(-10px, 10px) rotate(15deg)' },
+          '20%': { transform: 'translate(10px, -10px) rotate(-15deg)' },
+          '30%': { transform: 'translate(5px, 10px) rotate(-30deg)' },
+          '40%': { transform: 'translate(-10px, -5px) rotate(30deg)' },
+          '50%': { transform: 'translate(10px, 5px) rotate(20deg)' },
+          '60%': { transform: 'translate(-5px, -10px) rotate(-20deg)' },
+          '70%': { transform: 'translate(-10px, 10px) rotate(5deg)' },
+          '80%': { transform: 'translate(10px, -5px) rotate(-5deg)' },
+          '90%': { transform: 'translate(-5px, 10px) rotate(-10deg)' },
+          '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        },
         fadeIn: {
           '0%': {
             opacity: '0',
@@ -127,6 +140,7 @@ export default {
         fadeOut: 'fadeOut 0.5s ease-in-out',
         squish: 'squish 200ms ease-in-out',
         slide: 'slide 10s linear infinite',
+        brownian: 'brownian 20s infinite',
       },
     },
   },
