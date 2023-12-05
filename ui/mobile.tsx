@@ -9,7 +9,7 @@ import { PillGray } from '#/ui/mobile/pill-gray';
 import { PillRed2 } from '#/ui/mobile/pill-red2';
 import { PillBlue2 } from '#/ui/mobile/pill-blue2';
 import { PillGray2 } from '#/ui/mobile/pill-gray2';
-import { TechList } from '#/ui/tech-stack';
+import { TechList } from '#/ui/mobile/tech-stack';
 import { Design } from '#/ui/designSVG';
 import { DesignStroke } from '#/ui/DesignStroke';
 import Button from '#/ui/button';

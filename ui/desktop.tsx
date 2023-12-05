@@ -1,14 +1,15 @@
 'use client';
 
 import Lenis from '@studio-freight/lenis';
-import InViewObserver from '#/ui/view-observer';
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { PillRed } from '#/ui/desktop/pill-red';
 import { PillBrown } from '#/ui/desktop/pill-brown';
 import { PillBlue } from './desktop/pill-blue';
-
-import Trail from '#/ui/trail';
-import Image from 'next/image';
+import List from './list/list';
+import AsciiDonut from './asciiDonut';
+import FloatingBalls from './floatingBalls';
+import Card from './desktop/card';
+import MagnetButton from './magnetButton';
 
 export default function Mobile() {
   const [isDiff, setIsDiff] = useState(true);
@@ -17,7 +18,8 @@ export default function Mobile() {
   const [offsetBrown, setOffsetBrown] = useState(0);
   const [offsetWhite2, setOffsetWhite2] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(-800);
-  const [open, setOpen] = useState(true);
+  const [donutVisible, setDonutVisible] = useState(false);
+  const LazyFloatingBalls = React.lazy(() => import('./floatingBalls'));
 
   const imageList = [
     '/art/blueperiod1.png',
@@ -38,41 +40,6 @@ export default function Mobile() {
     '/logos/framer.svg',
   ];
 
-  function smoothScroll(target: HTMLElement, duration: number) {
-    console.log('Smooth scrolling...');
-    const targetPosition =
-      target.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    let startTime: number | null = null;
-
-    function animation(currentTime: number): void {
-      console.log('Animating...', currentTime);
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = linear(
-        timeElapsed,
-        startPosition,
-        targetPosition - startPosition,
-        duration,
-      );
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t: number, b: number, c: number, d: number): number {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    function linear(t: number, b: number, c: number, d: number): number {
-      return (c * t) / d + b;
-    }
-
-    requestAnimationFrame(animation);
-  }
-
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     //-((scrollPosition - minScroll - offsetAdjustment) / speedFactor)
@@ -87,10 +54,15 @@ export default function Mobile() {
         setRedWidth(0);
       }
     }
-    if (scrollPosition > 500) {
+    if (scrollPosition > 700) {
       setIsDiff(false);
     } else {
       setIsDiff(true);
+    }
+    if (scrollPosition > 1700) {
+      setDonutVisible(true);
+    } else {
+      setDonutVisible(false);
     }
   };
 
@@ -137,8 +109,13 @@ export default function Mobile() {
     <div>
       <section className="h-screen w-screen bg-black">
         <div className="absolute h-screen w-[50%]">
-          <div className="font-cygre pl-[25%] pt-[30%] text-[10vw] font-black">
+          <div className="font-cygre ml-[25%] pt-[30%] text-[10vw] font-black ">
             Jonathan
+          </div>
+          <div className="font-mosk z-[13] ml-[25%] mt-[-1.5rem] w-[100%] text-left text-[1.3rem] font-extralight ">
+            I’m a creative and innovative thinker with a love for coding and
+            digital design. I’m currently pursuing a degree in software
+            engineering at the University of Waterloo.
           </div>
         </div>
         <div className="absolute left-[50%] isolate z-10 h-screen w-[50%]">
@@ -162,23 +139,52 @@ export default function Mobile() {
               strokeWidth={redWidth}
               strokeDashoffset={offsetRed}
               className={`${
-                isDiff ? 'z-0 mix-blend-difference' : 'z-[11]'
-              } oßrigin-left absolute -left-[105vw] top-0 mt-[-10vw] h-[200vw] w-[200vw]`}
+                isDiff ? 'z-0 mix-blend-difference' : 'z-[4]'
+              } absolute -left-[105vw] top-0 mt-[-10vw] h-[200vw] w-[200vw] origin-left`}
             />
           </div>
         </div>
       </section>
-      <section className="h-[200vh] bg-black"></section>
-      <section className="relative z-[20] h-screen bg-[#B7B0A4]">
-        <div className="relative -top-[20vw] left-[5vw] h-[120vh] w-[80vw] outline">
-          <div className="font-cygre sticky top-[70vh] z-[12] text-[10vw] font-black text-black">
+      <div className="h-screen bg-black"></div>
+      <div className="h-screen bg-black"></div>
+      <section className="bg-theme-brown relative z-[5] flex min-h-screen justify-center">
+        {/* <div className={`z-[100] absolute border mt-[-50%]`}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyFloatingBalls />
+          </Suspense>
+        </div> */}
+        <div className="relative -top-[40vw] h-[70vh] w-[80vw]">
+          <div className="font-cygre sticky top-[65vh] text-center text-[10vw] font-black text-black">
             i code.
+            <AsciiDonut
+              scale={1}
+              className={`font-cygre absolute left-[50%] top-[-220%] z-[-1] translate-x-[-50%] text-[1.2rem] font-black text-[#9f9b90] ${
+                donutVisible ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
+              }`}
+            />
+          </div>
+        </div>
+        <div className="absolute left-[50%] translate-x-[-50%]">
+          <List />
+
+          {/* <button className="mt-[10%] rounded-full outline outline-[0.1rem] font-mosk px-8 py-2 text-[#333333]">see more</button> */}
+          <div className="h-[30px]"></div>
+          <MagnetButton
+            content="see more"
+            className="font-mosk rounded-full px-8 py-2 text-[#333333]"
+          />
+        </div>
+      </section>
+
+      <section className="h-100vh relative bg-black">
+        <div className="relative -top-[20vw] left-[5vw] h-[200vh] w-[80vw]">
+          <div className="font-cygre sticky top-[70vh] text-[10vw] font-black text-white">
+            i design.
           </div>
         </div>
       </section>
-      <section className="h-screen bg-green-400"></section>
-      <section className="flex h-screen w-screen flex-col items-center justify-center gap-10 overflow-hidden bg-red-400">
-        <div className="font-cygre text-center text-[4rem] font-black leading-[2.5rem]">
+      <section className="font-cygre flex  h-screen w-screen flex-col items-center justify-center gap-10 overflow-hidden bg-black">
+        <div className="text-center text-[4rem] font-black leading-[2.5rem]">
           let&apos;s connect
         </div>
         <a

@@ -25,6 +25,11 @@ export default {
           orange: '#F5A623',
           violet: '#7928CA',
         },
+        theme: {
+          red: '#ED5151',
+          blue: '#4C4F6C',
+          brown: '#B7B0A4',
+        },
       },
       backgroundImage: ({ theme }) => ({
         'vc-border-gradient': `radial-gradient(at left top, ${theme(
@@ -51,6 +56,16 @@ export default {
           '80%': { transform: 'translate(10px, -5px) rotate(-5deg)' },
           '90%': { transform: 'translate(-5px, 10px) rotate(-10deg)' },
           '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        },
+        ripple: {
+          '0%': {
+            transform: 'scale(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'scale(2.5)',
+            opacity: '1',
+          },
         },
         fadeIn: {
           '0%': {
@@ -141,6 +156,10 @@ export default {
         squish: 'squish 200ms ease-in-out',
         slide: 'slide 10s linear infinite',
         brownian: 'brownian 20s infinite',
+        ripple: 'ripple 0.6s linear',
+      },
+      boxShadow: {
+        'custom-hover': '0px 30px 100px -10px rgba(0, 0, 0, 0.4)',
       },
     },
   },
