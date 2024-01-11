@@ -196,23 +196,34 @@ export default function Mobile() {
       <section className="relative z-[1] h-[200vh] bg-black">
         <div className="relative h-[170vh] w-[100vw]">
           <div className="sticky top-[70vh]">
-            <div className="font-cygre pointer-events-none absolute left-[5vw] z-10 w-[90vw] text-[10vw] font-black text-white">
+            <div className="font-cygre pointer-events-none absolute left-[5vw] z-10 w-[90vw] text-[10vw] font-black text-[#333333]">
               i design.
             </div>
           </div>
           <div className="absolute ml-[50vw] mt-[50vh]">
-            <SquareInfoBox size={500} className="bg-red-400" />
+            <SquareInfoBox
+              size={500}
+              className="bg-[url(/moti.png)] bg-cover bg-center"
+            />
           </div>
           <div className="absolute ml-[10vw] mt-[110vh]">
-            <SquareInfoBox size={500} className="bg-red-400" />
+            <SquareInfoBox
+              size={500}
+              className="bg-[url(/summer_guide.png)] bg-cover bg-center"
+            />
           </div>
-          <div className="absolute ml-[60vw] mt-[140vh]">
-            <SquareInfoBox size={500} className="bg-red-400" />
+          <div className="absolute ml-[60vw] mt-[160vh]">
+            <SquareInfoBox
+              size={500}
+              className="bg-[url(/yearbook.png)] bg-cover bg-center"
+            />
           </div>
         </div>
       </section>
 
-      <section className="font-cygre flex  h-screen w-screen flex-col items-center justify-center gap-10 overflow-hidden bg-black">
+      <section className="h-[100vh]"></section>
+
+      <section className="font-cygre flex  h-[100vh] w-screen flex-col items-center justify-center gap-10 overflow-hidden bg-black">
         <div className="text-center text-[4rem] font-black leading-[2.5rem]">
           let&apos;s connect
         </div>
