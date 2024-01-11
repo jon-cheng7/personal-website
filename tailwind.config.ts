@@ -42,6 +42,7 @@ export default {
         mosk: ['Mosk', 'sans-serif'],
         gyanko: ['Gyanko', 'sans-serif'],
         gothic: ['FieldGothic', 'sans-serif'],
+        steelfish: ['SteelFish', 'sans-serif'],
       },
       keyframes: ({ theme }) => ({
         brownian: {

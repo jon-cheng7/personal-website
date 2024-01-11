@@ -7,6 +7,8 @@ import { PillBrown } from '#/ui/desktop/pill-brown';
 import { PillBlue } from './desktop/pill-blue';
 import List from './list/list';
 import AsciiDonut from './asciiDonut';
+import Gallery from './gallery';
+import SquareInfoBox from './squareInfobox';
 import FloatingBalls from './floatingBalls';
 import Card from './desktop/card';
 import MagnetButton from './magnetButton';
@@ -171,28 +173,55 @@ export default function Mobile() {
           <div className="h-[30px]"></div>
           <MagnetButton
             content="see more"
+            inverse={false}
             className="font-mosk rounded-full px-8 py-2 text-[#333333]"
           />
         </div>
       </section>
 
-      <section className="h-100vh relative bg-black">
-        <div className="relative -top-[20vw] left-[5vw] h-[200vh] w-[80vw]">
-          <div className="font-cygre sticky top-[70vh] text-[10vw] font-black text-white">
-            i design.
+      <section className="h-100vh relative z-[2] bg-black">
+        <div className="relative -top-[28vh] h-[120vh] w-[100vw]">
+          <div className="sticky top-[70vh]">
+            <div className="font-cygre pointer-events-none absolute left-[5vw] z-[100] w-[90vw] text-[10vw] font-black text-white mix-blend-difference">
+              i draw.
+            </div>
+            <Gallery
+              photos={imageList}
+              className="absolute top-[-70vh] z-[10] w-screen"
+            />
           </div>
         </div>
       </section>
+
+      <section className="relative z-[1] h-[200vh] bg-black">
+        <div className="relative h-[170vh] w-[100vw]">
+          <div className="sticky top-[70vh]">
+            <div className="font-cygre pointer-events-none absolute left-[5vw] z-10 w-[90vw] text-[10vw] font-black text-white">
+              i design.
+            </div>
+          </div>
+          <div className="absolute ml-[50vw] mt-[50vh]">
+            <SquareInfoBox size={500} className="bg-red-400" />
+          </div>
+          <div className="absolute ml-[10vw] mt-[110vh]">
+            <SquareInfoBox size={500} className="bg-red-400" />
+          </div>
+          <div className="absolute ml-[60vw] mt-[140vh]">
+            <SquareInfoBox size={500} className="bg-red-400" />
+          </div>
+        </div>
+      </section>
+
       <section className="font-cygre flex  h-screen w-screen flex-col items-center justify-center gap-10 overflow-hidden bg-black">
         <div className="text-center text-[4rem] font-black leading-[2.5rem]">
           let&apos;s connect
         </div>
-        <a
+        <MagnetButton
+          inverse={true}
           href="mailto:jonathan.ch126@gmail.com"
-          className="rounded-full outline outline-[0.1rem]"
-        >
-          <button className="font-mosk p-5">message me</button>
-        </a>
+          content="message me"
+          className="font-cygre rounded-full px-10 py-5 text-[#333333]"
+        />
       </section>
     </div>
   );

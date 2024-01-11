@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  user-select: none;
+}
+
 @font-face {
   font-family: 'Cygre';
   src: url('/fonts/Cygre-Black.ttf') format('truetype');
@@ -216,5 +220,54 @@
   font-family: 'FieldGothic';
   src: url('/fonts/FieldGothicTEST-No.27.otf') format('opentype');
   font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish bd it.otf') format('opentype');
+  font-weight: 700; /* Bold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish bd.otf') format('opentype');
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish eb it.otf') format('opentype');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish eb.otf') format('opentype');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish rg it.otf') format('opentype');
+  font-weight: 400; /* Regular weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish rg.otf') format('opentype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SteelFish';
+  src: url('/fonts/steelfish outline.otf') format('opentype');
+  font-weight: 400; /* Regular weight */
   font-style: normal;
 }

@@ -2,7 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 
 type buttonProps = {
   content: string;
+  inverse: boolean;
   className?: string;
+  href?: string;
 };
 
 function MagnetButton(props: buttonProps) {
@@ -25,6 +27,18 @@ function MagnetButton(props: buttonProps) {
       } else {
         setPosition({ x: 0, y: 0 });
         setBorderPosition({ x: 0, y: 0 });
+      }
+    }
+  };
+
+  const handleClick = () => {
+    if (props.href) {
+      if (props.href.startsWith('mailto:')) {
+        // Open email client
+        window.location.href = props.href;
+      } else {
+        // Navigate to a URL
+        window.open(props.href, '_blank');
       }
     }
   };
@@ -78,17 +92,20 @@ function MagnetButton(props: buttonProps) {
         width: 'fit-content',
         borderRadius: '9999px',
       }}
-      className="border border-dashed border-black"
+      className={`border border-dashed ${
+        props.inverse ? 'border-white' : 'border-black'
+      }`}
     >
       <button
         ref={buttonRef}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onClick={handleClick}
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
           transition: 'transform 0.1s',
-          background: 'black',
-          color: 'white',
+          background: props.inverse ? 'white' : 'black',
+          color: props.inverse ? 'black' : 'white',
         }}
         className={`${props.className}`}
       >
