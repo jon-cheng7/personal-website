@@ -7,22 +7,6 @@ import IncompleteModal from '#/ui/modal';
 const MobileComponents = dynamic(() => import('#/ui/mobile'));
 const DesktopComponents = dynamic(() => import('#/ui/desktop'));
 
-const HomePage = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    // Show the modal upon entering the site
-    setShowModal(true);
-  }, []);
-
-  return (
-    <div>
-      {showModal && <IncompleteModal onClose={() => setShowModal(false)} />}
-      {/* Rest of your page content */}
-    </div>
-  );
-};
-
 function Page() {
   const [isMobile, setIsMobile] = React.useState<boolean | null>(null);
   const [showModal, setShowModal] = useState(false);

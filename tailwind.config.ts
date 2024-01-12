@@ -58,6 +58,12 @@ export default {
           '90%': { transform: 'translate(-5px, 10px) rotate(-10deg)' },
           '100%': { transform: 'translate(0, 0) rotate(0deg)' },
         },
+        marquee: {
+          '0%': { transform: 'translate(0%, -50%)' },
+          '50%': { transform: 'translate(-5%, -50%)' },
+          '50.5%': { transform: 'translate(-5%, -50%)' },
+          '100%': { transform: 'translate(0%, -50%)' },
+        },
         ripple: {
           '0%': {
             transform: 'scale(0)',
@@ -158,6 +164,7 @@ export default {
         slide: 'slide 10s linear infinite',
         brownian: 'brownian 20s infinite',
         ripple: 'ripple 0.6s linear',
+        marquee: 'marquee 10s linear infinite',
       },
       boxShadow: {
         'custom-hover': '0px 30px 100px -10px rgba(0, 0, 0, 0.4)',

@@ -6,7 +6,6 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
-import Byline from './byline';
 import Image from 'next/image';
 
 export function GlobalNav() {

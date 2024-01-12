@@ -18,29 +18,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await getCategories();
-
   return (
     <div className="space-y-9">
-      <div className="flex justify-between">
-        <TabGroup
-          path="/me"
-          items={[
-            {
-              text: 'Home',
-            },
-            ...categories.map((x) => ({
-              text: x.name,
-              slug: x.slug,
-            })),
-          ]}
-        />
-
-        <div className="self-start">
-          <ClickCounter />
-        </div>
-      </div>
-
       <div>{children}</div>
     </div>
   );

@@ -59,6 +59,9 @@ dependencies:
   next:
     specifier: 13.4.13-canary.6
     version: 13.4.13-canary.6(@babel/core@7.22.1)(react-dom@18.2.0)(react@18.2.0)
+  phosphor-react:
+    specifier: 1.4.1
+    version: 1.4.1(react@18.2.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -13868,6 +13871,18 @@ packages:
       '@types/estree': 1.0.1
       estree-walker: 3.0.3
       is-reference: 3.0.1
+    dev: false
+
+  /phosphor-react@1.4.1(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==,
+      }
+    engines: { node: '>=10' }
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /picocolors@1.0.0:

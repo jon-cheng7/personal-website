@@ -1,5 +1,4 @@
 import '#/styles/globals.css';
-import Head from 'next/head';
 import { GlobalNav } from '#/ui/global-nav';
 import { Metadata } from 'next';
 
