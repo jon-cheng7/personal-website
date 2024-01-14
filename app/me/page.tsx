@@ -34,12 +34,12 @@ export default function Page() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const navBar = document.getElementById('global-nav');
 
-  // useEffect(() => {
-  //   if (!window.location.hash) {
-  //     window.location.hash = 'loaded';
-  //     window.location.reload();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.location.hash = 'loaded';
+      window.location.reload();
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -97,10 +97,10 @@ export default function Page() {
   };
 
   const handleRightClick = (e: MouseEvent) => {
-    if (navBar && navBar.contains(e.target as Node)) {
-      // Click was inside the navigation bar, do nothing
-      return;
-    }
+    // if (navBar && navBar.contains(e.target as Node)) {
+    //   // Click was inside the navigation bar, do nothing
+    //   return;
+    // }
     if (currentSlide < totalSlides) {
       animateSlide(currentSlide + 1, true);
       setCurrentSlide(currentSlide + 1);
@@ -108,10 +108,10 @@ export default function Page() {
   };
 
   const handleLeftClick = (e: MouseEvent) => {
-    if (navBar && navBar.contains(e.target as Node)) {
-      // Click was inside the navigation bar, do nothing
-      return;
-    }
+    // if (navBar && navBar.contains(e.target as Node)) {
+    //   // Click was inside the navigation bar, do nothing
+    //   return;
+    // }
     if (currentSlide > 1) {
       animateSlide(currentSlide, false);
       setCurrentSlide(currentSlide - 1);
