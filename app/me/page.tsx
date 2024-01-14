@@ -209,7 +209,7 @@ export default function Page() {
                 }}
                 id="t-2"
               >
-                <img src="/assets/team-2.jpg" alt="" />
+                <img src="/assets/team-2.JPG" alt="" />
               </div>
 
               <div
@@ -229,7 +229,7 @@ export default function Page() {
                 }}
                 id="t-4"
               >
-                <img src="/assets/team-4.jpg" alt="" />
+                <img src="/assets/team-4.JPG" alt="" />
               </div>
             </div>
           </div>
