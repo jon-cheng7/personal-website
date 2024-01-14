@@ -34,12 +34,12 @@ export default function Page() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const navBar = document.getElementById('global-nav');
 
-  useEffect(() => {
-    if (!window.location.hash) {
-      window.location.hash = 'loaded';
-      window.location.reload();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!window.location.hash) {
+  //     window.location.hash = 'loaded';
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
