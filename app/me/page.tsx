@@ -131,8 +131,8 @@ export default function Page() {
 
   return (
     <>
-      <div className="h-[100vh] bg-red-400">
-        {/* <div className="font-cygre container h-[100vh] w-[100vw] cursor-none overflow-hidden font-black">
+      <div className="h-[100vh] bg-red-300">
+        <div className="font-cygre container left-0 h-[100vh] w-[100%] cursor-none overflow-hidden bg-slate-300 font-black">
           <div className="overlay pointer-events-none absolute left-0 top-0 h-[100%] w-[100%] overflow-hidden text-black">
             <div
               className="t-1 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#fff]"
@@ -233,7 +233,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div
           className={`cursor absolute left-0 top-0 z-[50] text-[30px] ${

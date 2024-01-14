@@ -4,6 +4,7 @@
 
 * {
   user-select: none;
+  overscroll-behavior-y: none;
 }
 
 *::-webkit-scrollbar {
