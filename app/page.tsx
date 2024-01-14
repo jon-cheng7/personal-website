@@ -26,7 +26,7 @@ function Page() {
   if (isMobile === null) return null;
 
   return (
-    <div>
+    <div className="pt-[3.5rem]">
       {showModal && <IncompleteModal onClose={() => setShowModal(false)} />}
       {isMobile ? <MobileComponents /> : <DesktopComponents />}
     </div>

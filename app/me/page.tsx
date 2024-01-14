@@ -131,7 +131,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="h-screen w-screen overflow-hidden">
+      <div className="h-[100vh] bg-red-400">
         <div className="font-cygre container h-[100vh] w-[100vw] cursor-none overflow-hidden font-black">
           <div className="overlay pointer-events-none absolute left-0 top-0 h-[100%] w-[100%] overflow-hidden text-black">
             <div
@@ -236,7 +236,7 @@ export default function Page() {
         </div>
 
         <div
-          className={`cursor absolute left-0 top-0 z-[1000] text-[30px] ${
+          className={`cursor absolute left-0 top-0 z-[50] text-[30px] ${
             showRightArrow == 1 ? 'mix-blend-normal' : 'mix-blend-difference'
           }`}
           ref={cursorRef}

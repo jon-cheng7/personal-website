@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Jonathan Cheng',
+    default: 'Jonathan Cheng | Portfolio',
     template: '%s | Portfolio',
   },
   description: 'Personal Website',
@@ -27,9 +27,7 @@ export default function RootLayout({
     <html lang="en" className="[color-scheme:dark]">
       <body className="bg-black">
         <GlobalNav />
-        <div className="mx-auto space-y-8 overflow-x-clip pt-[3.5rem]">
-          {children}
-        </div>
+        <div className="mx-auto overflow-x-clip">{children}</div>
       </body>
     </html>
   );
