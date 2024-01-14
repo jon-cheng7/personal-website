@@ -32,7 +32,7 @@ export default function Page() {
 
   const totalSlides: number = team.length;
   const cursorRef = useRef<HTMLDivElement>(null);
-  const navBar = document.getElementById('global-nav');
+  //const navBar = document.getElementById('global-nav');
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -96,7 +96,7 @@ export default function Page() {
     gsap.to(img, { clipPath: clipPathValue, duration: 1, ease: 'power4.out' });
   };
 
-  const handleRightClick = (e: MouseEvent) => {
+  const handleRightClick = () => {
     // if (navBar && navBar.contains(e.target as Node)) {
     //   // Click was inside the navigation bar, do nothing
     //   return;
@@ -107,7 +107,7 @@ export default function Page() {
     }
   };
 
-  const handleLeftClick = (e: MouseEvent) => {
+  const handleLeftClick = () => {
     // if (navBar && navBar.contains(e.target as Node)) {
     //   // Click was inside the navigation bar, do nothing
     //   return;
@@ -124,10 +124,10 @@ export default function Page() {
 
       if (e.clientX < sectionWidth) {
         // Cursor is on the left third of the screen
-        handleLeftClick(e);
+        handleLeftClick();
       } else if (e.clientX > 2 * sectionWidth) {
         // Cursor is on the right third of the screen
-        handleRightClick(e);
+        handleRightClick();
       }
       // Do nothing if the cursor is in the middle third
     };
