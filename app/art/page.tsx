@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import './styles.css';
 
@@ -10,19 +10,21 @@ interface Position {
 
 const positions = [
   { top: '5%', left: '0%' },
-  { top: '0%', left: '10%' },
+  { top: '0%', left: '15%' },
   { top: '0%', left: '60%' },
-  { top: '16%', left: '20%' },
+  { top: '30%', left: '20%' },
   { top: '16%', left: '40%' },
   { top: '16%', left: '90%' },
-  { top: '32%', left: '50%' },
   { top: '32%', left: '75%' },
+  { top: '28%', left: '50%' },
   { top: '48%', left: '0%' },
   { top: '64%', left: '30%' },
   { top: '64%', left: '50%' },
   { top: '64%', left: '90%' },
   { top: '80%', left: '20%' },
   { top: '80%', left: '70%' },
+  { top: '75%', left: '5%' },
+  { top: '5%', left: '80%' },
 ];
 
 export default function Page() {
@@ -160,117 +162,136 @@ export default function Page() {
   }
 
   return (
-    <div className="w-[100vw]">
-      <div className="container">
-        <div className="nav flex h-[60px] w-[100%] items-center justify-between"></div>
-        <div className="header font-gothic flex justify-center text-[20rem] font-black">
-          <div className="text">
-            <p>
-              <em>GA </em>LL<em>ER</em> Y
-            </p>
+    <>
+      <div className="w-[100vw]">
+        <div className="container">
+          <div className="nav flex h-[60px] w-[100%] items-center justify-between"></div>
+          <div className="header font-gothic flex justify-center text-[20rem] font-black">
+            <div className="text">
+              <p>
+                <em>GA </em>LL<em>ER</em> Y
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="gallery left-0">
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/blueperiod1.png"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/devil.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/cloud.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/fairy.png"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/hands.png"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/than.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/shyboy.png"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/shave.jpeg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/eye.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/coffee.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/brute.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/blueperiod2.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/boy.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
-          </div>
-          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
-            <img
-              src="./art/girl.jpg"
-              alt=""
-              className="h-[100%] w-[100%] object-cover"
-            />
+          <div className="gallery left-0">
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/blueperiod1.png"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/devil.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/cloud.JPG"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/fairy.PNG"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/hands.PNG"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/than.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/shard.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/shyboy.png"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/eye.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/itadori 2.PNG"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/hug.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/blueperiod2.JPG"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/boy.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/girl.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/shave.jpeg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
+            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+              <img
+                src="./art/coffee.jpg"
+                alt=""
+                className="h-[100%] w-[100%] object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {/* <div className="h-screen">
+
+    </div> */}
+    </>
   );
 }
