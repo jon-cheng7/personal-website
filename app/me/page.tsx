@@ -1,14 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
-import {
-  ArrowLeft,
-  ArrowRight,
-  InstagramLogo,
-  LinkedinLogo,
-  Envelope,
-} from 'phosphor-react';
-import { set } from 'date-fns';
+import { ArrowLeft, ArrowRight } from 'phosphor-react';
 
 interface TeamMember {
   name: string;
@@ -39,6 +32,14 @@ export default function Page() {
 
   const totalSlides: number = team.length;
   const cursorRef = useRef<HTMLDivElement>(null);
+  const navBar = document.getElementById('global-nav');
+
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.location.hash = 'loaded';
+      window.location.reload();
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -95,14 +96,22 @@ export default function Page() {
     gsap.to(img, { clipPath: clipPathValue, duration: 1, ease: 'power4.out' });
   };
 
-  const handleRightClick = () => {
+  const handleRightClick = (e: MouseEvent) => {
+    if (navBar && navBar.contains(e.target as Node)) {
+      // Click was inside the navigation bar, do nothing
+      return;
+    }
     if (currentSlide < totalSlides) {
       animateSlide(currentSlide + 1, true);
       setCurrentSlide(currentSlide + 1);
     }
   };
 
-  const handleLeftClick = () => {
+  const handleLeftClick = (e: MouseEvent) => {
+    if (navBar && navBar.contains(e.target as Node)) {
+      // Click was inside the navigation bar, do nothing
+      return;
+    }
     if (currentSlide > 1) {
       animateSlide(currentSlide, false);
       setCurrentSlide(currentSlide - 1);
@@ -115,10 +124,10 @@ export default function Page() {
 
       if (e.clientX < sectionWidth) {
         // Cursor is on the left third of the screen
-        handleLeftClick();
+        handleLeftClick(e);
       } else if (e.clientX > 2 * sectionWidth) {
         // Cursor is on the right third of the screen
-        handleRightClick();
+        handleRightClick(e);
       }
       // Do nothing if the cursor is in the middle third
     };

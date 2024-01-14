@@ -13,7 +13,10 @@ export function GlobalNav() {
   const close = () => setIsOpen(false);
 
   return (
-    <div className="max-w-screen fixed top-0 z-[100] flex w-[100%] flex-col overflow-x-hidden border-b border-gray-800 bg-black">
+    <div
+      id="global-nav"
+      className="max-w-screen fixed top-0 z-[100] flex w-[100%] flex-col overflow-x-hidden border-b border-gray-800 bg-black"
+    >
       <div className="flex h-10 items-center px-4 py-2">
         <Link href="/">
           <Image src="/Signature.png" alt="Home" width={40} height={40} />
