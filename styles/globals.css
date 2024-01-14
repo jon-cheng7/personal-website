@@ -6,6 +6,15 @@
   user-select: none;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @font-face {
   font-family: 'Cygre';
   src: url('/fonts/Cygre-Black.ttf') format('truetype');

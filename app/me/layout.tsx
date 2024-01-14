@@ -16,7 +16,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="">
+    <div className="[overflow:overlay]">
       <div>{children}</div>
     </div>
   );

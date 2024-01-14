@@ -28,7 +28,6 @@ const positions = [
 export default function Page() {
   useEffect(() => {
     const imgs = document.querySelectorAll('.img');
-
     gsap.set('.img', {
       top: '45%',
       left: '50%',
@@ -69,17 +68,6 @@ export default function Page() {
     //   }
     // });
 
-    gsap.from('a', {
-      y: 20,
-      opacity: 0,
-      ease: 'power2.out',
-      duration: 1,
-      stagger: {
-        amount: 0.15,
-      },
-      delay: 4,
-    });
-
     imgs.forEach((img, i) => {
       img.setAttribute('data-original-position', JSON.stringify(positions[i]));
       img.setAttribute('data-enlarged', 'false');
@@ -98,8 +86,8 @@ export default function Page() {
       top: (i) => positions[i].top,
       left: (i) => positions[i].left,
       transform: 'none',
-      width: '75px',
-      height: '100px',
+      width: '95px',
+      height: '120px',
       stagger: 0.075,
       duration: 0.75,
       ease: 'power2.out',
@@ -162,8 +150,8 @@ export default function Page() {
         zIndex: 1,
         top: originalPosition.top,
         left: originalPosition.left,
-        width: '75px',
-        height: '100px',
+        width: '95px',
+        height: '120px',
         ease: 'power4.out',
         duration: 1,
       });
@@ -174,14 +162,7 @@ export default function Page() {
   return (
     <div className="w-[100vw]">
       <div className="container">
-        <div className="nav">
-          <a href="#">Neural Nuance</a>
-          <a href="#">Showreel</a>
-        </div>
-        {/* <div className="footer">
-          <a href="#">Behance</a>
-          <a href="#">Catalog</a>
-        </div> */}
+        <div className="nav flex h-[60px] w-[100%] items-center justify-between"></div>
         <div className="header font-gothic flex justify-center text-[20rem] font-black">
           <div className="text">
             <p>
@@ -190,47 +171,103 @@ export default function Page() {
           </div>
         </div>
         <div className="gallery left-0">
-          <div className="img">
-            <img src="./art/blueperiod1.png" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/blueperiod1.png"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/devil.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/devil.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/cloud.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/cloud.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/fairy.png" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/fairy.png"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/hands.png" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/hands.png"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/than.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/than.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/shyboy.png" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/shyboy.png"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/shave.jpeg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/shave.jpeg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/eye.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/eye.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/coffee.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/coffee.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/brute.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/brute.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/blueperiod2.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/blueperiod2.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/boy.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/boy.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
-          <div className="img">
-            <img src="./art/girl.jpg" alt="" />
+          <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <img
+              src="./art/girl.jpg"
+              alt=""
+              className="h-[100%] w-[100%] object-cover"
+            />
           </div>
         </div>
       </div>

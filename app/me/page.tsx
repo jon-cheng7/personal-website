@@ -132,7 +132,7 @@ export default function Page() {
   return (
     <>
       <div className="h-[100vh] bg-red-400">
-        <div className="font-cygre container h-[100vh] w-[100vw] cursor-none overflow-hidden font-black">
+        {/* <div className="font-cygre container h-[100vh] w-[100vw] cursor-none overflow-hidden font-black">
           <div className="overlay pointer-events-none absolute left-0 top-0 h-[100%] w-[100%] overflow-hidden text-black">
             <div
               className="t-1 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#fff]"
@@ -170,7 +170,7 @@ export default function Page() {
                 className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
-                LOL BO GOOD GOOD __ BOY GOOD BOY
+                LOL BOY GOOD BOY GOOD BOY GOOD BOY
               </h1>
             </div>
             <div
@@ -233,7 +233,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div
           className={`cursor absolute left-0 top-0 z-[50] text-[30px] ${
