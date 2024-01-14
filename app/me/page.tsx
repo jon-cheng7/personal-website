@@ -32,7 +32,7 @@ export default function Page() {
 
   const totalSlides: number = team.length;
   const cursorRef = useRef<HTMLDivElement>(null);
-  //const navBar = document.getElementById('global-nav');
+  const navBar = document.getElementById('global-nav');
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -121,6 +121,10 @@ export default function Page() {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const sectionWidth = window.innerWidth / 3;
+      if (navBar && navBar.contains(e.target as Node)) {
+        // Click was inside the navigation bar, do nothing
+        return;
+      }
 
       if (e.clientX < sectionWidth) {
         // Cursor is on the left third of the screen
