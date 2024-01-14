@@ -9,10 +9,10 @@ interface Position {
 }
 
 const positions = [
-  { top: '0%', left: '0%' },
+  { top: '5%', left: '0%' },
   { top: '0%', left: '10%' },
   { top: '0%', left: '60%' },
-  { top: '16%', left: '15%' },
+  { top: '16%', left: '20%' },
   { top: '16%', left: '40%' },
   { top: '16%', left: '90%' },
   { top: '32%', left: '50%' },
@@ -191,46 +191,46 @@ export default function Page() {
         </div>
         <div className="gallery left-0">
           <div className="img">
-            <img src="./gallery/img1.jpg" alt="" />
+            <img src="./art/blueperiod1.png" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img2.jpg" alt="" />
+            <img src="./art/devil.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img3.jpg" alt="" />
+            <img src="./art/cloud.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img4.jpg" alt="" />
+            <img src="./art/fairy.png" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img5.jpg" alt="" />
+            <img src="./art/hands.png" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img6.jpg" alt="" />
+            <img src="./art/than.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img7.jpg" alt="" />
+            <img src="./art/shyboy.png" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img1.jpg" alt="" />
+            <img src="./art/shave.jpeg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img2.jpg" alt="" />
+            <img src="./art/eye.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img3.jpg" alt="" />
+            <img src="./art/coffee.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img4.jpg" alt="" />
+            <img src="./art/brute.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img5.jpg" alt="" />
+            <img src="./art/blueperiod2.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img6.jpg" alt="" />
+            <img src="./art/boy.jpg" alt="" />
           </div>
           <div className="img">
-            <img src="./gallery/img7.jpg" alt="" />
+            <img src="./art/girl.jpg" alt="" />
           </div>
         </div>
       </div>
