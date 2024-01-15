@@ -32,7 +32,6 @@ export default function Page() {
 
   const totalSlides: number = team.length;
   const cursorRef = useRef<HTMLDivElement>(null);
-  const navBar = document.getElementById('global-nav');
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -119,27 +118,30 @@ export default function Page() {
   };
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const sectionWidth = window.innerWidth / 3;
-      if (navBar && navBar.contains(e.target as Node)) {
-        // Click was inside the navigation bar, do nothing
-        return;
-      }
+    if (typeof window !== 'undefined') {
+      const navBar = document.getElementById('global-nav');
+      const handleClick = (e: MouseEvent) => {
+        const sectionWidth = window.innerWidth / 3;
+        if (navBar && navBar.contains(e.target as Node)) {
+          // Click was inside the navigation bar, do nothing
+          return;
+        }
 
-      if (e.clientX < sectionWidth) {
-        // Cursor is on the left third of the screen
-        handleLeftClick();
-      } else if (e.clientX > 2 * sectionWidth) {
-        // Cursor is on the right third of the screen
-        handleRightClick();
-      }
-      // Do nothing if the cursor is in the middle third
-    };
+        if (e.clientX < sectionWidth) {
+          // Cursor is on the left third of the screen
+          handleLeftClick();
+        } else if (e.clientX > 2 * sectionWidth) {
+          // Cursor is on the right third of the screen
+          handleRightClick();
+        }
+        // Do nothing if the cursor is in the middle third
+      };
 
-    document.addEventListener('click', handleClick);
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
+      document.addEventListener('click', handleClick);
+      return () => {
+        document.removeEventListener('click', handleClick);
+      };
+    }
   }, [currentSlide]);
 
   return (
