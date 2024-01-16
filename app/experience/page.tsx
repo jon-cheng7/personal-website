@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { set } from 'date-fns';
 // import './styles.css';
 
 export default function Page() {

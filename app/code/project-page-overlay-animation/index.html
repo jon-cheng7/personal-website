@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codegrid | Project Overview Modal Animation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div className="nav">
+      <p>Nanotech</p>
+      <p>Showreel</p>
+    </div>
+    <div className="footer">
+      <p>Codegrid 2023 &copy;</p>
+    </div>
+    <div className="overlay">
+      <div className="overlay-header">
+        <div className="col">
+          <h1 id="item-name">Item 1</h1>
+          <p id="item-category">Item Category</p>
+        </div>
+        <div className="col">
+          <p id="close-btn">Close</p>
+        </div>
+      </div>
+      <div className="item-details">
+        <p>
+          <a id="item-link" href="#"
+            ><i className="ph-bold ph-arrow-up-right"></i> View Site</a
+          >
+        </p>
+        <p id="item-copy">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores qui
+          ea, impedit vero provident dolorem distinctio obcaecati quam. Sequi,
+          sed!
+        </p>
+      </div>
+      <div className="img-container">
+        <img id="item-img" src="./img-1.jpg" alt="" />
+      </div>
+    </div>
+    <div className="container">
+      <div className="items">
+        <div className="item">
+          <div className="item-index">01</div>
+          <div className="item-name">Advanced Nanotech Fabrics</div>
+          <div className="item-year">2022</div>
+        </div>
+        <div className="item">
+          <div className="item-index">02</div>
+          <div className="item-name">Natural Bio-luminescent Accents</div>
+          <div className="item-year">2021</div>
+        </div>
+        <div className="item">
+          <div className="item-index">03</div>
+          <div className="item-name">Integrated Electronic Wearables</div>
+          <div className="item-year">2023</div>
+        </div>
+        <div className="item">
+          <div className="item-index">04</div>
+          <div className="item-name">Dynamic Morphing Clothing</div>
+          <div className="item-year">2021</div>
+        </div>
+        <div className="item">
+          <div className="item-index">05</div>
+          <div className="item-name">3D Holographic Prints</div>
+          <div className="item-year">2017</div>
+        </div>
+        <div className="item">
+          <div className="item-index">06</div>
+          <div className="item-name">Atmospheric Aero-adaptable Garments</div>
+          <div className="item-year">2018</div>
+        </div>
+        <div className="item">
+          <div className="item-index">07</div>
+          <div className="item-name">Responsive Skinsync Attire</div>
+          <div className="item-year">2019</div>
+        </div>
+        <div className="item">
+          <div className="item-index">08</div>
+          <div className="item-name">Sustainable Zero-waste Weavings</div>
+          <div className="item-year">2023</div>
+        </div>
+        <div className="item">
+          <div className="item-index">09</div>
+          <div className="item-name">Lab-crafted Synthetic Leather</div>
+          <div className="item-year">2022</div>
+        </div>
+        <div className="item">
+          <div className="item-index">10</div>
+          <div className="item-name">Neuro-responsive Fashion Gear</div>
+          <div className="item-year">2021</div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
