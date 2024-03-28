@@ -97,15 +97,12 @@ export default function Page() {
 
   return (
     <div
-      className="h-screen w-screen overflow-hidden"
+      className="font-cygre h-screen w-screen overflow-hidden"
       onClick={handleOverlayClick}
     >
-      {/* <div className="nav bg-slate-600">
-        <p>Nanotech</p>
-        <p>Showreel</p>
-      </div> */}
-      <div className="footer">
-        <p>Codegrid 2023 &copy;</p>
+      <div className="nav mt-[2.5rem]">
+        <p>PROJECTS</p>
+        <p>SHOWREEL</p>
       </div>
       <div
         className="overlay absolute bottom-[-1200px] right-0 z-[2] h-[700px] w-[70%] overflow-x-hidden overflow-y-scroll bg-white p-[2em] text-black [transform-origin:bottom_center] [transform:translateZ(0)_rotate(20deg)] [will-change:bottom]"
@@ -135,7 +132,7 @@ export default function Page() {
           </p>
         </div>
         <div className="img-container">
-          <img id="item-img" src="./img-1.jpg" alt="" />
+          <img id="item-img" src="/code/img-1.jpg" alt="" />
         </div>
       </div>
       <div className="container flex h-screen w-full items-end justify-start p-[2em]">

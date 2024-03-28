@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { PillRed } from '#/ui/desktop/pill-red';
 import { PillBrown } from '#/ui/desktop/pill-brown';
 import { PillBlue } from './desktop/pill-blue';
+import { PillFill } from './desktop/pill-fill';
 import List from './list/list';
 import AsciiDonut from './asciiDonut';
 import Gallery from './gallery';
@@ -14,12 +15,11 @@ import Card from './desktop/card';
 import MagnetButton from './magnetButton';
 
 export default function Mobile() {
-  const [isDiff, setIsDiff] = useState(true);
+  const [fillWidth, setFillWidth] = useState(0);
   const [offsetRed, setOffsetRed] = useState(0);
-  const [redWidth, setRedWidth] = useState(0);
   const [offsetBrown, setOffsetBrown] = useState(0);
-  const [offsetWhite2, setOffsetWhite2] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(-800);
+  const [offsetFill, setOffsetFill] = useState(-500);
   const [donutVisible, setDonutVisible] = useState(false);
   const LazyFloatingBalls = React.lazy(() => import('./floatingBalls'));
 
@@ -48,18 +48,13 @@ export default function Mobile() {
     if (scrollPosition > 0 && scrollPosition < 2000) {
       setOffsetRed(-((scrollPosition - 0 - 0) / 0.3));
       setOffsetBrown(-((scrollPosition - 0 - 0) / 2));
-      setOffsetWhite2(-((scrollPosition - 0 - 600) / 0.5));
+      setOffsetFill(-((scrollPosition - 0 - 1300) / 0.5));
       setOffsetBlue(-800 + scrollPosition);
-      if (scrollPosition > 800) {
-        setRedWidth((scrollPosition - 800) * 3.5);
+      if (scrollPosition > 1000) {
+        setFillWidth((scrollPosition - 1200) * 3.5);
       } else {
-        setRedWidth(0);
+        setFillWidth(0);
       }
-    }
-    if (scrollPosition > 700) {
-      setIsDiff(false);
-    } else {
-      setIsDiff(true);
     }
     if (scrollPosition > 1700) {
       setDonutVisible(true);
@@ -115,9 +110,9 @@ export default function Mobile() {
             Jonathan
           </div>
           <div className="font-mosk z-[13] ml-[25%] mt-[-1.5rem] w-[100%] text-left text-[1.3rem] font-extralight ">
-            I’m a creative and innovative thinker with a love for coding and
-            digital design. I’m currently pursuing a degree in software
-            engineering at the University of Waterloo.
+            I am a software engineering student at the University of Waterloo,
+            with a burning passion for digital design and code. Welcome to my
+            portfolio of my work in code, art, and design.
           </div>
         </div>
         <div className="absolute left-[50%] isolate z-10 h-screen w-[50%]">
@@ -138,11 +133,15 @@ export default function Mobile() {
           </div>
           <div className="relative col-span-1 col-start-5 row-span-2 row-start-1">
             <PillRed
-              strokeWidth={redWidth}
               strokeDashoffset={offsetRed}
-              className={`${
-                isDiff ? 'z-0 mix-blend-difference' : 'z-[4]'
-              } absolute -left-[105vw] top-0 mt-[-10vw] h-[200vw] w-[200vw] origin-left`}
+              className={`absolute -left-[45vw] z-0 mt-[-65vw] h-[200vw] w-[200vw] origin-left mix-blend-difference`}
+            />
+          </div>
+          <div className="relative col-span-1 col-start-5 row-span-2 row-start-1">
+            <PillFill
+              strokeWidth={fillWidth}
+              strokeDashoffset={offsetFill}
+              className={`absolute -left-[100vw] z-[4] mt-[-0vw] h-[200vw] w-[200vw] origin-left`}
             />
           </div>
         </div>

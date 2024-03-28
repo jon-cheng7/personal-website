@@ -13,11 +13,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'me',
         description: 'replace with a description',
       },
-      {
-        name: 'Skills',
-        slug: 'skills',
-        description: 'replace with a description',
-      },
+      // {
+      //   name: 'Skills',
+      //   slug: 'skills',
+      //   description: 'replace with a description',
+      // },
       {
         name: 'Projects and Experience',
         slug: 'experience',
@@ -38,11 +38,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'code',
         description: 'Open source projects and code snippets',
       },
-      {
-        name: 'Music',
-        slug: 'music',
-        description: 'Music production and compositions',
-      },
+      // {
+      //   name: 'Music',
+      //   slug: 'music',
+      //   description: 'Music production and compositions',
+      // },
     ],
   },
 ];
