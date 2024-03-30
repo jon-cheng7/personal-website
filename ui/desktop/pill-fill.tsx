@@ -8,8 +8,8 @@ export function PillFill(props: PillFillProps) {
   return (
     <svg
       width="3639"
-      height="1300"
-      viewBox="0 0 3639 1300"
+      height="1500"
+      viewBox="0 0 3639 1500"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={props.className}
@@ -26,4 +26,4 @@ export function PillFill(props: PillFillProps) {
   );
 }
 
-// strokeWidth={`calc(500 + ${props.strokeWidth})`}
+// strokeWidth={`calc(400 + ${props.strokeWidth})`}

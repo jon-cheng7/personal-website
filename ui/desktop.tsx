@@ -13,6 +13,7 @@ import SquareInfoBox from './squareInfobox';
 import FloatingBalls from './floatingBalls';
 import Card from './desktop/card';
 import MagnetButton from './magnetButton';
+import { set } from 'date-fns';
 
 export default function Mobile() {
   const [fillWidth, setFillWidth] = useState(0);
@@ -21,6 +22,7 @@ export default function Mobile() {
   const [offsetBlue, setOffsetBlue] = useState(-800);
   const [offsetFill, setOffsetFill] = useState(-500);
   const [donutVisible, setDonutVisible] = useState(false);
+  const [donutScale, setDonutScale] = useState(1);
   const LazyFloatingBalls = React.lazy(() => import('./floatingBalls'));
 
   const imageList = [
@@ -48,7 +50,7 @@ export default function Mobile() {
     if (scrollPosition > 0 && scrollPosition < 2000) {
       setOffsetRed(-((scrollPosition - 0 - 0) / 0.3));
       setOffsetBrown(-((scrollPosition - 0 - 0) / 2));
-      setOffsetFill(-((scrollPosition - 0 - 1300) / 0.5));
+      setOffsetFill(-((scrollPosition - 0 - 1500) / 0.5));
       setOffsetBlue(-800 + scrollPosition);
       if (scrollPosition > 1000) {
         setFillWidth((scrollPosition - 1200) * 3.5);
@@ -78,6 +80,16 @@ export default function Mobile() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    // set isPrimaryWidth to true if the screen width is greater than the height dynamically when resize
+    const handleResize = () => {
+      let scale = Math.min(window.innerWidth / 1024, window.innerHeight / 768);
+      scale = scale > 1 ? 1 : scale;
+      setDonutScale(scale);
+    };
+    window.addEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -122,7 +134,7 @@ export default function Mobile() {
           <div className="relative col-span-1 col-start-7 row-span-3 row-start-3">
             <PillBlue
               strokeDashoffset={offsetBlue}
-              className="absolute ml-[-15vw] mt-[-25vw] h-[70vw] origin-left"
+              className="absolute ml-[-15vw] mt-[-30vw] h-[70vw] origin-left"
             />
           </div>
           <div className="relative col-span-2 col-start-1 row-span-1 row-start-2">
@@ -137,38 +149,30 @@ export default function Mobile() {
               className={`absolute -left-[45vw] z-0 mt-[-65vw] h-[200vw] w-[200vw] origin-left mix-blend-difference`}
             />
           </div>
-          <div className="relative col-span-1 col-start-5 row-span-2 row-start-1">
-            <PillFill
-              strokeWidth={fillWidth}
-              strokeDashoffset={offsetFill}
-              className={`absolute -left-[100vw] z-[4] mt-[-0vw] h-[200vw] w-[200vw] origin-left`}
-            />
-          </div>
         </div>
       </section>
+      <div className="absolute">
+        <PillFill
+          strokeWidth={fillWidth}
+          strokeDashoffset={offsetFill}
+          className={`absolute -left-[70vw] mt-[-30vw] h-[200vw] w-[200vw] origin-left`}
+        />
+      </div>
       <div className="h-screen bg-black"></div>
-      <div className="h-screen bg-black"></div>
-      <section className="bg-theme-brown relative z-[5] flex min-h-screen justify-center">
-        {/* <div className={`z-[100] absolute border mt-[-50%]`}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <LazyFloatingBalls />
-          </Suspense>
-        </div> */}
-        <div className="relative -top-[40vw] h-[70vh] w-[80vw]">
-          <div className="font-cygre sticky top-[65vh] text-center text-[10vw] font-black text-black">
-            i code.
-            <AsciiDonut
-              scale={1}
-              className={`font-cygre absolute left-[50%] top-[-220%] z-[-1] translate-x-[-50%] text-[1.2rem] font-black text-[#9f9b90] ${
-                donutVisible ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
-              }`}
-            />
-          </div>
+      <div className="h-screen bg-black">
+        <div className="font-cygre sticky top-[65vh] text-center text-[10vw] font-black text-black">
+          i code.
+          <AsciiDonut
+            scale={donutScale}
+            className={`font-cygre absolute left-[50%] z-[-1] translate-x-[-50%] text-[1.2rem] font-black text-[#9f9b90] md:top-[-250%] lg:top-[-220%] ${
+              donutVisible ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
+            }`}
+          />
         </div>
+      </div>
+      <section className="bg-theme-brown relative z-[5] flex min-h-screen justify-center">
         <div className="absolute left-[50%] translate-x-[-50%]">
           <List />
-
-          {/* <button className="mt-[10%] rounded-full outline outline-[0.1rem] font-mosk px-8 py-2 text-[#333333]">see more</button> */}
           <div className="h-[30px]"></div>
           <MagnetButton
             content="see more"
