@@ -29,24 +29,14 @@ const positions = [
 
 export default function Page() {
   useEffect(() => {
-    const imgs = document.querySelectorAll('.img');
-    gsap.set('.img', {
+    const imgs = document.querySelectorAll('.gallery-img');
+    gsap.set('.gallery-img', {
       top: '45%',
       left: '50%',
       transform: 'translate(-50%, -50%) scale(0)',
     });
 
-    // gsap.from("p", {
-    //   y: 40,
-    //   ease: "power4.inOut",
-    //   duration: 1,
-    //   stagger: {
-    //     amount: 0.15
-    //   },
-    //   delay: 0.5
-    // });
-
-    gsap.to('.img', {
+    gsap.to('.gallery-img', {
       scale: 1,
       width: '300px',
       height: '400px',
@@ -56,19 +46,6 @@ export default function Page() {
       delay: 1,
       onComplete: scatterAndShrink,
     });
-
-    // gsap.to("p", {
-    //   top: "40px",
-    //   ease: "power4.inOut",
-    //   duration: 1,
-    //   stagger: {
-    //     amount: 0.15
-    //   },
-    //   delay: 3,
-    //   onComplete: () => {
-    //     document.querySelector(".header")?.remove();
-    //   }
-    // });
 
     imgs.forEach((img, i) => {
       img.setAttribute('data-original-position', JSON.stringify(positions[i]));
@@ -84,7 +61,7 @@ export default function Page() {
   }, []);
 
   function scatterAndShrink() {
-    gsap.to('.img', {
+    gsap.to('.gallery-img', {
       top: (i) => positions[i].top,
       left: (i) => positions[i].left,
       transform: 'none',
@@ -98,7 +75,7 @@ export default function Page() {
 
   function applyBlurEffect() {
     const elementsToBlur = document.querySelectorAll(
-      '.nav, .footer, .header, .text, .img:not([data-enlarged="true"])',
+      '.nav, .footer, .header, .text, .gallery-img:not([data-enlarged="true"])',
     );
     gsap.to(elementsToBlur, {
       filter: 'blur(20px)',
@@ -109,7 +86,7 @@ export default function Page() {
 
   function removeBlurEffect() {
     const elementsToBlur = document.querySelectorAll(
-      '.nav, .footer, .header, .text, .img:not([data-enlarged="true"])',
+      '.nav, .footer, .header, .text, .gallery-img:not([data-enlarged="true"])',
     );
     gsap.to(elementsToBlur, {
       filter: 'blur(0px)',
@@ -174,112 +151,112 @@ export default function Page() {
             </div>
           </div>
           <div className="gallery left-0">
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/blueperiod1.png"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/devil.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/cloud.JPG"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/fairy.PNG"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/hands.PNG"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/than.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/shard.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/shyboy.png"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/eye.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/itadori 2.PNG"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/hug.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/blueperiod2.JPG"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/boy.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/girl.jpg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/shave.jpeg"
                 alt=""
                 className="h-[100%] w-[100%] object-cover"
               />
             </div>
-            <div className="img absolute m-[20px] h-[100px] w-[75px] overflow-hidden">
+            <div className="gallery-img absolute m-[20px] h-[100px] w-[75px] scale-0 overflow-hidden">
               <img
                 src="./art/coffee.jpg"
                 alt=""

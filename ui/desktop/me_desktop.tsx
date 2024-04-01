@@ -8,13 +8,6 @@ interface TeamMember {
   role: string;
 }
 
-const team: TeamMember[] = [
-  { name: 'Ava Sinclair', role: 'Creative Director' },
-  { name: 'Liam Archer', role: 'Brand Strategist' },
-  { name: 'Zoe Clementine', role: 'Lead Designer' },
-  { name: 'Ethan Hawthorne', role: 'Chief Innovation Officer' },
-];
-
 interface SlideMessages {
   [key: number]: string;
 }
@@ -23,22 +16,22 @@ const slideMessages: SlideMessages = {
   1: "I love CS and Math which led me to pursue a career in software engineering here at UW, but I've got plenty of other interests too.",
   2: 'I enjoy the arts, especially music and visual. Fun fact: I can play 6 instruments! Thats violin, viola, piano, sax, clarinet, and guitar.',
   3: 'My cute spoiled shiba x mini aussie: Taro',
-  4: "I love the nature and photography. My family often goes on long road trips. Here's a photo from Yellowstone National Park.",
+  4: "I love nature and photography. My family often goes on long road trips. Here's a photo I took from Yellowstone National Park.",
 };
 
 export default function MeDesktop() {
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [showRightArrow, setShowRightArrow] = useState<number>(0);
 
-  const totalSlides: number = team.length;
+  const totalSlides: number = 4;
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!window.location.hash) {
-      window.location.hash = 'loaded';
-      window.location.reload();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!window.location.hash) {
+  //     window.location.hash = 'loaded';
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -150,13 +143,13 @@ export default function MeDesktop() {
         <div className="font-cygre container left-0 h-[100vh] w-[100%] cursor-none overflow-hidden bg-slate-300 font-black">
           <div className="overlay pointer-events-none absolute left-0 top-0 h-[100%] w-[100%] overflow-hidden text-black">
             <div
-              className="t-1 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#fff]"
+              className="t-1 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#000]"
               style={{
                 clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
                 JON JON JON JONATHAN CHENG JONATHAN
@@ -176,16 +169,16 @@ export default function MeDesktop() {
               </h1>
             </div>
             <div
-              className="t-3 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#fff]"
+              className="t-3 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#000]"
               style={{
                 clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
-                LOL BOY GOOD BOY GOOD BOY GOOD BOY
+                DOG DOG DOG DOG DOG DOG DOG DOG DOG
               </h1>
             </div>
             <div
@@ -208,7 +201,7 @@ export default function MeDesktop() {
           >
             <div className="modal-images h-[600px] w-[100%]">
               <div
-                className="img absolute h-[100%] w-[100%] bg-[#fff]"
+                className="absolute h-[100%] w-[100%] bg-[#fff]"
                 style={{
                   clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
                 }}
@@ -218,7 +211,7 @@ export default function MeDesktop() {
               </div>
 
               <div
-                className="img absolute h-[100%] w-[100%] bg-[#c4bca9]"
+                className="absolute h-[100%] w-[100%] bg-[#c4bca9]"
                 style={{
                   clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
                 }}
@@ -228,7 +221,7 @@ export default function MeDesktop() {
               </div>
 
               <div
-                className="img absolute h-[100%] w-[100%] bg-[#fff]"
+                className="absolute h-[100%] w-[100%] bg-[#fff]"
                 style={{
                   clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
                 }}
@@ -238,7 +231,7 @@ export default function MeDesktop() {
               </div>
 
               <div
-                className="img absolute h-[100%] w-[100%] bg-[#8e908a]"
+                className="absolute h-[100%] w-[100%] bg-[#8e908a]"
                 style={{
                   clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
                 }}

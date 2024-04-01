@@ -10,7 +10,6 @@ import List from './list/list';
 import AsciiDonut from './asciiDonut';
 import Gallery from './gallery';
 import SquareInfoBox from './squareInfobox';
-import FloatingBalls from './floatingBalls';
 import Card from './desktop/card';
 import MagnetButton from './magnetButton';
 import { set } from 'date-fns';
@@ -23,7 +22,6 @@ export default function Mobile() {
   const [offsetFill, setOffsetFill] = useState(-500);
   const [donutVisible, setDonutVisible] = useState(false);
   const [donutScale, setDonutScale] = useState(1);
-  const LazyFloatingBalls = React.lazy(() => import('./floatingBalls'));
 
   const imageList = [
     '/art/blueperiod1.png',

@@ -1,5 +1,6 @@
 import '#/styles/globals.css';
 import { GlobalNav } from '#/ui/global-nav';
+import NavMenu from '#/ui/nav/menu';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="[color-scheme:dark]">
       <body className="bg-black">
-        <GlobalNav />
+        {/* <GlobalNav /> */}
+        <NavMenu />
         <div className="mx-auto overflow-x-clip">{children}</div>
       </body>
     </html>

@@ -29,6 +29,7 @@ export default {
           red: '#ED5151',
           blue: '#4C4F6C',
           brown: '#B7B0A4',
+          neon: '#c5fb45',
         },
       },
       backgroundImage: ({ theme }) => ({

@@ -31,7 +31,8 @@
     ".next/types/**/*.ts",
     "ui/three_components/box.jsx",
     "ui/three_components/roundedBox.jsxs",
-    "ui/repulsion.js"
+    "ui/repulsion.js",
+    "ui/menu.tsx"
   ],
   "exclude": ["node_modules"]
 }

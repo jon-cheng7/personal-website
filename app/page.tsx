@@ -19,8 +19,15 @@ function Page() {
   }, []);
 
   useEffect(() => {
-    // Show the modal upon entering the site
-    setShowModal(true);
+    // Check if the modal has already been shown in this session
+    const hasModalBeenShown = sessionStorage.getItem('hasModalBeenShown');
+
+    if (!hasModalBeenShown) {
+      // Show the modal if it hasn't been shown yet
+      setShowModal(true);
+      // Mark the modal as shown in sessionStorage
+      sessionStorage.setItem('hasModalBeenShown', 'true');
+    }
   }, []);
 
   if (isMobile === null) return null;
