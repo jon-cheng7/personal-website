@@ -139,7 +139,7 @@ export default function MeDesktop() {
 
   return (
     <>
-      <div className="h-[100vh] bg-red-300">
+      <div className="h-[100vh] cursor-none bg-red-300">
         <div className="font-cygre container left-0 h-[100vh] w-[100%] cursor-none overflow-hidden bg-slate-300 font-black">
           <div className="overlay pointer-events-none absolute left-0 top-0 h-[100%] w-[100%] overflow-hidden text-black">
             <div

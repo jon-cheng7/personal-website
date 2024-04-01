@@ -149,7 +149,7 @@ export default function Mobile() {
           </div>
         </div>
       </section>
-      <div className="absolute">
+      <div className="absolute h-[100vh] w-[100vw] overflow-x-clip">
         <PillFill
           strokeWidth={fillWidth}
           strokeDashoffset={offsetFill}
