@@ -30,7 +30,7 @@
   width: 100vw;
   height: 100vh;
   padding: 2em;
-  background: #b7b0a4;
+  background: #c5fb45;
   z-index: 999999;
   display: flex;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
@@ -60,7 +60,7 @@
 
 .menu-close-icon p {
   font-size: 100px;
-  -webkit-text-stroke: 3px #b7b0a4;
+  -webkit-text-stroke: 3px #c5fb45;
   line-height: 70%;
   color: #000;
 }
@@ -85,6 +85,23 @@
 .menu-info {
   display: flex;
 }
+
+.menu-link {
+  display: inline-block; /* Adjust as necessary */
+  overflow: hidden;
+  position: relative;
+}
+
+.text-original,
+.text-clone {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* .text-clone {
+  transform: translateY(100%);
+} */
 
 .menu-info-col {
   flex: 1;

@@ -2,8 +2,8 @@
 
 import Lenis from '@studio-freight/lenis';
 import React, { useEffect, useState, useRef, Suspense } from 'react';
-import { PillRed } from '#/ui/desktop/pill-red';
-import { PillBrown } from '#/ui/desktop/pill-brown';
+import { PillMain } from '#/ui/desktop/pill-main';
+import { PillAccent } from '#/ui/desktop/pill-accent';
 import { PillBlue } from './desktop/pill-blue';
 import { PillFill } from './desktop/pill-fill';
 import List from './list/list';
@@ -16,8 +16,9 @@ import { set } from 'date-fns';
 
 export default function Mobile() {
   const [fillWidth, setFillWidth] = useState(0);
-  const [offsetRed, setOffsetRed] = useState(0);
-  const [offsetBrown, setOffsetBrown] = useState(0);
+  const [mainPillZIndex, setMainPillZIndex] = useState(0);
+  const [offsetMain, setOffsetMain] = useState(0);
+  const [offsetAccent, setOffsetAccent] = useState(0);
   const [offsetBlue, setOffsetBlue] = useState(-800);
   const [offsetFill, setOffsetFill] = useState(-500);
   const [donutVisible, setDonutVisible] = useState(false);
@@ -46,10 +47,16 @@ export default function Mobile() {
     const scrollPosition = window.scrollY;
     //-((scrollPosition - minScroll - offsetAdjustment) / speedFactor)
     if (scrollPosition > 0 && scrollPosition < 2000) {
-      setOffsetRed(-((scrollPosition - 0 - 0) / 0.3));
-      setOffsetBrown(-((scrollPosition - 0 - 0) / 2));
+      setOffsetMain(-((scrollPosition - 0 - 0) / 0.3));
+      setOffsetAccent(-((scrollPosition - 0 - 0) / 2));
       setOffsetFill(-((scrollPosition - 0 - 1500) / 0.5));
       setOffsetBlue(-800 + scrollPosition);
+      setMainPillZIndex(0);
+      if (scrollPosition > 500) {
+        setMainPillZIndex(99);
+      } else {
+        setMainPillZIndex(0);
+      }
       if (scrollPosition > 1000) {
         setFillWidth((scrollPosition - 1200) * 3.5);
       } else {
@@ -116,10 +123,10 @@ export default function Mobile() {
     <div>
       <section className="h-screen w-screen bg-black">
         <div className="absolute h-screen w-[50%]">
-          <div className="font-cygre ml-[25%] pt-[30%] text-[10vw] font-black ">
+          <div className="font-cygre ml-[25%] pt-[30%] text-[10vw] font-black">
             Jonathan
           </div>
-          <div className="font-mosk z-[13] ml-[25%] mt-[-1.5rem] w-[100%] text-left text-[1.3rem] font-extralight ">
+          <div className="font-mosk md:text-theme-neon lg:text-theme-red 2xl:text-theme-brown z-[13] ml-[25%]  mt-[-1.5rem] w-[100%] text-left font-extralight sm:text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] xl:text-[#4b63ff] 2xl:text-[1.3rem]">
             I am a software engineering student at the University of Waterloo,
             with a burning passion for digital design and code. Welcome to my
             portfolio of my work in code, art, and design.
@@ -128,23 +135,27 @@ export default function Mobile() {
         <div className="absolute left-[50%] isolate z-10 h-screen w-[50%]">
           <img src="/portrait_BG.png" alt="portrait" className="w-[40vw]"></img>
         </div>
-        <div className="grid-rows-7 grid h-screen grid-cols-8 gap-0">
+        <div
+          className={`grid-rows-7 relative grid h-screen grid-cols-8 gap-0 mix-blend-difference ${
+            mainPillZIndex === 0 ? 'z-0' : 'z-50'
+          }`}
+        >
           <div className="relative col-span-1 col-start-7 row-span-3 row-start-3">
             <PillBlue
               strokeDashoffset={offsetBlue}
-              className="absolute ml-[-15vw] mt-[-30vw] h-[70vw] origin-left"
+              className="absolute h-[70vw] origin-left sm:mt-[-48vw] md:ml-[-35vw] lg:ml-[-28vw] lg:mt-[-40vw] xl:ml-[-20vw] xl:mt-[-35vw] 2xl:ml-[-15vw] 2xl:mt-[-30vw]"
             />
           </div>
           <div className="relative col-span-2 col-start-1 row-span-1 row-start-2">
-            <PillBrown
-              strokeDashoffset={offsetBrown}
-              className="absolute mt-[-65vw] h-[140vw] w-[140vw] origin-left -translate-x-[10%]"
+            <PillAccent
+              strokeDashoffset={offsetAccent}
+              className="absolute h-[140vw] w-[140vw] origin-left -translate-x-[10%] sm:mt-[-75vw] lg:mt-[-72vw] xl:mt-[-68vw] "
             />
           </div>
           <div className="relative col-span-1 col-start-5 row-span-2 row-start-1">
-            <PillRed
-              strokeDashoffset={offsetRed}
-              className={`absolute -left-[45vw] z-0 mt-[-65vw] h-[200vw] w-[200vw] origin-left mix-blend-difference`}
+            <PillMain
+              strokeDashoffset={offsetMain}
+              className={`absolute -left-[45vw] mt-[-65vw] h-[200vw] w-[200vw] origin-left mix-blend-difference`}
             />
           </div>
         </div>
@@ -153,7 +164,7 @@ export default function Mobile() {
         <PillFill
           strokeWidth={fillWidth}
           strokeDashoffset={offsetFill}
-          className={`absolute -left-[70vw] mt-[-30vw] h-[200vw] w-[200vw] origin-left`}
+          className={`absolute -left-[70vw] mt-[-30vw] h-[200vw] w-[200vw] origin-left sm:mt-[60vw] md:mt-[34vw] lg:mt-[8vw] xl:mt-[-28vw] 2xl:mt-[-40vw]`}
         />
       </div>
       <div className="h-screen bg-black"></div>
@@ -162,7 +173,7 @@ export default function Mobile() {
           i code.
           <AsciiDonut
             scale={donutScale}
-            className={`font-cygre absolute left-[50%] z-[-1] translate-x-[-50%] text-[1.2rem] font-black text-[#9f9b90] md:top-[-250%] lg:top-[-220%] ${
+            className={`font-cygre absolute left-[50%] z-[-1] translate-x-[-50%] text-[1.2rem] font-black text-[#9f9b90] sm:top-[-45vw] md:top-[-55vw] lg:top-[-45vw] xl:top-[-40vw] 2xl:top-[-30vw] ${
               donutVisible ? 'animate-fadeIn' : 'animate-fadeOut opacity-0'
             }`}
           />

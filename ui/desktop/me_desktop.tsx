@@ -149,21 +149,33 @@ export default function MeDesktop() {
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
+                className="animate-marquee text-theme-neon font-gyanko absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
-                JON JON JON JONATHAN CHENG JONATHAN
+                JON CHENG JON CHENG JON CHENG JON CHENG
+              </h1>
+              <h1
+                className="animate-inverseMarquee font-gyanko absolute left-[-50%] top-[80%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
+                style={{ transform: 'translate(-50%,-50%)' }}
+              >
+                JON CHENG JON CHENG JON CHENG JON CHENG
               </h1>
             </div>
             <div
-              className="t-2 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#c4bca9]"
+              className="t-2 marquee-wrapper absolute left-0 top-0 h-[100%] w-[100%] bg-[#8e908a]"
               style={{
                 clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                className="animate-marquee font-gyanko text-theme-neon absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
                 style={{ transform: 'translate(-50%,-50%)' }}
+              >
+                ARTS ARTS ARTS ARTS ARTS ARTS ARTS
+              </h1>
+              <h1
+                className="animate-inverseMarquee font-gyanko absolute left-[-50%] top-[80%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                style={{ transform: 'translate(50%,50%)' }}
               >
                 ARTS ARTS ARTS ARTS ARTS ARTS ARTS
               </h1>
@@ -175,7 +187,13 @@ export default function MeDesktop() {
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
+                className="animate-marquee font-gyanko text-theme-neon absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                style={{ transform: 'translate(-50%,-50%)' }}
+              >
+                DOG DOG DOG DOG DOG DOG DOG DOG DOG
+              </h1>
+              <h1
+                className="animate-inverseMarquee font-gyanko absolute left-[-50%] top-[80%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-white"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
                 DOG DOG DOG DOG DOG DOG DOG DOG DOG
@@ -188,7 +206,13 @@ export default function MeDesktop() {
               }}
             >
               <h1
-                className="animate-marquee absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                className="animate-marquee font-gyanko text-theme-neon absolute left-[-100%] top-[50%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400]"
+                style={{ transform: 'translate(-50%,-50%)' }}
+              >
+                YELLOWSTONE YELLOWSTONE YELLOWSTONE
+              </h1>
+              <h1
+                className="animate-inverseMarquee font-gyanko absolute left-[-50%] top-[80%] w-[100%] whitespace-nowrap text-center text-[240px] font-[400] text-black"
                 style={{ transform: 'translate(-50%,-50%)' }}
               >
                 YELLOWSTONE YELLOWSTONE YELLOWSTONE

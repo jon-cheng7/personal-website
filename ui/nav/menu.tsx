@@ -8,8 +8,14 @@ import './menu.css';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { link } from 'fs';
 
 interface NavMenuLink {
+  path: string;
+  label: string;
+}
+
+interface MenuLinkProps {
   path: string;
   label: string;
 }
@@ -17,10 +23,65 @@ interface NavMenuLink {
 const navMenuLinks: NavMenuLink[] = [
   { path: '/', label: 'Home' },
   { path: '/me', label: 'About Me' },
-  { path: '/experience', label: 'Projects & Experience' },
+  { path: '/experience', label: 'Resume' },
   { path: '/art', label: 'Art' },
   { path: '/code', label: 'Code' },
 ];
+
+const MenuLink: React.FC<MenuLinkProps> = ({ path, label }) => {
+  // Use a wrapper div to target the hover effect
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (wrapper) {
+      const letters = wrapper.querySelectorAll('.menu-letter');
+
+      // GSAP timeline for hover animation
+      const tl = gsap
+        .timeline({
+          paused: true,
+          defaults: { ease: 'power2.out' },
+        })
+        .to(letters, {
+          y: '-100%',
+          stagger: 0.03,
+        });
+
+      // Event handlers for animation
+      const handleMouseEnter = () => tl.play();
+      const handleMouseLeave = () => tl.reverse();
+
+      wrapper.addEventListener('mouseenter', handleMouseEnter);
+      wrapper.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        wrapper.removeEventListener('mouseenter', handleMouseEnter);
+        wrapper.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, []);
+
+  // Wrap each letter in a span
+  const letters = label.split('').map((char, i) => (
+    <span key={i} className="menu-letter" style={{ display: 'inline-block' }}>
+      {char === ' ' ? '\u00A0' : char}
+    </span>
+  ));
+
+  return (
+    <div ref={wrapperRef}>
+      <div className="flex flex-col overflow-y-clip">
+        <Link legacyBehavior href={path} passHref>
+          <a className="menu-link">{letters}</a>
+        </Link>
+        <Link legacyBehavior href={path} passHref>
+          <a className="menu-link-clone absolute top-[100%]">{letters}</a>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const NavMenu: React.FC = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -105,7 +166,7 @@ const NavMenu: React.FC = () => {
             {navMenuLinks.map((link, index) => (
               <div key={index} className="menu-link-item">
                 <div className="menu-link-item-holder" onClick={toggleMenu}>
-                  <Link href={link.path}>{link.label}</Link>
+                  <MenuLink path={link.path} label={link.label} />
                 </div>
               </div>
             ))}

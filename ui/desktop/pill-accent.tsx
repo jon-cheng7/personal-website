@@ -1,9 +1,9 @@
-type PillBrownProps = {
+type PillAccentProps = {
   className?: string;
   strokeDashoffset?: number;
 };
 
-export function PillBrown(props: PillBrownProps) {
+export function PillAccent(props: PillAccentProps) {
   return (
     <svg
       width="3116"
@@ -15,7 +15,7 @@ export function PillBrown(props: PillBrownProps) {
     >
       <path
         d="M250 250H2865.5"
-        stroke="#ED5151"
+        stroke="#c5fb45"
         strokeWidth="200"
         strokeLinecap="round"
         strokeDasharray="250 10000"

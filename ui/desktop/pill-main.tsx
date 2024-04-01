@@ -1,9 +1,9 @@
-type PillRedProps = {
+type PillMainProps = {
   className?: string;
   strokeDashoffset?: number;
 };
 
-export function PillRed(props: PillRedProps) {
+export function PillMain(props: PillMainProps) {
   return (
     <svg
       width="4539"
