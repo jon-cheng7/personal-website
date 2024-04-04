@@ -7,6 +7,7 @@ import { PillAccent } from '#/ui/desktop/pill-accent';
 import { PillBlue } from './desktop/pill-blue';
 import { PillFill } from './desktop/pill-fill';
 import List from './list/list';
+import Contact from './contact/contact';
 import AsciiDonut from './asciiDonut';
 import Gallery from './gallery';
 import SquareInfoBox from './squareInfobox';
@@ -168,7 +169,7 @@ export default function Mobile() {
         />
       </div>
       <div className="h-screen bg-black"></div>
-      <div className="h-screen bg-black">
+      <div className="bg-black md:h-[60vh] xl:h-[85vw] 2xl:h-[80vw]">
         <div className="font-cygre sticky top-[65vh] text-center text-[10vw] font-black text-black">
           i code.
           <AsciiDonut
@@ -185,6 +186,7 @@ export default function Mobile() {
           <div className="h-[30px]"></div>
           <MagnetButton
             content="see more"
+            href="/code"
             inverse={false}
             className="font-mosk rounded-full px-8 py-2 text-[#333333]"
           />
