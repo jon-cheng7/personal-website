@@ -1,0 +1,71 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Respect the OS-level reduced-motion preference everywhere, by default */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessible focus state — keep this (or replace with an equally visible
+   custom one) whatever the visual design ends up being */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Skip-to-content link, visually hidden until focused */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #fff;
+  color: #000;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Fluid spacing/type-scale primitives. Nothing else depends on these exact
+   values yet — tune or replace freely once a visual direction exists. */
+:root {
+  --space-s: clamp(0.5rem, 1vw, 1rem);
+  --space-m: clamp(1rem, 2vw, 2rem);
+  --space-l: clamp(2rem, 4vw, 4rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+  --step-2: clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
+}

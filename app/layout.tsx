@@ -1,35 +1,22 @@
-import '#/styles/globals.css';
-import { GlobalNav } from '#/ui/global-nav';
-import NavMenu from '#/ui/nav/menu';
-import { Metadata } from 'next';
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
+import { Nav } from "@/components/nav";
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Jonathan Cheng | Portfolio',
-    template: '%s | Portfolio',
-  },
-  description: 'Personal Website',
-  openGraph: {
-    title: 'Replace this Title',
-    description: 'Replace this description',
-    images: [`/api/og?title=Next.js App Router`],
-  },
-  twitter: {
-    card: 'summary_large_image',
-  },
+  title: "Jon Cheng",
+  description: "Personal website — resume, portfolio, and creative work.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="[color-scheme:dark]">
-      <body className="bg-black">
-        {/* <GlobalNav /> */}
-        <NavMenu />
-        <div className="mx-auto overflow-x-clip">{children}</div>
+    <html lang="en">
+      <body>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
+        <Nav />
+        <main id="main-content">{children}</main>
       </body>
     </html>
   );
