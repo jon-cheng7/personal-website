@@ -1,0 +1,145 @@
+/* Ported from the old site's ui/nav/menu.css, styles unchanged. */
+
+.menu-bar,
+.menu-overlay-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999999;
+}
+
+.menu-bar a,
+.menu-open p {
+  color: #fff;
+  mix-blend-mode: difference;
+  cursor: pointer;
+}
+
+.menu-close p {
+  color: #000;
+  cursor: pointer;
+}
+
+/* menu-open/menu-close/menu-close-icon are <button>s (for keyboard access)
+   instead of the original's plain divs — reset button chrome so they look
+   identical to the original. */
+.menu-open,
+.menu-close,
+.menu-close-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+  background: #c5fb45;
+  z-index: 999999;
+  display: flex;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.menu-close-icon {
+  flex: 2;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.menu-copy {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* menu-overlay-bar is position:fixed, so it's pulled out of this flex
+     layout and doesn't push menu-copy down on its own — without enough
+     padding here, the first link (Home) sits underneath the bar's ~120px
+     box, which has z-index 999999 and swallows most of its hitbox. The
+     original only gave this clearance below 900px (see the media query);
+     8em unconditionally is the same fix applied at every width. */
+  padding-top: 8em;
+}
+
+.menu-preview {
+  flex: 4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.menu-close-icon p {
+  font-size: 100px;
+  -webkit-text-stroke: 3px #c5fb45;
+  line-height: 70%;
+  color: #000;
+}
+
+.menu-link-item {
+  width: max-content;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.menu-link-item-holder {
+  position: relative;
+}
+
+.menu-link-item-holder a {
+  color: #000;
+  font-size: 80px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 85%;
+}
+
+.menu-info {
+  display: flex;
+}
+
+.menu-link {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* The old site used two Tailwind utility classes here (this project
+   doesn't include Tailwind) — same visual result as plain CSS instead. */
+.menu-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: clip;
+}
+
+.menu-link-clone {
+  position: absolute;
+  top: 100%;
+}
+
+.menu-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .menu-close-icon {
+    display: none;
+  }
+
+  .menu-link-item-holder a {
+    font-size: 60px;
+  }
+}

@@ -1,0 +1,40 @@
+.horizontal-scroll {
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.horizontal-scroll__track {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Every direct child of the track is one full-viewport panel — the Hero
+   plus each filler section in app/page.tsx, no extra wrapper needed. */
+.horizontal-scroll__track > * {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-s);
+  padding: var(--space-l);
+  box-sizing: border-box;
+}
+
+/* Horizontal scroll-jacking only kicks in above the same 900px breakpoint
+   the nav uses, and only when the visitor hasn't asked for reduced motion
+   — horizontal-scroll.tsx's matchMedia condition mirrors this exactly, so
+   JS and CSS never disagree about which mode is active. Below 900px, or
+   with reduced motion on, this stays a plain vertical stack: native
+   scrolling, no pin, no transform. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .horizontal-scroll__track {
+    flex-direction: row;
+    width: max-content;
+  }
+
+  .horizontal-scroll__track > * {
+    width: 100vw;
+    flex: none;
+  }
+}
