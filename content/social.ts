@@ -3,7 +3,6 @@ export interface SocialLink {
   href: string;
 }
 
-// Ported from the old site's menu footer.
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/cheng-jonathan" },
   { label: "Github", href: "https://github.com/jon-cheng7" },
@@ -15,6 +14,6 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const contactInfo = {
-  email: "jonathan.ch126@gmail.com",
-  phone: "437 688 9896",
+  email: "Jonathan.ch126@gmail.com",
+  phone: "+1 (437)-688-9896",
 };

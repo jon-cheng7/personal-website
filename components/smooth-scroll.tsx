@@ -6,6 +6,7 @@ import type Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useGSAP } from "@/lib/gsap";
+import { setLenisInstance } from "@/lib/lenis-store";
 
 /**
  * Mounts smooth (inertia-eased) scrolling globally, synced to GSAP's ticker
@@ -30,6 +31,10 @@ export function SmoothScroll() {
 
     const lenis = lenisRef.current?.lenis;
     lenis?.on("scroll", ScrollTrigger.update);
+    // Registered here so components outside this one (the nav drawer, for
+    // instance) can call .stop()/.start() on the same instance — e.g. to
+    // pause scrolling while a modal overlay is open.
+    setLenisInstance(lenis ?? null);
 
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
@@ -37,6 +42,7 @@ export function SmoothScroll() {
     return () => {
       gsap.ticker.remove(update);
       lenis?.off("scroll", ScrollTrigger.update);
+      setLenisInstance(null);
     };
   }, []);
 

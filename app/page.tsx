@@ -1,5 +1,6 @@
 import { Hero } from "@/components/hero";
 import { HorizontalScroll } from "@/components/horizontal-scroll";
+import { ScrollMemory } from "@/components/scroll-memory";
 
 // Placeholder filler content so there's something to scroll through before
 // real sections exist — swap each of these for actual content whenever.
@@ -24,14 +25,19 @@ const fillerSections = [
 
 export default function HomePage() {
   return (
-    <HorizontalScroll>
-      <Hero />
-      {fillerSections.map((section) => (
-        <section key={section.heading} aria-label={section.heading}>
-          <h2>{section.heading}</h2>
-          <p>{section.body}</p>
-        </section>
-      ))}
-    </HorizontalScroll>
+    <>
+      <HorizontalScroll>
+        <Hero />
+        {fillerSections.map((section) => (
+          <section key={section.heading} aria-label={section.heading}>
+            <h2>{section.heading}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+      </HorizontalScroll>
+      {/* Sibling, rendered after HorizontalScroll — see scroll-memory.tsx's
+          doc comment for why the ordering here matters. */}
+      <ScrollMemory id="home" />
+    </>
   );
 }

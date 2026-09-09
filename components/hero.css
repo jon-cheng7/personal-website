@@ -1,0 +1,100 @@
+.hero {
+  position: relative;
+}
+
+/* Sits near the bottom of the hero panel (which is itself the full-viewport
+   first panel of .horizontal-scroll__track, see horizontal-scroll.css) —
+   positioned relative to the hero section itself rather than the viewport,
+   so it stays tied to the hero specifically if this component is ever
+   reused somewhere that isn't a full-height panel. Uses `currentColor`
+   throughout rather than a hardcoded color, inheriting the hero's own
+   white-on-black text color (see "Decision: home page" in the project
+   doc) automatically — no dark/light-mode token needed here, since that
+   black background is a fixed design choice independent of the site-wide
+   theme (see globals.css's color-token comment). */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 4vh, 2.5rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6em;
+  /* Hidden by default now (see scroll-cue.tsx's idle-fade-in logic) rather
+     than visible-by-default-fading-out — .is-visible is what actually
+     reveals it. */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-cue.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-cue__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* A short vertical track with one small mark traveling down it on a loop —
+   a quiet nod to the liquid wipe used elsewhere in the nav (lib/liquid-
+   clip.ts) rather than a generic bouncing chevron, since Jon's asked for
+   this to feel "gentle" rather than attention-grabbing. */
+.scroll-cue__track {
+  position: relative;
+  width: 1px;
+  height: 40px;
+  background-color: currentColor;
+  opacity: 0.35;
+  overflow: hidden;
+}
+
+.scroll-cue__thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background-color: currentColor;
+  animation: scroll-cue-travel 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-travel {
+  0% {
+    top: -20%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* The global reduced-motion override in app/globals.css already zeroes
+   this animation's duration, which would otherwise leave the thumb
+   flickering at 100 iterations/sec rather than settled anywhere — pin it
+   to a single resting position instead so reduced-motion visitors still
+   get a legible (just static) scroll cue rather than a glitchy one. */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue__thumb {
+    /* The global override in globals.css only shortens this animation's
+       duration to near-zero (so it still technically runs, just fast
+       enough to flicker) — explicitly removing it here is what actually
+       settles the thumb at one static, legible position. */
+    animation: none;
+    top: 30%;
+    opacity: 1;
+  }
+}

@@ -8,12 +8,30 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Scrollbar hidden site-wide, per Jon's request — scroll itself still
+     works normally, this only removes the visual track/thumb. Three rules
+     needed to cover the three different mechanisms browsers use:
+     `scrollbar-width` (Firefox), `-ms-overflow-style` (legacy Edge/IE,
+     harmless elsewhere), and the WebKit-only pseudo-element below (Chrome/
+     Safari/modern Edge). Repeated on `.menu-drawer` in nav.css, the site's
+     other internally-scrolling region. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 img,
@@ -68,4 +86,36 @@ video {
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
   --step-2: clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
+}
+
+:root {
+  --font-display: var(--font-unbounded);
+  /* --font-display: var(--font-geist-sans); */
+}
+
+/* Color tokens */
+
+:root {
+  color-scheme: light dark;
+  --color-bg: #ffffff;
+  --color-fg: #0a0a0a;
+  --color-surface: #f4f4f4;
+  --color-border: rgba(0, 0, 0, 0.15);
+  --color-accent: #c5fb45;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0a0a0a;
+    --color-fg: #f5f5f5;
+    --color-surface: #171717;
+    --color-border: rgba(255, 255, 255, 0.15);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-fg: #f5f5f5;
+  --color-surface: #171717;
+  --color-border: rgba(255, 255, 255, 0.15);
 }

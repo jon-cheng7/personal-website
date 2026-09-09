@@ -1,0 +1,135 @@
+/* Only takes effect once JS has confirmed a fine pointer is actually
+   present (see custom-cursor.tsx adding this class) — the native cursor
+   stays untouched for touch/coarse-pointer visitors and anyone without JS,
+   rather than this CSS hiding it unconditionally and hoping JS catches up.
+   `!important` is deliberate: the rule is "the custom cursor is visible
+   everywhere unless explicitly turned off," which only holds if nothing a
+   future component adds (a photo with `cursor: zoom-in`, a button with its
+   own `cursor: pointer`) can quietly win the cascade and let the native
+   cursor peek through in one spot. */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* The explicit "off switch": wrap an element (or a subtree) in
+   [data-native-cursor] to opt it back into the real OS cursor — e.g. a
+   future text input, where an I-beam is genuinely more useful than the
+   dot. Nothing uses this yet; it exists so "always visible unless
+   explicitly made not" has a real escape hatch instead of relying on every
+   future component remembering not to fight the cascade above. */
+.has-custom-cursor [data-native-cursor],
+.has-custom-cursor [data-native-cursor] * {
+  cursor: auto !important;
+}
+
+/* `cursor: none` doesn't cover everything: starting a native
+   drag-and-drop gesture on an <img> shows the browser/OS's own drag
+   cursor and ghost image regardless of CSS, which would otherwise break
+   the illusion the moment someone drags across a photo. Disabling the
+   native drag gesture (not the same as disabling right-click-save) closes
+   that gap. Scoped to images specifically — this isn't a cursor-visibility
+   rule so much as a "don't let a browser affordance we don't use yet
+   surface a native cursor," and won't apply to a future component that
+   wants real drag behavior (which would need `-webkit-user-drag: auto`
+   back, plus its own cursor handling for the drag itself). */
+.has-custom-cursor img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* The outer element is a 0×0 positioning anchor — `transform` is written
+   to it directly from JS on every pointermove (custom-cursor.tsx), so it
+   deliberately has no CSS transition of its own: smoothing *position*
+   would make it visibly lag the real pointer. The inner element is what
+   actually renders and is where hover/reduced-motion states transition,
+   since scale/color changes benefit from easing in a way raw tracking
+   doesn't. */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-cursor__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--color-accent, #c5fb45);
+  /* Difference mode is the right tool here in a way it wasn't for the nav
+     bar (see nav.css's guaranteed-contrast scrim, and the project doc's
+     reasoning for why blend-mode was dropped there): this dot travels
+     continuously over genuinely arbitrary, ever-changing content, where no
+     static scrim could follow it, and an occasionally "wrong" blended
+     color on a small 14px decorative dot is a minor, momentary thing —
+     not the readability-critical case a logo or menu label is. */
+  mix-blend-mode: difference;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.custom-cursor__inner.is-hovering {
+  transform: scale(2.4);
+  background: transparent;
+  border: 1.5px solid var(--color-accent, #c5fb45);
+}
+
+.custom-cursor.is-reduced-motion .custom-cursor__inner {
+  transition: none;
+}
+
+/* The one case difference-blend genuinely fails at: the drawer's own fill
+   IS the cursor's own resting color (both lime), so difference(lime, lime)
+   renders as a near-black dot that's easy to lose against a busy line of
+   black link text right behind it — not literally invisible, but not the
+   guaranteed contrast the rest of the drawer's chrome gets either. This is
+   exactly the same call already made for the nav bar/logo in nav.css
+   ("explicit color transitions replacing mix-blend-mode" — see the project
+   doc's nav v5 write-up): a small, *known* set of backgrounds (here: one —
+   the drawer's own solid lime) is worth an explicit override rather than
+   trusting blend-mode, which is the right tool only where the backdrop is
+   genuinely unpredictable (the rest of the page, where this dot spends
+   most of its time). `data-nav-open` is set on <html> by nav.tsx, the same
+   pattern lib/theme-store.ts uses for `data-theme` — lets this file react
+   without the cursor needing to be a DOM descendant of the drawer. */
+:root[data-nav-open="true"] .custom-cursor__inner {
+  mix-blend-mode: normal;
+  background-color: #000;
+  border-color: #000;
+}
+
+/* The flat black above is "desired" at rest, but it recreates the exact
+   problem blend-mode has elsewhere the moment the ring is hovering over
+   the drawer's own black link text: black-on-black. Rather than pick a
+   different single fixed color (which just relocates the problem to
+   whatever backdrop THAT color happens to match), `backdrop-filter:
+   invert()` computes a live photographic negative of whatever's directly
+   behind the ring at that instant — over black text, that patch inverts
+   toward light and stays visible; over the drawer's lime fill, it inverts
+   toward a contrasting purple-ish tone. It's not a fixed second color
+   (not literally "turn white") — it's the same "figure out what's
+   actually underneath and react to it" idea Jon asked for, just computed
+   per-pixel by the browser instead of picked in advance. Scoped to only
+   the hovering state: the resting dot stays the flat black above, which
+   Jon confirmed is the right look for that state — this only replaces the
+   hovering ring's border-color. Vendor-prefixed line first, standard
+   property last — this codebase's Lightning CSS build silently drops both
+   if that order is reversed (see the project doc's nav v6 note). */
+:root[data-nav-open="true"] .custom-cursor__inner.is-hovering {
+  background: transparent;
+  border-color: transparent;
+  -webkit-backdrop-filter: invert(1);
+  backdrop-filter: invert(1);
+}

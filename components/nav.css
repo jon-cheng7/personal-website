@@ -1,110 +1,316 @@
-/* Ported from the old site's ui/nav/menu.css, styles unchanged. */
+/* v2: slide-out side drawer, later widened to a full-viewport takeover
+   (Sept 2026 — see the project doc). The original partial-width drawer and
+   the full-screen clip-path reveal before that are both what git history
+   holds if either needs to come back. */
 
-.menu-bar,
-.menu-overlay-bar {
+:root {
+  --nav-bar-height: 5.5rem;
+}
+
+.menu-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  padding: 2em;
+  height: var(--nav-bar-height);
+  padding: 0 2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999999;
+  /* Above the drawer, so the toggle and logo stay usable and legible
+     against whatever's under it — the page, or the full lime drawer once
+     it's open. */
+  z-index: 1000;
 }
 
+/* The bar has no background/scrim of its own on desktop's horizontal-scroll
+   home page — each item in it (icon, label, logo) is responsible for its
+   own legibility there via `mix-blend-mode: difference`, the same call
+   already made for the custom cursor's default (page-wide) state. Known
+   limitation, accepted deliberately: difference computes a live invert of
+   whatever's underneath, reliably legible against most backdrops but can
+   theoretically wash out against something close to mid-gray. Once the
+   drawer's open, the bar sits over the drawer's own known flat lime fill,
+   so each item switches back to the explicit white→black color transition
+   below instead — a known, controlled background doesn't need blend-mode's
+   guess.
+
+   In the vertical-scroll view specifically (mobile, or reduced-motion —
+   see the `.menu-bar::before` rule further down), a soft translucent wash
+   is layered back in behind the bar, so blend-mode isn't carrying the
+   whole legibility burden there on its own either way. */
 .menu-bar a,
-.menu-open p {
+.menu-open {
   color: #fff;
-  mix-blend-mode: difference;
-  cursor: pointer;
+  transition: color 0.4s ease;
 }
 
-.menu-close p {
+.menu-container[data-open="true"] .menu-bar a,
+.menu-container[data-open="true"] .menu-open {
   color: #000;
-  cursor: pointer;
 }
 
-/* menu-open/menu-close/menu-close-icon are <button>s (for keyboard access)
-   instead of the original's plain divs — reset button chrome so they look
-   identical to the original. */
-.menu-open,
-.menu-close,
-.menu-close-icon {
+/* Reintroduced at Jon's request, but scoped this time — only in the
+   vertical-scroll view (≤900px width, or prefers-reduced-motion), matching
+   the exact condition components/horizontal-scroll.tsx already gates its
+   own pin/scrub behavior behind (see the project doc's "Decision: home
+   page" section) — reused here rather than a new breakpoint, so the two
+   never drift apart. On desktop's horizontal-scroll home page the bar
+   stays exactly as invisible as before; this is additive only where the
+   page behaves like a normal vertical scroll.
+
+   Unlike the old v6 scrim (a flat rectangle, opacity toggled wholesale),
+   this one fades out via `mask-image` rather than `background` alone —
+   `mask-image` controls how much of the whole layer (blur AND tint
+   together) shows through at each point, so the effect genuinely thins out
+   near the bottom instead of the tint just running out while the blur
+   stays a hard-edged rectangle. That's what makes "translucency increasing
+   toward the bottom edge" read as a gradient rather than a cliff: solid-ish
+   near the top of the bar, fully gone by its own bottom edge, so whatever
+   scrolls underneath is never met with a clean line. `z-index: -1` keeps
+   it behind the bar's own content (the label/icon/logo painted above it in
+   the same stacking context) without needing to reorder the markup.
+   Vendor-prefixed lines written first, standard property last — see the
+   nav v6 note above `.menu-open-label` for why order matters in this
+   codebase's build. */
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .menu-bar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  .menu-container[data-open="true"] .menu-bar::before {
+    opacity: 0;
+  }
+}
+
+.menu-open {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
   background: none;
   border: none;
   padding: 0;
   font: inherit;
-  text-align: inherit;
-}
-
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  padding: 2em;
-  background: #c5fb45;
-  z-index: 999999;
-  display: flex;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-}
-
-.menu-close-icon {
-  flex: 2;
-  display: flex;
-  align-items: flex-end;
   cursor: pointer;
 }
 
-.menu-copy {
-  flex: 4;
+.menu-open-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  /* Guarantees this reads over arbitrary page content now that the bar has
+     no background plate behind it — see the comment above `.menu-bar a,
+     .menu-open`. Cancelled back to `normal` once the drawer's open (below),
+     where the known lime fill is handled by the plain color flip instead. */
+  mix-blend-mode: difference;
+}
+
+.menu-container[data-open="true"] .menu-open-label {
+  mix-blend-mode: normal;
+}
+
+/* Hamburger-to-close morph. Plain CSS transitions rather than a GSAP
+   tween, so it automatically respects the reduced-motion override already
+   defined globally in app/globals.css — no extra check needed here. */
+.menu-open-icon {
+  position: relative;
+  width: 24px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.menu-open-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  /* Same reasoning as .menu-open-label above — set per-bar (background
+     doesn't inherit the way color does), not on the wrapping .menu-open. */
+  mix-blend-mode: difference;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    top 0.3s ease;
+}
+
+.menu-container[data-open="true"] .menu-open-icon span {
+  mix-blend-mode: normal;
+}
+
+.menu-open-icon span:nth-child(1) {
+  top: 0;
+}
+
+.menu-open-icon span:nth-child(2) {
+  top: 7px;
+}
+
+.menu-open-icon span:nth-child(3) {
+  top: 14px;
+}
+
+.menu-open-icon.is-active span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+
+.menu-open-icon.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open-icon.is-active span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+
+.menu-logo-img {
+  filter: invert(0);
+  /* The logo asset is a white glyph (Signature_white.png) on a transparent
+     background — white is the ideal source color for difference-blend's
+     live invert (difference(white, backdrop) = a true 255-backdrop
+     negative), so no filter is needed to make this work over arbitrary
+     page content, same idea as .menu-open-label/.menu-open-icon span
+     above. Once the drawer's open (below), this switches back to the
+     already-proven filter:invert(1) trick against the known lime fill
+     (see "Decision: nav menu v5" in the project doc) instead of trusting
+     blend-mode against a background that's no longer arbitrary. */
+  mix-blend-mode: difference;
+  transition: filter 0.4s ease;
+}
+
+.menu-container[data-open="true"] .menu-logo-img {
+  filter: invert(1);
+  mix-blend-mode: normal;
+}
+
+.menu-drawer {
+  position: fixed;
+  inset: 0;
+  background: #c5fb45;
+  color: #000;
+  z-index: 950;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(1rem, 4vh, 3rem) clamp(1.5rem, 6vw, 5rem);
+  gap: clamp(1rem, 4vh, 3rem);
+  overflow-y: auto;
+  /* Same scrollbar-hiding trio as `html` in globals.css — this is the
+     site's other internally-scrolling region (a viewport short enough
+     that the link list can't all fit gets a real scrollbar here). */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  clip-path: inset(0 100% 0 0);
+}
+
+.menu-drawer::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-drawer:focus-visible {
+  outline: none;
+}
+
+.menu-links {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* menu-overlay-bar is position:fixed, so it's pulled out of this flex
-     layout and doesn't push menu-copy down on its own — without enough
-     padding here, the first link (Home) sits underneath the bar's ~120px
-     box, which has z-index 999999 and swallows most of its hitbox. The
-     original only gave this clearance below 900px (see the media query);
-     8em unconditionally is the same fix applied at every width. */
-  padding-top: 8em;
-}
-
-.menu-preview {
-  flex: 4;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.menu-close-icon p {
-  font-size: 100px;
-  -webkit-text-stroke: 3px #c5fb45;
-  line-height: 70%;
-  color: #000;
+  counter-reset: menu-index;
+  /* Centers within its own `1fr` grid row (the space left over above the
+     footer), not the whole drawer. `safe` falls back to start-alignment if
+     the links ever don't fit that row instead of centering the overflow
+     off both edges — belt-and-suspenders alongside the vh-bounded link
+     sizing below, which is the main fix for that. */
+  align-self: safe center;
 }
 
 .menu-link-item {
-  width: max-content;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  counter-increment: menu-index;
 }
 
+/* Each row: a small leading index number, then the big link label, with a
+   hairline under every row and a full-width underline that fills in on
+   hover/focus — an editorial numbered-list treatment rather than a plain
+   stacked menu, which reads as more "designed" at this scale. */
 .menu-link-item-holder {
   position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.75rem, 2.5vw, 2rem);
+  /* Vertical padding is bounded by viewport height (not width) — see the
+     font-size comment below for why: it's what keeps 5 rows of huge type
+     from ever overflowing a "normal" desktop-height screen. */
+  padding: clamp(0.2rem, 1vh, 0.6rem) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.menu-link-item-holder::after {
+  content: counter(menu-index, decimal-leading-zero);
+  order: -1;
+  align-self: center;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+}
+
+/* Fills in from the left on hover/focus, under the full row (not just the
+   text) — a bigger, more graphic gesture than a thin side accent bar reads
+   at full-screen scale. */
+.menu-link-item-holder::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 0;
+  background: #000;
+  transition: width 0.35s ease;
+}
+
+.menu-link-item-holder:hover::before,
+.menu-link-item-holder:focus-within::before {
+  width: 100%;
 }
 
 .menu-link-item-holder a {
   color: #000;
-  font-size: 80px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 85%;
-}
-
-.menu-info {
-  display: flex;
+  font-family: var(--font-display);
+  /* Bounded by BOTH axes: `9vw` alone (the original formula) sizes purely
+     off width, which is exactly what let "Home" grow past the top of the
+     screen on a wide-but-not-tall desktop — 5 rows of width-driven type
+     can be taller than the viewport even though each row individually
+     fits fine horizontally. Comparing against `11vh` too means the type
+     can never get taller than the screen has room for, on any aspect
+     ratio; `min()` picks whichever axis is more restrictive. */
+  font-size: clamp(3rem, min(9vw, 11vh), 8rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  /* Matches .menu-letter below. Needed here too, not just there: this `a`
+     IS `.menu-link` (the inline-block that clips to one line for the
+     hover-flip, and whose tightly-trimmed height is what makes
+     `.menu-link-wrapper`'s own height — the clone's containing block, see
+     below — match it exactly) — without its own tight
+     line-height/text-box-trim, its line box still gets padded out by an
+     invisible "strut" sized from its own (otherwise default) line-height,
+     taller than the actual letters inside it, undoing the trim on the
+     letters themselves. */
+  line-height: 0.82;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 
 .menu-link {
@@ -113,33 +319,108 @@
   position: relative;
 }
 
-/* The old site used two Tailwind utility classes here (this project
-   doesn't include Tailwind) — same visual result as plain CSS instead. */
 .menu-link-wrapper {
+  /* The clone's `top: 100%` (below) resolves against WHICHEVER ancestor is
+     its containing block — this used to be `.menu-link-item-holder`, whose
+     height is baseline-alignment math (see the holder's `align-items` above)
+     involving its `::after` index numeral, a sibling with different metrics
+     than the trimmed link text. That inflated the holder's height by a
+     sub-pixel amount beyond the link's own tightly-trimmed height, so
+     `top: 100%` landed a hair short of the clone's true resting position —
+     visible as a sliver of duplicate text bleeding into view both at rest
+     and after un-hovering. Making the wrapper itself the containing block
+     sidesteps the mismatch entirely: its natural (shrink-to-fit) height is
+     exactly `.menu-link`'s own height, nothing else. */
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow-y: clip;
+}
+
+/* The real link and its hover-flip clone (see MenuLink in nav.tsx) are two
+   copies of the same text stacked directly on top of one another — this is
+   what actually governs how "tight" that stack reads, more than font-size
+   does. `text-box-trim`/`text-box-edge` crop each line box down to the
+   font's own cap-height/alphabetic-baseline metrics instead of its full
+   (often much taller) default line box, so there's close to zero dead
+   space above/below the glyphs themselves — both within one letter and
+   between the stacked real/clone pair. `line-height` is the fallback for
+   the ~15% of browsers that don't support text-box-trim yet (Sept 2026) —
+   kept tight for the same reason, just less precise. */
+.menu-letter {
+  line-height: 0.82;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 
 .menu-link-clone {
   position: absolute;
-  top: 100%;
+  top: 120%;
+}
+
+.menu-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding-top: clamp(1rem, 3vh, 2rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 640px) {
+  /* Spreads the two info columns across the full width instead of
+     stacking — reads as a poster's colophon line at this scale. */
+  .menu-info {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
 }
 
 .menu-info-col {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  color: #000;
+  gap: 0.4em;
 }
 
-@media (max-width: 900px) {
-  .menu-close-icon {
-    display: none;
-  }
+.menu-info-col a {
+  color: #000;
+  opacity: 0.75;
+  text-decoration: none;
+}
 
-  .menu-link-item-holder a {
-    font-size: 60px;
-  }
+.menu-info-col a:hover,
+.menu-info-col a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.menu-info-col p {
+  margin: 0;
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
+/* Renders client-side only, once JS has resolved the actual theme in
+   effect (see components/theme-toggle.tsx) — kept in the contact-info
+   column rather than as its own third column, so the drawer's existing
+   two-column footer layout doesn't need to change shape to fit it. */
+.theme-toggle {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.2em;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #000;
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  opacity: 1;
 }
