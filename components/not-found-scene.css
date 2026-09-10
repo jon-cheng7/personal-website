@@ -1,0 +1,89 @@
+/* Fixed black-on-lime-accent look, independent of the site's light/dark
+   theme tokens — same deliberate choice already made for the home hero's
+   background (see app/globals.css's color-token comment): this is a fixed
+   creative moment, not generic chrome that should follow the visitor's
+   theme preference. */
+.not-found {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-l) var(--space-m);
+  gap: var(--space-s);
+}
+
+/* A flex row of individually-transformable digits rather than one text
+   node — see components/not-found-scene.tsx's mouse-dodge effect, which
+   needs each digit as its own element to move independently. All the type
+   styling stays here rather than moving down to .not-found__digit, since
+   every one of these properties inherits into the digit spans below on its
+   own. */
+.not-found__numerals {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(5rem, 22vw, 14rem);
+  line-height: 0.85;
+  color: var(--color-accent, #c5fb45);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-s);
+}
+
+/* `inline-block` (rather than the flex item's default `block`) so a plain
+   digit glyph doesn't stretch to fill the row's cross-axis — and, more to
+   the point, so `transform` (set directly from JS on pointermove) actually
+   applies: an inline box isn't guaranteed a transformable layout box in
+   every browser the way inline-block/block are. */
+.not-found__digit {
+  display: inline-block;
+  will-change: transform;
+}
+
+.not-found__heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--step-1);
+  margin: 0;
+}
+
+.not-found__body {
+  max-width: 32rem;
+  opacity: 0.75;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.not-found__timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.not-found__home {
+  margin-top: var(--space-s);
+  color: #0a0a0a;
+  background: var(--color-accent, #c5fb45);
+  padding: 0.75em 1.5em;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.not-found__home:hover,
+.not-found__home:focus-visible {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found__home {
+    transition: none;
+  }
+}

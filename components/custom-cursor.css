@@ -39,12 +39,11 @@
 }
 
 /* The outer element is a 0×0 positioning anchor — `transform` is written
-   to it directly from JS on every pointermove (custom-cursor.tsx), so it
+   to it directly from JS via GSAP's quickTo (custom-cursor.tsx), so it
    deliberately has no CSS transition of its own: smoothing *position*
-   would make it visibly lag the real pointer. The inner element is what
-   actually renders and is where hover/reduced-motion states transition,
-   since scale/color changes benefit from easing in a way raw tracking
-   doesn't. */
+   would fight the tween's own easing. The inner element is what actually
+   renders and is where hover/reduced-motion states transition, since
+   scale/color changes benefit from easing in a way raw tracking doesn't. */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -53,10 +52,24 @@
   height: 0;
   pointer-events: none;
   z-index: 2000;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  opacity: 1;
+  mix-blend-mode: difference;
 }
 
+/* Small lime dot at rest; `mix-blend-mode: difference` is what guarantees
+   visibility against genuinely arbitrary page content, at the cost of an
+   occasionally slightly-off blended color rather than the guaranteed-exact
+   black/white the nav's own chrome-tone system uses for its small, known
+   set of backgrounds (see the comment atop custom-cursor.tsx for why this
+   component doesn't use that system). `mix-blend-mode` differences this
+   whole element — fill and border together — against whatever's actually
+   painted behind it, so over the nav drawer's own solid lime fill this
+   naturally resolves to black (lime vs. lime), and over its black link
+   text it stays lime; no special-casing for either is needed.
+   `box-sizing: border-box` plus an always-present (if invisible)
+   `border` — see `.is-hovering` below — keeps the element's own footprint
+   identical in both states, and gives the border-color transition a real,
+   explicit starting value to animate from. */
 .custom-cursor__inner {
   position: absolute;
   top: 0;
@@ -64,72 +77,38 @@
   width: 14px;
   height: 14px;
   margin: -7px 0 0 -7px;
+  box-sizing: border-box;
   border-radius: 50%;
-  background: var(--color-accent, #c5fb45);
-  /* Difference mode is the right tool here in a way it wasn't for the nav
-     bar (see nav.css's guaranteed-contrast scrim, and the project doc's
-     reasoning for why blend-mode was dropped there): this dot travels
-     continuously over genuinely arbitrary, ever-changing content, where no
-     static scrim could follow it, and an occasionally "wrong" blended
-     color on a small 14px decorative dot is a minor, momentary thing —
-     not the readability-critical case a logo or menu label is. */
-  mix-blend-mode: difference;
+  background-color: #c5fb45;
+  border: 1.5px solid transparent;
   transition:
     transform 0.2s ease,
     background-color 0.2s ease,
     border-color 0.2s ease;
 }
 
+/* Expands into a hollow ring over anything interactive — same lime, just
+   traded from a filled disc for a thin outline so the ring reads as a
+   distinct "you can act here" state rather than just a bigger dot. Only
+   `border-color` and `background-color` change here (the border's width
+   and style are already set at rest, above, just with a transparent
+   color) — previously the resting state had no `border` declared at all,
+   which left its color transitioning from browser's own implicit
+   `currentColor` default (i.e. this component's *inherited* text color,
+   effectively black) rather than from a defined starting point, and left
+   `border-style` itself jumping from `none` to `solid` partway through
+   the transition (a non-interpolable property, so it snaps rather than
+   eases) — together those produced a visible black flash right as the
+   ring appeared, before it settled into the intended lime. Declaring an
+   explicit (if invisible) border at rest closes both gaps at once: there
+   is always a real border to animate, and only its color is ever what
+   changes. */
 .custom-cursor__inner.is-hovering {
   transform: scale(2.4);
-  background: transparent;
-  border: 1.5px solid var(--color-accent, #c5fb45);
+  background-color: transparent;
+  border-color: #c5fb45;
 }
 
 .custom-cursor.is-reduced-motion .custom-cursor__inner {
   transition: none;
-}
-
-/* The one case difference-blend genuinely fails at: the drawer's own fill
-   IS the cursor's own resting color (both lime), so difference(lime, lime)
-   renders as a near-black dot that's easy to lose against a busy line of
-   black link text right behind it — not literally invisible, but not the
-   guaranteed contrast the rest of the drawer's chrome gets either. This is
-   exactly the same call already made for the nav bar/logo in nav.css
-   ("explicit color transitions replacing mix-blend-mode" — see the project
-   doc's nav v5 write-up): a small, *known* set of backgrounds (here: one —
-   the drawer's own solid lime) is worth an explicit override rather than
-   trusting blend-mode, which is the right tool only where the backdrop is
-   genuinely unpredictable (the rest of the page, where this dot spends
-   most of its time). `data-nav-open` is set on <html> by nav.tsx, the same
-   pattern lib/theme-store.ts uses for `data-theme` — lets this file react
-   without the cursor needing to be a DOM descendant of the drawer. */
-:root[data-nav-open="true"] .custom-cursor__inner {
-  mix-blend-mode: normal;
-  background-color: #000;
-  border-color: #000;
-}
-
-/* The flat black above is "desired" at rest, but it recreates the exact
-   problem blend-mode has elsewhere the moment the ring is hovering over
-   the drawer's own black link text: black-on-black. Rather than pick a
-   different single fixed color (which just relocates the problem to
-   whatever backdrop THAT color happens to match), `backdrop-filter:
-   invert()` computes a live photographic negative of whatever's directly
-   behind the ring at that instant — over black text, that patch inverts
-   toward light and stays visible; over the drawer's lime fill, it inverts
-   toward a contrasting purple-ish tone. It's not a fixed second color
-   (not literally "turn white") — it's the same "figure out what's
-   actually underneath and react to it" idea Jon asked for, just computed
-   per-pixel by the browser instead of picked in advance. Scoped to only
-   the hovering state: the resting dot stays the flat black above, which
-   Jon confirmed is the right look for that state — this only replaces the
-   hovering ring's border-color. Vendor-prefixed line first, standard
-   property last — this codebase's Lightning CSS build silently drops both
-   if that order is reversed (see the project doc's nav v6 note). */
-:root[data-nav-open="true"] .custom-cursor__inner.is-hovering {
-  background: transparent;
-  border-color: transparent;
-  -webkit-backdrop-filter: invert(1);
-  backdrop-filter: invert(1);
 }

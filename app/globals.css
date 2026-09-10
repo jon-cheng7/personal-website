@@ -8,13 +8,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* Scrollbar hidden site-wide, per Jon's request — scroll itself still
-     works normally, this only removes the visual track/thumb. Three rules
-     needed to cover the three different mechanisms browsers use:
-     `scrollbar-width` (Firefox), `-ms-overflow-style` (legacy Edge/IE,
-     harmless elsewhere), and the WebKit-only pseudo-element below (Chrome/
-     Safari/modern Edge). Repeated on `.menu-drawer` in nav.css, the site's
-     other internally-scrolling region. */
+  /* Scrollbar hidden site-wide*/
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

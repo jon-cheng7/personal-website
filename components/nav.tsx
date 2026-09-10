@@ -1,14 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { getLenisInstance } from "@/lib/lenis-store";
-import { buildLiquidClipPath } from "@/lib/liquid-clip";
+import { buildLiquidClipPath, buildLiquidToneBands, LIQUID_WIPE_ROWS } from "@/lib/liquid-clip";
+import { registerToneTarget, requestChromeToneUpdate } from "@/lib/chrome-tone";
 import { navItems } from "@/content/nav";
 import { socialLinks, contactInfo } from "@/content/social";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ChromeToneMask } from "@/components/chrome-tone-mask";
 import "./nav.css";
 
 
@@ -23,9 +26,19 @@ interface MenuLinkProps {
    * other link, which should still land at the top of a fresh page.
    */
   scroll?: boolean;
+  /**
+   * Fired on click of either the real link or its hover-flip clone (both
+   * need it — see the comment on the clone's own onClick below for why).
+   * Nav uses this to intercept the click, drive the route change itself,
+   * and only close the drawer once the destination page has actually
+   * mounted — see "seamless nav-to-page transition" in Nav for the full
+   * mechanism. Undefined just means "let the Link navigate normally,"
+   * which is what every use of MenuLink did before this existed.
+   */
+  onNavigate?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-function MenuLink({ href, label, scroll }: MenuLinkProps) {
+function MenuLink({ href, label, scroll, onNavigate }: MenuLinkProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,17 +95,22 @@ function MenuLink({ href, label, scroll }: MenuLinkProps) {
 
   return (
     <div ref={wrapperRef}>
-      <div className="menu-link-wrapper">
-        <Link href={href} className="menu-link" scroll={scroll}>
+      <div className="menu-link-wrapper" data-chrome-tone="light-on-dark">
+        <Link href={href} className="menu-link" scroll={scroll} onClick={onNavigate}>
           {letters}
         </Link>
-        {/* Duplicate for animation */}
+        {/* Duplicate for animation — also needs onNavigate: during the
+            hover-flip timeline above, this clone is what's actually sitting
+            visually on top of the real link (see the flip animation), so a
+            click while hovering lands on THIS anchor, not the one
+            underneath it. */}
         <Link
           href={href}
           className="menu-link-clone"
           aria-hidden="true"
           tabIndex={-1}
           scroll={scroll}
+          onClick={onNavigate}
         >
           {letters}
         </Link>
@@ -105,15 +123,97 @@ export function Nav() {
   const container = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
+  // One region element per row of the liquid wipe (lib/liquid-clip.ts) —
+  // see the render below and buildLiquidToneBands's own writeup for why
+  // the drawer's chrome-tone region has to be these bands rather than a
+  // single tag on `.menu-drawer` itself.
+  const toneBandRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const tl = useRef<ReturnType<typeof gsap.timeline> | null>(null);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
+  // The logo's two tone copies — see lib/chrome-tone.ts and the render
+  // below. Registered once on mount; the geometry system recomputes their
+  // clip-paths on scroll/resize/pointermove/drawer-toggle, not here.
+  const logoMaskRef = useRef<HTMLSpanElement>(null);
+  const logoLightOnDarkRef = useRef<HTMLImageElement>(null);
+  const logoDarkOnLightRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const wrapper = logoMaskRef.current;
+    const lightOnDark = logoLightOnDarkRef.current;
+    const darkOnLight = logoDarkOnLightRef.current;
+    if (!wrapper || !lightOnDark || !darkOnLight) return;
+    return registerToneTarget(wrapper, {
+      "light-on-dark": lightOnDark,
+      "dark-on-light": darkOnLight,
+    });
+  }, []);
+
   const closeAndReturnFocus = useCallback(() => {
     setIsMenuOpen(false);
     openButtonRef.current?.focus();
   }, []);
+
+  // Seamless nav-to-page transition: Jon's ask was that clicking a link
+  // should load the destination page underneath first, THEN close the
+  // menu — as if it never left the page — rather than the drawer closing
+  // immediately and the new content popping in underneath while (or
+  // after) the wipe is already mid-animation. `useTransition` is what
+  // makes "underneath first" a real, checkable state rather than a guess:
+  // wrapping `router.push` in `startTransition` ties React's own
+  // `isNavigating` flag to the App Router's fetch+render of the
+  // destination route, so it only flips back to `false` once that route's
+  // content has actually mounted in the tree — still fully hidden behind
+  // the still-open drawer at that point. Only then do we close, so the
+  // wipe reveals the real destination directly.
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isNavigating, startNavigation] = useTransition();
+  const pendingNavRef = useRef(false);
+
+  const handleLinkNavigate = useCallback(
+    (href: string, scroll: boolean) =>
+      (event: React.MouseEvent<HTMLAnchorElement>) => {
+        // Modifier/middle clicks should behave like a normal link (open in
+        // a new tab, etc.) — only a plain left-click gets the sequenced
+        // navigate-then-close treatment; anything else just falls through
+        // to next/link's own default handling.
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        // Already on this page — nothing to wait for, so there's no
+        // "underneath" to load first; just close normally.
+        if (href === pathname) {
+          closeAndReturnFocus();
+          return;
+        }
+
+        pendingNavRef.current = true;
+        startNavigation(() => {
+          router.push(href, { scroll });
+        });
+      },
+    [pathname, router, closeAndReturnFocus],
+  );
+
+  useEffect(() => {
+    if (!isNavigating && pendingNavRef.current) {
+      pendingNavRef.current = false;
+      closeAndReturnFocus();
+    }
+  }, [isNavigating, closeAndReturnFocus]);
 
   useGSAP(
     () => {
@@ -134,6 +234,15 @@ export function Nav() {
             wipe.progress,
           );
         }
+        // Keep the chrome-tone region bands (see the render below) tracking
+        // the exact same reveal the clip-path line above just drew — same
+        // progress value, same per-row math (lib/liquid-clip.ts), so the
+        // "lime revealed" region lib/chrome-tone.ts sees can never drift
+        // out of sync with what's actually painted.
+        const bands = buildLiquidToneBands(wipe.progress);
+        toneBandRefs.current.forEach((band, i) => {
+          if (band) band.style.width = `${(bands[i].reveal * 100).toFixed(2)}%`;
+        });
       };
       applyWipe();
 
@@ -174,14 +283,14 @@ export function Nav() {
       document.body.style.overflow = "";
     }
 
-    // Mirrors the `data-theme` pattern in lib/theme-store.ts — an attribute
-    // on <html> itself rather than on this component's own container, so
-    // anything mounted elsewhere in the tree (components/custom-cursor.tsx,
-    // specifically) can react to the drawer's open state via a plain CSS
-    // attribute selector without needing to be a DOM descendant/sibling of
-    // .menu-container or read React state. Currently only the cursor's
-    // guaranteed-contrast override (custom-cursor.css) depends on this.
-    document.documentElement.dataset.navOpen = isMenuOpen ? "true" : "false";
+    // The drawer's own chrome-tone region (the `.menu-drawer__tone-band`s
+    // rendered below) already tracks the wipe's real progress every tick
+    // via `applyWipe` above, so nothing extra is needed for that. This call
+    // just makes sure lib/chrome-tone.ts's own continuous per-frame loop is
+    // actually running right now rather than waiting for its next natural
+    // trigger — cheap, and a no-op once it's already going (see
+    // requestChromeToneUpdate's own doc comment).
+    requestChromeToneUpdate();
   }, [isMenuOpen]);
 
   // Escape closes the menu; Tab is kept inside the drawer while it's open.
@@ -233,29 +342,59 @@ export function Nav() {
           aria-expanded={isMenuOpen}
           aria-controls="site-menu"
         >
-          <span
-            className={`menu-open-icon${isMenuOpen ? " is-active" : ""}`}
-            aria-hidden="true"
+          <ChromeToneMask
+            className="menu-open-icon-mask"
+            palette={{ "light-on-dark": "#ffffff", "dark-on-light": "#000000" }}
           >
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="menu-open-label">
+            <span
+              className={`menu-open-icon${isMenuOpen ? " is-active" : ""}`}
+              aria-hidden="true"
+            >
+              <span />
+              <span />
+              <span />
+            </span>
+          </ChromeToneMask>
+          <ChromeToneMask
+            className="menu-open-label"
+            palette={{ "light-on-dark": "#ffffff", "dark-on-light": "#000000" }}
+          >
             {isMenuOpen ? "Close" : "Menu"}
-          </span>
+          </ChromeToneMask>
         </button>
         <div className="menu-logo">
           {/* scroll={false} for the same reason as the Home nav link above
-              — see components/scroll-memory.tsx. */}
+              — see components/scroll-memory.tsx. Two copies of the same
+              white source asset, stacked exactly on top of each other (see
+              .menu-logo-mask/.menu-logo-copy in nav.css) — the first
+              (light-on-dark, as-is white) also defines the wrapper's
+              natural size via normal layout flow; the second (dark-on-
+              light) reuses the same proven filter:invert(1) trick from
+              earlier rounds to derive black from the one white asset,
+              rather than a second image file. Which parts of which copy
+              actually show is entirely down to the clip-path the geometry
+              system (lib/chrome-tone.ts) applies to each — not this
+              markup. */}
           <Link href="/" scroll={false}>
-            <Image
-              src="/Signature_white.png"
-              alt="Home"
-              width={40}
-              height={40}
-              className="menu-logo-img"
-            />
+            <span ref={logoMaskRef} className="menu-logo-mask">
+              <Image
+                ref={logoLightOnDarkRef}
+                src="/Signature_white.png"
+                alt="Home"
+                width={40}
+                height={40}
+                className="menu-logo-copy"
+              />
+              <Image
+                ref={logoDarkOnLightRef}
+                src="/Signature_white.png"
+                alt=""
+                aria-hidden="true"
+                width={40}
+                height={40}
+                className="menu-logo-copy menu-logo-copy--dark-on-light"
+              />
+            </span>
           </Link>
         </div>
       </div>
@@ -271,17 +410,46 @@ export function Nav() {
         inert={!isMenuOpen}
         tabIndex={-1}
       >
+        {/* The drawer's own chrome-tone region — NOT a single tag on this
+            element (its layout box is always the full viewport regardless
+            of how much of the wave has revealed, since clip-path only
+            changes what's painted, not the box) but `LIQUID_WIPE_ROWS` thin
+            bands, each independently widened to exactly how far the lime
+            wipe has *guaranteed* reached at that height, every tick, by the
+            same `applyWipe` that drives the visible clip-path above (see
+            lib/liquid-clip.ts's `buildLiquidToneBands` for the full
+            reasoning). Purely geometry — invisible, `pointer-events: none`
+            — lib/chrome-tone.ts reads their boxes via `getBoundingClientRect()`,
+            unaffected by this element being inside the clipped drawer. */}
+        <div className="menu-drawer__tone-bands" aria-hidden="true">
+          {Array.from({ length: LIQUID_WIPE_ROWS }).map((_, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                toneBandRefs.current[i] = el;
+              }}
+              className="menu-drawer__tone-band"
+              style={{
+                top: `${(i / LIQUID_WIPE_ROWS) * 100}%`,
+                height: `${(1 / LIQUID_WIPE_ROWS) * 100}%`,
+              }}
+              data-chrome-tone="dark-on-light"
+            />
+          ))}
+        </div>
+
         <nav className="menu-links" aria-label="Primary">
           {navItems.map((item) => (
             <div key={item.href} className="menu-link-item">
-              <div
-                className="menu-link-item-holder"
-                onClick={closeAndReturnFocus}
-              >
+              {/* No onClick here any more — closing is now driven by
+                  handleLinkNavigate/the effect above, once the destination
+                  page has actually mounted, not by the click itself. */}
+              <div className="menu-link-item-holder">
                 <MenuLink
                   href={item.href}
                   label={item.label}
                   scroll={item.href !== "/"}
+                  onNavigate={handleLinkNavigate(item.href, item.href !== "/")}
                 />
               </div>
             </div>

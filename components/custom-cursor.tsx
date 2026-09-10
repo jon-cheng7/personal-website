@@ -18,6 +18,19 @@ import "./custom-cursor.css";
  * attribute (e.g. `data-cursor="play"`) and swap the rendered shape is a
  * change to `onPointerOver`/`onPointerOut` below, not a rearchitecture.
  *
+ * Visibility against arbitrary backdrops is `mix-blend-mode: difference`
+ * (see custom-cursor.css) — deliberately *not* the geometry-based
+ * chrome-tone system the nav icon/label/logo use (lib/chrome-tone.ts):
+ * that system is reserved for the small, fixed, *known* set of
+ * backgrounds the nav chrome sits over, where an unpredictable blended
+ * color was worth engineering around; the cursor travels continuously
+ * over genuinely arbitrary content no fixed region tagging could ever
+ * follow, and an occasionally slightly-off color on a small 14px
+ * decorative dot is a minor, momentary cosmetic issue rather than a
+ * legibility-critical one — the original tradeoff this component was
+ * built with, restored here after a brief detour through the tone system
+ * that over-applied it to something that didn't need it.
+ *
  * Movement has a light lag/spring to it ("physics") rather than snapping
  * 1:1 to the real pointer — via GSAP's `quickTo`, one lightweight tween
  * per axis that's purpose-built for exactly this (cursor-follow, drag,
@@ -74,11 +87,55 @@ export function CustomCursor() {
     const moveX = gsap.quickTo(dot, "x", { duration: 0.35, ease: "power3" });
     const moveY = gsap.quickTo(dot, "y", { duration: 0.35, ease: "power3" });
 
+    // Visibility lifecycle: the dot has no business being visible before
+    // the browser has ever told us where the real pointer is (its
+    // position would otherwise default to wherever `transform` happens to
+    // start, e.g. the top-left corner) — so `pointermove` itself, not just
+    // `mouseenter`, is what's responsible for first showing it. Previously
+    // this relied solely on `mouseenter` on <html>, which reliably fires
+    // when the pointer enters the window but doesn't guarantee the dot has
+    // actually been positioned yet, and doesn't cover every path a
+    // pointer can appear on. `hasShown` just avoids writing
+    // `style.opacity` on every single pointermove once it's already
+    // visible.
+    let hasShown = false;
+    // Separately, `hasPositioned` tracks whether the dot has ever actually
+    // been placed at a real pointer position yet. `quickTo`'s tween always
+    // eases *from* GSAP's last-known x/y for this element, which defaults
+    // to (0, 0) — the fixed anchor's own resting position, i.e. the
+    // top-left corner — until something sets it otherwise. Without this,
+    // the very first pointermove after mount (e.g. right after a reload)
+    // would visibly tween the dot flying in from the corner to wherever
+    // the pointer actually is, instead of appearing right there. Only the
+    // very first move (or the first one after re-entering the window,
+    // since position during the hidden gap is unknown) skips the tween.
+    let hasPositioned = false;
+
+    const show = () => {
+      dot.style.opacity = "1";
+      hasShown = true;
+    };
+    const hide = () => {
+      dot.style.opacity = "0";
+      // Reset so the next pointermove (not just the next `mouseenter`,
+      // which doesn't always fire on its own) reliably shows it again —
+      // and so that reappearance snaps straight to the real position
+      // rather than tweening in from wherever it happened to be hidden.
+      hasShown = false;
+      hasPositioned = false;
+    };
+
     const move = (event: PointerEvent) => {
-      if (prefersReducedMotion) {
-        // No lag for reduced-motion visitors — jump straight to the
-        // pointer rather than trailing behind it.
-        dot.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+      if (!hasShown) show();
+      if (prefersReducedMotion || !hasPositioned) {
+        // No lag for reduced-motion visitors, and no lag for the very
+        // first placement regardless of motion preference — jump straight
+        // to the pointer rather than tweening from a stale/default
+        // position. `gsap.set` (not a raw style write) keeps GSAP's own
+        // internal transform cache in sync, so the *next* call to
+        // moveX/moveY eases from this real position instead of (0, 0).
+        gsap.set(dot, { x: event.clientX, y: event.clientY });
+        hasPositioned = true;
       } else {
         moveX(event.clientX);
         moveY(event.clientY);
@@ -97,19 +154,15 @@ export function CustomCursor() {
       }
     };
 
-    const show = () => {
-      dot.style.opacity = "1";
-    };
-    const hide = () => {
-      dot.style.opacity = "0";
-    };
-
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerover", onPointerOver);
     window.addEventListener("pointerout", onPointerOut);
     // Hides the dot rather than leaving it stranded at the last known
     // position when the pointer leaves the window (e.g. to the browser
-    // chrome or another app) — reappears on re-entry.
+    // chrome or another app) — reappears on the next real pointer move
+    // after re-entry (see `hasShown` above), with `mouseenter` kept as a
+    // belt-and-suspenders in case a browser fires it without an
+    // accompanying pointermove.
     document.documentElement.addEventListener("mouseleave", hide);
     document.documentElement.addEventListener("mouseenter", show);
 

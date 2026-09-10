@@ -1,0 +1,27 @@
+/* Minimal shared wrapper for the site's plain content pages (About Me,
+   Resume, Art, and anything else that isn't the home page's own
+   horizontal-scroll experience) — just enough to keep the fixed nav bar
+   (--nav-bar-height, defined in components/nav.css) from covering the
+   page's own heading, using the site's existing fluid spacing/type tokens
+   from app/globals.css. Not a design yet, just scaffolding these stub
+   pages share so replacing one with real content later doesn't mean
+   re-solving "clear the nav bar" each time. */
+.page-shell {
+  min-height: 100vh;
+  padding: calc(var(--nav-bar-height, 5.5rem) + var(--space-l)) var(--space-m)
+    var(--space-l);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.page-shell h1 {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  margin: 0 0 var(--space-m);
+}
+
+.page-shell p {
+  font-size: var(--step-0);
+  line-height: 1.6;
+  max-width: 42rem;
+}

@@ -74,7 +74,15 @@ export function HorizontalScroll({ children }: HorizontalScrollProps) {
   }, []);
 
   return (
-    <div ref={sectionRef} className="horizontal-scroll">
+    // Fixed creative choice, independent of the theme system (see
+    // app/globals.css's color-tokens comment) — this section's background
+    // is always #000 (below, in horizontal-scroll.css), in both light and
+    // dark theme. Tagged directly rather than relying on the ambient
+    // `data-chrome-tone` app/layout.tsx puts on <html>, which follows theme
+    // and would be wrong here whenever the theme itself is light — see
+    // lib/chrome-tone.ts for how a more deeply-nested tag like this one
+    // wins over that ambient default for its own area.
+    <div ref={sectionRef} className="horizontal-scroll" data-chrome-tone="light-on-dark">
       <div ref={trackRef} className="horizontal-scroll__track">
         {children}
       </div>

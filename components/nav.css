@@ -24,31 +24,21 @@
 }
 
 /* The bar has no background/scrim of its own on desktop's horizontal-scroll
-   home page — each item in it (icon, label, logo) is responsible for its
-   own legibility there via `mix-blend-mode: difference`, the same call
-   already made for the custom cursor's default (page-wide) state. Known
-   limitation, accepted deliberately: difference computes a live invert of
-   whatever's underneath, reliably legible against most backdrops but can
-   theoretically wash out against something close to mid-gray. Once the
-   drawer's open, the bar sits over the drawer's own known flat lime fill,
-   so each item switches back to the explicit white→black color transition
-   below instead — a known, controlled background doesn't need blend-mode's
-   guess.
+   home page — every fixed chrome element in it (icon, label, logo, and the
+   custom cursor elsewhere) is instead responsible for its own legibility
+   via components/chrome-tone-mask.tsx + lib/chrome-tone.ts: two exactly-
+   stacked, pre-colored copies, each clipped in JS to only the region(s) of
+   itself that actually sit over a matching `data-chrome-tone` background
+   right now. That's a real per-pixel geometric clip (see lib/chrome-tone.ts's
+   own writeup for why), not a color guess — so a region boundary can fall
+   mid-glyph or mid-icon-stroke and still resolve correctly, including once
+   the drawer is open and everything in the bar sits over its own known flat
+   lime fill (the drawer carries its own `data-chrome-tone="dark-on-light"`
+   — see the render in nav.tsx).
 
    In the vertical-scroll view specifically (mobile, or reduced-motion —
    see the `.menu-bar::before` rule further down), a soft translucent wash
-   is layered back in behind the bar, so blend-mode isn't carrying the
-   whole legibility burden there on its own either way. */
-.menu-bar a,
-.menu-open {
-  color: #fff;
-  transition: color 0.4s ease;
-}
-
-.menu-container[data-open="true"] .menu-bar a,
-.menu-container[data-open="true"] .menu-open {
-  color: #000;
-}
+   is layered back in behind the bar as an extra legibility aid. */
 
 /* Reintroduced at Jon's request, but scoped this time — only in the
    vertical-scroll view (≤900px width, or prefers-reduced-motion), matching
@@ -105,21 +95,16 @@
   cursor: pointer;
 }
 
+/* Typography only — these are inheritable properties, so they reach the
+   actual text through the chrome-tone-mask sizer/copy spans this class
+   wraps (see components/chrome-tone-mask.tsx) without needing to target
+   them directly. Legibility itself is the mask's job now, not this rule's. */
 .menu-open-label {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  /* Guarantees this reads over arbitrary page content now that the bar has
-     no background plate behind it — see the comment above `.menu-bar a,
-     .menu-open`. Cancelled back to `normal` once the drawer's open (below),
-     where the known lime fill is handled by the plain color flip instead. */
-  mix-blend-mode: difference;
-}
-
-.menu-container[data-open="true"] .menu-open-label {
-  mix-blend-mode: normal;
 }
 
 /* Hamburger-to-close morph. Plain CSS transitions rather than a GSAP
@@ -132,23 +117,23 @@
   flex-shrink: 0;
 }
 
+/* `background: currentColor` rather than a fixed color — each bar is drawn
+   twice, once inside the chrome-tone-mask's white copy and once inside its
+   black copy (see components/chrome-tone-mask.tsx), and `currentColor`
+   picks up whichever `color` that copy was given so the two renders differ
+   only in color, not markup. Which copy (or which sliced region of each)
+   actually shows through at any moment is entirely down to the clip-path
+   lib/chrome-tone.ts computes and applies — not this rule. */
 .menu-open-icon span {
   position: absolute;
   left: 0;
   width: 100%;
   height: 2px;
   background: currentColor;
-  /* Same reasoning as .menu-open-label above — set per-bar (background
-     doesn't inherit the way color does), not on the wrapping .menu-open. */
-  mix-blend-mode: difference;
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
     top 0.3s ease;
-}
-
-.menu-container[data-open="true"] .menu-open-icon span {
-  mix-blend-mode: normal;
 }
 
 .menu-open-icon span:nth-child(1) {
@@ -177,24 +162,36 @@
   transform: rotate(-45deg);
 }
 
-.menu-logo-img {
-  filter: invert(0);
-  /* The logo asset is a white glyph (Signature_white.png) on a transparent
-     background — white is the ideal source color for difference-blend's
-     live invert (difference(white, backdrop) = a true 255-backdrop
-     negative), so no filter is needed to make this work over arbitrary
-     page content, same idea as .menu-open-label/.menu-open-icon span
-     above. Once the drawer's open (below), this switches back to the
-     already-proven filter:invert(1) trick against the known lime fill
-     (see "Decision: nav menu v5" in the project doc) instead of trusting
-     blend-mode against a background that's no longer arbitrary. */
-  mix-blend-mode: difference;
-  transition: filter 0.4s ease;
+/* Just a positioning anchor for the mask wrapper inside it now. */
+.menu-logo {
+  position: relative;
 }
 
-.menu-container[data-open="true"] .menu-logo-img {
+/* The two logo copies' shared wrapper — mirrors .chrome-tone-mask's own
+   shape (relative + inline-block) but lives here rather than sharing that
+   class, since a raster `<Image>` pair is registered with
+   lib/chrome-tone.ts directly from nav.tsx rather than going through the
+   generic ChromeToneMask component (see the comment above the logo's
+   render in nav.tsx for why). */
+.menu-logo-mask {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-logo-copy {
+  display: block;
+}
+
+/* The light-on-dark copy (plain white, as-is) also defines the wrapper's
+   natural size via normal layout flow; this, the dark-on-light copy, stacks
+   exactly on top of it and reuses the proven filter:invert(1) trick from
+   earlier rounds to derive black from that one white asset. Which parts of
+   which copy actually show is entirely down to the clip-path
+   lib/chrome-tone.ts applies to each — not this rule. */
+.menu-logo-copy--dark-on-light {
+  position: absolute;
+  inset: 0;
   filter: invert(1);
-  mix-blend-mode: normal;
 }
 
 .menu-drawer {
@@ -218,6 +215,23 @@
 
 .menu-drawer::-webkit-scrollbar {
   display: none;
+}
+
+/* Pure geometry, never painted — see components/nav.tsx's render and
+   lib/liquid-clip.ts's `buildLiquidToneBands` for the full reasoning. Sized
+   to exactly overlay `.menu-drawer` itself so each band's `top`/`height`
+   (set inline, per-row) and `width` (updated every wipe tick from JS) read
+   as fractions of the same box the wave animates across. */
+.menu-drawer__tone-bands {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.menu-drawer__tone-band {
+  position: absolute;
+  left: 0;
+  width: 0;
 }
 
 .menu-drawer:focus-visible {

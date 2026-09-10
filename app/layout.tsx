@@ -6,6 +6,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { CustomCursor } from "@/components/custom-cursor";
+import Script from "next/script";
 
 // Display font for bold, oversized moments — currently just the full-screen
 // nav's link labels (see components/nav.css). next/font self-hosts it at
@@ -53,12 +54,26 @@ export const metadata: Metadata = {
 // (private browsing, storage disabled) — falls back to no explicit
 // data-theme, which just means globals.css's prefers-color-scheme block
 // decides instead, still a correct (if system-default) result.
+//
+// Also sets the ambient `data-chrome-tone` (see lib/chrome-tone.ts) to
+// match — dark backgrounds need white/lime chrome (`light-on-dark`), light
+// backgrounds need black chrome (`dark-on-light`) — using the exact same
+// resolution order as app/globals.css's own theme rules (explicit
+// data-theme first, system prefers-color-scheme otherwise) so the two
+// never disagree. This is only the sitewide *ambient* tone; any section
+// with its own fixed background (the home hero, the 404 page) tags itself
+// directly and wins for its own area regardless of theme — see
+// components/horizontal-scroll.tsx / not-found-scene.tsx.
 const noFlashThemeScript = `
   try {
     var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark')
+      ? stored
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (stored === 'light' || stored === 'dark') {
       document.documentElement.dataset.theme = stored;
     }
+    document.documentElement.dataset.chromeTone = theme === 'dark' ? 'light-on-dark' : 'dark-on-light';
   } catch (e) {}
 `;
 
@@ -82,7 +97,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: noFlashThemeScript }} />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: noFlashThemeScript }}
+        />
       </head>
       <body>
         <SmoothScroll />

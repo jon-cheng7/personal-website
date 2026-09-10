@@ -1,0 +1,19 @@
+/* See components/chrome-tone-mask.tsx and lib/chrome-tone.ts for the
+   mechanism. `.chrome-tone-mask` never sizes itself — its size comes from
+   the invisible `__sizer` copy of the content laid out normally; the two
+   real, colored copies are then absolutely positioned to exactly overlap
+   it and clipped in JS. */
+.chrome-tone-mask {
+  position: relative;
+  display: inline-block;
+}
+
+.chrome-tone-mask__sizer {
+  visibility: hidden;
+}
+
+.chrome-tone-mask__copy {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
