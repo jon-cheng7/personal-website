@@ -6,6 +6,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { GlobalCursor } from "@/components/cursor/global-cursor";
+import { ScreenTransition } from "@/components/screen-transition";
 import Script from "next/script";
 
 // Display font for bold, oversized moments — currently just the full-screen
@@ -105,6 +106,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <SmoothScroll />
+        {/* Mounted once, persists across every route change (same reasoning
+            as GlobalCursor just above) — see components/screen-transition.tsx
+            and lib/screen-transition-store.ts for why a transition already
+            in flight must never be interrupted by the very navigation it's
+            driving. */}
+        <ScreenTransition />
         <GlobalCursor />
         <a href="#main-content" className="skip-link">
           Skip to content

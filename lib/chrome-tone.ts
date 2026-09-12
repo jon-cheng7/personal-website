@@ -67,6 +67,10 @@ interface Region {
   rect: Rect;
   tone: ChromeTone;
   depth: number;
+  /** 1 if this region carries `data-chrome-tone-overlay`, 0 otherwise —
+   * see that attribute's own doc comment at `readRegions` for why this
+   * exists and has to be sorted ahead of plain DOM depth. */
+  overlayPriority: number;
 }
 
 interface ToneTarget {
@@ -179,6 +183,41 @@ function syncThemeFollowers(): void {
     });
 }
 
+/**
+ * Mark a region `data-chrome-tone-overlay` when it represents something
+ * that's genuinely painted on top of the rest of the page right now — not
+ * a DOM descendant of the content it's covering, just visually stacked
+ * above it (a fixed-position drawer/modal/sheet with its own z-index) —
+ * rather than ordinary in-flow page content. Plain DOM-nesting depth (see
+ * `depthOf` and the module doc above) is only a proxy for "more specific
+ * region wins," and that proxy quietly breaks down for two regions that
+ * AREN'T DOM ancestor/descendant of each other but happen to sit at the
+ * exact same depth by coincidence: `readRegions`' sort is depth-only and
+ * (being a stable sort) falls back to document order for an exact tie —
+ * i.e. to whichever of the two elements happens to appear earlier in the
+ * markup, which has nothing to do with which one is actually on top of
+ * the screen. That's exactly what happened here: `.menu-drawer__tone-
+ * band`s (six ancestors deep: html > body > .menu-container >
+ * .menu-drawer > .menu-drawer__tone-bands > the band) and the home page's
+ * `.hero` section (also six ancestors deep: html > body > main >
+ * .horizontal-scroll > .horizontal-scroll__track > .hero) tie exactly,
+ * and since components/nav.tsx's <Nav /> renders before <main> in
+ * app/layout.tsx, the tone bands lost that tiebreak to `.hero` — so the
+ * menu icon/logo stayed resolved to the hero's "light-on-dark" even with
+ * the lime drawer open and visually covering them. Other pages didn't
+ * show this because their own content doesn't happen to land on exactly
+ * the same depth as the bands.
+ *
+ * Rather than chase exact depth numbers (fragile — the next refactor of
+ * either tree could easily reintroduce or shift a coincidental tie the
+ * same way this one arose), an overlay opts out of the depth-tie gamble
+ * entirely: `readRegions` sorts this flag ahead of depth, so ANY region
+ * marked as an overlay beats ANY ordinary page region regardless of DOM
+ * nesting on either side, and only falls back to depth to order multiple
+ * overlays against each other (not currently a real scenario, but a safe
+ * default if one ever exists). Currently only the drawer's tone bands use
+ * this; a future fixed-position overlay of the same kind should too.
+ */
 function readRegions(): Region[] {
   syncThemeFollowers();
   const nodes = document.querySelectorAll<HTMLElement>("[data-chrome-tone]");
@@ -190,12 +229,15 @@ function readRegions(): Region[] {
       rect: toRect(node.getBoundingClientRect()),
       tone,
       depth: depthOf(node),
+      overlayPriority: node.hasAttribute("data-chrome-tone-overlay") ? 1 : 0,
     });
   });
-  // Shallow (ambient/page-level) regions first, so a more deeply-nested,
-  // more specific region always paints over its ancestor for the area
-  // they share — see paintTarget below.
-  regions.sort((a, b) => a.depth - b.depth);
+  // Overlays first regardless of depth (see the doc comment above), then
+  // shallow (ambient/page-level) regions before deep ones within each of
+  // those two tiers, so a more deeply-nested, more specific region still
+  // paints over its own ancestor for the area they share — see
+  // paintTarget below.
+  regions.sort((a, b) => a.overlayPriority - b.overlayPriority || a.depth - b.depth);
   return regions;
 }
 

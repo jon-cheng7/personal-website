@@ -456,7 +456,14 @@ export function Nav() {
             lib/liquid-clip.ts's `buildLiquidToneBands` for the full
             reasoning). Purely geometry — invisible, `pointer-events: none`
             — lib/chrome-tone.ts reads their boxes via `getBoundingClientRect()`,
-            unaffected by this element being inside the clipped drawer. */}
+            unaffected by this element being inside the clipped drawer.
+            `data-chrome-tone-overlay`: this drawer is a fixed-position
+            layer stacked visually on top of the page by z-index, not a DOM
+            ancestor/descendant of it — see that attribute's own doc
+            comment in lib/chrome-tone.ts for the exact bug this avoids
+            (the bands tied in DOM depth with the home page's `.hero`
+            section and silently lost that tie, leaving the icon/logo
+            stuck on the hero's tone with the drawer open over them). */}
         <div className="menu-drawer__tone-bands" aria-hidden="true">
           {Array.from({ length: LIQUID_WIPE_ROWS }).map((_, i) => (
             <div
@@ -470,6 +477,7 @@ export function Nav() {
                 height: `${(1 / LIQUID_WIPE_ROWS) * 100}%`,
               }}
               data-chrome-tone="dark-on-light"
+              data-chrome-tone-overlay
             />
           ))}
         </div>

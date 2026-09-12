@@ -56,6 +56,24 @@ video {
   outline-offset: 2px;
 }
 
+/* Standard visually-hidden pattern — present for assistive tech, invisible
+   on screen. A global utility (components/hero.css has its own scoped
+   `.hero-name__sr-only` predating this, left as-is rather than migrated)
+   for any component that splits real content into decorative per-letter/
+   per-word spans (see components/split-text.tsx) and needs an accessible
+   plain-text duplicate alongside the aria-hidden animated one. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Skip-to-content link, visually hidden until focused */
 .skip-link {
   position: absolute;

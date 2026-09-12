@@ -1,6 +1,7 @@
 import { Hero } from "@/components/hero";
 import { HorizontalScroll } from "@/components/horizontal-scroll";
 import { ScrollMemory } from "@/components/scroll-memory";
+import { SplitText } from "@/components/split-text";
 
 // Placeholder filler content so there's something to scroll through before
 // real sections exist — swap each of these for actual content whenever.
@@ -30,13 +31,25 @@ export default function HomePage() {
         <Hero />
         {fillerSections.map((section) => (
           <section key={section.heading} aria-label={section.heading}>
-            {/* data-scroll-fade: opts each piece into horizontal-scroll.tsx's
-                per-element exit fade individually, same as hero.tsx's words/
-                circle — swap for whatever real content replaces this
-                placeholder and keep the attribute on each independently-
-                fading piece. */}
-            <h2 data-scroll-fade>{section.heading}</h2>
-            <p data-scroll-fade>{section.body}</p>
+            {/* SplitText marks every letter with data-scroll-fade (see that
+                component's own doc comment for why word-then-letter, not a
+                flat split) — components/horizontal-scroll.tsx picks all of
+                them up automatically and fades each independently as the
+                panel scrolls out. aria-hidden since the split version is
+                decorative markup, not new content; the plain-text `.sr-only`
+                heading/paragraph right after each is the one accessible
+                reading — same "invisible sizer / visible copy" split
+                components/hero.tsx uses for its own wordmark. Swap the
+                strings here for real content whenever; SplitText itself
+                needs no changes. */}
+            <h2 aria-hidden="true">
+              <SplitText text={section.heading} />
+            </h2>
+            <h2 className="sr-only">{section.heading}</h2>
+            <p aria-hidden="true">
+              <SplitText text={section.body} />
+            </p>
+            <p className="sr-only">{section.body}</p>
           </section>
         ))}
       </HorizontalScroll>

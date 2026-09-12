@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type MutableRefObject } from "react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transition-link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { setIntroPhase } from "@/lib/intro-store";
 import "./hero.css";
@@ -33,12 +33,13 @@ type LetterRefSetter = (index: number, el: HTMLSpanElement | null) => void;
  * why) so screen readers get one clean read of "jon cheng" rather than
  * eight separately-announced single-letter spans.
  *
- * `data-scroll-fade`: opts this word into components/horizontal-scroll.tsx's
- * per-element frosted-glass exit fade — each word (and the circle, see the
- * render below) has its own horizontal position within the Hero panel, so
- * marking them individually is what makes "Jon" start fading before "cheng"
- * does as the panel scrolls out, rather than the whole panel dissolving as
- * one flat block. */
+ * `data-scroll-fade` on each LETTER (not the word wrapper): opts every
+ * individual letter into components/horizontal-scroll.tsx's per-element
+ * frosted-glass exit fade at the finest granularity that component
+ * supports — each letter has its own horizontal position within the Hero
+ * panel, so "J", "o", "n" each start fading at very slightly different
+ * moments as the panel scrolls out, rather than the whole word (or the
+ * whole panel) dissolving as one flat block. */
 function HeroWord({
   word,
   onLetterRef,
@@ -47,12 +48,13 @@ function HeroWord({
   onLetterRef: LetterRefSetter;
 }) {
   return (
-    <span className="hero-name__word" data-scroll-fade aria-hidden="true">
+    <span className="hero-name__word" aria-hidden="true">
       {word.split("").map((char, i) => (
         <span
           key={i}
           ref={(el) => onLetterRef(i, el)}
           className="hero-letter"
+          data-scroll-fade
           style={{ display: "inline-block" }}
         >
           {char}
@@ -192,7 +194,7 @@ export function Hero() {
             jonLettersRef.current[i] = el;
           }}
         />
-        <Link
+        <TransitionLink
           href="/me"
           className="hero-circle"
           data-scroll-fade
@@ -218,7 +220,7 @@ export function Hero() {
               </textPath>
             </text>
           </svg>
-        </Link>
+        </TransitionLink>
         <HeroWord
           word="cheng"
           onLetterRef={(i, el) => {

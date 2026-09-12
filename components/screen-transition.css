@@ -1,0 +1,20 @@
+/* Fixed over the whole viewport, not the document — this needs to stay put
+   over whatever's currently scrolled into view, not travel with the page.
+   `pointer-events: none` throughout: the wipe is a purely visual overlay,
+   never a click-blocker, so nothing underneath it (including whatever
+   triggered it) ever becomes unclickable because this happens to be
+   animating on top of it. */
+.screen-transition {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+
+  /* Above the nav (z-index: 1000, components/nav.css) — the wipe needs to
+     cover the menu bar and drawer too, not just page content — but below
+     the global cursor (z-index: 2000, components/cursor/global-cursor.css)
+     so the cursor itself stays visible riding on top of the wipe rather
+     than disappearing under a wall of lime mid-transition. */
+  z-index: 1500;
+}
