@@ -5,7 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { CustomCursor } from "@/components/custom-cursor";
+import { GlobalCursor } from "@/components/cursor/global-cursor";
 import Script from "next/script";
 
 // Display font for bold, oversized moments — currently just the full-screen
@@ -105,7 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <SmoothScroll />
-        <CustomCursor />
+        <GlobalCursor />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

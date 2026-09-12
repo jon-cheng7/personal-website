@@ -21,6 +21,22 @@
      against whatever's under it — the page, or the full lime drawer once
      it's open. */
   z-index: 1000;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* Home's opening beat (components/hero.tsx, via lib/intro-store.ts) hides
+   the icon/label/logo for its opening moment rather than having them just
+   sit there while the wordmark does its own thing — see nav.tsx's own
+   comment on where this attribute's value comes from. The global reduced-
+   motion override in app/globals.css already collapses the transition
+   above to near-zero, so this still resolves correctly (just instantly)
+   for a reduced-motion visitor. */
+.menu-bar[data-intro-hidden="true"] {
+  opacity: 0;
+  transform: translateY(-16px);
+  pointer-events: none;
 }
 
 /* The bar has no background/scrim of its own on desktop's horizontal-scroll

@@ -1,9 +1,187 @@
-me page. mouseLeave and mouseEneter events trigger randomly
+# Custom Cursor System — Architecture & Analysis
+ 
+Written before any implementation, per the spec's own requirement ("only after that analysis should implementation begin"). Grounded in the actual codebase as of Sept 2026: Next 16 / React 19 / TypeScript, GSAP 3.12 + `@gsap/react` (already the site's animation engine — Lenis sync, ScrollTrigger, the nav's liquid wipe, the current simple cursor), no Motion/Framer Motion or SVG-morph library installed yet. The existing simple cursor (`components/custom-cursor.tsx`/`.css` — a lime dot, `mix-blend-mode: difference`, hollow hover-ring) is retired by this work, not extended in place — its hard-won fixes (pointer-fine gating, reduced-motion handling, native-cursor suppression, the "don't fly in from the corner on first move" and "don't flash black transitioning into hover" bugfixes) carry forward into the new system rather than being lost.
+ 
+## 0. Library choice: GSAP + MorphSVGPlugin, no new dependency
+ 
+The spec asks not to assume SVG and not to add a library unless it materially helps. Given what's already in this codebase:
+ 
+- **Position tracking, simple-shape tweening (width/height/border-radius/rotate/skew), and orchestration timelines**: GSAP, already the house animation library here (`lib/gsap.ts`), already proven for exactly this class of problem (the cursor's own prior `quickTo`-driven tracking, the nav's liquid clip-path). No reason to introduce Motion/Framer Motion alongside it — that would mean two animation engines doing overlapping jobs.
+- **True path morphing** (arbitrary silhouette ↔ arbitrary silhouette, where simple width/height/radius interpolation can't produce the shape): GSAP's own **MorphSVGPlugin**. This used to be a paid "Club GreenSock" plugin — but as of GSAP's 2025 acquisition by Webflow, the entire plugin set (MorphSVGPlugin, SplitText, DrawSVG, etc.) is now free for commercial use, ships in the same `gsap` npm package already installed (`^3.12.0`), and needs no license key. Confirmed directly (see Sources): [CSS-Tricks](https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/), [Webflow's own announcement](https://webflow.com/blog/gsap-becomes-free), and a [Codrops piece built specifically around free MorphSVGPlugin demos](https://tympanus.net/codrops/2025/05/14/from-splittext-to-morphsvg-5-creative-demos-using-free-gsap-plugins/). So this is genuinely a zero-new-dependency choice — `import { MorphSVGPlugin } from "gsap/MorphSVGPlugin"`, registered once alongside `ScrollTrigger` in `lib/gsap.ts`.
+- **Media (image/video)**: plain `<img>`/`<video>`, no library — the spec's media requirements (cover-cropping, masking, pooling) are all native CSS/DOM capabilities.
+- **Canvas/WebGL**: deliberately not used for v1. Nothing in the required shape/content vocabulary (geometric forms, arbitrary SVG silhouettes, image/video previews, text) needs pixel-level rendering — SVG and CSS already cover it more cheaply and with better React/accessibility integration. Section 16 (extensibility) explicitly lists WebGL/shader effects as a *future* capability, not a v1 requirement — the architecture below is designed so a WebGL content mode can be added later as one more `CursorContent` variant without touching the shell, tracking, or morph systems at all.
+## 1. System architecture
+ 
+Two tiers, kept deliberately separate (this is what makes "shell vs. content vs. interaction logic" a clean split rather than one tangled component):
+ 
+```
+lib/cursor/                        — no React, no DOM, fully testable in isolation
+  types.ts                         — CursorModeConfig and its parts (the data model, §3)
+  modes.ts                         — named registry: default, link, media, ... (extend here)
+  morph-strategy.ts                — decides CSS-interpolation vs. MorphSVGPlugin per transition
+  store.ts                         — module-level singleton: position/velocity/direction/current
+                                      mode/subscribers — NOT React state (§7 explains why)
+ 
+components/cursor/                 — the one persistent mounted tree + its public API
+  global-cursor.tsx / .css         — the shell: tracking, shape, content, transitions (§2, §8)
+  cursor-target.tsx                — delegated event listener + <CursorTarget> + data-cursor (§10)
+```
+ 
+`app/layout.tsx` mounts `<GlobalCursor />` once, exactly where `<CustomCursor />` is mounted today — global chrome, not page-specific, unchanged from the current architecture's own precedent.
+ 
+## 2. Rendering-layer breakdown
+ 
+One persistent DOM tree, never remounted between states (a hard requirement — §12, §15):
+ 
+```
+<div class="cursor-root">                 fixed, 0×0 anchor — GSAP quickTo x/y only, never resized
+  <div class="cursor-shell">               the shape: GSAP-tweened width/height/radius/rotate/skew
+    <svg class="cursor-shell__svg">        always present, opacity-toggled — only active mid-morph
+      <path/>
+    </svg>
+    <div class="cursor-shell__mask">       clip-path/mask-image target for media & svg-masked content
+      <div class="cursor-content">          independent animation timeline from the shell itself
+        (mode.content: text / icon / media / custom node)
+      </div>
+    </div>
+  </div>
+</div>
+```
+ 
+- `.cursor-root`: position only, exactly like the current cursor's outer 0×0 anchor — no transition of its own, so tracking never lags behind GSAP's own eased tween.
+- `.cursor-shell`: the *shape*. For a `"simple"` mode this is plain `width`/`height`/`border-radius`/`transform` on a div — cheap, no SVG involved, satisfies "do not force all cursor states through expensive SVG path morphing" directly. For a `"svg"` mode, the same div's content is swapped for the (always-mounted) `<svg><path>` — border-radius shapes are converted to an equivalent path just-in-time for a simple→svg transition (§5), so a shape author never hand-writes a path for what's really a rounded rectangle.
+- `.cursor-shell__mask`: exists specifically so a media mode's `<img>`/`<video>` can be `clip-path`'d or `mask-image`'d to the *current* shell shape (including mid-morph), satisfying "the outer cursor form may act as a mask or clipping boundary" (§5 of the spec).
+- `.cursor-content`: content animates on its own GSAP timeline, independent of the shell's own resize/morph tween — satisfies "internal cursor content must be able to animate independently from the outer cursor shape" directly, and is what lets transition choreography (§8) stagger "shell resizes" against "content fades in" rather than forcing them to move in lockstep.
+Compositor note (per §12's explicit ask): only `.cursor-root`'s `transform` is guaranteed compositor-only, exactly like today. `.cursor-shell`'s size/radius tweens are paint work, not composited — acceptable because the shell is always small (tens to low hundreds of px) and short-lived per transition, not continuously animating every frame the way position-tracking is. This tradeoff is called out explicitly, not hidden.
+ 
+## 3. State/data model
+ 
+```ts
+// lib/cursor/types.ts
+export type CursorShape =
+  | { kind: "simple"; width: number; height: number; radius: number | string; rotate?: number; skewX?: number }
+  | { kind: "svg"; path: string; viewBox: string };
+ 
+export type CursorContent =
+  | { kind: "none" }
+  | { kind: "text"; text: string; animation?: "marquee" | "fade" | "none" }
+  | { kind: "icon"; name: string }
+  | { kind: "media"; mediaKind: "image" | "video"; src: string; poster?: string }
+  | { kind: "custom"; render: () => React.ReactNode };
+ 
+export interface CursorTracking {
+  duration?: number;            // spring/ease duration for position, seconds
+  ease?: string;
+  stretchWithVelocity?: boolean; // squash/stretch the shell along the movement vector
+  maxStretch?: number;          // clamp, so fast flicks don't produce absurd aspect ratios
+}
+ 
+export interface CursorAnchor {
+  x: number;                    // 0–1 normalized by default
+  y: number;
+  unit?: "normalized" | "px";
+}
+ 
+export interface CursorModeConfig {
+  shape: CursorShape;
+  content: CursorContent;
+  color?: string;
+  stroke?: { width: number; color: string };
+  tracking?: CursorTracking;
+  anchor?: CursorAnchor;        // default: centered (0.5, 0.5)
+  transitionMs?: number;        // override the default ~250ms shell transition
+}
+```
+ 
+`lib/cursor/modes.ts` exports `CURSOR_MODES: Record<string, CursorModeConfig>` — the reusable named vocabulary (`default`, `link`, `media`, and room for more as pages need them — `drag`, `text-blob`, `cta`, etc., each just one more entry). A `CursorTarget` can also pass a full `CursorModeConfig` inline for a one-off that doesn't belong in the shared registry — same shape, just not named.
+ 
+## 4. Interaction event model
+ 
+One delegated listener triple on `window` (the same delegation pattern the current cursor already uses for `pointerover`/`pointerout` — extended, not replaced):
+ 
+- **`pointerover`**: `event.target.closest("[data-cursor], [data-cursor-target-id], a, button")` resolves the nearest matching ancestor. Bare `a`/`button` with no `data-cursor` default to the `"link"` mode — this preserves today's zero-configuration behavior (every existing nav link/button already gets a cursor reaction with no markup changes) while richer cases opt in explicitly. The resolved config (attribute-parsed, or looked up in a `WeakMap<Element, CursorModeConfig>` populated by `<CursorTarget>`'s mount effect) is pushed to the store, which starts a transition.
+- **`pointerout`**: only reverts to the *previous* mode if `event.relatedTarget` is not still inside the same closest-matched element — this is what keeps nested/overlapping targets (§15) from flickering as the pointer moves between a parent target and one of its children.
+- **`pointermove`**: updates position, and derives velocity/direction from the delta since the last event and the delta time — written straight into the store (no React state), consumed by `GlobalCursor`'s own GSAP ticker callback.
+- **Reliability edge cases** (§15, handled explicitly rather than assumed away):
+  - *Target unmounts mid-transition* (e.g. a route change while hovering a link that's about to disappear): the store re-validates `document.contains(currentTargetEl)` on the next `pointermove`/`pointerover` and falls back to `"default"` if it's gone — never left pointing at a dead element.
+  - *Pointer leaves the viewport / tab switch*: reuses the current cursor's proven `mouseleave`/`mouseenter` hide/show pair verbatim, plus the "don't fly in from a stale position" fix from the previous round (`hasPositioned` reset on hide).
+  - *Rapid hover changes / repeated hovering between adjacent elements*: every `pointerover` retargets the in-flight GSAP timeline (`overwrite: "auto"`) rather than queuing a new one behind it — see §8.
+  - *Media load failure / unavailable preview*: a `media` mode's `<img>`/`<video>` `onerror` swaps the content sub-tree to a plain `"icon"`/`"none"` fallback rather than leaving a broken-image glyph inside the cursor.
+## 5. Morphing strategy
+ 
+`lib/cursor/morph-strategy.ts` is an explicit decision table, not an ad hoc per-call-site choice:
+ 
+| From → To | Technique |
+|---|---|
+| `simple` → `simple` | CSS/GSAP tween of `width`/`height`/`border-radius`/`rotate`/`skewX` only. No SVG touched at all. |
+| `simple` → `svg`, or `svg` → `simple` | The `simple` side is converted to an equivalent rounded-rect SVG path just-in-time (a small helper, `rectToPath()`), then `MorphSVGPlugin` tweens path → path. The `<svg>` layer fades in as the `<div>` shape fades out (or vice versa) so the swap itself is invisible. |
+| `svg` → `svg` | Direct `MorphSVGPlugin` path → path tween — this is what handles "circle → blob", "arrow → custom silhouette," etc. MorphSVGPlugin's own topology normalization (adding points to the simpler path) is what avoids the self-intersection/twisting the spec calls out as unacceptable — this is precisely the problem that plugin exists to solve, rather than something this system reimplements by hand. |
+ 
+Explicitly *not* using MorphSVGPlugin for `simple → simple`: a circle growing into a pill is just `border-radius`/`width` easing, and forcing that through SVG path math would be strictly more expensive for zero visual benefit — directly satisfying the spec's "do not force all cursor states through expensive SVG path morphing if simpler primitives produce an equivalent result."
+ 
+## 6. Media handling strategy
+ 
+- A small pool (module-level, capped — e.g. last 6 distinct `src` values) of pre-mounted, kept-alive `<img>`/`<video>` elements inside `.cursor-content`, addressed by `src`. Switching to an already-pooled source just toggles `opacity`/visibility; a genuinely new source mounts one more pooled element (evicting the least-recently-used past the cap) — this is what satisfies "avoid unnecessary mounting, decoding, and destruction" and "performance should remain acceptable even with multiple project cards."
+- `<video>` elements: `muted`, `playsInline`, `preload="metadata"` until actually the active mode (full `preload="auto"`/`.play()` only once active), `.pause()` immediately on becoming inactive rather than staying decoded in the background.
+- Media fills the shell via `object-fit: cover` and is clipped to `.cursor-shell__mask`'s current shape (border-radius or SVG mask, tracking the shell's own morph in real time — not a separate, disconnected mask).
+- Preload/lazy-load hook: `CursorModeConfig`/`CursorTarget` can carry a `preload?: boolean` a future project grid can flip on for likely-hovered cards ahead of time — the pool already supports it, this is just exposing the knob later, not a structural change.
+## 7. Performance strategy
+ 
+Directly against the spec's explicit list (§12):
+ 
+- **No React state on pointermove, no unnecessary re-renders**: the store (`lib/cursor/store.ts`) is a plain module-level singleton — position, velocity, mode, everything — exactly the pattern this codebase already uses for `lib/chrome-tone.ts` and `lib/lenis-store.ts`. `GlobalCursor` reads it inside a GSAP ticker callback (already running continuously for Lenis/ScrollTrigger sync — one more cheap subscriber, not a new competing loop), never via `useState`/`useSyncExternalStore` on every event.
+- **Compositor-friendly where it matters most**: the one thing that moves every single frame the pointer moves — position — is `transform`-only (§2). Shape/content changes are comparatively rare (only on mode transitions, not per-frame), so their paint cost is bounded and infrequent rather than continuous.
+- **No remounting between states**: the shell/content DOM tree is fixed (§2) — mode changes mutate style/props of already-mounted elements, never swap component trees.
+- **Media**: pooled, not remounted (§6).
+- **`will-change`**: scoped to `.cursor-root`'s `transform` only, not the content or shell layers, to avoid promoting more layers than necessary.
+## 8. Transition orchestration strategy
+ 
+One GSAP timeline per transition, built in `global-cursor.tsx`, phased per the spec's own example sequence:
+ 
+1. Old content fades (fast, ~0.12s) — independent easing from the shell.
+2. Shell begins resizing/morphing in parallel, slightly overlapped with phase 1 (not strictly sequential — waiting for content to fully vanish before the shell even starts moving would read as sluggish).
+3. New content fades in once the shell is substantially through its resize (a labeled position on the timeline, not a fixed delay, so it still lines up correctly if `transitionMs` is overridden per-mode).
+**Interruption handling**: every new `pointerover` calls the same "build/retarget transition" function; GSAP tweens targeting the same properties on the same elements are told `overwrite: "auto"`, so a rapid hover change mid-transition retargets the existing tween toward the new destination rather than queuing a second one behind it or restarting from scratch — this is what keeps "repeated hovering between adjacent interactive elements" (§8, §15) visually stable instead of janky or delayed.
+ 
+## 9. Accessibility strategy
+ 
+- Unchanged from the current, already-proven gating: `window.matchMedia("(pointer: fine)")` checked once at mount (touch/coarse-pointer devices never see any of this, native cursor untouched), `prefers-reduced-motion` collapses the *whole* transition system to instant crossfades — no morph, no stretch/squash, no velocity-reactivity, no spring lag on position — while keeping the cursor itself visible and functional (a static custom cursor is still a legitimate low-motion indicator, the same principle already established in this codebase).
+- **The cursor is never the only signal of interactivity.** Every `CursorTarget`/`data-cursor` element is required to be a real, independently focusable/hoverable element with its own visible `:focus-visible` state (already global in `app/globals.css`, untouched) — keyboard navigation and semantic hover/focus keep working exactly as they do today, regardless of what the cursor is doing.
+- `pointer-events: none` on the entire cursor tree (unchanged from today) — it can never interfere with real hit-testing or clicks.
+## 10. Public API design
+ 
+```tsx
+// Simple, declarative — the common case, zero extra markup for a plain link/button
+// (bare <a>/<button> already default to "link" — this is only needed for a
+// non-default named mode)
+<a href="/art" data-cursor="media" data-cursor-src="/art/preview.jpg">…</a>
+ 
+// Rich, one-off configuration
+<CursorTarget
+  cursor={{
+    shape: { kind: "simple", width: 96, height: 96, radius: "50%" },
+    content: { kind: "media", mediaKind: "video", src: "/projects/demo.mp4" },
+    tracking: { duration: 0.5, stretchWithVelocity: false },
+  }}
+>
+  <ProjectCard … />
+</CursorTarget>
+ 
+// Rich, but reusing a named mode by string
+<CursorTarget cursor="drag">{…}</CursorTarget>
+```
+ 
+`CursorTarget` never touches the global cursor's internals directly — it only registers `(element → config)` into a `WeakMap` on mount and cleans up on unmount, exactly mirroring `registerToneTarget`'s existing shape in this codebase. Presentation components genuinely cannot reach into `GlobalCursor`'s state; the delegated listener is the only thing that reads the registry.
+ 
+## Bottlenecks, tradeoffs, and open risks
+ 
+- **SVG morph is real paint cost, not composited.** Scoped deliberately to *transitions only* (never continuous per-frame tracking, which stays transform-only regardless of shape) — bounded and short-lived, but not free. Flagged rather than hidden, same honesty standard as the rest of this project's docs.
+- **Pooled `<video>` elements decoding while hidden** could matter on low-end devices if the pool cap is set too high — mitigated by pausing every non-active video immediately, but the cap number itself (proposed: 6) is a guess pending real project content to test against.
+- **`CursorTarget`'s WeakMap registry is invisible to a plain `data-cursor` selector** — by design (it's the "richer" tier), but means the two APIs aren't fully interchangeable; a component author has to pick one deliberately per element rather than mixing freely on the same node.
+- **Safari is the standing browser risk**, consistent with this project's own prior experience (the old SVG-filter `backdrop-filter` round) — SVG morph + `mask-image` combinations are historically the least consistently supported corner across engines. Worth real device testing before trusting this fully, same caveat this project attaches to every round.
+- **Conflicting requirements, resolved explicitly**: "low input latency" and "true SVG path morphing" pull in different directions in the abstract — resolved by keeping path-morph strictly to bounded shape *transitions*, never to the continuous per-frame position tracking, so the two requirements don't actually compete in practice.
+- **What's deliberately not built in v1** (§16 explicitly allows this — "do not need to be implemented initially, architecture should not make them difficult to add later"): WebGL/shader content, audio-reactive modes, magnetic/attraction behavior, drag-specific directional-arrow content, scroll-driven modes. Each is one more `CursorContent` variant or one more named mode away, not a rearchitecture — that extensibility is the point of the `CursorContent`/`CursorModeConfig` split.
 
-me page. scroll lock. I need to either remove the padding or prevent user from scrolling there
 
-Test page for ipad media
 
-me page has weird loading when revisiting it. 
 
-spacing on main page between icode and stack

@@ -53,14 +53,12 @@ animation-heavy, highly interactive. The pieces:
 - **`components/scroll-reveal.tsx`** — a real, reusable primitive: fades
   + slides content in once as it scrolls into view. Wrap any section that
   should animate in.
-- **`components/pinned-scrub-example.tsx`** — a reference implementation
-  of the "pin the section, scrub an animation as you scroll through it"
-  pattern used throughout Apple's product pages. This one's a throwaway
-  demo, meant to be copied from / deleted once real sections exist.
-- **`/scroll-demo`** (`app/scroll-demo/page.tsx`) — a scratch page (not in
-  the nav) that puts both of the above on screen so you can actually see
-  and feel the patterns. Visit it directly at `localhost:3000/scroll-demo`.
-  Delete the whole route when it's no longer useful.
+- The old "pin + scrub" reference demo (`components/pinned-scrub-example.tsx`
+  and the `/scroll-demo` route) has been removed now that its pattern is
+  proven out in `components/horizontal-scroll.tsx`. The pattern itself —
+  pin a section, scrub a timeline against `ScrollTrigger`, gate the whole
+  thing behind `prefers-reduced-motion` — is what to copy from if a future
+  section needs its own pinned/scrubbed animation.
 
 Every animated piece here checks `prefers-reduced-motion` and falls back
 to a calm, static state — same rule as everything else on this site. Any
@@ -78,5 +76,4 @@ version everywhere.
 - Any visual design system (colors, type, layout language) — wide open.
 - Tailwind or any CSS framework — not decided; add it if/when you want it.
 - The resume page (planned: auto-synced PDF from a private LaTeX repo).
-- Everything beyond Home + one placeholder page + the scroll-demo
-  reference page.
+- Everything beyond Home + the stand-in About Me / Resume / Art pages.

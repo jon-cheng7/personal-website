@@ -8,6 +8,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { getLenisInstance } from "@/lib/lenis-store";
 import { buildLiquidClipPath, buildLiquidToneBands, LIQUID_WIPE_ROWS } from "@/lib/liquid-clip";
 import { registerToneTarget, requestChromeToneUpdate } from "@/lib/chrome-tone";
+import { subscribeIntroPhase } from "@/lib/intro-store";
 import { navItems } from "@/content/nav";
 import { socialLinks, contactInfo } from "@/content/social";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -51,10 +52,8 @@ function MenuLink({ href, label, scroll, onNavigate }: MenuLinkProps) {
     if (prefersReducedMotion) return;
 
     // Animate the letters of the link label to flip up on hover/focus, and back
-    const letters = wrapper.querySelectorAll(".menu-letter");
     const realLetters = wrapper.querySelectorAll(".menu-link:not(.menu-link-clone) .menu-letter");
     const cloneLetters = wrapper.querySelectorAll(".menu-link-clone .menu-letter");
-
 
     const tl = gsap
       .timeline({ paused: true, defaults: { ease: "power4.out", stagger: 0.03 } })
@@ -170,8 +169,45 @@ export function Nav() {
   // wipe reveals the real destination directly.
   const router = useRouter();
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [isNavigating, startNavigation] = useTransition();
   const pendingNavRef = useRef(false);
+
+  // Home's own opening beat (components/hero.tsx) hides this bar's icon/
+  // label/logo for its opening moment, then reveals them back in — see
+  // lib/intro-store.ts for the cross-component signal this rides on, since
+  // Nav and Hero are siblings under RootLayout with no ref/prop path
+  // between them, and Nav (unlike the page content) never unmounts between
+  // routes.
+  //
+  // The initial value here deliberately does NOT consult the intro store —
+  // it's derived from `isHome` alone. Nav is mounted once and persists
+  // across every client-side navigation, so if it read the store's current
+  // phase here it would only get the *first* visit's hidden-until-revealed
+  // behavior right; a later navigation back to Home (with the store still
+  // sitting at "idle" from the previous visit) would otherwise skip hiding
+  // entirely. The effect below re-derives "hidden" from `isHome` itself on
+  // every pathname change instead, so the chrome hides on every arrival at
+  // Home — matching Hero replaying its own intro on every mount — and the
+  // store is consulted only for the *reveal* signal.
+  const [chromeRevealed, setChromeRevealed] = useState(() => !isHome);
+
+  useEffect(() => {
+    if (!isHome) {
+      setChromeRevealed(true);
+      return;
+    }
+    // Force-hidden here, deliberately not `getIntroPhase() !== "hidden"` —
+    // this needs to hide on every arrival regardless of whatever phase the
+    // store was left in by a previous visit; only Hero's own mount effect
+    // (which always runs on every arrival too, and always starts by
+    // calling setIntroPhase("hidden") itself) is what the subscription
+    // below is waiting to hear the *reveal* half of.
+    setChromeRevealed(false);
+    return subscribeIntroPhase((phase) => {
+      if (phase !== "hidden") setChromeRevealed(true);
+    });
+  }, [isHome]);
 
   const handleLinkNavigate = useCallback(
     (href: string, scroll: boolean) =>
@@ -333,7 +369,7 @@ export function Nav() {
       ref={container}
       data-open={isMenuOpen ? "true" : "false"}
     >
-      <div className="menu-bar">
+      <div className="menu-bar" data-intro-hidden={chromeRevealed ? undefined : "true"}>
         <button
           type="button"
           className="menu-open"

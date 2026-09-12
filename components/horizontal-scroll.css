@@ -37,4 +37,17 @@
     width: 100vw;
     flex: none;
   }
+
+  /* horizontal-scroll.tsx sets `opacity`/`filter` on these every scrub
+     frame as they exit (the "frosted glass" effect) — each panel's own
+     `[data-scroll-fade]` pieces if it marks any (a panel's individual
+     words/pieces fading independently as each nears the edge), or the
+     panel itself if it doesn't (see that file's own doc comment). Hinting
+     `will-change` up front on whichever one actually gets animated keeps
+     the fade from triggering a fresh layer promotion mid-scroll, which is
+     where a filter animation's jank usually comes from. */
+  .horizontal-scroll__track > *,
+  .horizontal-scroll__track [data-scroll-fade] {
+    will-change: opacity, filter;
+  }
 }

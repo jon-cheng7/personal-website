@@ -30,8 +30,13 @@ export default function HomePage() {
         <Hero />
         {fillerSections.map((section) => (
           <section key={section.heading} aria-label={section.heading}>
-            <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+            {/* data-scroll-fade: opts each piece into horizontal-scroll.tsx's
+                per-element exit fade individually, same as hero.tsx's words/
+                circle — swap for whatever real content replaces this
+                placeholder and keep the attribute on each independently-
+                fading piece. */}
+            <h2 data-scroll-fade>{section.heading}</h2>
+            <p data-scroll-fade>{section.body}</p>
           </section>
         ))}
       </HorizontalScroll>
