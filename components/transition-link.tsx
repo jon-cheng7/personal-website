@@ -4,9 +4,6 @@ import Link, { type LinkProps } from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import {
   useCallback,
-  useEffect,
-  useRef,
-  useTransition,
   type AnchorHTMLAttributes,
   type MouseEvent,
   type ReactNode,
@@ -41,30 +38,21 @@ type TransitionLinkProps = LinkProps &
  * beyond that swap. Everything the transition needs — where to radiate
  * from, when the destination is actually ready — is figured out here.
  *
- * Sequencing mirrors components/nav.tsx's own link handling exactly (see
- * that file's own long comment on why `useTransition` is the right tool):
- * intercept the click, start the cover animation from the cursor's current
- * position, kick off `router.push` wrapped in `startTransition` once cover
- * finishes, and only reveal once React's `isPending` flips back to `false`
- * — which only happens once the destination route has actually fetched and
- * mounted, so the reveal always uncovers the real page, never a still-
- * loading placeholder. The one difference from Nav: there, "close the
- * drawer" is the reveal; here, the wipe overlay itself is the thing
- * covering the page, so the reveal is the wipe opening rather than a
- * separate UI element closing.
+ * Sequencing intercepts the click, then hands the whole cover → navigate →
+ * reveal sequence to `getScreenTransition()?.navigate(...)` — see that
+ * method's own doc comment on lib/screen-transition-store.ts's
+ * ScreenTransitionController for why it has to be that component, not this
+ * one, that owns waiting for `router.push`'s own `isPending` to clear: THIS
+ * component is rendered by the page content the navigation is about to
+ * replace, so it unmounts partway through, before its own `isPending`
+ * could ever be observed going back to `false`. (This file used to run
+ * that whole sequence itself, copying components/nav.tsx's own version of
+ * the same pattern — Nav can get away with owning it because `<Nav>`,
+ * unlike this link's own page content, never unmounts between routes.)
  */
 export function TransitionLink({ href, onClick, children, ref, ...rest }: TransitionLinkProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [isPending, startNavigation] = useTransition();
-  const pendingRef = useRef(false);
-
-  useEffect(() => {
-    if (!isPending && pendingRef.current) {
-      pendingRef.current = false;
-      getScreenTransition()?.reveal();
-    }
-  }, [isPending]);
 
   const handleClick = useCallback(
     (event: MouseEvent<HTMLAnchorElement>) => {
@@ -102,12 +90,7 @@ export function TransitionLink({ href, onClick, children, ref, ...rest }: Transi
 
       event.preventDefault();
       const { x, y } = getPointerState();
-      pendingRef.current = true;
-      transition.cover({ x, y }).then(() => {
-        startNavigation(() => {
-          router.push(targetHref);
-        });
-      });
+      transition.navigate({ x, y }, () => router.push(targetHref));
     },
     [href, onClick, pathname, router],
   );

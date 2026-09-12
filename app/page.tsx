@@ -27,7 +27,7 @@ const fillerSections = [
 export default function HomePage() {
   return (
     <>
-      <HorizontalScroll>
+      <HorizontalScroll fadeBarrier={0.08} fadeDiffusion={0.35} fadeMaxBlur={14}>
         <Hero />
         {fillerSections.map((section) => (
           <section key={section.heading} aria-label={section.heading}>

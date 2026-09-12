@@ -2,6 +2,7 @@
 
 import { useRef, type ReactNode } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { subscribeIntroPhase } from "@/lib/intro-store";
 import "./horizontal-scroll.css";
 
 interface HorizontalScrollProps {
@@ -58,6 +59,11 @@ interface FadeTarget {
   /** This element's own max-blur override (px), or `null` to use the
    * panel-wide default. */
   maxBlurPx: number | null;
+  /** The `exitProgress` this target was last painted at, or `-1` (an
+   * impossible progress value) right after a fresh measurement so the
+   * very next frame always paints regardless of what it computes. See
+   * `applyExitFade`'s own doc comment for why this exists. */
+  lastProgress: number;
 }
 
 function parseFloatAttr(el: HTMLElement, name: string): number | null {
@@ -180,11 +186,71 @@ export function HorizontalScroll({
               restLeft,
               diffusion: parseFloatAttr(el, "data-scroll-fade-diffusion"),
               maxBlurPx: parseFloatAttr(el, "data-scroll-fade-blur"),
+              lastProgress: -1,
             };
           });
         };
         measureFadeTargets();
 
+        // Home's Hero runs its own opening animation (components/hero.tsx)
+        // that starts every letter at a scaled-down (0.42x), translated-
+        // to-viewport-center position and only settles into its real
+        // resting layout over the following ~1-2s timeline — including a
+        // separate `columnGap: 0 -> restingColumnGap` step that keeps
+        // shifting "cheng" (the word AFTER the gap) rightward even after
+        // the scale/position settle, with no equivalent shift for "Jon"
+        // (before the gap). Since this component's own effect runs AFTER
+        // Hero's own (React runs a child's effects before its parent's,
+        // and Hero is a child of this component via `children`), the
+        // `measureFadeTargets()` call just above unavoidably runs while
+        // `.hero-name` is still sitting at that scaled-down starting pose,
+        // not its resting one: scaling the whole name block down around
+        // its own center pulls "Jon" (left of center) rightward and
+        // "cheng" (right of center) leftward relative to where they
+        // actually rest, so the cached `restLeft` this component uses for
+        // the fade is wrong in opposite directions for the two words,
+        // before the columnGap step skews "cheng" further still.
+        //
+        // Re-measuring once Hero's own intro reports itself fully "idle"
+        // (lib/intro-store.ts — the same signal components/nav.tsx already
+        // waits on to reveal its own chrome back in) corrects this without
+        // this component needing to know anything Hero-specific beyond
+        // that one shared, generic signal — and it's a harmless no-op on
+        // any page with no Hero panel at all, since the phase then simply
+        // never leaves its "idle" default and this callback never fires
+        // (subscribeIntroPhase only calls back on an actual change, not
+        // the current value at subscribe time).
+        const unsubscribeIntro = subscribeIntroPhase((phase) => {
+          if (phase !== "idle") return;
+          measureFadeTargets();
+          applyExitFade();
+        });
+
+        // Writes `target.el.style` directly rather than `gsap.set(target.el,
+        // {...})` — this used to go through GSAP, which is the right tool
+        // when something needs GSAP's own easing/sequencing, but neither
+        // applies here: `exitProgress` below is already the fully-computed
+        // per-frame value, so there's nothing left for a tween to
+        // interpolate. What `gsap.set()` actually costs, that a plain style
+        // write doesn't, is a real (if zero-duration) Tween object created
+        // and registered with this component's own useGSAP context on
+        // EVERY call — fine at the old per-panel granularity (a handful of
+        // calls per scrub frame) but not at per-letter granularity, where a
+        // single scroll gesture across a text-heavy panel can rack up many
+        // thousands of these in seconds. useGSAP's automatic cleanup has to
+        // revert/kill everything the context ever created in one shot on
+        // unmount, and GSAP's own internals hit a hard JS-engine limit on
+        // how many arguments a single function call can take once that
+        // backlog gets large enough — surfacing as "RangeError: too many
+        // arguments provided for a function call" the moment you navigate
+        // away (exactly when the context tries to revert everything it
+        // tracked). All those short-lived Tween objects were also real
+        // allocation + GC pressure on their own, independent of the crash —
+        // a second, quieter cost of the same root cause, which is why
+        // scrolling itself had been getting laggier the longer a session
+        // ran. A direct style write has none of this: it's exactly the
+        // work of setting two CSS properties, nothing tracked, nothing to
+        // revert.
         const applyExitFade = () => {
           const currentX = (gsap.getProperty(track, "x") as number) || 0;
           const barrierX = window.innerWidth * fadeBarrier;
@@ -204,13 +270,39 @@ export function HorizontalScroll({
               1,
               (barrierX - left) / diffusionPx,
             );
-            gsap.set(target.el, {
-              opacity: 1 - exitProgress,
-              filter:
-                exitProgress > 0
-                  ? `blur(${(exitProgress * maxBlurPx).toFixed(2)}px)`
-                  : "none",
-            });
+            // Most letters, at any given scroll position, are either
+            // sitting untouched well inside the panel (exitProgress
+            // pinned at 0) or long since fully exited (pinned at 1) —
+            // only the handful actually inside the diffusion band right
+            // now have a progress that's genuinely still changing frame
+            // to frame. Skipping the write entirely when nothing's
+            // changed since last frame turns "hundreds of style writes
+            // every scrub tick" into "just the few elements actually
+            // animating right now."
+            if (exitProgress === target.lastProgress) continue;
+            const wasActive = target.lastProgress > 0 && target.lastProgress < 1;
+            const isActive = exitProgress > 0 && exitProgress < 1;
+            target.lastProgress = exitProgress;
+
+            target.el.style.opacity = exitProgress === 0 ? "" : String(1 - exitProgress);
+            target.el.style.filter =
+              exitProgress > 0 ? `blur(${(exitProgress * maxBlurPx).toFixed(2)}px)` : "";
+
+            // `will-change` promotes an element to its own GPU compositing
+            // layer — worth it for the few letters actively fading right
+            // now, but the previous CSS rule applied it to EVERY
+            // `[data-scroll-fade]` element unconditionally, all the time —
+            // at letter granularity, hundreds of permanent layers for
+            // elements that were nowhere near the barrier at any given
+            // moment, which is its own significant chunk of the reported
+            // lag independent of the tween-object issue above. Toggling it
+            // on only while an element is actually inside the diffusion
+            // band, and back off once it settles at either end, keeps the
+            // promoted-layer count proportional to what's really
+            // animating.
+            if (isActive !== wasActive) {
+              target.el.style.willChange = isActive ? "opacity, filter" : "";
+            }
           }
         };
 
@@ -240,13 +332,19 @@ export function HorizontalScroll({
         // vertical-stack fallback never inherits a stuck fade/blur from
         // whatever scroll position the horizontal mode was left at.
         return () => {
+          unsubscribeIntro();
           window.removeEventListener("resize", handleResize);
           tween.scrollTrigger?.kill();
           tween.kill();
-          gsap.set(
-            fadeTargets.map((t) => t.el),
-            { clearProps: "opacity,filter" },
-          );
+          // Matches applyExitFade's own direct style writes above (plain
+          // property resets, not `gsap.set(..., {clearProps})`) — nothing
+          // here was ever a GSAP tween to clear, just inline styles to
+          // blank back out.
+          for (const target of fadeTargets) {
+            target.el.style.opacity = "";
+            target.el.style.filter = "";
+            target.el.style.willChange = "";
+          }
         };
       },
     );

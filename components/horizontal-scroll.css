@@ -38,16 +38,22 @@
     flex: none;
   }
 
-  /* horizontal-scroll.tsx sets `opacity`/`filter` on these every scrub
-     frame as they exit (the "frosted glass" effect) — each panel's own
-     `[data-scroll-fade]` pieces if it marks any (a panel's individual
-     words/pieces fading independently as each nears the edge), or the
-     panel itself if it doesn't (see that file's own doc comment). Hinting
-     `will-change` up front on whichever one actually gets animated keeps
-     the fade from triggering a fresh layer promotion mid-scroll, which is
-     where a filter animation's jank usually comes from. */
-  .horizontal-scroll__track > *,
-  .horizontal-scroll__track [data-scroll-fade] {
-    will-change: opacity, filter;
-  }
+  /* horizontal-scroll.tsx sets `opacity`/`filter` on these as they exit
+     (the "frosted glass" effect) — each panel's own `[data-scroll-fade]`
+     pieces if it marks any (a panel's individual words/letters fading
+     independently as each nears the edge), or the panel itself if it
+     doesn't (see that file's own doc comment).
+
+     `will-change` is intentionally NOT set here as a blanket rule anymore
+     — at whole-panel granularity that was a handful of elements and cheap
+     to promote all the time, but at letter granularity a page can have
+     hundreds of `[data-scroll-fade]` elements, and permanently promoting
+     every single one to its own GPU compositing layer regardless of
+     whether it's anywhere near the fade barrier at the moment was itself
+     a real source of scroll jank — plenty of idle layers, most of them
+     never actually animating. horizontal-scroll.tsx now toggles
+     `will-change` on an element's own inline style only while it's
+     actively inside the diffusion band, and clears it once the element
+     settles fully visible or fully faded — see that file's own
+     `applyExitFade` for the exact logic. */
 }

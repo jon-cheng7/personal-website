@@ -198,6 +198,7 @@ export function Hero() {
           href="/me"
           className="hero-circle"
           data-scroll-fade
+          data-cursor="enter"
           ref={circleRef}
           aria-label="More about me"
           onMouseEnter={() => setRimTimeScale(RIM_HOVER_TIMESCALE, 0.4)}

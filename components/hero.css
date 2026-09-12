@@ -2,19 +2,10 @@
   position: relative;
 }
 
-/* .horizontal-scroll__track > * (horizontal-scroll.css) centers every
-   panel's content vertically by default — overridden here, for this panel
-   specifically, so the wordmark sits low in the frame (per the mockup)
-   with the scroll cue anchored under it, rather than dead-center. The
-   extra selector specificity (rather than just `.hero`) is what guarantees
-   this wins regardless of which of the two stylesheets happens to load
-   second. */
 .horizontal-scroll__track > .hero {
   justify-content: flex-end;
   padding-bottom: clamp(1rem, 0vh, 0rem);
 }
-
-/* ---- the "jon [circle] cheng" wordmark ---- */
 
 .hero-name {
   --hero-size: clamp(2rem, 18vw, 18rem);
@@ -29,10 +20,6 @@
   
 }
 
-/* Standard visually-hidden pattern — present for assistive tech, invisible
-   on screen. The one accessible reading of "jon cheng" as plain text; see
-   hero.tsx's own comment on why the animated letters below are a decorative
-   aria-hidden duplicate instead of the real heading content. */
 .hero-name__sr-only {
   position: absolute;
   width: 1px;
@@ -63,32 +50,6 @@
   line-height: 1;
 }
 
-/* ---- the accent circle / "more about me" link ---- */
-
-/* Sized in `em` against `.hero-name`'s own font-size (inherited, since this
-   is a flex child of it) rather than a fixed clamp() of its own — keeps the
-   circle in scale with the wordmark at any viewport width for free, with no
-   separate breakpoint math to keep in sync with the text's own clamp().
-
-   Deliberately kept as a NORMAL flex item of `.hero-name`, not taken out of
-   flow — an earlier version made this `position: absolute` (centered on
-   `.hero-name`'s own 50% midpoint) to solve the "space reserved for an
-   invisible circle" bug, but that broke the *other* thing flex layout was
-   quietly doing for free: "Jon" and "cheng" aren't the same width, so the
-   container's geometric midpoint isn't the same point as the actual gap
-   between the two words — absolute-positioning at 50% left the circle
-   sitting wherever the container's center happened to fall (visibly inside
-   "cheng"), not between the words. A real flex item, by contrast, always
-   sits exactly at the row's actual gap between its neighbors, however
-   uneven their widths are — flexbox does that math, not us.
-
-   The "space reserved even while invisible" bug is solved differently
-   instead: hero.tsx animates `.hero-name`'s own `column-gap` from 0 up to
-   its resting value in sync with this circle scaling in from 0, rather than
-   removing the circle from the row. At `column-gap: 0` the two words sit
-   flush together with no dead space, regardless of this element's own
-   (tiny, scaled-to-0) footprint — and growing the gap and this circle
-   together is what reads as the circle "pushing" the words apart. */
 .hero-circle {
   position: relative;
   flex-shrink: 0;
@@ -99,11 +60,6 @@
   overflow: hidden;
   display: block;
 
-  /* Baseline nudge — sits slightly below the words' vertical center to line
-     up with their baseline rather than their exact midline. GSAP only ever
-     animates `scale` on this element (see hero.tsx), so this static
-     translate is safe: GSAP reads it once via getComputedStyle, decomposes
-     it into its own x/y, and preserves it under every later scale tween. */
   transform: translate(0, 0.12em);
 }
 
@@ -122,26 +78,7 @@
   letter-spacing: 0.05em;
 }
 
-/* No separate mobile layout for this composition yet — Jon's home page is
-   headed toward the mobile and desktop views being genuinely different
-   experiences rather than one squeezed into the other's shape (matchMedia-
-   gated per components/horizontal-scroll.tsx's own precedent), so this
-   waits for that pass rather than a stacked-column stand-in now: a column
-   layout would need `row-gap` doing the same 0-to-resting animation
-   `column-gap` does here, and a circle sized/positioned for a vertical gap
-   instead of a horizontal one — a real mobile treatment, not a quick media
-   query on top of the desktop one. */
 
-/* Sits near the bottom of the hero panel (which is itself the full-viewport
-   first panel of .horizontal-scroll__track, see horizontal-scroll.css) —
-   positioned relative to the hero section itself rather than the viewport,
-   so it stays tied to the hero specifically if this component is ever
-   reused somewhere that isn't a full-height panel. Uses `currentColor`
-   throughout rather than a hardcoded color, inheriting the hero's own
-   white-on-black text color (see "Decision: home page" in the project
-   doc) automatically — no dark/light-mode token needed here, since that
-   black background is a fixed design choice independent of the site-wide
-   theme (see globals.css's color-token comment). */
 .scroll-cue {
   position: absolute;
   left: 50%;
@@ -151,9 +88,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.6em;
-  /* Hidden by default now (see scroll-cue.tsx's idle-fade-in logic) rather
-     than visible-by-default-fading-out — .is-visible is what actually
-     reveals it. */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
@@ -173,10 +107,6 @@
   opacity: 0.8;
 }
 
-/* A short vertical track with one small mark traveling down it on a loop —
-   a quiet nod to the liquid wipe used elsewhere in the nav (lib/liquid-
-   clip.ts) rather than a generic bouncing chevron, since Jon's asked for
-   this to feel "gentle" rather than attention-grabbing. */
 .scroll-cue__track {
   position: relative;
   width: 1px;
@@ -212,17 +142,8 @@
   }
 }
 
-/* The global reduced-motion override in app/globals.css already zeroes
-   this animation's duration, which would otherwise leave the thumb
-   flickering at 100 iterations/sec rather than settled anywhere — pin it
-   to a single resting position instead so reduced-motion visitors still
-   get a legible (just static) scroll cue rather than a glitchy one. */
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue__thumb {
-    /* The global override in globals.css only shortens this animation's
-       duration to near-zero (so it still technically runs, just fast
-       enough to flicker) — explicitly removing it here is what actually
-       settles the thumb at one static, legible position. */
     animation: none;
     top: 30%;
     opacity: 1;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useTransition } from "react";
 import { gsap } from "@/lib/gsap";
 import {
   registerScreenTransition,
@@ -49,6 +49,31 @@ export function ScreenTransition() {
   const maskCircleRef = useRef<SVGCircleElement>(null);
   const originRef = useRef<ScreenTransitionOrigin>({ x: 0, y: 0 });
   const maxRadiusRef = useRef(0);
+
+  // Owns the "wait for the pushed route to actually finish mounting, then
+  // reveal" half of `navigate()` below — see that method's own doc comment
+  // on lib/screen-transition-store.ts's ScreenTransitionController for the
+  // full reasoning. Short version: this state has to live on THIS
+  // component specifically, because it's the one thing guaranteed to still
+  // be mounted once the navigation it's driving actually completes — the
+  // link that triggered it (components/transition-link.tsx) isn't.
+  const [isPending, startNavigation] = useTransition();
+  const pendingRevealRef = useRef(false);
+  // Sidesteps effect-closure staleness: `reveal` itself is defined fresh
+  // inside the OTHER effect below (it needs the same DOM refs `cover` and
+  // `animateRadius` do), but this effect only needs whichever `reveal` is
+  // CURRENT when isPending actually goes false, not a fixed one captured
+  // at some earlier render — a ref is the standard way to bridge that
+  // without folding both effects into one (which would otherwise have to
+  // re-run, pointlessly, on every isPending flip).
+  const revealRef = useRef<() => Promise<void>>(() => Promise.resolve());
+
+  useEffect(() => {
+    if (!isPending && pendingRevealRef.current) {
+      pendingRevealRef.current = false;
+      revealRef.current();
+    }
+  }, [isPending]);
 
   useEffect(() => {
     const prefersReducedMotion = () =>
@@ -109,10 +134,22 @@ export function ScreenTransition() {
       if (circle) circle.setAttribute("fill", "black"); // …except the growing hole
       return animateRadius(REVEAL_DURATION);
     }
+    revealRef.current = reveal;
 
-    registerScreenTransition({ cover, reveal });
+    function navigate(origin: ScreenTransitionOrigin, pushRoute: () => void): void {
+      cover(origin).then(() => {
+        pendingRevealRef.current = true;
+        // `startNavigation` (this component's OWN `useTransition`, not the
+        // caller's) is what makes the isPending-watching effect above fire
+        // reliably — see the doc comment on ScreenTransitionController's
+        // `navigate` for why it has to be this component's own transition.
+        startNavigation(pushRoute);
+      });
+    }
+
+    registerScreenTransition({ cover, reveal, navigate });
     return () => registerScreenTransition(null);
-  }, []);
+  }, [startNavigation]);
 
   return (
     <svg className="screen-transition" aria-hidden="true">

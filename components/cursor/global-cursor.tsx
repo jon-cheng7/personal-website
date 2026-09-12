@@ -237,6 +237,44 @@ export function GlobalCursor() {
     });
   }, []);
 
+  // ---- idle motion (e.g. "enter" mode's bob, lib/cursor/modes.ts) ----
+  // A small continuous animation of the shape layer for as long as the
+  // active mode declares one — entirely separate from the shape-transition
+  // timeline below (that one only ever plays once, on the change into or
+  // out of a mode) and from the tick()/tracking motion above (those target
+  // `rotate`/`scaleX`/`scaleY` and `x`/`y` on `root` respectively; this
+  // tweens `y` on `stretch`, so nothing here fights either of them for the
+  // same property). Runs on `stretch` — the shell/svg/content all move
+  // together as one unit, which matters for any future mode that pairs a
+  // bob with actual content, though every current use (`enter`) has none.
+  // Rebuilt on every mode change and always killed with its `y` reset back
+  // to 0 first, so switching from a bobbing mode to a non-bobbing one never
+  // leaves a stray vertical offset sitting on the shell. Skipped under
+  // reduced motion — same "static end state, not a slowed-down version of
+  // it" rule this codebase applies everywhere else motion is ambient
+  // rather than a direct response to input (see components/hero.tsx's own
+  // rim-rotation gate for the same pattern).
+  useEffect(() => {
+    const stretch = stretchRef.current;
+    const idle = mode.idleMotion;
+    if (!stretch || !idle) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const amplitude = idle.amplitude ?? 4;
+    const durationS = idle.durationS ?? 1.4;
+
+    const tween = gsap.fromTo(
+      stretch,
+      { y: -amplitude },
+      { y: amplitude, duration: durationS / 2, ease: "sine.inOut", yoyo: true, repeat: -1 },
+    );
+
+    return () => {
+      tween.kill();
+      gsap.set(stretch, { y: 0 });
+    };
+  }, [mode]);
+
   // ---- the shape/content transition itself: one GSAP timeline per mode
   // change, built fresh (killing any still-running one) so a rapid mode
   // change mid-transition retargets cleanly rather than queuing behind

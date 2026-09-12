@@ -14,6 +14,7 @@ import { socialLinks, contactInfo } from "@/content/social";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ChromeToneMask } from "@/components/chrome-tone-mask";
 import "./nav.css";
+import { TransitionLink } from "./transition-link";
 
 
 interface MenuLinkProps {
@@ -411,7 +412,7 @@ export function Nav() {
               actually show is entirely down to the clip-path the geometry
               system (lib/chrome-tone.ts) applies to each — not this
               markup. */}
-          <Link href="/" scroll={false}>
+          <TransitionLink href="/" scroll={false}>
             <span ref={logoMaskRef} className="menu-logo-mask">
               <Image
                 ref={logoLightOnDarkRef}
@@ -431,7 +432,7 @@ export function Nav() {
                 className="menu-logo-copy menu-logo-copy--dark-on-light"
               />
             </span>
-          </Link>
+          </TransitionLink>
         </div>
       </div>
 

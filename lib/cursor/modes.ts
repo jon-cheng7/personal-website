@@ -1,5 +1,12 @@
 import type { CursorModeConfig } from "./types";
-import { ARROW_DIFFERENCE, DOT_DIFFERENCE, PREVIEW_DIFFERENCE, RING_DIFFERENCE, STAR } from "./shapes";
+import {
+  ARROW_DIFFERENCE,
+  DOT_DIFFERENCE,
+  ENTER_ARROW_DIFFERENCE,
+  PREVIEW_DIFFERENCE,
+  RING_DIFFERENCE,
+  STAR,
+} from "./shapes";
 
 
 export const CURSOR_MODES: Record<string, CursorModeConfig> = {
@@ -40,7 +47,21 @@ export const CURSOR_MODES: Record<string, CursorModeConfig> = {
     ease: "power3",
   },
 },
-    
+
+  // Home's circular "more about me" link (components/hero.tsx) — a single,
+  // specific target, so a bespoke "go into this" shape rather than the
+  // generic "link" ring. The arrow itself always points down (see
+  // lib/cursor/shapes.ts's ENTER_ARROW comment on why nothing here ever
+  // rotates it); `idleMotion` layers a gentle, continuous vertical bob on
+  // top of that static orientation for as long as this mode stays active,
+  // read as "there's more below, come on in" rather than a static glyph.
+  enter: {
+    shape: ENTER_ARROW_DIFFERENCE,
+    content: { kind: "none" },
+    color: "#c5fb45",
+    tracking: { duration: 0.3, ease: "power3" },
+    idleMotion: { type: "bob", amplitude: 4, durationS: 1.4 },
+  },
 };
 
 /** Resolves a `CursorModeRef` (a named mode, or an inline config already

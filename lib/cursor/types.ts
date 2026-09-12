@@ -130,6 +130,27 @@ export interface CursorModeConfig {
    * lib/cursor/media-pool.ts) — a knob for a future project grid to flip
    * on for likely-hovered cards. Unused by anything yet. */
   preload?: boolean;
+  /** A small continuous animation applied to the shape's own paint layer
+   * (shell + svg + content together, as one unit) for as long as this mode
+   * stays active — entirely independent of both the one-shot shell
+   * transition above (which only ever plays once, on the change into or
+   * out of this mode) and `tracking`'s pointer-following motion / the
+   * velocity-driven squash-stretch (see global-cursor.tsx's dedicated
+   * effect: those tween different properties on the same element, so
+   * nothing here conflicts with them). Currently only a vertical "bob"
+   * exists; omitted — the default for every existing mode — means the
+   * shape stays perfectly still. Skipped under `prefers-reduced-motion`,
+   * same rule this codebase applies everywhere else motion is ambient
+   * rather than a direct response to input (see components/hero.tsx's rim
+   * rotation for the same pattern). */
+  idleMotion?: {
+    type: "bob";
+    /** Peak vertical travel, in px, in each direction from center.
+     * Defaults to 4. */
+    amplitude?: number;
+    /** Seconds for one full down-and-up cycle. Defaults to 1.4. */
+    durationS?: number;
+  };
 }
 
 /** A `CursorTarget`/`data-cursor` can reference a named mode by string, or

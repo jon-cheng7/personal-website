@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import "./not-found-scene.css";
+import { TransitionLink } from "./transition-link";
 
 // A handful of lines instead of "404 — Page Not Found" — Jon's ask was for
 // someone who lands here to be pleasantly surprised, not just informed.
@@ -154,9 +155,9 @@ export function NotFoundScene() {
       <p className="not-found__timer">
         Time spent lost here: {formatSeconds(secondsLost)}
       </p>
-      <Link href="/" className="not-found__home">
+      <TransitionLink href="/" className="not-found__home">
         Take me home →
-      </Link>
+      </TransitionLink>
     </section>
   );
 }
