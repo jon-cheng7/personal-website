@@ -1,0 +1,11 @@
+/* <ScrollMotion> — see components/scroll-motion.tsx. The wrapper has no
+   look of its own; size/position it via className (it should hug the
+   element it wraps, so lock alignment refers to the right box). */
+
+/* Desktop horizontal mode: an element with an entrance starts hidden until
+   JS has applied its scroll state, so it never flashes before animating in. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .scroll-motion[data-motion-enter]:not([data-motion-ready]) {
+    opacity: 0;
+  }
+}

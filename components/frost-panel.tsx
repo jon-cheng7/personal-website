@@ -1,8 +1,16 @@
 "use client";
 
-import { useRef, type HTMLAttributes, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { resolveScrollPoint, type ScrollPoint } from "@/lib/scroll-bound";
+import { usePlace, type Length } from "@/components/stage";
 import "./frost-panel.css";
 
 // ---------------------------------------------------------------------------
@@ -26,7 +34,8 @@ import "./frost-panel.css";
 // page's horizontal speed (1 = moves with the page, 0 = pinned to the
 // screen, 0.4 = the portrait's lingering drift). `anchor` is the scroll
 // position at which the parallax offset is zero (default: midway between
-// fully-in and starting to leave). With `centerAtAnchor`, the panel is also
+// fully-in and starting to leave — or, inside a <Place at=…>, that moment).
+// With `centerAtAnchor`, the panel is also
 // shifted so that at `anchor` it sits dead-center on screen, wherever it
 // happens to be in the page's layout — so its timing (scroll ranges) and its
 // placement can't drift apart on different screen sizes.
@@ -61,7 +70,49 @@ export type FrostParallax = {
   centerAtAnchor?: boolean;
 };
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+/** Cursor-reactive hover effect.
+ * - "glow":    a soft spotlight that follows the cursor across the card,
+ *              plus a brighter highlight on the border nearest the cursor.
+ * - "shimmer": the same, but the light is an iridescent, slowly turning
+ *              color wash (palette via `--frost-panel-shimmer`).
+ * - false / omitted: off — no extra DOM, no listeners, zero cost. */
+export type FrostHover = false | "glow" | "shimmer";
+
+/** Look & size. Every prop maps to a CSS custom property (see
+ * frost-panel.css), so the same things can also be set from a stylesheet
+ * via className — props win, being inline. */
+export type FrostLook = {
+  width?: Length;
+  height?: Length;
+  padding?: Length;
+  radius?: Length;
+  /** Fill color (any CSS color). */
+  background?: string;
+  /** Fill opacity 0–1 — the FILL only; text stays fully opaque. (Element
+   * opacity is reserved for the scroll frost animation.) */
+  backgroundOpacity?: number;
+  /** Text color. */
+  color?: string;
+  /** Border color, or `false` for no border. */
+  borderColor?: string | false;
+  borderWidth?: Length;
+  /** Frosted-glass blur of whatever is BEHIND the card, in px (pairs well
+   * with a low `backgroundOpacity`). Off unless set: backdrop-filter is
+   * the single most expensive thing here, so it's strictly opt-in. */
+  glass?: number;
+  hover?: FrostHover;
+  /** Hover light color ("glow" mode). */
+  hoverColor?: string;
+  /** Hover light diameter. */
+  hoverSize?: Length;
+  /** Hover light strength 0–1. */
+  hoverIntensity?: number;
+  /** Seconds the light trails the cursor (0 = glued to it). */
+  hoverLag?: number;
+};
+
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "children" | "color"> &
+  FrostLook & {
   children?: ReactNode;
   /** Scroll range over which it frosts IN (reverse of the exit). */
   enter?: FrostRange;
@@ -83,14 +134,35 @@ export function FrostPanel({
   parallax,
   smoothing = DEFAULT_SMOOTHING,
   maxBlur = DEFAULT_MAX_BLUR_PX,
+  width,
+  height,
+  padding,
+  radius,
+  background,
+  backgroundOpacity,
+  color,
+  borderColor,
+  borderWidth,
+  glass,
+  hover = false,
+  hoverColor,
+  hoverSize,
+  hoverIntensity,
+  hoverLag = 0.35,
   className,
+  style,
   ...rest
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  useHoverLight(ref, hover, hoverLag);
+  // Inside a <Place at=…>: that scroll moment is when this panel is
+  // centered on screen, so it's the natural parallax anchor (zero offset
+  // exactly there) unless `parallax.anchor` says otherwise.
+  const placeAt = usePlace().at;
 
   // Serialisable config → stable dependency key (props may be fresh object
   // literals every render, which would otherwise rebuild the tween).
-  const configKey = JSON.stringify([enter, exit, parallax, smoothing, maxBlur], (_, v) =>
+  const configKey = JSON.stringify([enter, exit, parallax, smoothing, maxBlur, placeAt], (_, v) =>
     typeof v === "function" ? String(v) : v,
   );
 
@@ -137,7 +209,9 @@ export function FrostPanel({
           const anchor =
             parallax?.anchor !== undefined
               ? resolveScrollPoint(parallax.anchor)
-              : enter && exit
+              : placeAt !== undefined
+                ? resolveScrollPoint(placeAt)
+                : enter && exit
                 ? (enterE + exitS) / 2
                 : enter
                   ? enterE
@@ -243,6 +317,25 @@ export function FrostPanel({
     { scope: ref, dependencies: [configKey], revertOnUpdate: true },
   );
 
+  const px = (v: Length | undefined) =>
+    v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;
+  const vars = {
+    "--frost-panel-width": px(width),
+    "--frost-panel-height": px(height),
+    "--frost-panel-pad": px(padding),
+    "--frost-panel-radius": px(radius),
+    "--frost-panel-bg": background,
+    "--frost-panel-bg-opacity": backgroundOpacity,
+    "--frost-panel-fg": color,
+    "--frost-panel-border-color": borderColor === false ? "transparent" : borderColor,
+    "--frost-panel-border-width": borderColor === false ? "0px" : px(borderWidth),
+    "--frost-panel-glass": glass !== undefined ? `${glass}px` : undefined,
+    "--frost-panel-glow-color": hoverColor,
+    "--frost-panel-glow-size": px(hoverSize),
+    "--frost-panel-glow-intensity": hoverIntensity,
+    ...style,
+  } as CSSProperties;
+
   return (
     <div
       ref={ref}
@@ -250,9 +343,127 @@ export function FrostPanel({
       // Lets CSS hide it until JS has applied its scroll state, so a panel
       // that should start frosted never flashes visible first.
       data-frost-enter={enter ? "" : undefined}
+      data-glass={glass ? "" : undefined}
+      data-hover-fx={hover || undefined}
+      style={vars}
       {...rest}
     >
-      {children}
+      {hover && (
+        <>
+          {/* Fill light: clipped to the card. */}
+          <span className="frost-panel__fx" aria-hidden="true">
+            <span className="frost-panel__light">
+              <span className="frost-panel__light-color" />
+            </span>
+          </span>
+          {/* Edge light: the same light, but only visible through a ring
+              the width of the border, so the border lights up nearest the
+              cursor. */}
+          <span className="frost-panel__edge" aria-hidden="true">
+            <span className="frost-panel__light">
+              <span className="frost-panel__light-color" />
+            </span>
+          </span>
+        </>
+      )}
+      <div className="frost-panel__content">{children}</div>
     </div>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Hover light — performance notes:
+// - Nothing is attached until the pointer actually ENTERS the card (only a
+//   pointerenter listener idles), and only on devices with a real hovering
+//   pointer. pointermove/scroll listeners live only while hovered.
+// - Cursor → card-local coords needs the card's rect: read once on enter and
+//   again only after a scroll (the card moves under a still cursor), at
+//   most once per animation frame. No per-move layout reads.
+// - The light moves by `transform` only (GSAP quickTo → translate3d), so
+//   following the cursor is compositor-only: no repaint, no layout. The
+//   gradients themselves are painted once. The shimmer's color rotation is
+//   a CSS transform animation (also compositor-only) that only runs while
+//   hovered. Fade in/out is an opacity transition (compositor-only).
+// - `will-change` is applied only while hovered, so idle cards don't hold
+//   extra GPU layers.
+// ---------------------------------------------------------------------------
+
+function useHoverLight(
+  ref: RefObject<HTMLDivElement | null>,
+  hover: FrostHover,
+  lag: number,
+) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !hover) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    const lights = Array.from(el.querySelectorAll<HTMLElement>(".frost-panel__light"));
+    if (lights.length === 0) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = reduce ? 0 : lag;
+    const movers = lights.map((l) => ({
+      x: gsap.quickTo(l, "x", { duration, ease: "power3.out" }),
+      y: gsap.quickTo(l, "y", { duration, ease: "power3.out" }),
+    }));
+
+    let rect: DOMRect | null = null;
+    let clientX = 0;
+    let clientY = 0;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      rect ??= el.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      for (const m of movers) {
+        m.x(x);
+        m.y(y);
+      }
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    const onMove = (e: PointerEvent) => {
+      clientX = e.clientX;
+      clientY = e.clientY;
+      schedule();
+    };
+    const onScroll = () => {
+      rect = null; // card moved under the cursor
+      schedule();
+    };
+    const onEnter = (e: PointerEvent) => {
+      rect = el.getBoundingClientRect();
+      clientX = e.clientX;
+      clientY = e.clientY;
+      // Jump straight to the entry point (no trailing in from wherever the
+      // light was last), then follow.
+      gsap.set(lights, { x: clientX - rect.left, y: clientY - rect.top });
+      for (const m of movers) {
+        m.x(clientX - rect.left, clientX - rect.left);
+        m.y(clientY - rect.top, clientY - rect.top);
+      }
+      el.dataset.hovered = "";
+      el.addEventListener("pointermove", onMove, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
+    };
+    const onLeave = () => {
+      delete el.dataset.hovered;
+      el.removeEventListener("pointermove", onMove);
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
+    el.addEventListener("pointerenter", onEnter);
+    el.addEventListener("pointerleave", onLeave);
+    return () => {
+      onLeave();
+      el.removeEventListener("pointerenter", onEnter);
+      el.removeEventListener("pointerleave", onLeave);
+      gsap.killTweensOf(lights);
+    };
+  }, [ref, hover, lag]);
 }

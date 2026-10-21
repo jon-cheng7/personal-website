@@ -53,10 +53,14 @@
    parses whatever transform is already on the element and makes future
    writes to `x` replace it wholesale, so a CSS-authored translateX here
    would get silently clobbered the first time either tween fires. */
-.hero-portrait {
+/* The <ScrollMotion> wrapper (hero.tsx) owns the portrait's BOX — position
+   and size — so its scroll lock/exit/parallax (HERO_PORTRAIT in
+   lib/home-choreography.ts) moves exactly the photo, and lock alignment
+   refers to the photo's own edges. hero.tsx's fitPortraitToHeroOverlap
+   writes --sorrento-size / --sorrento-top onto this wrapper. */
+.hero-portrait-motion {
   --sorrento-size: clamp(16rem, 46vw, 36rem);
   --sorrento-top: 6rem;
-  --sorrento-radius: 1.5rem;
 
   position: absolute;
   top: var(--sorrento-top);
@@ -65,6 +69,18 @@
   margin-inline: auto;
   width: var(--sorrento-size);
   aspect-ratio: 4/5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-portrait {
+  --sorrento-radius: 1.5rem;
+
+  /* Fills the wrapper above; GSAP's entrance (slide/fade/deblur) still
+     animates this element, the wrapper only does scroll motion — two
+     elements, so the two never fight over one transform. */
+  position: absolute;
+  inset: 0;
 
   /* Lets the speech bubble size its type in `cqw` — i.e. as a fraction of
      the PORTRAIT's width — so it scales in lockstep with the photo (and

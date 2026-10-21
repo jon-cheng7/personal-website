@@ -9,8 +9,9 @@ import {
   type ScrollBound,
 } from "@/components/speech-bubble";
 import { createAboutScript, createGreetingScript } from "@/lib/hero-dialogue";
-import { ABOUT_BUBBLE } from "@/lib/home-choreography";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { ABOUT_BUBBLE, HERO_PORTRAIT } from "@/lib/home-choreography";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { ScrollMotion } from "@/components/scroll-motion";
 import { setIntroPhase } from "@/lib/intro-store";
 import "./hero.css";
 
@@ -77,34 +78,9 @@ const PORTRAIT_ENTRANCE_BLUR_PX = 24;
 const PORTRAIT_ENTRANCE_DURATION = 1.1;
 const PORTRAIT_ENTRANCE_EASE = "power3.out";
 
-/** Once the entrance finishes, the portrait's horizontal position is mapped
- * to scroll (desktop/no-reduced-motion only — see setupPortraitScroll).
- * `PORTRAIT_PARALLAX_FACTOR` is the fraction of the main horizontal-scroll
- * track's full travel speed the portrait appears to move at — e.g. `0.4`
- * means it drifts left at 40% of the rest of the page's speed, so it
- * visually lingers behind as everything else slides past underneath it.
- * `1` would match the page exactly (no lag); `0` would pin it in place. */
-const PORTRAIT_PARALLAX_FACTOR = 0.4;
-
-/** GSAP `scrub` value for the parallax tween — how much it smooths/lags
- * behind the raw scroll position before catching up. The main track (see
- * horizontal-scroll.tsx) uses `scrub: 1`; a noticeably larger value here is
- * what makes the portrait's motion read as "slower, lingering" frame to
- * frame, on top of the slower travel distance above. */
-const PORTRAIT_PARALLAX_SCRUB = 2.5;
-
-/** Mirrors horizontal-scroll.tsx's own `fadeBarrier`/`fadeDiffusion`/
- * `fadeMaxBlur` props, but computed independently for the portrait (that
- * component's generic `[data-scroll-fade]` system assumes an element only
- * moves with the track's own `x`, which isn't true here once the portrait
- * has its own additional parallax offset — see setupPortraitScroll). Same
- * meanings: `BARRIER` is where frosting starts (as a fraction of viewport
- * width from the left edge), `DIFFUSION` is how much travel it takes to go
- * from sharp to fully frosted/invisible, `MAX_BLUR_PX` is the blur at fully
- * exited. */
-const PORTRAIT_FADE_BARRIER = 0;
-const PORTRAIT_FADE_DIFFUSION = 0.5;
-const PORTRAIT_FADE_MAX_BLUR_PX = 30;
+/** The portrait's scroll behavior (parallax, lock, exit) lives in
+ * HERO_PORTRAIT in lib/home-choreography.ts and is applied by the
+ * <ScrollMotion> wrapper around it (components/scroll-motion.tsx). */
 
 // ---- portrait speech bubbles ----
 // What they SAY lives in lib/hero-dialogue.ts. Where they sit / how big /
@@ -321,8 +297,12 @@ export function Hero() {
       const height = bottom - top;
       if (height <= 0) return;
       const width = height * PORTRAIT_ASPECT_RATIO;
-      portrait.style.setProperty("--sorrento-top", `${top}px`);
-      portrait.style.setProperty("--sorrento-size", `${width}px`);
+      // Written on the <ScrollMotion> wrapper, which now owns the
+      // portrait's box (hero.css .hero-portrait-motion); the portrait
+      // itself just fills it.
+      const box = portrait.parentElement ?? portrait;
+      box.style.setProperty("--sorrento-top", `${top}px`);
+      box.style.setProperty("--sorrento-size", `${width}px`);
     };
 
     const fitLayout = () => {
@@ -399,171 +379,6 @@ export function Hero() {
       return cleanupFit;
     }
 
-    // Sets up the portrait's post-entrance behavior: its horizontal position
-    // mapped to scroll, slower/laggier than the rest of the page (see
-    // PORTRAIT_PARALLAX_FACTOR/SCRUB above), and its own "nears the screen
-    // edge → frosts and fades out" exit — the entrance played in reverse.
-    // Deferred to a plain function (rather than inlined in the timeline's
-    // `.call()` below) purely so the logic below reads top-to-bottom instead
-    // of nested inside the timeline chain.
-    //
-    // Gated to the same "wide enough + no reduced motion" query horizontal-
-    // scroll.tsx uses for its own pin+scrub, via its own `gsap.matchMedia` —
-    // not because it needs to re-derive that component's state, but because
-    // JS and CSS (and now this) should never disagree about which mode is
-    // active, and a visitor who resizes across the breakpoint mid-session
-    // should still get this torn down/rebuilt correctly like everything
-    // else gated the same way.
-    //
-    // Created once, from the timeline's own `.call()` below, i.e. strictly
-    // after the hero text and the about-me circle have both finished — not
-    // on mount — per the brief ("Then from there it should be mapped to the
-    // scroll wheel").
-    const setupPortraitScroll = () => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        "(min-width: 901px) and (prefers-reduced-motion: no-preference)",
-        () => {
-          const track = portrait.closest<HTMLElement>(
-            ".horizontal-scroll__track",
-          );
-          const section = portrait.closest<HTMLElement>(".horizontal-scroll");
-          if (!track || !section) return;
-
-          const distance = () => track.scrollWidth - window.innerWidth;
-          if (distance() <= 0) return;
-
-          // The portrait's own scrub has to span EXACTLY the same page-
-          // scroll pixel range as the main pin+scrub above (see
-          // horizontal-scroll.tsx) — the parallax math (PORTRAIT_PARALLAX_
-          // FACTOR's own comment above) only cancels out correctly when
-          // both tweens' ScrollTrigger progress (0→1) advances in lockstep.
-          // Re-deriving that range independently via `start: "top top"` is
-          // NOT safe here: confirmed live (console logging the created
-          // ScrollTrigger's own `.start`/`.end`), GSAP's "top top"
-          // shorthand mismeasures by exactly +distance() when a second
-          // ScrollTrigger is created — as this one deliberately is, from
-          // this timeline's own `.call()`, strictly AFTER the main pin
-          // ScrollTrigger already exists — on the very same trigger
-          // element an existing `pin: true` ScrollTrigger already pinned.
-          // It appears to pick up that pin's fully-scrolled measurement
-          // pass (used internally to size the pin spacer) instead of its
-          // resting one. Reading the main pin's OWN already-correct
-          // `.start`/`.end` directly sidesteps the bug entirely — whatever
-          // it is, by construction, is the right answer, and this can
-          // never drift from it even if the underlying GSAP quirk changes.
-          const mainPin = () =>
-            ScrollTrigger.getAll().find(
-              (st) => st.trigger === section && st.pin,
-            );
-          const pinStart = () => mainPin()?.start ?? 0;
-
-          // Measured once, here — not via getBoundingClientRect() on every
-          // scrub frame — same reasoning as horizontal-scroll.tsx's own
-          // `measureFadeTargets`: track's `x` and the portrait's own `x`
-          // (still 0 at this point, right after the entrance tween settled
-          // it there) are both known, so the portrait's position at any
-          // later frame is just `restLeft + track's x + portrait's own x`,
-          // pure arithmetic rather than a forced layout every frame.
-          let restLeft = 0;
-          let lastExitProgress = -1;
-
-          const measure = () => {
-            const trackX = (gsap.getProperty(track, "x") as number) || 0;
-            const ownX = (gsap.getProperty(portrait, "x") as number) || 0;
-            restLeft = portrait.getBoundingClientRect().left - trackX - ownX;
-            // Forces the very next frame to always paint regardless of what
-            // it computes, same "-1 is an impossible progress" trick as
-            // horizontal-scroll.tsx's FadeTarget.lastProgress.
-            lastExitProgress = -1;
-          };
-          measure();
-
-          // The portrait's own "nears the edge → frosts + fades" exit,
-          // mirroring horizontal-scroll.tsx's applyExitFade but computed
-          // from this element's REAL current position — restLeft plus BOTH
-          // the track's motion and this element's own parallax offset,
-          // since the generic data-scroll-fade system only ever accounts
-          // for the former.
-          const applyExitFrost = () => {
-            const trackX = (gsap.getProperty(track, "x") as number) || 0;
-            const ownX = (gsap.getProperty(portrait, "x") as number) || 0;
-            const left = restLeft + trackX + ownX;
-            const barrierX = window.innerWidth * PORTRAIT_FADE_BARRIER;
-            const diffusionPx = window.innerWidth * PORTRAIT_FADE_DIFFUSION;
-            const exitProgress = gsap.utils.clamp(
-              0,
-              1,
-              (barrierX - left) / diffusionPx,
-            );
-            if (exitProgress === lastExitProgress) return;
-            const wasActive =
-              lastExitProgress > 0 && lastExitProgress < 1;
-            const isActive = exitProgress > 0 && exitProgress < 1;
-            lastExitProgress = exitProgress;
-
-            portrait.style.opacity =
-              exitProgress === 0 ? "" : String(1 - exitProgress);
-            portrait.style.filter =
-              exitProgress > 0
-                ? `blur(${(exitProgress * PORTRAIT_FADE_MAX_BLUR_PX).toFixed(2)}px)`
-                : "";
-            if (isActive !== wasActive) {
-              portrait.style.willChange = isActive
-                ? "opacity, filter, transform"
-                : "transform";
-            }
-          };
-
-          // `x` target is `distance() * (1 - PORTRAIT_PARALLAX_FACTOR)`, not
-          // `-distance()` like the main track — a POSITIVE offset that
-          // partially cancels the leftward motion the portrait inherits
-          // automatically just by sitting inside the track (it's a normal
-          // descendant of `.horizontal-scroll__track`, so the track's own
-          // translation already carries it along at full speed before this
-          // tween adds anything). Net on-screen motion works out to exactly
-          // `trackX * PORTRAIT_PARALLAX_FACTOR` — see the constant's own
-          // comment above for the arithmetic. `scrub` is independently
-          // tunable from the main track's (`PORTRAIT_PARALLAX_SCRUB`,
-          // typically larger) for the "lingers" lag on top of that slower
-          // travel distance.
-          const tween = gsap.to(portrait, {
-            x: () => distance() * (1 - PORTRAIT_PARALLAX_FACTOR),
-            ease: "none",
-            onUpdate: applyExitFrost,
-            scrollTrigger: {
-              trigger: section,
-              start: pinStart,
-              end: () => pinStart() + distance(),
-              scrub: PORTRAIT_PARALLAX_SCRUB,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          const handleResize = () => {
-            measure();
-            applyExitFrost();
-          };
-          window.addEventListener("resize", handleResize);
-
-          // Runs when the query above stops matching (resize under 901px,
-          // or reduced-motion switched on mid-visit) or on unmount — resets
-          // the portrait to its plain resting state so neither the vertical-
-          // stack fallback nor a later remount ever inherits a stuck
-          // parallax offset or frost from wherever scroll was left.
-          return () => {
-            window.removeEventListener("resize", handleResize);
-            tween.scrollTrigger?.kill();
-            tween.kill();
-            gsap.set(portrait, { x: 0 });
-            portrait.style.opacity = "";
-            portrait.style.filter = "";
-            portrait.style.willChange = "";
-          };
-        },
-      );
-    };
-
     // ---- the opening sequence ----
     // Measured against the name's own resting layout — useGSAP runs as a
     // layout effect, so this element already has its real final size/
@@ -633,8 +448,7 @@ export function Hero() {
       .call(() => {
         greetingBubbleRef.current?.setActive(true);
         aboutBubbleRef.current?.setActive(true);
-      })
-      .call(setupPortraitScroll);
+      });
 
     return cleanupFit;
   }, []);
@@ -656,6 +470,16 @@ export function Hero() {
           `priority` so the (large) source is already fetched/decoded by
           the time its entrance tween fires a couple seconds in, rather
           than popping in mid-animation. */}
+      {/* Scroll behavior (parallax / lock / exit): HERO_PORTRAIT in
+          lib/home-choreography.ts. This wrapper owns the portrait's box
+          (position + size) so lock alignment refers to the photo itself. */}
+      <ScrollMotion
+        className="hero-portrait-motion"
+        lock={HERO_PORTRAIT.lock}
+        exit={HERO_PORTRAIT.exit}
+        parallax={HERO_PORTRAIT.parallax}
+        smoothing={HERO_PORTRAIT.smoothing}
+      >
       <div className="hero-portrait" ref={portraitRef} aria-hidden="true">
         {/* Rounded-corner clipping lives on this inner frame rather than on
             .hero-portrait itself, so the speech bubble (a sibling, below)
@@ -687,6 +511,7 @@ export function Hero() {
           visibleWhile={ABOUT_BUBBLE_VISIBLE}
         />
       </div>
+      </ScrollMotion>
       <div className="hero-name" ref={nameRef}>
         {/* The one accessible reading of this heading — plain text, no
             per-letter markup. The animated letters below are a decorative

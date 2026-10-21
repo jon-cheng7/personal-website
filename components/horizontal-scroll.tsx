@@ -6,7 +6,9 @@ import { getIntroPhase, subscribeIntroPhase } from "@/lib/intro-store";
 import "./horizontal-scroll.css";
 
 interface HorizontalScrollProps {
-  /** Each direct child renders as one full-viewport panel. */
+  /** Each direct child renders as one full-viewport panel — except a
+   * <Stage> (components/stage.tsx), which is a free-form canvas of its own
+   * `length`. */
   children: ReactNode;
   /** Where the frost/fade zone's far (fully-settled) edge sits, as a
    * fraction of the viewport's width measured from its LEFT edge. `0` (the
@@ -172,7 +174,21 @@ export function HorizontalScroll({
         const section = sectionRef.current;
         if (!track || !section) return;
 
-        const distance = () => track.scrollWidth - window.innerWidth;
+        // How far the track travels: from its left edge to the right edge
+        // of its LAST panel, minus one screen. Measured from layout (rect
+        // differences, so the track's own translation cancels out) rather
+        // than `track.scrollWidth`, which also counts overflow — so an
+        // element placed or parallaxed past the end of a <Stage>
+        // (components/stage.tsx), or a transform on anything inside, can
+        // never change the scroll length. Panel/Stage widths are the only
+        // thing that does.
+        const distance = () => {
+          const last = track.lastElementChild;
+          if (!last) return 0;
+          const contentWidth =
+            last.getBoundingClientRect().right - track.getBoundingClientRect().left;
+          return contentWidth - window.innerWidth;
+        };
         if (distance() <= 0) return;
 
         // Nothing here needs to react to a resize any more — see the doc

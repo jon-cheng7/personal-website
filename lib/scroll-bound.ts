@@ -26,5 +26,5 @@ export function resolveScrollPoint(point: ScrollPoint): number {
 }
 
 /** `vh(1.75)` → "175vh": 1.75 viewport heights of scroll. */
-export const vh = (viewportHeights: number): ScrollPoint =>
+export const vh = (viewportHeights: number): `${number}vh` =>
   `${Math.round(viewportHeights * 10000) / 100}vh` as `${number}vh`;
