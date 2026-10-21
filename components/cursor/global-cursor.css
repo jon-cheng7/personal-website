@@ -18,6 +18,33 @@
   user-drag: none;
 }
 
+/* The "trail" mode's elastic line (lib/cursor/modes.ts / global-cursor.tsx)
+   — a fixed, full-viewport overlay of its own rather than a child of
+   `.cursor-root`, since its two line elements are plotted in raw
+   viewport (clientX/clientY) coordinates, not `.cursor-root`'s own
+   translated space. Sits one below `.cursor-root`'s z-index (painted
+   first in the DOM either way — see global-cursor.tsx's own comment on
+   why — this is just belt-and-suspenders against anything else in this
+   stacking context landing between them). Opacity is toggled from JS
+   (tick(), on activation/deactivation only — not every frame) rather than
+   driven by a mode-change timeline like the shell's own transitions,
+   since a trail fading in/out is a much smaller visual event than a full
+   shape morph; the transition here keeps that toggle from being a hard
+   cut. Each `<line>`'s own stroke/width/geometry is set directly via
+   `setAttribute` from JS, never CSS — same "just write the computed
+   value" reasoning as components/horizontal-scroll.tsx's own exit-fade
+   writes; there's nothing here for a CSS rule to usefully own. */
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
 /* The outer element is a 0×0 positioning anchor — `transform` is written
    to it directly from JS via GSAP's quickTo (global-cursor.tsx), so it
    deliberately has no CSS transition of its own: smoothing *position*

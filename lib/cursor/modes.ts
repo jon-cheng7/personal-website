@@ -48,13 +48,24 @@ export const CURSOR_MODES: Record<string, CursorModeConfig> = {
   },
 },
 
-  // Home's circular "more about me" link (components/hero.tsx) — a single,
-  // specific target, so a bespoke "go into this" shape rather than the
-  // generic "link" ring. The arrow itself always points down (see
-  // lib/cursor/shapes.ts's ENTER_ARROW comment on why nothing here ever
-  // rotates it); `idleMotion` layers a gentle, continuous vertical bob on
-  // top of that static orientation for as long as this mode stays active,
-  // read as "there's more below, come on in" rather than a static glyph.
+  // The basic dot, plus a two-segment elastic trail behind it (see
+  // global-cursor.tsx's tick()) — accent blue closest to the dot, accent
+  // red further behind. Reuses the plain `default` dot shape/color/
+  // tracking wholesale; `trail` is the only thing this mode adds.
+  trail: {
+    shape: DOT_DIFFERENCE,
+    content: { kind: "none" },
+    color: "#c5fb45",
+    tracking: { duration: 0.15, ease: "power3" },
+    trail: {
+      midEase: 0.25,
+      tailEase: 0.15,
+      midColor: "#0088FF",
+      tailColor: "#FF383C",
+      width: 2,
+    },
+  },
+
   enter: {
     shape: ENTER_ARROW_DIFFERENCE,
     content: { kind: "none" },

@@ -151,6 +151,46 @@ export interface CursorModeConfig {
     /** Seconds for one full down-and-up cycle. Defaults to 1.4. */
     durationS?: number;
   };
+  /** Draws a velocity-sensitive elastic trail behind the shell for as long
+   * as this mode stays active — see global-cursor.tsx's own dedicated
+   * effect/tick logic. Two points chase each other in a short chain (the
+   * shell's own tracked position, then a "mid" point that eases toward
+   * it, then a "tail" point that eases toward "mid"), rendered as two
+   * differently-colored straight segments: shell→mid and mid→tail. This
+   * lives in raw viewport coordinates in a fixed overlay of its own —
+   * NOT nested inside the shell's own already-translated DOM — since the
+   * trail's points don't share the shell's transform origin.
+   *
+   * Deliberately plain per-frame easing (`pos += (target - pos) * ease`)
+   * rather than a GSAP tween: both "velocity sensitive" and "catches up
+   * and disappears at rest" fall out of that one update rule for free —
+   * move the head fast and each follower necessarily lands further behind
+   * frame to frame (a bigger visible gap reads as a longer trail); stop,
+   * and the same rule closes that gap every frame until the segments are
+   * a fraction of a pixel long, which just reads as no trail — no
+   * separate "hide when slow" branch needed. It's also one more tween-
+   * object-per-frame pattern deliberately avoided, per the lesson from
+   * components/horizontal-scroll.tsx's own GSAP-accumulation fix — this
+   * runs every tick, so it has to be as cheap as the fade math there.
+   *
+   * Omitted (every mode except `trail` in lib/cursor/modes.ts) = no
+   * trail at all — not even the two line elements' geometry gets touched. */
+  trail?: {
+    /** How far the "mid" point eases toward the shell's tracked position
+     * each frame, 0–1 — larger closes the gap faster (a tighter, shorter-
+     * looking trail at a given speed). Defaults to 0.25. */
+    midEase?: number;
+    /** Same, for how far "tail" eases toward "mid" each frame. Smaller
+     * than `midEase` reads as a longer, more elastic second segment.
+     * Defaults to 0.15. */
+    tailEase?: number;
+    /** Color of the shell→mid segment. */
+    midColor?: string;
+    /** Color of the mid→tail segment. */
+    tailColor?: string;
+    /** Stroke width, in px. Defaults to 2. */
+    width?: number;
+  };
 }
 
 /** A `CursorTarget`/`data-cursor` can reference a named mode by string, or

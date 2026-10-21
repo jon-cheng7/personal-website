@@ -10,12 +10,16 @@ interface SplitTextProps {
 
 /**
  * Splits `text` into words, and each word into individually-marked letters
- * — for components/horizontal-scroll.tsx's per-element frosted-glass exit
- * fade at letter granularity (see that file's own doc comment), applied
- * here to running body text rather than components/hero.tsx's short,
- * single-word wordmark pieces (which have their own bespoke `HeroWord` —
- * it also needs a ref per letter for its opening reveal animation, which
- * this component has no reason to support).
+ * — originally for components/horizontal-scroll.tsx's per-element
+ * frosted-glass exit fade; that system is now a single viewport-anchored
+ * overlay with no per-element opt-in (see that file's own doc comment),
+ * so the per-letter split here no longer serves that purpose. Kept
+ * because it's still a reasonable way to render running body text letter-
+ * by-letter if some OTHER per-letter effect wants it later; applied here
+ * rather than components/hero.tsx's short, single-word wordmark pieces
+ * (which have their own bespoke `HeroWord` — it also needs a ref per
+ * letter for its opening reveal animation, which this component has no
+ * reason to support).
  *
  * Word-then-letter, not a flat per-character split, and specifically why:
  * a flat split would need every space replaced with a non-breaking one (a
@@ -27,8 +31,7 @@ interface SplitTextProps {
  * space character (a plain text node, not inside any span) between each
  * word's own wrapper, so the browser wraps exactly where it normally
  * would; each word's own wrapper is `inline-block` so its letters can
- * never be torn across a line break mid-word, and the letters inside it
- * are what actually carry `data-scroll-fade` for the per-letter fade.
+ * never be torn across a line break mid-word.
  */
 export function SplitText({ text, wordClassName, letterClassName }: SplitTextProps) {
   const words = text.split(" ");
@@ -41,7 +44,6 @@ export function SplitText({ text, wordClassName, letterClassName }: SplitTextPro
               <span
                 key={letterIndex}
                 className={letterClassName}
-                data-scroll-fade
                 style={{ display: "inline-block" }}
               >
                 {char}

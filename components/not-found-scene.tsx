@@ -6,11 +6,6 @@ import { gsap } from "@/lib/gsap";
 import "./not-found-scene.css";
 import { TransitionLink } from "./transition-link";
 
-// A handful of lines instead of "404 — Page Not Found" — Jon's ask was for
-// someone who lands here to be pleasantly surprised, not just informed.
-// One is picked at random per visit rather than always showing the first,
-// so reloading (or landing on a different broken link another time) has a
-// small chance of a different line.
 const LOST_LINES = [
   "Well this is awkward...",
   "Congrats, you found the secret nothing!",

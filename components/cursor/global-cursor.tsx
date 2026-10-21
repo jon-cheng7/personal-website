@@ -68,6 +68,9 @@ export function GlobalCursor() {
   const pathRef = useRef<SVGPathElement>(null);
   const contentReactRef = useRef<HTMLDivElement>(null);
   const mediaSlotRef = useRef<HTMLDivElement>(null);
+  const trailSvgRef = useRef<SVGSVGElement>(null);
+  const trailMidLineRef = useRef<SVGLineElement>(null);
+  const trailTailLineRef = useRef<SVGLineElement>(null);
 
   const [mode, setMode] = useState<CursorModeConfig>(() => getCurrentMode());
   const [renderedContent, setRenderedContent] = useState<CursorContent>(
@@ -82,6 +85,20 @@ export function GlobalCursor() {
   const prevShapeRef = useRef<CursorShape>(getCurrentMode().shape);
   const activeMediaSrcRef = useRef<string | null>(null);
   const trackRef = useRef<{ moveX: (v: number) => void; moveY: (v: number) => void } | null>(null);
+
+  // Plain mutable position state for the trail's two chained follower
+  // points — see `mode.trail`'s own doc comment in lib/cursor/types.ts for
+  // why this is hand-rolled per-frame easing rather than GSAP tweens.
+  // `trailActiveRef` is just "was the trail drawn last frame," so tick()
+  // can tell a fresh activation (mode just switched to one with `trail`)
+  // from an already-running one: only on that rising edge does it snap
+  // both points to the shell's current position, so the trail always
+  // grows out from zero rather than snapping in from wherever they last
+  // sat (stale, possibly off-screen, if `trail` hasn't been active in a
+  // while).
+  const trailMidRef = useRef({ x: 0, y: 0 });
+  const trailTailRef = useRef({ x: 0, y: 0 });
+  const trailActiveRef = useRef(false);
 
   // ---- global listeners: mount once, read the LATEST mode/tracking via
   // refs rather than re-subscribing on every mode change ----
@@ -162,37 +179,107 @@ export function GlobalCursor() {
       if (!root || !stretch) return;
 
       const current = modeRef.current;
-      const pointer = getPointerState();
 
       // Where the visual cursor currently is after GSAP's trailing motion.
       const cursorX = Number(gsap.getProperty(root, "x"));
       const cursorY = Number(gsap.getProperty(root, "y"));
 
-      // "Elastic string" from visual cursor to real pointer.
-      const dx = pointer.x - cursorX;
-      const dy = pointer.y - cursorY;
+      // ---- velocity-driven squash/stretch: rotates `stretch` to face the
+      // "elastic string" back toward the real pointer and stretches it
+      // along that axis, proportional to how taut that string currently
+      // is. Opt-in per mode via `tracking.stretchWithVelocity` — see that
+      // flag's own doc comment in lib/cursor/types.ts, which always
+      // described it as off-by-default ("most modes read as broken if
+      // they stretch"); this `if` is the actual enforcement of that,
+      // previously missing here, which is why every mode — including ones
+      // like "enter" that never asked for it — was picking up a
+      // directional rotate/stretch from pointer movement regardless of its
+      // own `tracking` config. Only "media" (lib/cursor/modes.ts) opts in
+      // today. ----
+      if (current.tracking?.stretchWithVelocity) {
+        const pointer = getPointerState();
+        // "Elastic string" from visual cursor to real pointer.
+        const dx = pointer.x - cursorX;
+        const dy = pointer.y - cursorY;
+        const distance = Math.hypot(dx, dy);
 
-      const distance = Math.hypot(dx, dy);
+        // Don't update direction when the tether is essentially slack.
+        if (distance > 3) {
+          const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+          gsap.set(stretch, { rotate: angle });
+        }
 
-      // Don't update direction when the tether is essentially slack.
-      if (distance > 3) {
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        // Stretch based on how taut the imaginary string is.
+        const maxStretch = current.tracking?.maxStretch ?? 0.15;
+        const stretchAmount = Math.min(distance / 100, 1) * maxStretch;
+
+        appliedStretch += (stretchAmount - appliedStretch) * 0.12;
 
         gsap.set(stretch, {
-          rotate: angle,
+          scaleX: 1 + appliedStretch,
+          scaleY: 1 - appliedStretch * 0.6,
+        });
+      } else if (appliedStretch !== 0) {
+        // A mode without `stretchWithVelocity` just became active while
+        // `stretch` was still mid-stretch from a previous one (e.g.
+        // leaving "media" for "enter" mid-flick) — ease back to neutral
+        // instead of freezing whatever rotate/scale the last stretchy mode
+        // left behind, then stop touching this element at all once it's
+        // close enough to call settled (avoids an infinite trickle of
+        // `gsap.set` calls doing nothing once fully converged).
+        appliedStretch += (0 - appliedStretch) * 0.12;
+        if (Math.abs(appliedStretch) < 0.001) appliedStretch = 0;
+        gsap.set(stretch, {
+          rotate: 0,
+          scaleX: 1 + appliedStretch,
+          scaleY: 1 - appliedStretch * 0.6,
         });
       }
 
-      // Stretch based on how taut the imaginary string is.
-      const maxStretch = current.tracking?.maxStretch ?? 0.15;
-      const stretchAmount = Math.min(distance / 100, 1) * maxStretch;
+      // ---- elastic trail (`mode.trail`, e.g. the "trail" mode in
+      // lib/cursor/modes.ts) — entirely separate from the squash/stretch
+      // above (different element, different properties: this writes SVG
+      // attributes on the two line refs, never touches `stretch`) and from
+      // `cursorX`/`cursorY` computed above, which is exactly the position
+      // this chain trails behind. See lib/cursor/types.ts's `trail` field
+      // for why plain per-frame lerp, not GSAP tweens. ----
+      const trailSvg = trailSvgRef.current;
+      const midLine = trailMidLineRef.current;
+      const tailLine = trailTailLineRef.current;
+      const trailConfig = current.trail;
 
-      appliedStretch += (stretchAmount - appliedStretch) * 0.12;
+      if (trailConfig && !prefersReducedMotion && trailSvg && midLine && tailLine) {
+        if (!trailActiveRef.current) {
+          trailActiveRef.current = true;
+          trailMidRef.current.x = cursorX;
+          trailMidRef.current.y = cursorY;
+          trailTailRef.current.x = cursorX;
+          trailTailRef.current.y = cursorY;
+          trailSvg.style.opacity = "1";
+        }
 
-      gsap.set(stretch, {
-        scaleX: 1 + appliedStretch,
-        scaleY: 1 - appliedStretch * 0.6,
-      });
+        const mid = trailMidRef.current;
+        const tail = trailTailRef.current;
+        const midEase = trailConfig.midEase ?? 0.25;
+        const tailEase = trailConfig.tailEase ?? 0.15;
+
+        mid.x += (cursorX - mid.x) * midEase;
+        mid.y += (cursorY - mid.y) * midEase;
+        tail.x += (mid.x - tail.x) * tailEase;
+        tail.y += (mid.y - tail.y) * tailEase;
+
+        midLine.setAttribute("x1", String(cursorX));
+        midLine.setAttribute("y1", String(cursorY));
+        midLine.setAttribute("x2", String(mid.x));
+        midLine.setAttribute("y2", String(mid.y));
+        tailLine.setAttribute("x1", String(mid.x));
+        tailLine.setAttribute("y1", String(mid.y));
+        tailLine.setAttribute("x2", String(tail.x));
+        tailLine.setAttribute("y2", String(tail.y));
+      } else if (trailActiveRef.current) {
+        trailActiveRef.current = false;
+        if (trailSvg) trailSvg.style.opacity = "0";
+      }
     };
 
     window.addEventListener("pointermove", move);
@@ -213,6 +300,54 @@ export function GlobalCursor() {
   // ---- re-tune position tracking whenever the active mode's own
   // tracking config changes (different modes follow at different
   // speeds/looseness — media mode trails softer than the default dot) ----
+  //
+  // Root-caused bug (the hero-circle hover snap/freeze): this effect
+  // rebuilds `trackRef.current` — the pair of `gsap.quickTo` functions
+  // that are the ONLY thing ever allowed to write `root`'s x/y, i.e. the
+  // cursor's actual tracked position — every time `mode` changes. Mode
+  // changes on every hover enter/leave over anything with `data-cursor`
+  // (hero.tsx's `.hero-circle` sets `data-cursor="enter"`), resolved by
+  // components/cursor/cursor-target.tsx's delegated listener calling
+  // `setCursorMode`. "enter" mode's own tracking duration (0.3s, see
+  // lib/cursor/modes.ts) differs from "default"'s (0.15s), so this isn't
+  // a redundant rebuild most of the time — it's a real re-tune.
+  //
+  // The bug: `gsap.quickTo(root, "x", {...})` only PREPARES a reusable
+  // tween function — it doesn't kill whatever tween is already running on
+  // `root`'s `x`/`y` from the PREVIOUS mode's quickTo pair. Dropping the
+  // old `{ moveX, moveY }` object (by reassigning `trackRef.current`)
+  // doesn't stop the tween those old functions had already started
+  // easing — GSAP tweens live independently of the JS reference used to
+  // create them. If a hero-circle hover enter/leave landed while the
+  // cursor was still mid-ease toward a recent pointer position (entirely
+  // normal — the user is moving the mouse INTO or OUT OF the circle),
+  // that old tween kept running toward its own stale target, completely
+  // independently of the brand-new quickTo pair the next `pointermove`
+  // would start feeding. Two tweens, both legitimately "live," racing to
+  // write the same `root.x`/`root.y` — whichever rendered last on a given
+  // frame won, which is exactly the reported visual: a snap to the old
+  // tween's stale target, a freeze once that tween finished easing and
+  // had nothing left to feed it a new target, and an instant correct jump
+  // the moment the next `pointermove` call reached the new quickTo pair
+  // and started actually overwriting the old, now-finished tween's value.
+  // Intermittent specifically because it only manifests when a mode
+  // change lands while the previous tween is still mid-flight — a fast
+  // approach/departure from hero-circle, not a slow one.
+  //
+  // Fix: explicitly stop whatever is currently animating `root`'s x/y
+  // before the next mode's quickTo pair takes over, via this effect's own
+  // cleanup — which React guarantees runs before the effect's next
+  // invocation (i.e. before `trackRef.current` is ever reassigned) and
+  // also on unmount. `gsap.killTweensOf` leaves the element exactly at
+  // its current rendered value; it does not jump or reset anything, so
+  // this introduces no snap of its own — it just guarantees there is
+  // never more than one tween owning `root`'s position at a time, however
+  // often `mode` (and this effect) changes. This makes position-tracking
+  // ownership exclusive by construction, rather than relying on timing:
+  // hero-circle's visual morph (shape/color/stretch/idle-bob, all handled
+  // entirely by the separate effects below, none of which ever touch
+  // `root`'s x/y) can change freely without ever being able to contend
+  // for `root`'s tracked position again.
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -226,6 +361,10 @@ export function GlobalCursor() {
         duration: tracking?.duration ?? 0.35,
         ease: tracking?.ease ?? "power3",
       }),
+    };
+
+    return () => {
+      gsap.killTweensOf(root, "x,y");
     };
   }, [mode]);
 
@@ -273,6 +412,28 @@ export function GlobalCursor() {
       tween.kill();
       gsap.set(stretch, { y: 0 });
     };
+  }, [mode]);
+
+  // ---- trail styling (colors/width): applied once per mode change,
+  // separately from the per-frame geometry tick() writes above — these
+  // are static for as long as a given mode is active, so there's no
+  // reason to re-set them 60 times a second alongside the x1/y1/x2/y2
+  // attributes that actually do change every frame. A mode with no
+  // `trail` just leaves the lines at whatever they last had; harmless,
+  // since tick() only ever reads/writes their geometry when `mode.trail`
+  // is truthy, and their shared <svg> stays opacity:0 the rest of the
+  // time regardless of stale color/geometry sitting on them underneath. ----
+  useEffect(() => {
+    const midLine = trailMidLineRef.current;
+    const tailLine = trailTailLineRef.current;
+    const trail = mode.trail;
+    if (!midLine || !tailLine || !trail) return;
+
+    const width = trail.width ?? 2;
+    midLine.setAttribute("stroke", trail.midColor ?? "#0088FF");
+    midLine.setAttribute("stroke-width", String(width));
+    tailLine.setAttribute("stroke", trail.tailColor ?? "#FF383C");
+    tailLine.setAttribute("stroke-width", String(width));
   }, [mode]);
 
   // ---- the shape/content transition itself: one GSAP timeline per mode
@@ -437,31 +598,47 @@ export function GlobalCursor() {
   }, [renderedContent]);
 
   return (
-    <div ref={rootRef} className="cursor-root" aria-hidden="true">
-      <div ref={anchorRef} className="cursor-anchor">
-        <div ref={stretchRef} className="cursor-stretch">
-          <div ref={shellRef} className="cursor-shell" />
-          <svg ref={svgRef} className="cursor-shell__svg" style={{ opacity: 0 }}>
-            <path ref={pathRef} />
-          </svg>
-          <div className="cursor-content">
-            <div ref={contentReactRef} className="cursor-content__react">
-              {renderedContent.kind === "text" &&
-                (renderedContent.animation === "marquee" ? (
-                  <div className="cursor-content__marquee">
+    <>
+      {/* Rendered before .cursor-root, not nested inside it: the trail's
+          two points live in raw viewport (clientX/clientY) coordinates,
+          not `root`'s own translated space, so it needs its own fixed,
+          full-viewport box rather than inheriting root's transform. Coming
+          first in the DOM also means it paints underneath the shell below
+          it in the same stacking context — the dot always reads as
+          "leading," the trail tucking in behind it — without needing an
+          explicit z-index fight between the two. See lib/cursor/types.ts's
+          `trail` field and this file's own tick() for how the geometry is
+          actually driven; opacity is the only thing toggled outside tick(). */}
+      <svg ref={trailSvgRef} className="cursor-trail" aria-hidden="true">
+        <line ref={trailMidLineRef} strokeLinecap="round" />
+        <line ref={trailTailLineRef} strokeLinecap="round" />
+      </svg>
+      <div ref={rootRef} className="cursor-root" aria-hidden="true">
+        <div ref={anchorRef} className="cursor-anchor">
+          <div ref={stretchRef} className="cursor-stretch">
+            <div ref={shellRef} className="cursor-shell" />
+            <svg ref={svgRef} className="cursor-shell__svg" style={{ opacity: 0 }}>
+              <path ref={pathRef} />
+            </svg>
+            <div className="cursor-content">
+              <div ref={contentReactRef} className="cursor-content__react">
+                {renderedContent.kind === "text" &&
+                  (renderedContent.animation === "marquee" ? (
+                    <div className="cursor-content__marquee">
+                      <span>{renderedContent.text}</span>
+                      <span aria-hidden="true">{renderedContent.text}</span>
+                    </div>
+                  ) : (
                     <span>{renderedContent.text}</span>
-                    <span aria-hidden="true">{renderedContent.text}</span>
-                  </div>
-                ) : (
-                  <span>{renderedContent.text}</span>
-                ))}
-              {renderedContent.kind === "icon" && <span>{renderedContent.name}</span>}
-              {renderedContent.kind === "custom" && renderedContent.render()}
+                  ))}
+                {renderedContent.kind === "icon" && <span>{renderedContent.name}</span>}
+                {renderedContent.kind === "custom" && renderedContent.render()}
+              </div>
+              <div ref={mediaSlotRef} className="cursor-content__media" />
             </div>
-            <div ref={mediaSlotRef} className="cursor-content__media" />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 import { Hero } from "@/components/hero";
 import { HorizontalScroll } from "@/components/horizontal-scroll";
 import { ScrollMemory } from "@/components/scroll-memory";
-import { SplitText } from "@/components/split-text";
 
 // Placeholder filler content so there's something to scroll through before
 // real sections exist — swap each of these for actual content whenever.
@@ -27,29 +26,17 @@ const fillerSections = [
 export default function HomePage() {
   return (
     <>
-      <HorizontalScroll fadeBarrier={0.08} fadeDiffusion={0.35} fadeMaxBlur={14}>
+      <HorizontalScroll fadeBarrier={0.1} fadeDiffusion={0.6} fadeMaxBlur={30}>
         <Hero />
         {fillerSections.map((section) => (
           <section key={section.heading} aria-label={section.heading}>
-            {/* SplitText marks every letter with data-scroll-fade (see that
-                component's own doc comment for why word-then-letter, not a
-                flat split) — components/horizontal-scroll.tsx picks all of
-                them up automatically and fades each independently as the
-                panel scrolls out. aria-hidden since the split version is
-                decorative markup, not new content; the plain-text `.sr-only`
-                heading/paragraph right after each is the one accessible
-                reading — same "invisible sizer / visible copy" split
-                components/hero.tsx uses for its own wordmark. Swap the
-                strings here for real content whenever; SplitText itself
-                needs no changes. */}
-            <h2 aria-hidden="true">
-              <SplitText text={section.heading} />
-            </h2>
-            <h2 className="sr-only">{section.heading}</h2>
-            <p aria-hidden="true">
-              <SplitText text={section.body} />
-            </p>
-            <p className="sr-only">{section.body}</p>
+            {/* Plain text, no per-letter split needed — components/
+                horizontal-scroll.tsx's exit frost is a single viewport-
+                anchored overlay now (see that file's own doc comment), so
+                there's no longer a per-element opt-in for it to key off.
+                Swap these strings for real content whenever. */}
+            <h2>{section.heading}</h2>
+            <p>{section.body}</p>
           </section>
         ))}
       </HorizontalScroll>
