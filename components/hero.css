@@ -66,12 +66,64 @@
   width: var(--sorrento-size);
   aspect-ratio: 4/5;
 
-  border-radius: var(--sorrento-radius);
-  overflow: hidden;
+  /* Lets the speech bubble size its type in `cqw` — i.e. as a fraction of
+     the PORTRAIT's width — so it scales in lockstep with the photo (and
+     therefore with the face it points at) at every viewport size. */
+  container-type: inline-size;
   z-index: 0;
   /* Decorative and behind the text/circle — never the target of a click or
      a hover, so it should never intercept one meant for them. */
   pointer-events: none;
+}
+
+/* Clipping/rounding moved off .hero-portrait onto this inner frame so the
+   speech bubble can overhang the photo's edge. */
+.hero-portrait__frame {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--sorrento-radius);
+  overflow: hidden;
+}
+
+/* Speech bubbles on the portrait (components/speech-bubble.tsx; dialogue in
+   lib/hero-dialogue.ts; scroll ranges in hero.tsx).
+   --bubble-anchor-x/y: where each tail's TIP lands, as a fraction of the
+   portrait box. Read off sorrento.png itself: the face spans roughly
+   38%–55% across and 47%–62% down (eyes ≈54%, mouth ≈59%), turned toward
+   the left; the back of the head/ear sits around 57%–62% across.
+   sorrento.png is ~4:5 already, so the `cover` crop is negligible and these
+   percentages hold at every size. Retune if the photo/crop changes. */
+.hero-portrait__bubble {
+  /* Minimum gap kept between a bubble and the viewport edge. */
+  --bubble-edge-gap: 1rem;
+  /* Longest a line gets before wrapping (in the bubble's own em). */
+  --bubble-max-width: 18em;
+  /* Space from the tail tip to the viewport edge on the bubble's side: the
+     anchor's distance from that side of the portrait, plus the portrait's
+     own margin — (100vw - 100cqw) / 2, since the portrait is always
+     horizontally centered in the full-width hero. Each modifier below sets
+     --bubble-room-side to its anchor's distance from its own side. */
+  --speech-bubble-max-width: var(--bubble-max-width);
+
+  top: var(--bubble-anchor-y);
+  font-size: clamp(0.8rem, 3.6cqw, 1.3rem);
+}
+
+/* Greeting: left of the face, tail pointing right at the cheek. */
+.hero-portrait__bubble--greeting {
+  --bubble-anchor-x: 36%;
+  --bubble-anchor-y: 55%;
+  --bubble-room-side: var(--bubble-anchor-x);
+  right: calc(100% - var(--bubble-anchor-x) + var(--speech-bubble-tail));
+}
+
+/* About me: comes out of the right side of the photo, tail pointing back
+   at the head. */
+.hero-portrait__bubble--about {
+  --bubble-anchor-x: 65%;
+  --bubble-anchor-y: 55%;
+  --bubble-room-side: calc(100% - var(--bubble-anchor-x));
+  left: calc(var(--bubble-anchor-x) + var(--speech-bubble-tail));
 }
 
 .hero-portrait__img {

@@ -1,0 +1,138 @@
+/* SpeechBubble — see components/speech-bubble.tsx for the architecture.
+   Everything here is the bubble's own look. WHERE it sits and its font-size
+   are the consumer's job (e.g. `.hero-portrait__bubble` in hero.css) — set
+   `top` + `right` (data-side="left") or `left` (data-side="right") and
+   `font-size` via its className. Every size below is in `em`, so the whole
+   bubble scales from that one font-size. */
+
+.speech-bubble {
+  /* How far the tail pokes out past the body's edge. Consumers use it to
+     place the tail's TIP exactly on a point (see hero.css). */
+  --speech-bubble-tail: 0.6em;
+  --speech-bubble-bg: var(--color-accent, #c5fb45);
+  --speech-bubble-fg: #0a0a0a;
+  --speech-bubble-radius: 0.75em;
+  --speech-bubble-pad-y: 0.55em;
+  --speech-bubble-pad-x: 0.55em;
+
+  position: absolute;
+  /* Vertically centered on whatever `top` the consumer sets. Never animated
+     by GSAP (that's `.speech-bubble__pop`'s job), so it can't be clobbered. */
+  transform: translateY(-50%);
+  width: max-content;
+  /* Longest a line may get before wrapping onto the next. Consumers set
+     `--speech-bubble-max-width` to tighten it */
+  max-width: none;
+  pointer-events: none;
+  /* The animated width/height below only ever re-lays-out this subtree. */
+  contain: layout style;
+
+  /* Body/UI sans, NOT the display face — bubbles are conversational. Falls
+     back to Geist Sans (loaded in app/layout.tsx), then the system UI font. */
+  font-family: var(--font-display, "unbounded", "Geist Sans", system-ui, sans-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+/* Shared typography/box for the hidden measure copy and the visible text, so
+   the browser wraps them identically. */
+.speech-bubble__measure,
+.speech-bubble__line {
+  box-sizing: border-box;
+  padding: var(--speech-bubble-pad-y) var(--speech-bubble-pad-x);
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.speech-bubble__measure {
+  display: inline-block;
+  width: max-content;
+  max-width: var(--speech-bubble-max-width);
+  visibility: hidden;
+}
+
+/* Pins the visible bubble to the root's tail-side edge and vertical center,
+   independent of the measure copy's current size. */
+.speech-bubble__anchor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.speech-bubble[data-side="left"] .speech-bubble__anchor {
+  right: 0;
+}
+.speech-bubble[data-side="right"] .speech-bubble__anchor {
+  left: 0;
+}
+
+.speech-bubble__pop {
+  position: relative;
+  /* Hidden until JS shows it — no flash before hydration. */
+  visibility: hidden;
+  opacity: 0;
+  /* Own compositor layer: pop scale/opacity is GPU-only, and the body's
+     width/height changes repaint just this small layer, never the portrait. */
+  will-change: transform, opacity;
+}
+
+.speech-bubble__body {
+  position: relative;
+  /* Width/height are written by GSAP (measured). */
+  background: var(--speech-bubble-bg);
+  border-radius: var(--speech-bubble-radius);
+}
+
+/* Text frame. Deliberately NOT sized/positioned by the animating body:
+   GSAP gives it the line's FINAL size the instant the text swaps, and it's
+   pinned to the two points of the bubble that never move during the
+   elastic resize — the tail-side edge and the vertical center (top: 50% +
+   a negative margin-top of half its height, set in JS, so GSAP's own
+   transform on this element stays free for the text in/out beats). So the
+   body can wobble/squash underneath while the text stays perfectly still.
+   Flex centering because the inner line box may be WIDER than the frame
+   (see `.speech-bubble__line`); flexbox overflows it evenly both sides. */
+.speech-bubble__text {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--speech-bubble-fg);
+}
+.speech-bubble[data-side="left"] .speech-bubble__text {
+  right: 0;
+}
+.speech-bubble[data-side="right"] .speech-bubble__text {
+  left: 0;
+}
+
+/* The visible text. Width/height are written by GSAP to the measure copy's
+   exact wrap width, so line breaks match it 1:1. The body hugs the widest
+   rendered line instead (narrower when wrapped), so this box can overhang
+   the frame slightly — only by empty wrap slack, never by glyphs. */
+.speech-bubble__line {
+  display: block;
+  flex-shrink: 0;
+}
+
+.speech-bubble__tail {
+  position: absolute;
+  top: 50%;
+  width: calc(var(--speech-bubble-tail) + 1px);
+  height: 0.7em;
+  fill: var(--speech-bubble-bg);
+  overflow: visible;
+}
+/* Bubble left of its anchor → tail on the right edge, pointing right.
+   1px overlap so no hairline seam shows between body and tail. */
+.speech-bubble[data-side="left"] .speech-bubble__tail {
+  left: calc(100% - 1px);
+  transform: translateY(-50%);
+}
+/* Bubble right of its anchor → tail on the left edge, mirrored. */
+.speech-bubble[data-side="right"] .speech-bubble__tail {
+  right: calc(100% - 1px);
+  transform: translateY(-50%) scaleX(-1);
+}

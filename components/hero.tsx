@@ -1,8 +1,14 @@
 "use client";
 
-import { useRef, type MutableRefObject, type Ref } from "react";
+import { useRef, useState, type MutableRefObject, type Ref } from "react";
 import Image from "next/image";
 import { TransitionLink } from "@/components/transition-link";
+import {
+  SpeechBubble,
+  type SpeechBubbleHandle,
+  type ScrollBound,
+} from "@/components/speech-bubble";
+import { createAboutScript, createGreetingScript } from "@/lib/hero-dialogue";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { setIntroPhase } from "@/lib/intro-store";
 import "./hero.css";
@@ -99,6 +105,31 @@ const PORTRAIT_FADE_BARRIER = 0;
 const PORTRAIT_FADE_DIFFUSION = 0.5;
 const PORTRAIT_FADE_MAX_BLUR_PX = 30;
 
+// ---- portrait speech bubbles ----
+// What they SAY lives in lib/hero-dialogue.ts. Where they sit / how big /
+// max width: `.hero-portrait__bubble--*` in hero.css. When they show is
+// below. Both are armed only once the portrait's entrance has finished.
+
+/** A scroll threshold expressed as a fraction of the viewport height, so it
+ * feels the same on any screen. (Desktop's horizontal pin is still driven
+ * by vertical scroll under the hood, so `window.scrollY` works for both
+ * the desktop horizontal mode and the mobile vertical stack.) */
+const viewportHeights = (fraction: number): ScrollBound => () =>
+  window.innerHeight * fraction;
+
+/** Left/greeting bubble: only while the page is at scroll position 0 (with
+ * 1px of slack for Lenis's sub-pixel settling). */
+const GREETING_BUBBLE_VISIBLE = { to: 1 };
+
+/** Right/"about me" bubble: appears once the visitor has scrolled past
+ * `from`, and disappears again past `to`. Plain px numbers work too, e.g.
+ * `{ from: 120, to: 700 }`. Tune freely. */
+const ABOUT_BUBBLE_VISIBLE = {
+  from: viewportHeights(0.08),
+  to: viewportHeights(1.8),
+};
+
+
 const RIM_TEXT = "MORE ABOUT ME";
 // Repeated with a bullet separator so the loop has no visible seam at
 // whatever startOffset the wipe happens to be sitting at — same reasoning
@@ -170,6 +201,13 @@ export function Hero() {
   const circleRef = useRef<HTMLAnchorElement>(null);
   const rimRef = useRef<SVGSVGElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
+  const greetingBubbleRef = useRef<SpeechBubbleHandle>(null);
+  const aboutBubbleRef = useRef<SpeechBubbleHandle>(null);
+  // One fresh, stateful dialogue script per Hero mount (lazy initialisers so
+  // they're created once, and the scripts themselves defer anything
+  // browser-only until they first run).
+  const [greetingScript] = useState(createGreetingScript);
+  const [aboutScript] = useState(createAboutScript);
   const jonWordRef = useRef<HTMLSpanElement>(null);
   const chengWordRef = useRef<HTMLSpanElement>(null);
   const rimTweenRef: MutableRefObject<gsap.core.Tween | null> = useRef(null);
@@ -352,6 +390,8 @@ export function Hero() {
       gsap.set(name, { x: 0, y: 0, scale: 1, columnGap: restingColumnGap });
       gsap.set(circle, { scale: 1 });
       gsap.set(portrait, { autoAlpha: 1, x: 0, filter: "none" });
+      greetingBubbleRef.current?.setActive(true);
+      aboutBubbleRef.current?.setActive(true);
       setIntroPhase("idle");
       return cleanupFit;
     }
@@ -578,6 +618,18 @@ export function Hero() {
         filter: "blur(0px)",
         duration: PORTRAIT_ENTRANCE_DURATION,
         ease: PORTRAIT_ENTRANCE_EASE,
+        // Drop the (now no-op) `blur(0px)` once settled: any non-`none`
+        // filter keeps the whole portrait on a filter render path, which
+        // would otherwise be re-run whenever the speech bubble (a child of
+        // the portrait) animates.
+        clearProps: "filter",
+      })
+      // Speech bubbles are armed only once the portrait has fully appeared.
+      // From here on each shows/hides itself from scroll position (see
+      // GREETING_/ABOUT_BUBBLE_VISIBLE above).
+      .call(() => {
+        greetingBubbleRef.current?.setActive(true);
+        aboutBubbleRef.current?.setActive(true);
       })
       .call(setupPortraitScroll);
 
@@ -602,13 +654,34 @@ export function Hero() {
           the time its entrance tween fires a couple seconds in, rather
           than popping in mid-animation. */}
       <div className="hero-portrait" ref={portraitRef} aria-hidden="true">
-        <Image
-          src={PORTRAIT_SRC}
-          alt=""
-          fill
-          priority
-          sizes="(min-width: 901px) 40vw, 70vw"
-          className="hero-portrait__img"
+        {/* Rounded-corner clipping lives on this inner frame rather than on
+            .hero-portrait itself, so the speech bubble (a sibling, below)
+            can overhang the photo's edge without being clipped. The bubble
+            is a child of the portrait so it inherits the portrait's own
+            entrance/parallax transforms and scales with it for free. */}
+        <div className="hero-portrait__frame">
+          <Image
+            src={PORTRAIT_SRC}
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 901px) 40vw, 70vw"
+            className="hero-portrait__img"
+          />
+        </div>
+        <SpeechBubble
+          ref={greetingBubbleRef}
+          side="left"
+          className="hero-portrait__bubble hero-portrait__bubble--greeting"
+          script={greetingScript}
+          visibleWhile={GREETING_BUBBLE_VISIBLE}
+        />
+        <SpeechBubble
+          ref={aboutBubbleRef}
+          side="right"
+          className="hero-portrait__bubble hero-portrait__bubble--about"
+          script={aboutScript}
+          visibleWhile={ABOUT_BUBBLE_VISIBLE}
         />
       </div>
       <div className="hero-name" ref={nameRef}>
