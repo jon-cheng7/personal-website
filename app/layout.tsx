@@ -1,5 +1,4 @@
-// Root layout: fonts, theme no-flash script, global chrome.
-// Fits: wraps every route. Nav, SmoothScroll, GlobalCursor, ScreenTransition mounted once here.
+// Mounts the site-wide pieces once: nav, custome gursor, smooth scroll, route wipe and theme
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
