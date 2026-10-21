@@ -1,0 +1,30 @@
+/* FrostPanel — see components/frost-panel.tsx. A rounded-rectangle text
+   container; size it from the outside (width/height/max-width on your own
+   className) — it has no intrinsic dimensions beyond its content + padding.
+   Restyle via the custom properties below. */
+
+.frost-panel {
+  --frost-panel-bg: var(--color-surface, #171717);
+  --frost-panel-fg: var(--color-fg, #f5f5f5);
+  --frost-panel-border: var(--color-border, rgba(255, 255, 255, 0.15));
+  /* Same corner radius as the hero portrait (hero.css --sorrento-radius). */
+  --frost-panel-radius: 1.5rem;
+  --frost-panel-pad: clamp(1.25rem, 2.5vw, 2.25rem);
+
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: var(--frost-panel-pad);
+  border: 1px solid var(--frost-panel-border);
+  border-radius: var(--frost-panel-radius);
+  background: var(--frost-panel-bg);
+  color: var(--frost-panel-fg);
+}
+
+/* Desktop horizontal mode only (where the scroll animation runs): a panel
+   with an entrance starts hidden until JS has applied its scroll state, so
+   it never flashes visible before frosting in. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .frost-panel[data-frost-enter]:not([data-frost-ready]) {
+    opacity: 0;
+  }
+}

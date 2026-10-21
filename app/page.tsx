@@ -1,25 +1,27 @@
 import { Hero } from "@/components/hero";
 import { HorizontalScroll } from "@/components/horizontal-scroll";
 import { ScrollMemory } from "@/components/scroll-memory";
+import { FrostPanel } from "@/components/frost-panel";
+import { ABOUT_CARD } from "@/lib/home-choreography";
+import "./home.css";
 
 // Placeholder filler content so there's something to scroll through before
 // real sections exist — swap each of these for actual content whenever.
 const fillerSections = [
   {
-    heading: "Placeholder section one",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    heading: "",
+    // Shown in a <FrostPanel> (the "about me" card) — see below.
+    body: "I’m Jonathan — a software engineer, photographer, musician, and endlessly curious person. I love building things, making art, exploring new places, learning about culture and history, and thinking about the ideas that shape how we see the world.",
+    card: ABOUT_CARD,
   },
   {
-    heading: "Placeholder section two",
-    body: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    heading: "2",
   },
   {
-    heading: "Placeholder section three",
-    body: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    heading: "3",
   },
   {
-    heading: "Placeholder section four",
-    body: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    heading: "4",
   },
 ];
 
@@ -36,7 +38,21 @@ export default function HomePage() {
                 there's no longer a per-element opt-in for it to key off.
                 Swap these strings for real content whenever. */}
             <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+            {section.card ? (
+              // Frosts in just before the hero's "about" speech bubble
+              // leaves and out like the portrait does — timing/parallax in
+              // lib/home-choreography.ts (ABOUT_CARD).
+              <FrostPanel
+                className="home-about-card"
+                enter={section.card.enter}
+                exit={section.card.exit}
+                parallax={section.card.parallax}
+              >
+                <p>{section.body}</p>
+              </FrostPanel>
+            ) : (
+              <p>{section.body}</p>
+            )}
           </section>
         ))}
       </HorizontalScroll>

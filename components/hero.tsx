@@ -9,6 +9,7 @@ import {
   type ScrollBound,
 } from "@/components/speech-bubble";
 import { createAboutScript, createGreetingScript } from "@/lib/hero-dialogue";
+import { ABOUT_BUBBLE } from "@/lib/home-choreography";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { setIntroPhase } from "@/lib/intro-store";
 import "./hero.css";
@@ -125,8 +126,10 @@ const GREETING_BUBBLE_VISIBLE = { to: 1 };
  * `from`, and disappears again past `to`. Plain px numbers work too, e.g.
  * `{ from: 120, to: 700 }`. Tune freely. */
 const ABOUT_BUBBLE_VISIBLE = {
-  from: viewportHeights(0.08),
-  to: viewportHeights(1.8),
+  // Values live in lib/home-choreography.ts so other beats (the about
+  // card's entrance, app/page.tsx) can be timed relative to this one.
+  from: viewportHeights(ABOUT_BUBBLE.fromVh),
+  to: viewportHeights(ABOUT_BUBBLE.toVh),
 };
 
 

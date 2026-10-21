@@ -1,0 +1,18 @@
+/* Home-page-only styles (app/page.tsx). */
+
+/* The about-me <FrostPanel>. Size only — its look comes from
+   components/frost-panel.css, its horizontal placement on desktop from its
+   `centerAtAnchor` parallax (lib/home-choreography.ts), so it only needs to
+   sit somewhere sensible in normal flow here (that's also its mobile
+   layout). */
+.home-about-card {
+  width: min(36rem, 100%);
+  margin-block: auto;
+  align-self: center;
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.home-about-card p {
+  margin: 0;
+}

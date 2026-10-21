@@ -55,10 +55,29 @@ type ScriptOptions = {
   thinkingChance?: number;
 };
 
+/** Where the idle state machine is. See `personality()`.
+ *
+ *   normal ──(visitor idle ≥ idleAfterSeconds)──▶ one `idle` line ──▶ quiet
+ *     ▲                                                                  │
+ *     └──────(one `returns` line)◀──(visitor active again)───────────────┘
+ */
+type IdleMode = "normal" | "quiet";
+
 /** Shared "personality" engine: an opening sequence on first appearance,
  * a different opener when the visitor comes back, occasional thinking
- * beats, idle-aware lines, and winding down after a while instead of
- * looping forever. */
+ * beats, winding down after a while instead of looping forever — and a
+ * small idle state machine layered on top:
+ *
+ * - NORMAL: opening → chatter (with thinking beats) → wind-down, as usual.
+ * - Visitor idle for `idleAfterSeconds` → say exactly ONE `idle` line, then
+ *   go QUIET: return null (say nothing) for as long as they stay idle. No
+ *   repeated nudges, no chatter.
+ * - Visitor active again → one `returns` line, then back to NORMAL, picking
+ *   up exactly where it left off (same shuffled chatter bag, same wind-down
+ *   progress — idle/return lines don't count toward wind-down).
+ *
+ * Idleness comes from `ctx.idleSeconds` (time since the last pointer move,
+ * scroll, touch or key press — tracked by the bubble component). */
 function personality(
   {
     opening,
@@ -68,18 +87,19 @@ function personality(
     windDown,
     windDownAfter,
     idleAfterSeconds,
-    idleCooldownSeconds,
   }: {
     opening: readonly string[];
     chatter: readonly string[];
+    /** Used both when the bubble re-appears (scrolling back into its range)
+     * and when the visitor comes back from being idle. */
     returns: readonly string[];
+    /** One of these is said when the visitor goes idle — then silence. */
     idle: readonly string[];
-    /** Said once per appearance after `windDownAfter` lines; then the
-     * bubble goes quiet (only idle lines after that). */
+    /** Said once per appearance after `windDownAfter` normal lines; after
+     * that the bubble stays quiet (idle/return lines still happen). */
     windDown: string;
     windDownAfter: number;
     idleAfterSeconds: number;
-    idleCooldownSeconds: number;
   },
   { thinkingChance = 0.25 }: ScriptOptions = {},
 ): SpeechBubbleScript {
@@ -88,8 +108,13 @@ function personality(
   const nextIdle = picker(idle);
   let pending: string | null = null; // line queued behind a "…" beat
   let lastWasThinking = false;
-  let lastIdleAt = -Infinity;
   let woundDown = false;
+  let mode: IdleMode = "normal";
+  // Normal-dialogue lines said this appearance (opening, chatter, "…"
+  // beats, wind-down). Kept separately from ctx.lineInAppearance so idle and
+  // return lines don't push the bubble toward winding down, and so the
+  // opening resumes at the right line.
+  let normalLines = 0;
 
   const maybeThink = (line: string): SpeechBubbleLine | string => {
     if (!lastWasThinking && Math.random() < thinkingChance) {
@@ -101,47 +126,59 @@ function personality(
     return line;
   };
 
-  return (ctx: SpeechBubbleContext) => {
-    const now = performance.now() / 1000;
-
-    if (ctx.reason === "show") {
-      pending = null;
-      lastWasThinking = false;
-      woundDown = false;
-      return ctx.appearance === 1 ? opening[0] : nextReturn();
-    }
-
+  /** Next line of ordinary dialogue (the pre-idle-machine behaviour). */
+  const normalLine = (ctx: SpeechBubbleContext): SpeechBubbleLine | string | null => {
     if (pending) {
       const line = pending;
       pending = null;
       lastWasThinking = false;
+      normalLines++;
       return line;
     }
-
-    // Rest of the opening sequence (first appearance only) — never
-    // interrupted, not even by an idle nudge.
-    if (ctx.appearance === 1 && ctx.lineInAppearance < opening.length) {
-      return opening[ctx.lineInAppearance];
+    if (ctx.appearance === 1 && normalLines < opening.length) {
+      return opening[normalLines++];
     }
-
-    // Visitor has gone still → nudge them (rate-limited).
-    if (
-      ctx.idleSeconds >= idleAfterSeconds &&
-      now - lastIdleAt >= idleCooldownSeconds
-    ) {
-      lastIdleAt = now;
-      lastWasThinking = false;
-      return nextIdle();
-    }
-
-    if (woundDown) return null; // quiet; only idle nudges from here
-
-    if (ctx.lineInAppearance >= windDownAfter) {
+    if (woundDown) return null;
+    if (normalLines >= windDownAfter) {
       woundDown = true;
+      normalLines++;
       return { text: windDown, holdSeconds: 3.5 };
     }
-
+    normalLines++;
     return maybeThink(nextChatter());
+  };
+
+  return (ctx: SpeechBubbleContext) => {
+    if (ctx.reason === "show") {
+      // A fresh appearance always starts in NORMAL (the opener is already a
+      // "welcome back" line on later appearances).
+      pending = null;
+      lastWasThinking = false;
+      woundDown = false;
+      mode = "normal";
+      normalLines = 1;
+      return ctx.appearance === 1 ? opening[0] : nextReturn();
+    }
+
+    const isIdle = ctx.idleSeconds >= idleAfterSeconds;
+
+    if (mode === "quiet") {
+      if (isIdle) return null; // stay silent while they're away
+      mode = "normal";
+      return nextReturn(); // …then normal dialogue resumes next time
+    }
+
+    // NORMAL. A queued line behind a "…" beat and the opening sequence are
+    // never interrupted by going idle — the idle line follows them.
+    const midThought = pending !== null;
+    const inOpening = ctx.appearance === 1 && normalLines < opening.length;
+    if (isIdle && !midThought && !inOpening) {
+      mode = "quiet";
+      lastWasThinking = false;
+      return nextIdle(); // exactly one; QUIET from the next call onward
+    }
+
+    return normalLine(ctx);
   };
 }
 
@@ -187,8 +224,7 @@ export function createGreetingScript(): SpeechBubbleScript {
     ],
     windDown: "anyway… I'll be right here.",
     windDownAfter: 9,
-    idleAfterSeconds: 10,
-    idleCooldownSeconds: 14,
+    idleAfterSeconds: 20,
     });
   });
 }
@@ -215,8 +251,7 @@ export function createAboutScript(): SpeechBubbleScript {
       idle: ["lost in thought? me too.", "I'll wait for the dramatic pause."],
       windDown: "…okay, I'll let the rest of the page talk.",
       windDownAfter: 7,
-      idleAfterSeconds: 8,
-      idleCooldownSeconds: 12,
+      idleAfterSeconds: 30,
     },
     { thinkingChance: 0.2 },
   ));

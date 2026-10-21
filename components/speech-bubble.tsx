@@ -87,14 +87,20 @@ export function cycleScript(
 
 /** How long a line stays up if the script doesn't say: a base beat plus time
  * to read it, clamped — short quips flick by, longer ones linger. */
+const DIALOGUE_SPEED_MULTIPLIER = 2;
+
 export function readingHoldSeconds(text: string): number {
   const words = text.trim().split(/\s+/).length;
-  return gsap.utils.clamp(3, 8, 2.2 + words * 0.4 + text.length * 0.025);
+  const hold = gsap.utils.clamp(3, 8, 2.2 + words * 0.4 + text.length * 0.025);
+  return hold * DIALOGUE_SPEED_MULTIPLIER;
 }
 
 /** When a script returns null ("nothing to say right now"), how long until
- * it's asked again. */
-const QUIET_RECHECK_SECONDS = 3;
+ * it's asked again. Kept short so a script waiting on a state change (e.g.
+ * lib/hero-dialogue.ts going quiet while the visitor is idle, then greeting
+ * them the moment they're back) reacts promptly. Each re-ask is one O(1)
+ * function call on the GSAP ticker — negligible. */
+const QUIET_RECHECK_SECONDS = 0.4;
 
 // ---- motion knobs (tune freely) ----
 
