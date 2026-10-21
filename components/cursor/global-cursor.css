@@ -1,8 +1,5 @@
-/* Carried over verbatim from the previous, simpler cursor
-   (components/custom-cursor.css, now retired — see that file's own stub
-   comment) — none of this is specific to the old design, it's the generic
-   "a custom cursor is active" contract the rest of the site still relies
-   on, so the class name and behavior stay exactly the same. */
+/* Custom cursor layers + content styles. */
+
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
@@ -18,22 +15,6 @@
   user-drag: none;
 }
 
-/* The "trail" mode's elastic line (lib/cursor/modes.ts / global-cursor.tsx)
-   — a fixed, full-viewport overlay of its own rather than a child of
-   `.cursor-root`, since its two line elements are plotted in raw
-   viewport (clientX/clientY) coordinates, not `.cursor-root`'s own
-   translated space. Sits one below `.cursor-root`'s z-index (painted
-   first in the DOM either way — see global-cursor.tsx's own comment on
-   why — this is just belt-and-suspenders against anything else in this
-   stacking context landing between them). Opacity is toggled from JS
-   (tick(), on activation/deactivation only — not every frame) rather than
-   driven by a mode-change timeline like the shell's own transitions,
-   since a trail fading in/out is a much smaller visual event than a full
-   shape morph; the transition here keeps that toggle from being a hard
-   cut. Each `<line>`'s own stroke/width/geometry is set directly via
-   `setAttribute` from JS, never CSS — same "just write the computed
-   value" reasoning as components/horizontal-scroll.tsx's own exit-fade
-   writes; there's nothing here for a CSS rule to usefully own. */
 .cursor-trail {
   position: fixed;
   inset: 0;
@@ -45,10 +26,6 @@
   transition: opacity 0.2s ease;
 }
 
-/* The outer element is a 0×0 positioning anchor — `transform` is written
-   to it directly from JS via GSAP's quickTo (global-cursor.tsx), so it
-   deliberately has no CSS transition of its own: smoothing *position*
-   would fight the tween's own easing. */
 .cursor-root {
   position: fixed;
   top: 0;
@@ -62,48 +39,18 @@
   mix-blend-mode: normal;
 }
 
-/* Sized to match the *current* mode's shape (tweened on every mode
-   transition — see global-cursor.tsx) and positioned by its own
-   `transform: translate(-x%, -y%)`, where x/y come from the mode's anchor
-   (0.5, 0.5 — dead center — unless a mode overrides it). Using a
-   percentage translate rather than computed pixel margins means the
-   anchor stays correct through a resize/morph tween automatically, with
-   no per-frame JS recalculation needed. */
 .cursor-anchor {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-/* Velocity-driven squash/stretch (`tracking.stretchWithVelocity`) lives on
-   its own wrapper, entirely separate from the shape layers' own width/
-   height/color tweening below — two independent systems animating two
-   different elements, so neither ever fights the other for the same CSS
-   property. Unused (identity transform) for any mode that doesn't opt in. */
 .cursor-stretch {
   position: absolute;
   inset: 0;
   transform-origin: 50% 50%;
 }
 
-/* The "simple" shape layer — plain geometry, tweened directly (width/
-   height/border-radius/background-color/border-color), no SVG involved.
-   Hidden (opacity 0) whenever the current mode is an "svg" shape or a
-   transition is bridging through one — see the morph-technique handling
-   in global-cursor.tsx. */
-/* Explicit resting values for everything a mode transition ever tweens —
-   background-color, border-color/width, all declared up front rather than
-   left implicit. This is a lesson learned the hard way on the previous,
-   simpler cursor (see components/custom-cursor.css's git history / the
-   project doc): transitioning a property from "not declared at all" means
-   the browser interpolates from that property's CSS-initial value
-   (`currentColor` for border-color, i.e. inherited text color, not
-   transparent), and `border-style` itself snaps rather than eases from
-   `none` to `solid` partway through a transition — together those produce
-   a visible off-color flash. Declaring a real, if invisible, `solid`
-   border and `transparent` background up front means every mode
-   transition only ever eases a already-real, already-`solid`/opaque-kind
-   value toward another one. */
 .cursor-shell {
   position: absolute;
   inset: 0;
@@ -112,10 +59,6 @@
   border: 0 solid transparent;
 }
 
-/* The "svg" shape layer — always mounted (never remounted between
-   states, per the architecture doc's own requirement), just hidden
-   whenever the current mode doesn't need it. `viewBox` and the path's `d`
-   are both set from JS (global-cursor.tsx / lib/cursor/morph-strategy.ts). */
 .cursor-shell__svg {
   position: absolute;
   inset: 0;
@@ -124,14 +67,6 @@
   overflow: visible;
 }
 
-/* Content animates independently from the shape layers above — see the
-   architecture doc's transition-orchestration section (content fades out/
-   in on its own timeline, not locked to the shell's own resize/morph).
-   Explicitly `normal` here (not just "not `difference`") on purpose: a
-   shape's own `blend` behavior (see .cursor-shell/.cursor-shell__svg path
-   above) is never meant to reach text/icon/media content — this rule
-   makes that a stated invariant rather than an accident of `mix-blend-
-   mode` happening not to be an inherited property. */
 .cursor-content {
   position: absolute;
   inset: 0;
@@ -160,10 +95,6 @@
   overflow: hidden;
 }
 
-/* A very small, self-contained marquee for `content: { kind: "text",
-   animation: "marquee" }` — duplicates the label once so the loop has no
-   visible seam, and translates the pair by exactly -50% (i.e. exactly one
-   copy's width) per cycle. */
 .cursor-content__marquee {
   display: flex;
   gap: 1.5em;

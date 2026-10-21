@@ -1,11 +1,15 @@
 "use client";
 
+// 404 scene: "404" digits dodge the pointer + lost-time counter.
+// Fits: app/not-found.tsx.
+
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import "./not-found-scene.css";
 import { TransitionLink } from "./transition-link";
 
+/** One picked at random per visit. */
 const LOST_LINES = [
   "Well this is awkward...",
   "Congrats, you found the secret nothing!",
@@ -13,6 +17,7 @@ const LOST_LINES = [
   "I swear I fixed this.",
 ];
 
+/** s → m:ss. */
 function formatSeconds(total: number) {
   const minutes = Math.floor(total / 60);
   const seconds = total % 60;
@@ -21,18 +26,13 @@ function formatSeconds(total: number) {
 
 const DIGITS = ["4", "0", "4"];
 
-// Tuning for the digits' mouse-dodge effect below (see the pointermove
-// handler): how close the pointer has to get to a digit's own center
-// before it starts pushing that digit away, and how far a digit can be
-// shoved at the closest possible distance (the pointer sitting right on
-// top of it). Kept as named constants since they're the two numbers most
-// likely to want tweaking by feel later.
+/** Dodge tuning: px radius, max px offset. */
 const REPEL_RADIUS = 160;
 const MAX_OFFSET = 36;
 
+/** Dodge only for fine pointers, no reduced motion. */
 export function NotFoundScene() {
   const digitRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  // Picked once via useState's lazy initializer, not on every render.
   const [line, setLine] = useState(LOST_LINES[0]);
   useEffect(() => {
     setLine(LOST_LINES[Math.floor(Math.random() * LOST_LINES.length)]);
@@ -40,17 +40,7 @@ export function NotFoundScene() {
   
   const [secondsLost, setSecondsLost] = useState(0);
 
-  // The "404" digits playfully dodge the cursor rather than sitting still —
-  // fitting, for a page about something that can't be found: reach for it
-  // and it scoots away. Replaces the earlier perpetual liquid-wipe ripple
-  // (per Jon's feedback that it read as a little odd and only affected part
-  // of the numerals) with a direct, literal mouse interaction on the "404"
-  // text itself instead.
   useEffect(() => {
-    // Gated the same way components/custom-cursor.tsx gates its own
-    // pointer-follow tracking: a fine-pointer check (no meaningful "hover
-    // proximity" on touch) and a reduced-motion check (this is pure
-    // decorative motion, easy to skip outright rather than tone down).
     if (!window.matchMedia("(pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -59,12 +49,6 @@ export function NotFoundScene() {
     );
     if (digits.length === 0) return;
 
-    // One quickTo pair per digit — the same "re-target an in-flight tween
-    // instead of starting a new one every call" pattern the custom cursor
-    // uses for its own pointer-follow easing (components/custom-cursor.tsx)
-    // — so each digit eases smoothly toward wherever it's currently being
-    // pushed, or back to its resting (0, 0) offset once the pointer moves
-    // away, rather than jumping between positions.
     const movers = digits.map((digit) => ({
       x: gsap.quickTo(digit, "x", { duration: 0.5, ease: "power3.out" }),
       y: gsap.quickTo(digit, "y", { duration: 0.5, ease: "power3.out" }),
@@ -79,9 +63,6 @@ export function NotFoundScene() {
 
     const onPointerMove = (event: PointerEvent) => {
       digits.forEach((digit, i) => {
-        // Read fresh every move rather than cached once — cheap for three
-        // elements, and correct even if a resize or reflow shifted them
-        // since the last read.
         const rect = digit.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
@@ -95,10 +76,6 @@ export function NotFoundScene() {
           return;
         }
 
-        // Falls off linearly from full strength (pointer right on the
-        // digit's center) to zero (pointer at the edge of the radius) —
-        // simple, and reads as a natural "personal space" bubble around
-        // each digit rather than a hard on/off snap.
         const strength = (1 - distance / REPEL_RADIUS) * MAX_OFFSET;
         movers[i].x((dx / distance) * strength);
         movers[i].y((dy / distance) * strength);
@@ -106,9 +83,6 @@ export function NotFoundScene() {
     };
 
     window.addEventListener("pointermove", onPointerMove);
-    // Pointer leaving the window entirely should still let the digits
-    // settle back home, same as the custom cursor hiding itself on the
-    // same event.
     document.documentElement.addEventListener("mouseleave", rest);
 
     return () => {
@@ -118,9 +92,6 @@ export function NotFoundScene() {
   }, []);
 
   useEffect(() => {
-    // Not a real "time since you got lost" tracker — just a small, low-key
-    // delight that pays off for anyone who lingers on the joke for more
-    // than a glance, rather than a one-shot gag.
     const id = window.setInterval(() => {
       setSecondsLost((seconds) => seconds + 1);
     }, 1000);

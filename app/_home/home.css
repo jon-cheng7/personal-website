@@ -1,0 +1,5 @@
+/* Home-only looks. Placement lives in home.choreo.ts. */
+
+.about-statement {
+  --reveal-align: left;
+}

@@ -1,17 +1,5 @@
-/**
- * A small, capped pool of kept-alive `<img>`/`<video>` elements, addressed
- * by `src` — see the project doc's "Media handling strategy." Exists so
- * repeatedly hovering the same (or a handful of different) media-preview
- * targets never re-mounts/re-decodes an element from scratch; a genuinely
- * new source creates one more pooled element, evicting the least-recently-
- * used past the cap.
- *
- * This module only tracks *existence* and recency — it deliberately
- * doesn't attach elements to the DOM itself. The caller (global-cursor.tsx)
- * is responsible for appending/removing the returned element from its own
- * content layer, since that's a rendering concern this module shouldn't
- * need to know about.
- */
+// Capped LRU pool of kept-alive <img>/<video> for media cursor previews.
+// Fits: GlobalCursor media content.
 
 export type PooledMediaKind = "image" | "video";
 
@@ -21,8 +9,7 @@ interface PoolEntry {
   lastUsed: number;
 }
 
-// A guess pending real project content to test against — see the
-// architecture doc's own "bottlenecks" section.
+/** Max pooled elements. */
 const POOL_CAP = 6;
 
 const pool = new Map<string, PoolEntry>();
@@ -50,10 +37,7 @@ function evictLeastRecentlyUsed(): void {
   pool.delete(oldestKey);
 }
 
-/** Returns a kept-alive element for `src`, creating and pooling one on
- * first use. Always returns the same element for the same `src` on
- * subsequent calls (recency-bumped), so toggling visibility is all a
- * caller needs to do for an already-seen source. */
+/** Get or create by src; evicts LRU past cap. */
 export function getPooledMedia(
   src: string,
   kind: PooledMediaKind,
@@ -70,9 +54,6 @@ export function getPooledMedia(
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-    // Only "metadata" until this becomes the active mode (see
-    // pausePooledVideo/playPooledVideo below) — a pooled-but-inactive
-    // video shouldn't be decoding frames in the background.
     video.preload = "metadata";
     video.src = src;
   } else {
@@ -89,25 +70,17 @@ export function getPooledMedia(
   return el;
 }
 
-/** Call when a video-media mode becomes the active cursor content — bumps
- * it to full preload and starts playback. No-op for an image `src` or one
- * not currently pooled. */
+/** Active preview: load + play. */
 export function playPooledVideo(src: string): void {
   const entry = pool.get(src);
   if (!entry || entry.kind !== "video") return;
   const video = entry.el as HTMLVideoElement;
   video.preload = "auto";
   void video.play().catch(() => {
-    // Autoplay can be rejected (e.g. no user gesture yet on some
-    // browsers) — the cursor's media mode degrades to a static poster
-    // frame or a blank preview rather than throwing, since a rejected
-    // play() is a normal, expected outcome here, not a real error.
   });
 }
 
-/** Call when a video-media mode stops being the active cursor content —
- * pauses it (stops decoding) without evicting it from the pool, so it
- * stays warm for the next hover. */
+/** Inactive: pause, keep. */
 export function pausePooledVideo(src: string): void {
   const entry = pool.get(src);
   if (entry && entry.kind === "video") {

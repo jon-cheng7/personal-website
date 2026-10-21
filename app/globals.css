@@ -1,4 +1,6 @@
-/* Reset */
+/* Global styles: reset, spacing/type scale, theme color tokens, fonts.
+   --font-display = active display face (swap here). */
+
 *,
 *::before,
 *::after {
@@ -8,7 +10,6 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* Scrollbar hidden site-wide*/
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -37,7 +38,6 @@ video {
   height: auto;
 }
 
-/* Respect the OS-level reduced-motion preference everywhere, by default */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -49,19 +49,11 @@ video {
   }
 }
 
-/* Accessible focus state — keep this (or replace with an equally visible
-   custom one) whatever the visual design ends up being */
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-/* Standard visually-hidden pattern — present for assistive tech, invisible
-   on screen. A global utility (components/hero.css has its own scoped
-   `.hero-name__sr-only` predating this, left as-is rather than migrated)
-   for any component that splits real content into decorative per-letter/
-   per-word spans (see components/split-text.tsx) and needs an accessible
-   plain-text duplicate alongside the aria-hidden animated one. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -74,7 +66,6 @@ video {
   border: 0;
 }
 
-/* Skip-to-content link, visually hidden until focused */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -89,8 +80,6 @@ video {
   left: 0;
 }
 
-/* Fluid spacing/type-scale primitives. Nothing else depends on these exact
-   values yet — tune or replace freely once a visual direction exists. */
 :root {
   --space-s: clamp(0.5rem, 1vw, 1rem);
   --space-m: clamp(1rem, 2vw, 2rem);
@@ -102,10 +91,7 @@ video {
 
 :root {
   --font-display: var(--font-unbounded);
-  /* --font-display: var(--font-geist-sans); */
 }
-
-/* Color tokens */
 
 :root {
   color-scheme: light dark;

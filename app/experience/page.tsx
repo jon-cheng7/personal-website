@@ -1,3 +1,6 @@
+// /experience — resume placeholder.
+// Fits: PageShell content page.
+
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 

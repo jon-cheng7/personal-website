@@ -1,3 +1,6 @@
+// /me — about-me placeholder.
+// Fits: PageShell content page; hero circle links here.
+
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 

@@ -1,3 +1,6 @@
+// Social links + contact info.
+// Fits: nav drawer footer.
+
 export interface SocialLink {
   label: string;
   href: string;

@@ -1,0 +1,100 @@
+/* SpeechBubble look. Consumer sets top/left|right + font-size; vars: --speech-bubble-*. */
+
+.speech-bubble {
+  --speech-bubble-tail: 0.6em;
+  --speech-bubble-bg: var(--color-accent, #c5fb45);
+  --speech-bubble-fg: #0a0a0a;
+  --speech-bubble-radius: 0.75em;
+  --speech-bubble-pad-y: 0.55em;
+  --speech-bubble-pad-x: 0.55em;
+
+  position: absolute;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: none;
+  pointer-events: none;
+  contain: layout style;
+
+  font-family: var(--font-display, "unbounded", "Geist Sans", system-ui, sans-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+.speech-bubble__measure,
+.speech-bubble__line {
+  box-sizing: border-box;
+  padding: var(--speech-bubble-pad-y) var(--speech-bubble-pad-x);
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.speech-bubble__measure {
+  display: inline-block;
+  width: max-content;
+  max-width: var(--speech-bubble-max-width);
+  visibility: hidden;
+}
+
+.speech-bubble__anchor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.speech-bubble[data-side="left"] .speech-bubble__anchor {
+  right: 0;
+}
+.speech-bubble[data-side="right"] .speech-bubble__anchor {
+  left: 0;
+}
+
+.speech-bubble__pop {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.speech-bubble__body {
+  position: relative;
+  background: var(--speech-bubble-bg);
+  border-radius: var(--speech-bubble-radius);
+}
+
+.speech-bubble__text {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--speech-bubble-fg);
+}
+.speech-bubble[data-side="left"] .speech-bubble__text {
+  right: 0;
+}
+.speech-bubble[data-side="right"] .speech-bubble__text {
+  left: 0;
+}
+
+.speech-bubble__line {
+  display: block;
+  flex-shrink: 0;
+}
+
+.speech-bubble__tail {
+  position: absolute;
+  top: 50%;
+  width: calc(var(--speech-bubble-tail) + 1px);
+  height: 0.7em;
+  fill: var(--speech-bubble-bg);
+  overflow: visible;
+}
+.speech-bubble[data-side="left"] .speech-bubble__tail {
+  left: calc(100% - 1px);
+  transform: translateY(-50%);
+}
+.speech-bubble[data-side="right"] .speech-bubble__tail {
+  right: calc(100% - 1px);
+  transform: translateY(-50%) scaleX(-1);
+}

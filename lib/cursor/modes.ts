@@ -1,3 +1,6 @@
+// Named cursor modes (default, link, media, arrow, star, enter…).
+// Fits: data-cursor="name" picks one.
+
 import type { CursorModeConfig } from "./types";
 import {
   ARROW_DIFFERENCE,
@@ -8,7 +11,7 @@ import {
   STAR,
 } from "./shapes";
 
-
+/** Add/edit modes here. */
 export const CURSOR_MODES: Record<string, CursorModeConfig> = {
   default: {
     shape: DOT_DIFFERENCE,
@@ -48,10 +51,6 @@ export const CURSOR_MODES: Record<string, CursorModeConfig> = {
   },
 },
 
-  // The basic dot, plus a two-segment elastic trail behind it (see
-  // global-cursor.tsx's tick()) — accent blue closest to the dot, accent
-  // red further behind. Reuses the plain `default` dot shape/color/
-  // tracking wholesale; `trail` is the only thing this mode adds.
   trail: {
     shape: DOT_DIFFERENCE,
     content: { kind: "none" },
@@ -75,11 +74,7 @@ export const CURSOR_MODES: Record<string, CursorModeConfig> = {
   },
 };
 
-/** Resolves a `CursorModeRef` (a named mode, or an inline config already
- * shaped like one) down to a concrete `CursorModeConfig`. Falls back to
- * `default` for an unknown name rather than throwing — a typo in a
- * `data-cursor` attribute should degrade to the plain pointer, not break
- * the page. */
+/** Name or config → config (unknown → default). */
 export function resolveCursorMode(
   ref: string | import("./types").CursorModeConfig | undefined,
 ): CursorModeConfig {
