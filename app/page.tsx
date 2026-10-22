@@ -7,6 +7,8 @@ import { ScrollMemory } from "@/components/scroll-memory";
 import { homeChoreo } from "./_home/home.choreo";
 import { Hero } from "./_home/sections/hero/hero";
 import { Pillars } from "./_home/sections/pillars/pillars";
+import { Terminal } from "./_home/sections/terminal/terminal";
+import { Contact } from "./_home/sections/contact/contact";
 import "./_home/home.css";
 
 export default function HomePage() {
@@ -24,6 +26,10 @@ export default function HomePage() {
         </Actor>
 
         <Pillars />
+
+        <Terminal />
+
+        <Contact />
       </Scene>
       <ScrollMemory id="home" />
     </>

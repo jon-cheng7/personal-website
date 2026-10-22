@@ -1,0 +1,307 @@
+/* Terminal look + "Let’s talk tech" heading. Always dark (it's a terminal). Vars: --term-* (colours, font, size). Placement → home.choreo.ts. */
+
+.term-actor {
+  /* actor box = window; size from choreo w/h */
+  display: flex;
+}
+
+.term {
+  --term-bg: rgba(10, 10, 10, 0.92);
+  --term-fg: #e8e8e8;
+  --term-muted: rgba(232, 232, 232, 0.45);
+  --term-border: rgba(255, 255, 255, 0.12);
+  --term-accent: var(--color-accent, #c5fb45);
+  --term-font: var(--font-geist-mono, ui-monospace), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --term-size: clamp(0.8rem, 0.72rem + 0.35vw, 1rem);
+
+  /* ls colours by kind */
+  --term-lang: var(--term-accent);
+  --term-data: #45f0fb;
+  --term-infra: #8b7bff;
+  --term-lib: #ff7bd8;
+  --term-tool: #ffd36b;
+  --term-dir: #45f0fb;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--term-border);
+  border-radius: 14px;
+  background: var(--term-bg);
+  color: var(--term-fg);
+  font: 400 var(--term-size) / 1.55 var(--term-font);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+/* title bar */
+.term__bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.7em 1em;
+  border-bottom: 1px solid var(--term-border);
+  font-size: 0.8em;
+  color: var(--term-muted);
+  user-select: none;
+}
+.term__dots {
+  display: flex;
+  gap: 0.45em;
+}
+.term__dots i {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.term__dots i:first-child {
+  background: var(--term-accent);
+}
+.term__title {
+  flex: 1;
+  text-align: center;
+}
+.term__hint kbd {
+  padding: 0 0.4em;
+  border: 1px solid var(--term-border);
+  border-radius: 4px;
+  font: inherit;
+  color: var(--term-fg);
+}
+
+/* screen */
+.term__screen {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1em 1.25em;
+  /* no drag-select autoscroll, no draggable scrollbar; wheel (while focused) + auto-follow only */
+  user-select: none;
+  -webkit-user-select: none;
+  scrollbar-width: none;
+}
+.term__screen::-webkit-scrollbar {
+  display: none;
+}
+.term__line {
+  min-height: 1.55em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.term__prompt {
+  user-select: none;
+}
+.term__user {
+  color: var(--term-accent);
+}
+.term__cwd {
+  color: var(--term-dir);
+}
+
+.term__caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.15em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: var(--term-accent);
+  animation: term-blink 1s steps(1) infinite;
+}
+@keyframes term-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* live prompt */
+.term__live {
+  display: flex;
+  align-items: baseline;
+  cursor: text;
+}
+.term__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--term-fg);
+  font: inherit;
+  caret-color: var(--term-accent);
+  caret-shape: block;
+}
+
+/* output */
+.term__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17ch, 1fr));
+  gap: 0 1.5ch;
+  margin: 0.15em 0 0.35em;
+}
+.term__grid > * {
+  white-space: nowrap;
+  justify-self: start;
+}
+.term__pre {
+  margin: 0.2em 0;
+  font: inherit;
+  line-height: 1.2;
+}
+
+.term__seg {
+  font: inherit;
+}
+.term__word,
+.term__link {
+  padding: 0 0.15em;
+  margin: 0 -0.15em;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+[data-ready] .term__word {
+  cursor: pointer;
+}
+[data-ready] .term__word:hover,
+[data-ready] .term__word:focus-visible,
+.term__link:hover,
+.term__link:focus-visible {
+  outline: 0;
+  background: currentColor;
+  color: #0a0a0a;
+}
+[data-ready] .term__word:hover > *,
+[data-ready] .term__word:focus-visible > * {
+  color: #0a0a0a;
+}
+.term__word:disabled {
+  cursor: inherit;
+}
+
+.term__tone--lang {
+  color: var(--term-lang);
+}
+.term__tone--data {
+  color: var(--term-data);
+}
+.term__tone--infra {
+  color: var(--term-infra);
+}
+.term__tone--lib {
+  color: var(--term-lib);
+}
+.term__tone--tool {
+  color: var(--term-tool);
+}
+.term__tone--dir {
+  color: var(--term-dir);
+  font-weight: 700;
+}
+.term__tone--accent {
+  color: var(--term-accent);
+}
+.term__tone--muted,
+.term__muted {
+  color: var(--term-muted);
+}
+.term__tone--err {
+  color: #ff6b6b;
+}
+.term__tone--cmd {
+  color: var(--term-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--term-muted);
+  text-underline-offset: 0.2em;
+}
+
+/* suggestion chips */
+.term__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.7em 1em;
+  border-top: 1px solid var(--term-border);
+  font-size: 0.85em;
+  transition: opacity 0.3s ease;
+}
+.term:not([data-ready]) .term__chips {
+  opacity: 0.25;
+}
+.term__chip {
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--term-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--term-fg);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.term__chip:hover:not(:disabled),
+.term__chip:focus-visible {
+  outline: 0;
+  border-color: var(--term-accent);
+  background: var(--term-accent);
+  color: #0a0a0a;
+}
+.term__chip:disabled {
+  cursor: default;
+}
+
+/* rm -rf gag */
+.term[data-melt] .term__screen > * {
+  animation: term-melt 1.1s ease-in forwards;
+}
+@keyframes term-melt {
+  0% {
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+  20% {
+    transform: skewX(-6deg);
+    filter: hue-rotate(90deg);
+  }
+  65% {
+    transform: translateY(60%) skewY(6deg) scaleY(1.4);
+    filter: blur(3px) hue-rotate(200deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(60%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term__caret {
+    animation: none;
+  }
+}
+
+/* "Let’s talk tech" — behind the window (talkTech actor). */
+.talk-tech-actor {
+  pointer-events: none;
+}
+.talk-tech {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 9vw, 9.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--color-fg, #f5f5f5);
+}

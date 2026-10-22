@@ -16,6 +16,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { setIntroPhase } from "@/lib/intro-store";
 import { BUBBLES, PORTRAIT } from "../../home.choreo";
 import { createAboutScript, createGreetingScript } from "./dialogue";
+import { fitNameToWidth } from "./fit-name";
 import "./hero.css";
 
 const PORTRAIT_SRC = "/sorrento.png";
@@ -110,22 +111,8 @@ export function Hero() {
       (el): el is HTMLSpanElement => el !== null,
     );
 
-    /** Name font-size so "Jon ● cheng" exactly fills the width. Measured, re-run on resize/font load. */
-    const fitHeroSizeToWidth = () => {
-      const fontSizePx = parseFloat(getComputedStyle(name).fontSize);
-      const gapPx = parseFloat(getComputedStyle(name).columnGap) || 0;
-      const availableWidth = name.clientWidth;
-      if (!fontSizePx || availableWidth <= 0) return;
-
-      const scalingWidthPx = jonWord.offsetWidth + circle.offsetWidth + chengWord.offsetWidth;
-      const perEm = scalingWidthPx / fontSizePx;
-      if (perEm <= 0) return;
-
-      const fittedSizePx = (availableWidth - 2 * gapPx) / perEm;
-      if (fittedSizePx > 0) {
-        name.style.setProperty("--hero-size", `${fittedSizePx}px`);
-      }
-    };
+    /** Name font-size so "Jon ● cheng" exactly fills the width. Re-run on resize/font load. */
+    const fitHeroSizeToWidth = () => fitNameToWidth(name, [jonWord, circle, chengWord]);
 
     /** Portrait width from PORTRAIT top/overlap/aspect + name position. Writes --sorrento-size on its actor. */
     const fitPortraitToHeroOverlap = () => {

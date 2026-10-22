@@ -7,6 +7,8 @@ import {
   DOT_DIFFERENCE,
   ENTER_ARROW_DIFFERENCE,
   PREVIEW_DIFFERENCE,
+  RETRO_ARROW,
+  RETRO_HAND,
   RING_DIFFERENCE,
   STAR,
 } from "./shapes";
@@ -72,6 +74,22 @@ export const CURSOR_MODES: Record<string, CursorModeConfig> = {
     tracking: { duration: 0.3, ease: "power3" },
     idleMotion: { type: "bob", amplitude: 4, durationS: 1.4 },
   },
+};
+
+/** Retro OS pointers (terminal). White + black outline, no lag. */
+CURSOR_MODES.retro = {
+  shape: RETRO_ARROW,
+  content: { kind: "none" },
+  color: "#ffffff",
+  stroke: { width: 1.5, color: "#000000" },
+  anchor: { x: 0.24, y: 0.02 },
+  tracking: { duration: 0.02, ease: "none" },
+  transitionMs: 160,
+};
+CURSOR_MODES.retroHand = {
+  ...CURSOR_MODES.retro,
+  shape: RETRO_HAND,
+  anchor: { x: 0.44, y: 0.03 },
 };
 
 /** Name or config → config (unknown → default). */

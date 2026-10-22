@@ -334,7 +334,14 @@ export function GlobalCursor() {
 
       svg.setAttribute("viewBox", viewBox);
       gsap.set(path, {
-        attr: { d: fromPath },
+        attr: {
+          d: fromPath,
+          // svg outline (mode.stroke), px regardless of viewBox scale
+          stroke: mode.stroke?.color ?? "none",
+          "stroke-width": mode.stroke?.width ?? 0,
+          "vector-effect": "non-scaling-stroke",
+          "stroke-linejoin": "miter",
+        },
       });
       svg.style.opacity = "1";
 
