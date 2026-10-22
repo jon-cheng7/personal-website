@@ -1,6 +1,7 @@
 "use client";
 
 // Rounded card for text: size, colors, fill opacity, optional glass blur + cursor hover light. Look only.
+// shimmer = fluid WebGL blob (lib/shimmer-gl, one shared context); CSS fallback if no WebGL / reduced motion.
 // Fits: reusable; to move/frost on scroll wrap in <Actor> and keyframe it.
 
 import {
@@ -12,10 +13,11 @@ import {
   type RefObject,
 } from "react";
 import { gsap } from "@/lib/gsap";
+import { shimmerDetach, shimmerEnter, shimmerLeave, shimmerMove } from "@/lib/shimmer-gl";
 import type { Length } from "@/components/choreo/units";
 import "./frost-panel.css";
 
-/** Cursor light: "glow" | "shimmer" (iridescent) | false (off, zero cost). */
+/** Cursor light: "glow" | "shimmer" (fluid iridescent) | false (off, zero cost). */
 export type FrostHover = false | "glow" | "shimmer";
 
 /** Each prop → a --frost-panel-* CSS var (class can set them too; props win). */
@@ -35,8 +37,12 @@ export type FrostLook = {
   glass?: number;
   hover?: FrostHover;
   hoverColor?: string;
+  /** Light diameter; shimmer blob radius ≈ 0.3×. */
   hoverSize?: Length;
+  /** glow: light opacity. shimmer: × SHIMMER_GAIN. */
   hoverIntensity?: number;
+  /** Shimmer palette, 1–5 hex colours (cycled). */
+  shimmerColors?: string[];
   /** Seconds the light trails the cursor. */
   hoverLag?: number;
 };
@@ -63,12 +69,13 @@ export function FrostPanel({
   hoverSize,
   hoverIntensity,
   hoverLag = 0.35,
+  shimmerColors,
   className,
   style,
   ...rest
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  useHoverLight(ref, hover, hoverLag);
+  useHoverLight(ref, hover, hoverLag, shimmerColors?.join(",") ?? DEFAULT_SHIMMER);
 
   const px = (v: Length | undefined) =>
     v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;
@@ -117,20 +124,31 @@ export function FrostPanel({
   );
 }
 
-/** Cursor light: listeners only while hovered; transform-only movement. */
+const DEFAULT_SHIMMER = "#c5fb45,#45f0fb,#8b7bff,#ff7bd8,#ffd36b";
+/** Shimmer alpha = hoverIntensity (default 0.18) × this. */
+const SHIMMER_GAIN = 2.5;
+
+/** Cursor light: listeners only while hovered; transform-only movement. colors = comma list (stable dep). */
 function useHoverLight(
   ref: RefObject<HTMLDivElement | null>,
   hover: FrostHover,
   lag: number,
+  colors: string,
 ) {
   useEffect(() => {
     const el = ref.current;
     if (!el || !hover) return;
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-    const lights = Array.from(el.querySelectorAll<HTMLElement>(".frost-panel__light"));
-    if (lights.length === 0) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fluid = hover === "shimmer" && !reduce;
+    if (fluid) el.dataset.shimmerGl = "";
+    const fx = el.querySelector<HTMLElement>(".frost-panel__fx");
+    // fluid: fill = canvas, CSS lights only on the edge
+    const lights = Array.from(
+      el.querySelectorAll<HTMLElement>(fluid ? ".frost-panel__edge .frost-panel__light" : ".frost-panel__light"),
+    );
+    if (lights.length === 0) return;
     const duration = reduce ? 0 : lag;
     const movers = lights.map((l) => ({
       x: gsap.quickTo(l, "x", { duration, ease: "power3.out" }),
@@ -158,6 +176,7 @@ function useHoverLight(
     const onMove = (e: PointerEvent) => {
       clientX = e.clientX;
       clientY = e.clientY;
+      if (el.dataset.shimmerGl !== undefined) shimmerMove(el, clientX, clientY);
       schedule();
     };
     const onScroll = () => {
@@ -173,12 +192,19 @@ function useHoverLight(
         m.x(clientX - rect.left, clientX - rect.left);
         m.y(clientY - rect.top, clientY - rect.top);
       }
+      if (el.dataset.shimmerGl !== undefined && fx) {
+        const size = fx.querySelector<HTMLElement>(".frost-panel__light")?.offsetWidth || 416;
+        const intensity = parseFloat(getComputedStyle(el).getPropertyValue("--frost-panel-glow-intensity")) || 0.18;
+        const ok = shimmerEnter(el, fx, { colors: colors.split(","), intensity: intensity * SHIMMER_GAIN, radius: size * 0.3 }, clientX, clientY);
+        if (!ok) delete el.dataset.shimmerGl;
+      }
       el.dataset.hovered = "";
       el.addEventListener("pointermove", onMove, { passive: true });
       window.addEventListener("scroll", onScroll, { passive: true });
     };
     const onLeave = () => {
       delete el.dataset.hovered;
+      shimmerLeave(el);
       el.removeEventListener("pointermove", onMove);
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
@@ -189,9 +215,11 @@ function useHoverLight(
     el.addEventListener("pointerleave", onLeave);
     return () => {
       onLeave();
+      shimmerDetach(el);
+      delete el.dataset.shimmerGl;
       el.removeEventListener("pointerenter", onEnter);
       el.removeEventListener("pointerleave", onLeave);
       gsap.killTweensOf(lights);
     };
-  }, [ref, hover, lag]);
+  }, [ref, hover, lag, colors]);
 }

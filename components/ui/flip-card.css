@@ -1,0 +1,31 @@
+/* FlipCard 3D. Vars: --flip-card-perspective. Faces stack in one grid cell (card = taller face). */
+
+.flip-card {
+  --flip-card-perspective: 1600px;
+  perspective: var(--flip-card-perspective);
+}
+
+.flip-card__inner {
+  display: grid;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.flip-card__face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card__inner[data-axis="y"] .flip-card__face--back {
+  transform: rotateY(180deg);
+}
+.flip-card__inner[data-axis="x"] .flip-card__face--back {
+  transform: rotateX(180deg);
+}
+
+/* Hidden side: no hover/clicks. */
+.flip-card__inner[data-side="front"] .flip-card__face--back,
+.flip-card__inner[data-side="back"] .flip-card__face--front {
+  pointer-events: none;
+}

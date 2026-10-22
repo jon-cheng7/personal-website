@@ -4,7 +4,35 @@
 // Key: { at, x, y, anchor, look, opacity, blur, scale, rotate, hold, ease } — omitted = carried over.
 // space 'screen' = on-screen pos (default) | 'world' = page canvas, panned by camera.
 
-import type { Choreo } from "@/components/choreo/types";
+import type { ActorConfig, Choreo } from "@/components/choreo/types";
+
+/** Engineering / Artistry / Exploration cards (sections/pillars). Row centered on screen; i = 0 left → 2 right.
+ * w = card width (CSS aspect 3/4); spacing = center-to-center vw; rise = how far below they start;
+ * stagger = delay between cards; fade = each card's entry length; flip = each card's flip length;
+ * flipStagger = delay between flips; rest = pause after last flip before scrolling down;
+ * exitOrder = slots in leave order (1 = middle); exitDelay = first card's ride before it lets go; exitStagger = gap between;
+ * fadeOut = frost-out length once a card is moving with the scroll (screens). */
+export const CARDS = {
+  ids: ["cardEngineering", "cardArtistry", "cardExploration"],
+  w: "min(26vw, 50vh)",
+  spacing: 30,
+  rise: "8vh",
+  stagger: 0.12,
+  fade: 0.5,
+  flip: 0.6,
+  flipStagger: 0.15,
+  rest: 0.3,
+  exitOrder: [1, 0, 2],
+  exitDelay: 0.1,
+  exitStagger: 0.12,
+  fadeOut: 0.5,
+} as const;
+
+/** Camera's downward speed after the cards: vh per screen of scroll (camera end key uses it). */
+const DOWN_SPEED = 100;
+
+/** World x of the vertical column = where the camera stops panning right (at cue `cards`). */
+const COLUMN_X = "344vh";
 
 /** Named moments. Move one → everything timed off it moves. Can reference others: "aboutLock + 1.8". */
 const cues = {
@@ -12,8 +40,39 @@ const cues = {
   aboutIn: 0.35,
   aboutLock: 1.3,
   aboutDone: 3.1,
-  end: 4.5,
+  cards: 3.44, //      cards start fading in; camera stops panning right
+  cardsLanded: `cards + ${(CARDS.stagger * (CARDS.ids.length - 1) + CARDS.fade).toFixed(2)}`, // last card in → camera starts down
+  cardsFlip: 4.19, //  cards start flipping (left → right)
+  cardsFlipped: `cardsFlip + ${(CARDS.flipStagger * (CARDS.ids.length - 1) + CARDS.flip + CARDS.rest).toFixed(2)}`, // flips done + rest → camera starts down
+  end: "cardsFlipped + 1.5", //  keep the 1.5 in sync with camera end key
 };
+
+/** One card: frost + rise + scale-in around its center, flip, then staggered exit; all by slot. World actor.
+ * Exit: card rides the camera (still on screen), easing into the scroll over 2×delay, then frosts out as it rises. */
+function card(i: number): ActorConfig {
+  const start = i * CARDS.stagger;
+  const delay = CARDS.exitDelay + (CARDS.exitOrder as readonly number[]).indexOf(i) * CARDS.exitStagger;
+  const off = (i - 1) * CARDS.spacing;
+  return {
+    space: "world",
+    w: CARDS.w,
+    z: 3,
+    keys: [
+      { at: `cards + ${start}`, x: `${COLUMN_X} + 50vw ${off < 0 ? "-" : "+"} ${Math.abs(off)}vw`, y: `50vh + ${CARDS.rise}`, anchor: "center", look: "frost", scale: 0.94 },
+      { at: `cards + ${(start + CARDS.fade).toFixed(2)}`, y: "50vh", look: "normal", ease: "power3.out" },
+      { at: "cardsFlipped", y: "50vh" },
+      { at: `cardsFlipped + ${(delay * 2).toFixed(2)}`, y: `50vh + ${(delay * DOWN_SPEED).toFixed(1)}vh`, ease: "power1.out" },
+      { at: `cardsFlipped + ${(delay * 2 + CARDS.fadeOut).toFixed(2)}`, look: "frost", ease: "power1.in" },
+    ],
+    // 0 = front, 1 = back.
+    channels: {
+      flip: [
+        { at: `cardsFlip + ${(i * CARDS.flipStagger).toFixed(2)}`, value: 0 },
+        { at: `cardsFlip + ${(i * CARDS.flipStagger + CARDS.flip).toFixed(2)}`, value: 1, ease: "power2.inOut" },
+      ],
+    },
+  };
+}
 
 /** Portrait size fit (hero.tsx). top = px from top at load (also spawn y); overlap = bottom edge into name row; aspect = w/h. */
 export const PORTRAIT = {
@@ -25,7 +84,7 @@ export const PORTRAIT = {
 /** Portrait speech-bubble visibility, in screens of scroll. */
 export const BUBBLES = {
   greeting: { to: 0.001 },
-  about: { from: 0.08, to: 1.8 },
+  about: { from: 0.08, to: 3.1 },
 } as const;
 
 export const homeChoreo: Choreo = {
@@ -35,11 +94,12 @@ export const homeChoreo: Choreo = {
   /** Default actor ease vs scroll (s). start = pickup lag (smaller = snappier); stop = glide after stop; 0 = glued. */
   smoothing: { start: 0.6, stop: 2.5 },
 
-  /** Camera = world point at screen top-left. Direction change = which of x/y moves between keys, e.g. x to 4 then y to 6. */
+  /** Camera = world point at screen top-left. Pan right → hold while cards land + flip → scroll down. */
   camera: {
     keys: [
       { at: 0, x: 0, y: 0 },
-      { at: "end", x: "450vh" },
+      { at: "cards", x: COLUMN_X, hold: "cardsFlipped" },
+      { at: "end", y: `${DOWN_SPEED * 1.5}vh` },
     ],
     smoothing: { start: 0.4, stop: 1 },
   },
@@ -67,7 +127,7 @@ export const homeChoreo: Choreo = {
 
     /** About statement. Frost in → lock → words light (reveal channel) → frost out. */
     aboutText: {
-      w: "min(84vw, 72rem)",
+      w: "min(44vw, 72rem)",
       z: 2,
       keys: [
         { at: "aboutIn", x: "80vw", y: "50vh", anchor: "left", look: "frost" },
@@ -83,16 +143,18 @@ export const homeChoreo: Choreo = {
         ],
       },
     },
+
+    ...Object.fromEntries(CARDS.ids.map((id, i) => [id, card(i)])),
   },
 
   /** ≤ breakpoint px: overrides (actors replaced per id). Plain vertical page. */
   mobile: {
     breakpoint: 900,
-    length: 2.5,
+    length: 3,
     camera: {
       keys: [
         { at: 0, x: 0, y: 0 },
-        { at: 2.5, y: "250vh" },
+        { at: 3, y: "300vh" },
       ],
       smoothing: 0,
     },
@@ -115,6 +177,21 @@ export const homeChoreo: Choreo = {
           ],
         },
       },
+      // Cards stacked below the statement; each fades up as it enters the screen.
+      ...Object.fromEntries(
+        CARDS.ids.map((id, i): [string, ActorConfig] => [
+          id,
+          {
+            space: "world",
+            w: "88vw",
+            z: 3,
+            keys: [
+              { at: 1 + i * 0.6, x: "6vw", y: `${200 + i * 64}vh + 4vh`, look: "frost", scale: 0.96 },
+              { at: 1.3 + i * 0.6, y: `${200 + i * 64}vh`, look: "normal", ease: "power2.out" },
+            ],
+          },
+        ]),
+      ),
     },
   },
 };

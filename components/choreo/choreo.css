@@ -76,6 +76,7 @@
 .choreo-debug__head button {
   margin-left: auto;
 }
+/* Height set inline from cue lane count. */
 .choreo-debug__timeline {
   position: relative;
   height: 34px;
@@ -103,7 +104,7 @@
   content: "";
   display: block;
   width: 1px;
-  height: 8px;
+  height: calc(8px + var(--lane, 0) * 14px);
   margin: 0 auto 2px;
   background: currentColor;
 }

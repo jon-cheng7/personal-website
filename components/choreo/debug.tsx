@@ -3,7 +3,7 @@
 // Dev overlay (`?choreo` in URL): time, cue timeline (click to jump), actor list + copy keyframe.
 // Fits: rendered by Scene when enabled; reads its snapshot ref.
 
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { getLenisInstance } from "@/lib/lenis-store";
 
 /** Engine state per frame (written by Scene). */
@@ -17,6 +17,25 @@ export type DebugSnapshot = {
   actors: Record<string, { x: number; y: number; space: "screen" | "world"; t: number }>;
 };
 
+/** Label px estimate (10px mono ≈ 6.1px/char). */
+const labelWidth = (name: string) => name.length * 6.1 + 10;
+const LANE_PX = 14;
+
+/** Close cues → stacked lanes (first lane whose last label ends before this one starts). */
+function layoutCues(cues: Record<string, number>, length: number, width: number) {
+  const lanes: number[] = [];
+  const out: { name: string; t: number; lane: number }[] = [];
+  for (const [name, t] of Object.entries(cues).sort((a, b) => a[1] - b[1])) {
+    const center = (t / Math.max(length, 0.0001)) * width;
+    const half = labelWidth(name) / 2;
+    let lane = lanes.findIndex((end) => end + 6 < center - half);
+    if (lane === -1) lane = lanes.length;
+    lanes[lane] = center + half;
+    out.push({ name, t, lane });
+  }
+  return { cues: out, lanes: Math.max(lanes.length, 1) };
+}
+
 const vw = (px: number, vp: DebugSnapshot["vp"]) => `${((px / vp.vw) * 100).toFixed(1)}vw`;
 const vh = (px: number, vp: DebugSnapshot["vp"]) => `${((px / vp.vh) * 100).toFixed(1)}vh`;
 
@@ -25,6 +44,17 @@ export function ChoreoDebug({ snapshot }: { snapshot: RefObject<DebugSnapshot | 
   const [snap, setSnap] = useState<DebugSnapshot | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
   const [open, setOpen] = useState(true);
+  const timeline = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+  const ready = snap !== null;
+
+  useEffect(() => {
+    const el = timeline.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setWidth(e.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [ready]);
 
   useEffect(() => {
     const id = window.setInterval(() => setSnap(snapshot.current ? { ...snapshot.current } : null), 100);
@@ -49,6 +79,7 @@ export function ChoreoDebug({ snapshot }: { snapshot: RefObject<DebugSnapshot | 
   };
 
   const pct = (t: number) => `${(t / Math.max(snap.length, 0.0001)) * 100}%`;
+  const layout = layoutCues(snap.cues, snap.length, width);
 
   return (
     <div className="choreo-debug" data-native-cursor>
@@ -63,18 +94,22 @@ export function ChoreoDebug({ snapshot }: { snapshot: RefObject<DebugSnapshot | 
         </button>
       </div>
 
-      <div className="choreo-debug__timeline" onClick={(e) => {
+      <div
+        ref={timeline}
+        className="choreo-debug__timeline"
+        style={{ height: 22 + layout.lanes * LANE_PX }}
+        onClick={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
         jump(((e.clientX - r.left) / r.width) * snap.length);
       }}>
         <div className="choreo-debug__now" style={{ left: pct(snap.t) }} />
-        {Object.entries(snap.cues).map(([name, t]) => (
+        {layout.cues.map(({ name, t, lane }) => (
           <button
             key={name}
             type="button"
             className="choreo-debug__cue"
-            style={{ left: pct(t) }}
-            title={`${name} = ${t}`}
+            style={{ left: pct(t), ["--lane" as string]: lane }}
+            title={`${name} = ${+t.toFixed(3)}`}
             onClick={(e) => {
               e.stopPropagation();
               jump(t);

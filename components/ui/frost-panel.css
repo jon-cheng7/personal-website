@@ -140,6 +140,22 @@
   animation-play-state: running;
 }
 
+/* Fluid shimmer (WebGL): canvas fades itself; CSS fill light hidden but kept for sizing. */
+.frost-panel[data-shimmer-gl] .frost-panel__fx {
+  opacity: 1;
+  transition: none;
+}
+.frost-panel[data-shimmer-gl] .frost-panel__fx .frost-panel__light {
+  visibility: hidden;
+}
+.frost-panel__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 @keyframes frost-panel-shimmer {
   to {
     transform: rotate(1turn);
