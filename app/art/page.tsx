@@ -28,7 +28,6 @@ const photoStats: StatRow[] = [
   ["FRAMES", pad(s.frames)],
   ["PLACES", pad(s.places, 2)],
   ["COUNTRIES", pad(s.countries, 2)],
-  ["SPAN", s.span],
 ];
 
 function Stats({ rows }: { rows: StatRow[] }) {

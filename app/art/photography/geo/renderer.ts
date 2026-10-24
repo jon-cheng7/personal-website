@@ -1,13 +1,15 @@
 // geo/renderer — WebGL1 dot-matrix map. No library; two tiny passes, drawn only when asked.
 // Pass A (one fragment per DOT, into a cols×rows texture): land coverage (world mask, mip-mapped → area-correct;
-//   region close-up mask blended in), lit photo places, journey route, hover ripple.
+//   region close-up mask blended in), lit photo places, hover ripple.
+// Country highlight: an RGB id map (id = R + G·256, NEAREST) + a 1024×1 on/off lookup texture; when any country is
+//   picked (uHi > 0) picked land → light grey, all other land → dark grey. Id maps load lazily (first use of the list).
+// The journey route is NOT dots — it's a thin solid SVG line on top (geo-view.tsx), so it stays legible.
 // Pass B (full canvas): each pixel finds its dot cell, reads pass A, draws one anti-aliased round LED.
 // The dot grid is fixed to the screen; the map moves underneath it → land "flows" through the board when panning.
 
 export type View = { x: number; y: number; w: number }; // centre lon, centre -lat (y down), visible lon span (deg)
 
 export const MAX_PTS = 64;
-export const MAX_SEG = 48;
 
 export type Frame = {
   view: View;
@@ -15,14 +17,12 @@ export type Frame = {
   spacing: number;
   /** lon, lat, intensity 0–1 */
   points: [number, number, number][];
-  /** route segments lon0, lat0, lon1, lat1 (in travel order) */
-  route: [number, number, number, number][];
-  /** how much of the route is drawn, in segments (fractional) */
-  routeT: number;
   /** hover ripple: lon, lat, age s (age < 0 = none) */
   ripple: [number, number, number];
   /** region close-up blend 0–1 */
   regionMix: number;
+  /** country highlight strength 0–1 (0 = off) */
+  highlight: number;
 };
 
 export type Box = { lon0: number; lon1: number; lat0: number; lat1: number };
@@ -44,18 +44,14 @@ uniform sampler2D uWorld;
 uniform sampler2D uRegion;
 uniform vec4 uRegionBox;   // lon0, lat0 (north), lon1, lat1 (south)
 uniform float uRegionMix;
+uniform sampler2D uCWorld;   // country ids
+uniform sampler2D uCRegion;
+uniform float uCRegionOn;
+uniform sampler2D uSel;      // 1024×1 on/off per id
+uniform float uHi;
 uniform vec4 uPts[${MAX_PTS}];
 uniform int uPtsN;
-uniform vec4 uSeg[${MAX_SEG}];
-uniform int uSegN;
-uniform float uRouteT;
 uniform vec3 uRipple;
-
-float segDist(vec2 p, vec2 a, vec2 b, float f) {
-  vec2 ab = (b - a) * f;
-  float h = clamp(dot(p - a, ab) / max(dot(ab, ab), 1e-9), 0.0, 1.0);
-  return length(p - a - ab * h);
-}
 
 void main() {
   vec2 cell = floor(gl_FragCoord.xy);
@@ -65,13 +61,19 @@ void main() {
   float lat = -uView.y + (px.y - 0.5 * uCanvas.y) * dpp;
   float dDot = dpp * uSp;                             // degrees per dot
 
-  // land
+  // land (+ picked country)
   float land = 0.0;
+  float sel = 0.0;
   if (lat > -90.0 && lat < 90.0 && lon > -180.0 && lon < 180.0) {
-    land = texture2D(uWorld, vec2((lon + 180.0) / 360.0, (90.0 - lat) / 180.0)).r;
-    if (uRegionMix > 0.0 && lon > uRegionBox.x && lon < uRegionBox.z && lat < uRegionBox.y && lat > uRegionBox.w) {
-      vec2 ruv = vec2((lon - uRegionBox.x) / (uRegionBox.z - uRegionBox.x), (uRegionBox.y - lat) / (uRegionBox.y - uRegionBox.w));
-      land = mix(land, texture2D(uRegion, ruv).r, uRegionMix);
+    vec2 wuv = vec2((lon + 180.0) / 360.0, (90.0 - lat) / 180.0);
+    land = texture2D(uWorld, wuv).r;
+    bool inRegion = lon > uRegionBox.x && lon < uRegionBox.z && lat < uRegionBox.y && lat > uRegionBox.w;
+    vec2 ruv = vec2((lon - uRegionBox.x) / (uRegionBox.z - uRegionBox.x), (uRegionBox.y - lat) / (uRegionBox.y - uRegionBox.w));
+    if (uRegionMix > 0.0 && inRegion) land = mix(land, texture2D(uRegion, ruv).r, uRegionMix);
+    if (uHi > 0.0) {
+      vec4 c = (uCRegionOn > 0.5 && uRegionMix > 0.5 && inRegion) ? texture2D(uCRegion, ruv) : texture2D(uCWorld, wuv);
+      float id = floor(c.r * 255.0 + 0.5) + floor(c.g * 255.0 + 0.5) * 256.0;
+      sel = id > 0.5 ? texture2D(uSel, vec2((id + 0.5) / 1024.0, 0.5)).r : 0.0;
     }
   }
 
@@ -84,16 +86,6 @@ void main() {
     lit = max(lit, uPts[i].z * (d < 0.8 ? 1.0 : 0.55 * exp(-d * d / 3.0)));
   }
 
-  // route: whole segments up to floor(uRouteT), last one partial
-  float route = 0.0;
-  for (int i = 0; i < ${MAX_SEG}; i++) {
-    if (i >= uSegN) break;
-    float f = clamp(uRouteT - float(i), 0.0, 1.0);
-    if (f <= 0.0) break;
-    float d = segDist(here, uSeg[i].xy, uSeg[i].zw, f) / dDot;
-    route = max(route, 1.0 - smoothstep(0.35, 0.75, d));
-  }
-
   // hover ripple: expanding ring, 1.2 s
   float ring = 0.0;
   if (uRipple.z >= 0.0) {
@@ -102,7 +94,7 @@ void main() {
     ring = (1.0 - smoothstep(0.0, 1.4, abs(d - r))) * (1.0 - uRipple.z / 1.2);
   }
 
-  gl_FragColor = vec4(land, lit, route, max(ring, 0.0));
+  gl_FragColor = vec4(land, lit, sel, max(ring, 0.0));
 }`;
 
 const FRAG_B = `
@@ -112,6 +104,7 @@ uniform vec2 uGrid;
 uniform float uSp;
 uniform vec3 uBase;
 uniform vec3 uLit;
+uniform float uHi;           // country highlight strength
 
 void main() {
   vec2 cell = floor(gl_FragCoord.xy / uSp);
@@ -120,9 +113,12 @@ void main() {
 
   // low threshold: a dot that is only partly land still lights → small islands (Crete, Capri) + thin coasts survive
   float land = smoothstep(0.03, 0.35, s.r);
-  float glow = max(s.g, max(s.b * 0.8, s.a * 0.7));
+  float glow = max(s.g, s.a * 0.7);
   float radius = uSp * (0.13 + 0.2 * land + 0.1 * glow);
-  float a = (0.07 + 0.38 * land) * (1.0 - glow) + glow;
+  // land brightness: normal 0.38; highlighting → picked 0.44 (barely above normal — the contrast comes from
+  // everything else dropping), the rest 0.1 (dark grey)
+  float landA = mix(0.38, mix(0.1, 0.44, s.b), uHi);
+  float a = (0.07 + landA * land) * (1.0 - glow) + glow;
   vec3 col = mix(uBase, uLit, clamp(glow * 1.2, 0.0, 1.0));
   float edge = 1.0 - smoothstep(radius - 0.9, radius + 0.4, r);
   gl_FragColor = vec4(col * a * edge, a * edge); // premultiplied
@@ -158,8 +154,11 @@ export class DotMap {
   private grid = [0, 0];
   private uA = new Map<string, WebGLUniformLocation | null>();
   private uB = new Map<string, WebGLUniformLocation | null>();
+  private cWorld: WebGLTexture | null = null;
+  private cRegion: WebGLTexture | null = null;
+  private sel: WebGLTexture;
+  private selBuf = new Uint8Array(1024);
   private ptsBuf = new Float32Array(MAX_PTS * 4);
-  private segBuf = new Float32Array(MAX_SEG * 4);
   dpr = 1;
 
   constructor(private canvas: HTMLCanvasElement, private colors = { base: "#f5f5f5", lit: "#c5fb45" }) {
@@ -177,6 +176,11 @@ export class DotMap {
       gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     }
     this.dots = gl.createTexture()!;
+    this.sel = gl.createTexture()!;
+    gl.bindTexture(gl.TEXTURE_2D, this.sel);
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, 1024, 1, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, this.selBuf);
+    this.nearest();
     this.fbo = gl.createFramebuffer()!;
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
@@ -185,6 +189,52 @@ export class DotMap {
   private loc(prog: WebGLProgram, cache: Map<string, WebGLUniformLocation | null>, name: string) {
     if (!cache.has(name)) cache.set(name, this.gl.getUniformLocation(prog, name));
     return cache.get(name)!;
+  }
+
+  private nearest() {
+    const gl = this.gl;
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  }
+
+  /** upload a country id map (RGB, exact values: no filtering, no colour conversion) */
+  private idTexture(img: TexImageSource) {
+    const gl = this.gl;
+    const t = gl.createTexture()!;
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, gl.NONE);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+    this.nearest();
+    return t;
+  }
+
+  /** world country id map (lazy) */
+  setCountries(img: TexImageSource) {
+    if (this.cWorld) this.gl.deleteTexture(this.cWorld);
+    this.cWorld = this.idTexture(img);
+  }
+
+  /** close-up country id map for the current region box (null = use the world one) */
+  setRegionCountries(img: TexImageSource | null) {
+    if (this.cRegion) this.gl.deleteTexture(this.cRegion);
+    this.cRegion = img ? this.idTexture(img) : null;
+  }
+
+  get hasCountries() {
+    return !!this.cWorld;
+  }
+
+  /** picked country ids */
+  setSelection(ids: Iterable<number>) {
+    const gl = this.gl;
+    this.selBuf.fill(0);
+    for (const id of ids) if (id > 0 && id < 1024) this.selBuf[id] = 255;
+    gl.bindTexture(gl.TEXTURE_2D, this.sel);
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, 1024, 1, gl.LUMINANCE, gl.UNSIGNED_BYTE, this.selBuf);
   }
 
   /** upload a grey mask; world = mip-mapped (power-of-two) */
@@ -212,6 +262,7 @@ export class DotMap {
     if (this.region) this.gl.deleteTexture(this.region);
     this.region = img ? this.texture(img, false) : null;
     this.regionBox = box;
+    this.setRegionCountries(null); // belongs to the old box
   }
 
   /** match canvas backing store to its css size (call on resize) */
@@ -266,15 +317,22 @@ export class DotMap {
     const rb = this.regionBox;
     gl.uniform4f(ua("uRegionBox"), rb?.lon0 ?? 0, rb?.lat0 ?? 0, rb?.lon1 ?? 0, rb?.lat1 ?? 0);
     gl.uniform1f(ua("uRegionMix"), this.region ? f.regionMix : 0);
+    const hi = this.cWorld ? f.highlight : 0;
+    gl.uniform1f(ua("uHi"), hi);
+    gl.activeTexture(gl.TEXTURE2);
+    gl.bindTexture(gl.TEXTURE_2D, this.cWorld ?? this.world);
+    gl.uniform1i(ua("uCWorld"), 2);
+    gl.activeTexture(gl.TEXTURE3);
+    gl.bindTexture(gl.TEXTURE_2D, this.cRegion ?? this.cWorld ?? this.world);
+    gl.uniform1i(ua("uCRegion"), 3);
+    gl.uniform1f(ua("uCRegionOn"), this.cRegion ? 1 : 0);
+    gl.activeTexture(gl.TEXTURE4);
+    gl.bindTexture(gl.TEXTURE_2D, this.sel);
+    gl.uniform1i(ua("uSel"), 4);
     const n = Math.min(MAX_PTS, f.points.length);
     f.points.slice(0, n).forEach(([lon, lat, k], i) => this.ptsBuf.set([lon, lat, k, 0], i * 4));
     gl.uniform4fv(ua("uPts"), this.ptsBuf);
     gl.uniform1i(ua("uPtsN"), n);
-    const m = Math.min(MAX_SEG, f.route.length);
-    f.route.slice(0, m).forEach((s, i) => this.segBuf.set(s, i * 4));
-    gl.uniform4fv(ua("uSeg"), this.segBuf);
-    gl.uniform1i(ua("uSegN"), m);
-    gl.uniform1f(ua("uRouteT"), f.routeT);
     gl.uniform3f(ua("uRipple"), f.ripple[0], f.ripple[1], f.ripple[2]);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
 
@@ -294,6 +352,7 @@ export class DotMap {
     gl.uniform1f(ub("uSp"), sp);
     gl.uniform3fv(ub("uBase"), hex(this.colors.base));
     gl.uniform3fv(ub("uLit"), hex(this.colors.lit));
+    gl.uniform1f(ub("uHi"), hi);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
   }
 
@@ -302,6 +361,9 @@ export class DotMap {
     gl.deleteTexture(this.world);
     gl.deleteTexture(this.region);
     gl.deleteTexture(this.dots);
+    gl.deleteTexture(this.cWorld);
+    gl.deleteTexture(this.cRegion);
+    gl.deleteTexture(this.sel);
     gl.deleteFramebuffer(this.fbo);
     gl.deleteProgram(this.progA);
     gl.deleteProgram(this.progB);

@@ -1,14 +1,19 @@
 // scripts/geo/build-geo.mjs — bakes the dot-matrix map's land masks (geo mode of the photo archive).
 // Output: public/geo/world.png (whole earth) + public/geo/r/<id>.png (sharp close-ups, only around photo regions)
-//         + content/geo/masks.json (what exists + each mask's lon/lat box). Re-run after adding photos in new places.
-// Masks = 8-bit grey PNG, value = land coverage (anti-aliased edge → smooth dot sizes on coasts). Equirectangular.
-// Data: Natural Earth 1:10m (public domain) — land + minor islands, minus lakes (Great Lakes etc.) — downloaded once
-//       from the natural-earth-vector repo and cached in node_modules/.cache/geo. Override: GEO_LAND_GEOJSON=<file>.
+//         + country id maps (public/geo/countries.png, public/geo/r/<id>-c.png; loaded only when the country list is used)
+//         + content/geo/masks.json (what exists, each mask's lon/lat box, country list + photos per country).
+//         Re-run after adding/removing photos (regions + "visited" come from the photo manifest).
+// Land masks = 8-bit grey PNG, value = land coverage (anti-aliased edge → smooth dot sizes on coasts). Equirectangular.
+// Country maps = RGB PNG, no anti-aliasing, id = R + G·256 (0 = none); grown a few px into the sea so coastal dots
+//         always resolve to a country.
+// Data: Natural Earth 1:10m (public domain) — land + minor islands, minus lakes (Great Lakes etc.), admin-0 countries —
+//       downloaded once from the natural-earth-vector repo and cached in node_modules/.cache/geo.
+//       Override (tests): GEO_LAND_GEOJSON=<file>, GEO_COUNTRIES_GEOJSON=<file>.
 // Deps (dev): d3-geo, sharp. Run: `pnpm geo`.
 
 import { mkdir, readFile, writeFile, rm, access } from "node:fs/promises";
 import path from "node:path";
-import { geoArea, geoEquirectangular, geoPath } from "d3-geo";
+import { geoArea, geoBounds, geoContains, geoEquirectangular, geoPath } from "d3-geo";
 import sharp from "sharp";
 
 const NE = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/";
@@ -27,6 +32,8 @@ const REGION_KM = 150;
 const REGION_MIN_DEG = 6;
 /** padding around a region's photos, degrees */
 const REGION_PAD_DEG = 0.8;
+/** px a country map grows into the sea (covers coast mismatch between the land and country layers) */
+const COUNTRY_GROW_PX = 4;
 
 /** km between two lat/lon points */
 function km(a, b) {
@@ -79,14 +86,19 @@ async function loadLayers() {
   };
 }
 
-/** rasterise inside [lon0..lon1] × [lat1..lat0] (lat0 = north) to a w×h grey PNG: land white, lakes black */
-async function raster(layers, box, w, h, file) {
+/** d3 path generator for [lon0..lon1] × [lat1..lat0] (lat0 = north) on a w×h canvas */
+function pathFor(box, w, h) {
   const kx = w / (box.lon1 - box.lon0); // px per degree (same both axes)
   const projection = geoEquirectangular()
     .scale((kx * 180) / Math.PI)
     .translate([-box.lon0 * kx, box.lat0 * kx])
     .clipExtent([[-2, -2], [w + 2, h + 2]]);
-  const path = geoPath(projection).digits(2);
+  return geoPath(projection).digits(2);
+}
+
+/** rasterise to a w×h grey PNG: land white, lakes black */
+async function raster(layers, box, w, h, file) {
+  const path = pathFor(box, w, h);
   const land = path(layers.land) ?? "";
   const water = layers.water ? (path(layers.water) ?? "") : "";
   const svg =
@@ -101,6 +113,75 @@ async function raster(layers, box, w, h, file) {
     .toBuffer();
   await writeFile(file, buf);
   return buf.length;
+}
+
+/** countries: sorted by name, id = index + 1 */
+async function loadCountries() {
+  const fc = process.env.GEO_COUNTRIES_GEOJSON
+    ? JSON.parse(await readFile(process.env.GEO_COUNTRIES_GEOJSON, "utf8"))
+    : await ne("ne_10m_admin_0_countries");
+  const list = fc.features
+    .filter((f) => f.geometry)
+    .map((f) => {
+      const p = f.properties ?? {};
+      return { name: String(p.NAME ?? p.ADMIN ?? p.name ?? "?"), iso: String(p.ADM0_A3 ?? p.ISO_A3 ?? p.iso ?? ""), shape: rewind({ type: "FeatureCollection", features: [f] }) };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+  list.forEach((c, i) => {
+    c.id = i + 1;
+    c.bounds = geoBounds(c.shape);
+  });
+  if (list.length > 65535) throw new Error("geo: too many countries for a 16-bit id");
+  return list;
+}
+
+/** country id map: every country filled with its id colour, no anti-aliasing, then grown into the sea */
+async function rasterCountries(countries, box, w, h, file) {
+  const path = pathFor(box, w, h);
+  let body = "";
+  for (const c of countries) {
+    const d = path(c.shape);
+    if (d) body += `<path d="${d}" fill="rgb(${c.id & 255},${c.id >> 8},0)"/>`;
+  }
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" shape-rendering="crispEdges">` +
+    `<rect width="100%" height="100%" fill="#000"/>${body}</svg>`;
+  const { data } = await sharp(Buffer.from(svg), { limitInputPixels: false }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  // ids as numbers, then grow: each pass, an empty px takes a non-empty 4-neighbour's id
+  let ids = new Uint16Array(w * h);
+  for (let i = 0; i < w * h; i++) ids[i] = data[i * 3] + data[i * 3 + 1] * 256;
+  for (let pass = 0; pass < COUNTRY_GROW_PX; pass++) {
+    const next = ids.slice();
+    for (let y = 0; y < h; y++)
+      for (let x = 0; x < w; x++) {
+        const i = y * w + x;
+        if (ids[i]) continue;
+        next[i] = (x > 0 && ids[i - 1]) || (x < w - 1 && ids[i + 1]) || (y > 0 && ids[i - w]) || (y < h - 1 && ids[i + w]) || 0;
+      }
+    ids = next;
+  }
+  const rgb = Buffer.alloc(w * h * 3);
+  for (let i = 0; i < w * h; i++) {
+    rgb[i * 3] = ids[i] & 255;
+    rgb[i * 3 + 1] = ids[i] >> 8;
+  }
+  const buf = await sharp(rgb, { raw: { width: w, height: h, channels: 3 } }).png({ compressionLevel: 9, palette: false }).toBuffer();
+  await writeFile(file, buf);
+  return { bytes: buf.length, ids, w, h, box };
+}
+
+/** which country a photo is in: exact polygon test, else the (grown) id map — catches coastal shots */
+function countryOf(pt, countries, map) {
+  const p = [pt.lon, pt.lat];
+  for (const c of countries) {
+    const [[x0, y0], [x1, y1]] = c.bounds;
+    const inBox = (x0 <= x1 ? pt.lon >= x0 && pt.lon <= x1 : pt.lon >= x0 || pt.lon <= x1) && pt.lat >= y0 && pt.lat <= y1;
+    if (inBox && geoContains(c.shape, p)) return c.id;
+  }
+  const k = map.w / (map.box.lon1 - map.box.lon0);
+  const x = Math.min(map.w - 1, Math.max(0, Math.floor((pt.lon - map.box.lon0) * k)));
+  const y = Math.min(map.h - 1, Math.max(0, Math.floor((map.box.lat0 - pt.lat) * k)));
+  return map.ids[y * map.w + x] || 0;
 }
 
 /** group geotagged photos into regions (single-link within REGION_KM) */
@@ -136,6 +217,7 @@ function regions(photos) {
 const t0 = Date.now();
 const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
 const layers = await loadLayers();
+const countries = await loadCountries();
 
 await rm(path.join(OUT_DIR, "r"), { recursive: true, force: true });
 await mkdir(path.join(OUT_DIR, "r"), { recursive: true });
@@ -145,19 +227,42 @@ const worldBox = { lon0: -180, lon1: 180, lat0: 90, lat1: -90 };
 const worldBytes = await raster(layers, worldBox, WORLD_W, WORLD_W / 2, path.join(OUT_DIR, "world.png"));
 console.log(`geo: world ${WORLD_W}×${WORLD_W / 2} · ${Math.round(worldBytes / 1024)} KB`);
 
+const cmap = await rasterCountries(countries, worldBox, WORLD_W, WORLD_W / 2, path.join(OUT_DIR, "countries.png"));
+console.log(`geo: countries ${countries.length} · ${Math.round(cmap.bytes / 1024)} KB`);
+
 const out = [];
 for (const r of regions(manifest.photos ?? [])) {
   const w = REGION_W;
   const h = Math.round((w * (r.lat0 - r.lat1)) / (r.lon1 - r.lon0));
   const src = `/geo/r/${r.id}.png`;
+  const csrc = `/geo/r/${r.id}-c.png`;
   const bytes = await raster(layers, r, w, h, path.join(OUT_DIR, "r", `${r.id}.png`));
-  out.push({ ...r, src, w, h, bytes });
-  console.log(`geo: ${r.id} ${r.photos} photos · ${(r.lon1 - r.lon0).toFixed(1)}°×${(r.lat0 - r.lat1).toFixed(1)}° · ${Math.round(bytes / 1024)} KB`);
+  const cbytes = (await rasterCountries(countries, r, w, h, path.join(OUT_DIR, "r", `${r.id}-c.png`))).bytes;
+  out.push({ ...r, src, w, h, bytes, csrc, cbytes });
+  console.log(`geo: ${r.id} ${r.photos} photos · ${(r.lon1 - r.lon0).toFixed(1)}°×${(r.lat0 - r.lat1).toFixed(1)}° · ${Math.round((bytes + cbytes) / 1024)} KB`);
+}
+
+// photos per country ("visited")
+const frames = new Map();
+for (const p of manifest.photos ?? []) {
+  if (p.hidden || !p.geo) continue;
+  const id = countryOf(p.geo, countries, cmap);
+  if (id) frames.set(id, (frames.get(id) ?? 0) + 1);
 }
 
 const json = {
   world: { src: "/geo/world.png", ...worldBox, w: WORLD_W, h: WORLD_W / 2, bytes: worldBytes },
   regions: out,
+  countries: {
+    src: "/geo/countries.png",
+    w: WORLD_W,
+    h: WORLD_W / 2,
+    bytes: cmap.bytes,
+    // [id, name, iso, frames]
+    list: countries.map((c) => [c.id, c.name, c.iso, frames.get(c.id) ?? 0]),
+  },
 };
-await writeFile(OUT_JSON, JSON.stringify(json, null, 2) + "\n");
-console.log(`geo: ${out.length} regions → ${OUT_JSON} (${((Date.now() - t0) / 1000).toFixed(1)}s)`);
+await writeFile(OUT_JSON, JSON.stringify(json, null, 2).replace(/\[\n\s+(\d+),\n\s+("[^"]*"),\n\s+("[^"]*"),\n\s+(\d+)\n\s+\]/g, "[$1, $2, $3, $4]") + "\n");
+console.log(
+  `geo: ${out.length} regions · ${frames.size} countries visited → ${OUT_JSON} (${((Date.now() - t0) / 1000).toFixed(1)}s)`,
+);

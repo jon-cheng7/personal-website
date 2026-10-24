@@ -1,25 +1,30 @@
 "use client";
 
 // GeoView — dot-matrix world map of the archive (WebGL, geo/renderer.ts). No map library, no tiles.
-// Boot: land mask streams in behind a segmented loading bar. Places = lit LEDs (screen-clustered DOM buttons on top).
+// Boot: land mask streams in; the segmented loading bar only appears if that takes > BOOT_SHOW_MS. Places = lit LEDs (screen-clustered DOM buttons on top).
 // Click a place → camera flies in (van Wijk), dot resolution steps up, sharp close-up mask fades in, contact strip opens.
-// Journey replay: scrub / play through stops in time order; route draws LED by LED, km rolls up.
+// Journey replay: scrub / play through stops in time order; route = thin solid SVG line (not dots), km rolls up.
+// Countries: list on the left (geo/country-panel.tsx); picked countries light up, all other land dims. Id maps load on
+//   first open only. Page scroll is locked while geo is mounted — the wheel only zooms the map.
 // Perf: renders only while something moves (camera, ripple, replay, fade) — idle = zero frames.
 // Masks: `pnpm geo` (scripts/geo/build-geo.mjs) → public/geo + content/geo/masks.json.
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { getLenisInstance } from "@/lib/lenis-store";
 import { easeInOut, flight, type Flight } from "@/app/experience/canvas/camera";
 import masksJson from "@/content/geo/masks.json";
 import type { Photo } from "@/content/photos";
 import { fmtDate, fmtLat, fmtLon, framesByCountry, pad } from "./format";
+import { CountryPanel, type CountryRow } from "./geo/country-panel";
 import { loadMask } from "./geo/load-mask";
 import { PlacePanel } from "./geo/place-panel";
 import { buildPlaces, cluster as clusterPlaces, fitView, journey, project, type Cluster } from "./geo/places";
 import { DotMap, type Box, type View } from "./geo/renderer";
 import "./geo/geo.css";
 
-type Mask = Box & { src: string; w: number; h: number; bytes: number; id?: string };
-const masks = masksJson as unknown as { world: Mask | null; regions: Mask[] };
+type Mask = Box & { src: string; w: number; h: number; bytes: number; id?: string; csrc?: string; cbytes?: number };
+type Countries = { src: string; w: number; h: number; bytes: number; list: CountryRow[] };
+const masks = masksJson as unknown as { world: Mask | null; regions: Mask[]; countries?: Countries };
 
 type Props = {
   photos: Photo[];
@@ -36,6 +41,10 @@ const SMOOTH_MS = 90;
 const REPLAY_SPEED = 1.15; // stops per second
 const RIPPLE_S = 1.2;
 const BAR_CELLS = 28;
+/** fast loads (cache, good network) skip the boot screen entirely */
+const BOOT_SHOW_MS = 1000;
+/** country highlight fade in/out */
+const HI_MS = 220;
 
 /** css px between dots — steps finer as you zoom ("resolution" goes up) */
 const spacingFor = (w: number) => (w > 90 ? 8 : w > 30 ? 7 : w > 6 ? 6 : 5);
@@ -53,25 +62,29 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const coordRef = useRef<HTMLSpanElement>(null);
+  const routeRef = useRef<SVGPathElement>(null);
+  const headRef = useRef<SVGRectElement>(null);
   const mapRef = useRef<DotMap | null>(null);
   const pinRefs = useRef(new Map<string, HTMLButtonElement>());
 
   const [status, setStatus] = useState<"boot" | "ready" | "missing" | "nogl" | "error">(masks.world ? "boot" : "missing");
   const [progress, setProgress] = useState(0);
   const [booted, setBooted] = useState(false); // loader finished its exit animation
+  const [showBoot, setShowBoot] = useState(false); // only once loading has taken > BOOT_SHOW_MS
   const [clusters, setClusters] = useState<Cluster[]>([]);
   const [hover, setHover] = useState<string | null>(null);
   const [picked, setPicked] = useState<Cluster | null>(null);
   const [regionLoad, setRegionLoad] = useState<number | null>(null);
+  // countries
+  const [cOpen, setCOpen] = useState(false);
+  const [sel, setSel] = useState<ReadonlySet<number>>(() => new Set());
+  const [cLoad, setCLoad] = useState<number | null>(null); // id map progress; null = idle/ready
+  const cState = useRef({ want: false, ready: false, hi: 0, picked: 0 });
   // replay UI state (engine copy lives in `replay` ref)
   const [rp, setRp] = useState({ active: false, playing: false, t: 0 });
 
   const places = useMemo(() => buildPlaces(photos), [photos]);
   const stops = useMemo(() => journey(places), [places]);
-  const route = useMemo(
-    () => stops.slice(1).map((s, i) => [stops[i].place.lon, stops[i].place.lat, s.place.lon, s.place.lat] as [number, number, number, number]),
-    [stops],
-  );
 
   // --- engine state (refs: read/written every frame, never re-render) ---
   const cam = useRef({ cur: WORLD, target: WORLD, fl: null as null | { f: Flight; t0: number } });
@@ -103,6 +116,36 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
       el.style.transform = `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, 0)`;
     }
   }, []);
+
+  /** journey route as screen-space polyline up to replay position t (last leg partial) + a head marker */
+  const placeRoute = useCallback(
+    (on: boolean, t: number) => {
+      const path = routeRef.current;
+      const head = headRef.current;
+      if (!path || !head) return;
+      if (!on || stops.length < 2) {
+        path.setAttribute("d", "");
+        head.setAttribute("visibility", "hidden");
+        return;
+      }
+      const { w, h } = size();
+      const v = cam.current.cur;
+      const i = Math.floor(t);
+      const pts = stops.slice(0, i + 1).map((s) => project(v, s.place.lon, s.place.lat, w, h));
+      const nx = stops[i + 1];
+      if (nx && t > i) {
+        const a = stops[i].place;
+        const f = t - i;
+        pts.push(project(v, a.lon + (nx.place.lon - a.lon) * f, a.lat + (nx.place.lat - a.lat) * f, w, h));
+      }
+      path.setAttribute("d", "M" + pts.map((p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join("L"));
+      const tip = pts[pts.length - 1];
+      head.setAttribute("x", (tip.x - 2.5).toFixed(1));
+      head.setAttribute("y", (tip.y - 2.5).toFixed(1));
+      head.setAttribute("visibility", "visible");
+    },
+    [stops],
+  );
 
   /** one frame: advance motion, draw, update overlay; returns whether anything is still moving */
   const frame = useCallback(
@@ -154,6 +197,7 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
             map.setRegion(bmp, want);
             Object.assign(region.current, { id: want.id, mix: 0, loading: null });
             setRegionLoad(null);
+            if (cState.current.ready) loadRegionCountriesRef.current(want);
             kickRef.current();
           })
           .catch(() => {
@@ -164,6 +208,14 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
       const mixTarget = want && reg.id === want.id ? 1 : 0;
       if (reg.mix !== mixTarget) {
         reg.mix = mixTarget > reg.mix ? Math.min(1, reg.mix + dt / 350) : Math.max(0, reg.mix - dt / 250);
+        moving = true;
+      }
+
+      // country highlight fade
+      const cs = cState.current;
+      const hiTarget = cs.picked > 0 && map.hasCountries ? 1 : 0;
+      if (cs.hi !== hiTarget) {
+        cs.hi = hiTarget > cs.hi ? Math.min(1, cs.hi + dt / HI_MS) : Math.max(0, cs.hi - dt / HI_MS);
         moving = true;
       }
 
@@ -187,10 +239,9 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
         view: v,
         spacing: spacingFor(v.w),
         points,
-        route,
-        routeT: r.active ? r.t : 0,
         ripple: rip ? [rip.lon, rip.lat, age] : [0, 0, -1],
         regionMix: reg.mix,
+        highlight: cs.hi,
       });
 
       // overlay: re-cluster (cheap) → React only when membership changes; positions via transform
@@ -201,10 +252,11 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
         clusterKey.current = key;
         setClusters(cl);
       } else placePins();
+      placeRoute(r.active, r.t);
 
       return moving;
     },
-    [places, stops, route, placePins],
+    [places, stops, placePins, placeRoute],
   );
   // the running loop always calls the latest frame (no stale closures mid-animation)
   const frameRef = useRef(frame);
@@ -224,6 +276,81 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
   kickRef.current = kick;
 
   useLayoutEffect(() => placePins(), [clusters, placePins]);
+
+  // --- countries: id maps load on first open; region close-ups get their own sharper id map ---
+  const loadRegionCountries = useCallback((m: Mask) => {
+    if (!m.csrc) return;
+    loadMask(m.csrc, m.cbytes ?? 0)
+      .then((bmp) => {
+        const map = mapRef.current;
+        if (!map || region.current.id !== m.id) return;
+        map.setRegionCountries(bmp);
+        kickRef.current();
+      })
+      .catch(() => {});
+  }, []);
+  const loadRegionCountriesRef = useRef(loadRegionCountries);
+  loadRegionCountriesRef.current = loadRegionCountries;
+
+  const openCountries = () => {
+    setCOpen((o) => !o);
+    const cs = cState.current;
+    if (cs.want || !masks.countries) return;
+    cs.want = true;
+    setCLoad(0);
+    loadMask(masks.countries.src, masks.countries.bytes, (p) => setCLoad(p))
+      .then((bmp) => {
+        const map = mapRef.current;
+        if (!map) return;
+        map.setCountries(bmp);
+        cs.ready = true;
+        setCLoad(null);
+        const reg = masks.regions.find((m) => m.id === region.current.id);
+        if (reg) loadRegionCountries(reg);
+        kick();
+      })
+      .catch(() => {
+        cs.want = false;
+        setCLoad(null);
+      });
+  };
+
+  const toggleCountry = useCallback((id: number) => {
+    setSel((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    cState.current.picked = sel.size;
+    mapRef.current?.setSelection(sel);
+    kick();
+  }, [sel, kick, status]);
+
+  // --- no page scroll on geo: wheel anywhere outside the map/viewer is swallowed, page pinned to the top ---
+  useEffect(() => {
+    const lenis = getLenisInstance();
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+    const html = document.documentElement;
+    const prev = html.style.overflow;
+    html.style.overflow = "hidden";
+    const block = (e: WheelEvent) => {
+      const t = e.target as Element | null;
+      // map handles its own wheel (zoom); the country list + photo viewer scroll themselves
+      if (t?.closest?.(".geo-map, .pv")) return;
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    window.addEventListener("wheel", block, { capture: true, passive: false });
+    return () => {
+      html.style.overflow = prev;
+      window.removeEventListener("wheel", block, { capture: true });
+    };
+  }, []);
 
   // --- boot: GL + world mask with progress ---
   useEffect(() => {
@@ -380,6 +507,10 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
 
   // keys (map focused)
   const onKey = (e: KeyboardEvent) => {
+    if ((e.target as Element).closest("input, .gc")) {
+      if (e.key === "Escape") setCOpen(false);
+      return;
+    }
     const { w, h } = size();
     const c = cam.current;
     const step = c.target.w * 0.15;
@@ -430,12 +561,21 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
     return a.km + (b.km - a.km) * (rp.t - i);
   })();
 
-  // --- boot screen fades out after the bar fills ---
+  // --- boot screen: only shown if loading is slow; then fades out after the bar fills ---
   useEffect(() => {
-    if (status !== "ready") return;
-    const t = window.setTimeout(() => setBooted(true), 650);
+    if (status !== "boot") return;
+    const t = window.setTimeout(() => setShowBoot(true), BOOT_SHOW_MS);
     return () => window.clearTimeout(t);
   }, [status]);
+  useEffect(() => {
+    if (status !== "ready") return;
+    if (!showBoot) {
+      setBooted(true);
+      return;
+    }
+    const t = window.setTimeout(() => setBooted(true), 650);
+    return () => window.clearTimeout(t);
+  }, [status, showBoot]);
 
   if (status === "missing" || status === "nogl" || status === "error") return <GeoFallback photos={photos} status={status} />;
 
@@ -451,7 +591,13 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
       onKeyDown={onKey}
       aria-label={`Map of ${places.length} places. Arrow keys pan, plus and minus zoom, 0 resets.`}
     >
-      <canvas ref={canvasRef} className="geo-map__canvas" data-cursor="pixelMove" />
+      <canvas ref={canvasRef} className="geo-map__canvas" data-cursor="pixelMove" data-on={status === "ready" || undefined} />
+
+      {/* journey route: thin solid line (positions written per frame, no React) */}
+      <svg className="geo-route" aria-hidden>
+        <path ref={routeRef} className="geo-route__line" />
+        <rect ref={headRef} className="geo-route__head" width={5} height={5} visibility="hidden" />
+      </svg>
 
       {/* place pins (screen-space clusters) */}
       <div className="geo-map__pins" data-on={status === "ready" || undefined}>
@@ -493,6 +639,11 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
         {regionLoad !== null && <span className="geo-map__enh"> · ENHANCE {Math.round(regionLoad * 100)}%</span>}
       </div>
       <div className="geo-map__tr">
+        {masks.countries && (
+          <button type="button" className="geo-map__ctry" data-on={cOpen || undefined} aria-pressed={cOpen} onClick={openCountries}>
+            COUNTRIES{sel.size > 0 && <b> {pad(sel.size, 2)}</b>}
+          </button>
+        )}
         <button type="button" onClick={() => zoomAt(0.6, size().w / 2, size().h / 2)} aria-label="Zoom in">+</button>
         <button type="button" onClick={() => zoomAt(1 / 0.6, size().w / 2, size().h / 2)} aria-label="Zoom out">−</button>
         <button type="button" onClick={resetView}>WORLD</button>
@@ -534,6 +685,17 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
         </div>
       )}
 
+      {cOpen && masks.countries && (
+        <CountryPanel
+          list={masks.countries.list}
+          selected={sel}
+          onToggle={toggleCountry}
+          onClear={() => setSel(new Set())}
+          onClose={() => setCOpen(false)}
+          loading={cLoad}
+        />
+      )}
+
       {picked && (
         <PlacePanel
           key={picked.key}
@@ -545,7 +707,7 @@ export function GeoView({ photos, onOpen, onFilter }: Props) {
       )}
 
       {/* boot loader */}
-      {!booted && (
+      {showBoot && !booted && (
         <div className="geo-boot" data-done={status === "ready" || undefined} aria-live="polite">
           <p>&gt; LINK GEO MODULE</p>
           <p>

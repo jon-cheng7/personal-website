@@ -6,7 +6,8 @@
   --g-line: var(--ar-line, rgba(255, 255, 255, 0.1));
   --g-dim: var(--ar-dim, rgba(245, 245, 245, 0.5));
   position: relative;
-  height: max(26rem, calc(100svh - var(--hud-top) - var(--hud-h) - 2.5rem));
+  /* fills the rest of the viewport exactly — the page doesn't scroll in geo mode */
+  height: max(20rem, calc(100svh - var(--hud-top) - var(--hud-h) - 2.5rem));
   border: 1px solid var(--g-line);
   background: radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.025), transparent 70%), #060606;
   overflow: hidden;
@@ -22,6 +23,31 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+}
+/* no boot screen on fast loads → the board just powers on (stepped, like the rest of the chrome) */
+.geo-map__canvas[data-on] { opacity: 1; transition: opacity 0.3s steps(4, end); }
+
+/* ---------- journey route (solid line, not dots) ---------- */
+.geo-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.geo-route__line {
+  fill: none;
+  stroke: var(--g-accent);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.geo-route__head {
+  fill: var(--g-accent);
+  filter: drop-shadow(0 0 4px rgba(197, 251, 69, 0.7));
 }
 
 /* ---------- pins ---------- */
@@ -117,6 +143,8 @@
 }
 .geo-map__tr button:last-child { border-right: 0; }
 .geo-map__tr button:hover { color: var(--g-accent); }
+.geo-map__ctry[data-on] { color: var(--g-accent); background: rgba(197, 251, 69, 0.08); }
+.geo-map__ctry b { font-weight: 500; font-variant-numeric: tabular-nums; }
 .geo-map__coord { left: 0.9rem; bottom: 4.4rem; color: var(--g-dim); font-variant-numeric: tabular-nums; }
 
 /* ---------- journey replay ---------- */
@@ -265,6 +293,103 @@
 }
 .gp__index:hover { background: rgba(197, 251, 69, 0.08); }
 
+/* ---------- country list ---------- */
+.gc {
+  position: absolute;
+  z-index: 4;
+  top: 3.2rem;
+  left: 0.6rem;
+  bottom: 4.2rem;
+  width: min(17rem, 40%);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--g-line);
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(8px);
+  animation: gp-in 0.35s steps(5, end);
+}
+.gc__head { display: flex; justify-content: space-between; gap: 1rem; padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--g-line); }
+.gc__title { margin: 0; color: #f5f5f5; }
+.gc__sub { margin: 0.3rem 0 0; color: var(--g-dim); font-variant-numeric: tabular-nums; }
+.gc__load { color: var(--g-accent); }
+.gc__x { border: 0; background: none; cursor: pointer; color: var(--g-dim); }
+.gc__x:hover { color: #f5f5f5; }
+.gc__filter {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0 0.9rem;
+  height: 2.2rem;
+  border-bottom: 1px solid var(--g-line);
+  color: var(--g-accent);
+}
+.gc__filter input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f5f5f5;
+  font: inherit;
+  letter-spacing: inherit;
+  user-select: text;
+}
+.gc__filter input::placeholder { color: rgba(245, 245, 245, 0.3); }
+.gc__list {
+  flex: 1;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.3rem 0 0.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 245, 245, 0.2) transparent;
+}
+.gc__list ul { margin: 0; padding: 0; list-style: none; }
+.gc__group { margin: 0.7rem 0.9rem 0.3rem; color: var(--g-dim); font-size: 0.6rem; }
+.gc__row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  width: 100%;
+  padding: 0.32rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: rgba(245, 245, 245, 0.42); /* not visited: dimmed */
+  text-align: left;
+  cursor: pointer;
+}
+.gc__row:hover { background: rgba(245, 245, 245, 0.05); color: rgba(245, 245, 245, 0.75); }
+.gc__row:focus-visible { outline: 1px solid var(--g-accent); outline-offset: -1px; }
+.gc__row[data-visited] { color: #f5f5f5; }
+.gc__name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 1-bit checkbox: hollow → filled grey (≈ the highlight colour on the map) */
+.gc__box { flex: none; width: 9px; height: 9px; border: 1px solid currentColor; opacity: 0.7; }
+.gc__row[data-on] .gc__box { background: #8a8a8a; border-color: #8a8a8a; opacity: 1; }
+.gc__row[data-on] { color: #f5f5f5; }
+/* visited: lit LED + frame count */
+.gc__n { display: inline-flex; align-items: center; gap: 0.45em; color: var(--g-accent); font-variant-numeric: tabular-nums; }
+.gc__led { width: 5px; height: 5px; border-radius: 50%; background: var(--g-accent); box-shadow: 0 0 6px var(--g-accent); }
+.gc__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.6rem;
+  padding: 0 0 0 0.9rem;
+  border-top: 1px solid var(--g-line);
+  color: var(--g-dim);
+}
+.gc__foot b { color: #f5f5f5; font-weight: 500; font-variant-numeric: tabular-nums; }
+.gc__foot button {
+  height: 100%;
+  padding: 0 1rem;
+  border: 0;
+  border-left: 1px solid var(--g-line);
+  background: transparent;
+  color: var(--g-accent);
+  cursor: pointer;
+}
+.gc__foot button:disabled { color: var(--g-dim); opacity: 0.5; cursor: default; }
+.gc__foot button:not(:disabled):hover { background: rgba(197, 251, 69, 0.08); }
+
 /* ---------- boot loader ---------- */
 .geo-boot {
   position: absolute;
@@ -294,6 +419,7 @@
   .geo-replay__read { min-width: 0; }
   .geo-replay__km { display: none; }
   .gp { left: 0.6rem; width: auto; top: auto; height: 55%; }
+  .gc { right: 0.6rem; width: auto; top: auto; height: 55%; z-index: 5; }
   .geo-map__coord { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

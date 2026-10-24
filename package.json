@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit",
     "resume:check": "node --env-file=.env.local scripts/check-resume.mjs",
     "resume:save": "node --env-file=.env.local scripts/check-resume.mjs --save",
-    "photos": "node --env-file=.env.local scripts/photos/sync.mjs",
+    "photos": "node --env-file=.env.local scripts/photos/sync.mjs && node scripts/geo/build-geo.mjs",
     "photos:dry": "node --env-file=.env.local scripts/photos/sync.mjs --dry",
     "geo": "node scripts/geo/build-geo.mjs"
   },

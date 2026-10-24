@@ -54,8 +54,16 @@ export function getCurrentMode(): CursorModeConfig {
   return currentMode;
 }
 
-/** Change mode (+ target element). */
+/** Change mode (+ target element). While locked, only remembered — applied on unlock. */
 export function setCursorMode(ref: CursorModeRef, targetEl: Element | null): void {
+  if (lock) {
+    wanted = { ref, el: targetEl };
+    return;
+  }
+  apply(ref, targetEl);
+}
+
+function apply(ref: CursorModeRef, targetEl: Element | null): void {
   const resolved = resolveCursorMode(ref);
   if (resolved === currentMode) {
     currentTargetEl = targetEl;
@@ -65,6 +73,23 @@ export function setCursorMode(ref: CursorModeRef, targetEl: Element | null): voi
   currentMode = resolved;
   currentTargetEl = targetEl;
   modeListeners.forEach((listen) => listen(resolved, previous));
+}
+
+/** Hold a mode regardless of hover (e.g. the grab hand while dragging); null releases it and applies
+ *  whatever hover asked for in the meantime (or the mode from before the lock). */
+let lock = false;
+let wanted: { ref: CursorModeRef; el: Element | null } | null = null;
+export function lockCursorMode(ref: CursorModeRef | null): void {
+  if (ref) {
+    if (!lock) wanted = { ref: currentMode, el: currentTargetEl };
+    lock = true;
+    apply(ref, currentTargetEl);
+  } else if (lock) {
+    lock = false;
+    const w = wanted;
+    wanted = null;
+    if (w) apply(w.ref, w.el);
+  }
 }
 
 /** Drop mode if target left the DOM. */
