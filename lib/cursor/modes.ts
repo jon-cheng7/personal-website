@@ -6,6 +6,8 @@ import {
   ARROW_DIFFERENCE,
   DOT_DIFFERENCE,
   ENTER_ARROW_DIFFERENCE,
+  PIXEL_ARROW,
+  PIXEL_CROSS,
   PREVIEW_DIFFERENCE,
   RETRO_ARROW,
   RETRO_HAND,
@@ -91,6 +93,21 @@ CURSOR_MODES.retroHand = {
   shape: RETRO_HAND,
   anchor: { x: 0.44, y: 0.03 },
 };
+
+/** Pixel set (art archive): lime fill, 1px dark outline (= one bitmap pixel), near-zero lag. No hover variant:
+ *  scope with data-cursor="pixel" + data-cursor-link="pixel" so links/buttons keep the same arrow.
+ *  pixelMove = panning a zoomed photo. Click burst + press squash: components/cursor/pixel-click-fx.tsx. */
+CURSOR_MODES.pixel = {
+  shape: PIXEL_ARROW,
+  content: { kind: "none" },
+  color: "#c5fb45",
+  stroke: { width: 1, color: "#0a0a0a" },
+  anchor: { x: 0, y: 0 },
+  tracking: { duration: 0.04, ease: "none" },
+  transitionMs: 220,
+  appear: "steps",
+};
+CURSOR_MODES.pixelMove = { ...CURSOR_MODES.pixel, shape: PIXEL_CROSS, anchor: { x: 0.289, y: 0.289 } };
 
 /** Name or config → config (unknown → default). */
 export function resolveCursorMode(

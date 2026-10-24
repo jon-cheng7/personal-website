@@ -29,7 +29,7 @@ export function Photo({ photo: p, sizes, priority = false, aspect, fit = "cover"
 
   return (
     <span className={`photo${className ? ` ${className}` : ""}`} style={style}>
-      <img className="photo__placeholder" src={p.placeholder} alt="" aria-hidden />
+      <img className="photo__placeholder" src={p.placeholder} alt="" aria-hidden draggable={false} />
       <picture>
         {p.formats.includes("avif") && <source type="image/avif" srcSet={srcSet(p, "avif")} sizes={sizes} />}
         <img
@@ -43,6 +43,7 @@ export function Photo({ photo: p, sizes, priority = false, aspect, fit = "cover"
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           decoding="async"
+          draggable={false}
         />
       </picture>
     </span>

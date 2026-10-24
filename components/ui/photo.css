@@ -18,6 +18,12 @@
   transform: scale(1.08); /* hide blur's soft edge */
 }
 
+/* picture fills the reserved box (in-flow height would follow the image, not the box) */
+.photo > picture {
+  position: absolute;
+  inset: 0;
+}
+
 .photo__img {
   position: relative;
   display: block;

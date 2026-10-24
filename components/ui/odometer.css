@@ -1,0 +1,30 @@
+/* Odometer — 1em-tall window per digit; strip of 0–9 slides inside it. */
+
+.odo {
+  display: inline-flex;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.odo__c {
+  display: inline-block;
+}
+
+.odo__d {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.odo__strip {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.1, 1);
+  will-change: transform;
+}
+
+/* snap to zero instantly, then roll up */
+.odo[data-zeroed] .odo__strip {
+  transition: none;
+}

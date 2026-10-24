@@ -6,20 +6,22 @@ import sharp from "sharp";
 
 const MIME = { avif: "image/avif", webp: "image/webp" };
 
-/** widths to emit for a master of width w (no upscaling; tiny masters → own width) */
-export function widthsFor(w, widths) {
+/** widths to emit for a master of width w (no upscaling; tiny masters → own width; fullRes → + w itself) */
+export function widthsFor(w, widths, fullRes = false) {
   const fit = widths.filter((x) => x <= w);
-  return fit.length ? fit : [w];
+  if (!fit.length) return [w];
+  if (fullRes && w > fit[fit.length - 1]) fit.push(w);
+  return fit;
 }
 
 /** encode all variants. → { width, height, widths, files[{ name, buffer, contentType }], placeholder, color } */
-export async function encode(abs, { widths, formats, sharpen, placeholderWidth }) {
+export async function encode(abs, { widths, fullRes, formats, sharpen, placeholderWidth }) {
   // master → oriented sRGB, size it once
   const meta = await sharp(abs).metadata();
   const swap = (meta.orientation ?? 1) >= 5;
   const width = swap ? meta.height : meta.width;
   const height = swap ? meta.width : meta.height;
-  const outWidths = widthsFor(width, widths);
+  const outWidths = widthsFor(width, widths, fullRes);
   const top = outWidths.at(-1);
 
   const { data, info } = await sharp(abs)

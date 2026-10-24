@@ -16,6 +16,8 @@ export const config = {
   // --- encode (versioned) ---
   /** srcset widths, px. Never upscaled past the master */
   widths: [480, 960, 1600, 2400, 3200, 3840],
+  /** + one extra variant at the master's full width (if larger) — only fetched when zooming in the viewer */
+  fullRes: true,
   formats: {
     avif: { quality: 62, effort: 3, chromaSubsampling: "4:4:4" }, // effort 3: ~7× faster than 5, ~4% bigger,
     webp: { quality: 84, effort: 4, smartSubsample: true },
@@ -39,4 +41,4 @@ export const config = {
 };
 
 /** fields that change pixels → part of version hash */
-export const encodeSettings = ({ widths, formats, sharpen, placeholderWidth }) => ({ widths, formats, sharpen, placeholderWidth });
+export const encodeSettings = ({ widths, fullRes, formats, sharpen, placeholderWidth }) => ({ widths, fullRes, formats, sharpen, placeholderWidth });

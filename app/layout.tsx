@@ -10,6 +10,7 @@ import { Nav } from "@/components/nav";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { GlobalCursor } from "@/components/cursor/global-cursor";
 import { ScreenTransition } from "@/components/screen-transition";
+import { InteractionGuard } from "@/components/interaction-guard";
 import Script from "next/script";
 
 /** Unbounded → --font-unbounded. Display face; active one chosen via --font-display in globals.css. */
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SmoothScroll />
         <ScreenTransition />
         <GlobalCursor />
+        <InteractionGuard />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

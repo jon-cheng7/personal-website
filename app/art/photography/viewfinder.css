@@ -1,0 +1,120 @@
+/* ViewfinderHud — off: invisible, no work. on: brackets draw, scanline sweeps once, chips fade in behind it (--d = delay). */
+
+.vf {
+  --vf-accent: var(--color-accent, #c5fb45);
+  --vf-inset: clamp(8px, 3%, 18px);
+  --vf-sweep: 0.7s;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font: 500 clamp(0.6rem, 0.55rem + 0.25vw, 0.74rem) / 1.35 var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  color: #f5f5f5;
+  overflow: hidden;
+}
+
+/* --- brackets --- */
+.vf__corner {
+  position: absolute;
+  width: clamp(14px, 6%, 28px);
+  height: auto;
+  fill: none;
+  stroke: var(--vf-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.45s cubic-bezier(0.6, 0, 0.2, 1);
+  overflow: visible;
+}
+.vf__corner--tl { top: var(--vf-inset); left: var(--vf-inset); }
+.vf__corner--tr { top: var(--vf-inset); right: var(--vf-inset); transform: scaleX(-1); }
+.vf__corner--br { bottom: var(--vf-inset); right: var(--vf-inset); transform: scale(-1); }
+.vf__corner--bl { bottom: var(--vf-inset); left: var(--vf-inset); transform: scaleY(-1); }
+.vf[data-on] .vf__corner { stroke-dashoffset: 0; }
+
+/* --- scanline: one pass per photo while on --- */
+.vf__scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 18%;
+  opacity: 0;
+  background: linear-gradient(to bottom, transparent, rgba(197, 251, 69, 0.08) 70%, rgba(197, 251, 69, 0.55) 99%, var(--vf-accent));
+  transform: translateY(-100%);
+}
+.vf[data-on] .vf__scan {
+  animation: vf-sweep var(--vf-sweep) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes vf-sweep {
+  0% { opacity: 1; transform: translateY(-100%); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(560%); }
+}
+
+/* --- chips (readouts) --- */
+.vf__chip {
+  position: absolute;
+  padding: 0.3em 0.55em;
+  background: rgba(8, 8, 8, 0.62);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.vf[data-on] .vf__chip {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--d, 0ms);
+}
+.vf__tl { top: calc(var(--vf-inset) + 6px); left: calc(var(--vf-inset) + 6px); }
+.vf__tr { top: calc(var(--vf-inset) + 6px); right: calc(var(--vf-inset) + 6px); text-align: right; }
+.vf__bl { bottom: calc(var(--vf-inset) + 6px); left: calc(var(--vf-inset) + 6px); }
+.vf__br { bottom: calc(var(--vf-inset) + 6px); right: calc(var(--vf-inset) + 6px); }
+
+.vf__exp {
+  display: flex;
+  gap: 1.1em;
+}
+.vf__dim { color: rgba(245, 245, 245, 0.55); }
+.vf__rec { color: #ff383c; }
+
+/* centre crosshair + bottom tick ruler (full only) */
+.vf__cross {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  translate: -50% -50%;
+  opacity: 0;
+  background:
+    linear-gradient(var(--vf-accent), var(--vf-accent)) center / 1px 100% no-repeat,
+    linear-gradient(var(--vf-accent), var(--vf-accent)) center / 100% 1px no-repeat;
+  transition: opacity 0.3s ease 0.3s;
+}
+.vf__ticks {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: var(--vf-inset);
+  height: 6px;
+  opacity: 0;
+  background: repeating-linear-gradient(to right, rgba(245, 245, 245, 0.55) 0 1px, transparent 1px 8px);
+  mask-image: linear-gradient(to right, transparent, #000 20%, #000 80%, transparent);
+  transition: opacity 0.3s ease 0.5s;
+}
+.vf[data-on] .vf__cross { opacity: 0.8; }
+.vf[data-on] .vf__ticks { opacity: 1; }
+
+/* mini (gallery tiles): smaller, fewer chips */
+.vf--mini {
+  --vf-inset: 6px;
+  font-size: 0.62rem;
+}
+.vf--mini .vf__corner { width: 12px; }
+.vf--mini .vf__chip { padding: 0.2em 0.45em; }
+.vf--mini .vf__bl { bottom: 22px; left: 6px; max-width: calc(100% - 12px); overflow: hidden; text-overflow: ellipsis; }
+.vf--mini .vf__br { bottom: 6px; right: auto; left: 6px; }

@@ -64,6 +64,9 @@ export interface CursorModeConfig {
   tracking?: CursorTracking;
   anchor?: CursorAnchor;
   transitionMs?: number;
+  /** How the shape grows back in after an anchor-change collapse (e.g. dot centre → arrow tip).
+   *  "steps" = chunky pixel build; default smooth. */
+  appear?: "smooth" | "steps";
   preload?: boolean;
   /** Bob while pointer still. */
   idleMotion?: {

@@ -28,7 +28,7 @@ Then commit `content/photos/manifest.json` and deploy.
 
 ## Rules
 - ID = filename, lowercased. Renaming a file makes it a new photo (new URL).
-- Masters: JPEG/TIFF, sRGB, long edge ≥ 3840, Lightroom output sharpening off.
+- Masters: full-size JPEG/TIFF (no resizing in Lightroom), sRGB, output sharpening off. Sizes: 480–3840 + the master's own width (`fullRes`), which only loads when zooming in the viewer.
 - An empty masters folder aborts the sync (so it never wipes the gallery).
 - GPS: rounded in the manifest, removed inside `privateZones`, never in the image files.
 

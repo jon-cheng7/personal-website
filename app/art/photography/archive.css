@@ -1,0 +1,298 @@
+/* Photo archive — always-dark instrument look: page frame, HUD bar, gallery grid, geo standby, morph timing.
+   Index view → index-view.css · viewer → photo-viewer.css · META overlay → viewfinder.css */
+
+.archive {
+  --ar-bg: #0a0a0a;
+  --ar-fg: #f5f5f5;
+  --ar-dim: rgba(245, 245, 245, 0.5);
+  --ar-line: rgba(255, 255, 255, 0.1);
+  --ar-accent: var(--color-accent, #c5fb45);
+  --hud-h: 3rem;
+  --hud-top: var(--nav-bar-height, 5.5rem);
+  --mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
+  position: relative;
+  min-height: 100svh;
+  padding: var(--hud-top) clamp(0.75rem, 2vw, 2rem) var(--space-l);
+  background: var(--ar-bg);
+  color: var(--ar-fg);
+  font-family: var(--mono);
+  /* faint engineering grid */
+  background-image:
+    linear-gradient(var(--ar-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ar-line) 1px, transparent 1px);
+  background-size: 100% 96px, 96px 100%;
+  background-position: 0 -1px, -1px 0;
+}
+
+/* :where → zero specificity, so component classes can still set font-size */
+:where(.archive) button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- HUD ---------- */
+.hud {
+  /* no view-transition-name on purpose: a named HUD is lifted above the page snapshot during morphs,
+     which buried the cursor + click burst under it. In the root snapshot it simply stays put. */
+  position: sticky;
+  top: var(--hud-top);
+  z-index: 20;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  height: var(--hud-h);
+  margin-bottom: 1rem;
+  border: 1px solid var(--ar-line);
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+.hud > * {
+  display: flex;
+  align-items: center;
+  padding: 0 0.9rem;
+  border-right: 1px solid var(--ar-line);
+}
+.hud > :last-child { border-right: 0; }
+
+.hud__path { gap: 0.5em; color: var(--ar-dim); }
+.hud__crumb { color: inherit; text-decoration: none; }
+.hud__crumb:hover { color: var(--ar-fg); }
+.hud__here { color: var(--ar-fg); }
+
+.hud__views { padding: 0; }
+.hud__view {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--ar-dim);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+.hud__view:hover { color: var(--ar-fg); }
+.hud__view[aria-checked="true"] { color: var(--ar-fg); }
+/* active underline */
+.hud__view::after {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ar-accent);
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hud__view[aria-checked="true"]::after { transform: scaleX(1); }
+.hud__key {
+  color: var(--ar-accent);
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+
+.hud__filter {
+  flex: 1;
+  gap: 0.7em;
+  min-width: 0;
+}
+.hud__filter input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ar-fg);
+  font: inherit;
+  letter-spacing: 0.04em;
+}
+.hud__filter input::placeholder { color: rgba(245, 245, 245, 0.28); }
+.hud__filter:focus-within { box-shadow: inset 0 -2px 0 var(--ar-accent); }
+
+.hud__meta {
+  gap: 0.6em;
+  border: 0;
+  border-right: 1px solid var(--ar-line);
+  background: transparent;
+  cursor: pointer;
+}
+.hud__led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3a3a3a;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.hud__meta[aria-pressed="true"] .hud__led {
+  background: var(--ar-accent);
+  box-shadow: 0 0 8px var(--ar-accent);
+}
+.hud__state { color: var(--ar-dim); min-width: 3ch; }
+.archive kbd {
+  padding: 0.1em 0.4em;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+  font: 0.85em / 1.2 var(--mono);
+  color: var(--ar-dim);
+}
+
+.hud__count { gap: 0; font-variant-numeric: tabular-nums; }
+.hud__count-n { color: var(--ar-accent); }
+.hud__dim { color: var(--ar-dim); }
+
+.archive__empty {
+  padding: 3rem 0;
+  color: var(--ar-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+.archive__empty button {
+  border: 0;
+  background: none;
+  color: var(--ar-accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ---------- gallery (barebones) ---------- */
+.gal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 6px;
+}
+.gal__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.gal__tile .photo__img { transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease; }
+.gal__tile:hover .photo__img,
+.gal__tile:focus-visible .photo__img { transform: scale(1.03); }
+.gal__tile:focus-visible { outline: 1px solid var(--ar-accent); outline-offset: 2px; }
+
+/* ---------- scroll-out "scanner" ----------
+   Once a tile passes under the HUD it tilts back, desaturates, blurs and picks up scanlines.
+   exit 0% = tile top at the HUD's bottom edge → exit 100% = tile fully under it. Front-loaded so it reads early.
+   Scroll-driven where supported; elsewhere (Firefox) use-scroll-out.ts writes --out → same look below. */
+.gal > li { transform-origin: 50% 100%; }
+.gal__tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgba(197, 251, 69, 0.22) 0 1px, transparent 1px 4px),
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.9), transparent 70%);
+  opacity: 0;
+}
+@supports (animation-timeline: view()) {
+  .gal > li,
+  .gal__tile::after {
+    animation: gal-out linear both;
+    animation-timeline: view(block calc(var(--hud-top) + var(--hud-h)) 0px);
+    animation-range: exit 0% exit 100%;
+  }
+  .gal__tile::after { animation-name: gal-scan; }
+}
+@keyframes gal-out {
+  35% {
+    opacity: 0.75;
+    transform: perspective(900px) rotateX(12deg) scale(0.97);
+    filter: blur(2.5px) saturate(0.2) contrast(1.3);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(900px) rotateX(28deg) scale(0.93);
+    filter: blur(8px) saturate(0) contrast(1.5);
+  }
+}
+@keyframes gal-scan {
+  35% { opacity: 1; }
+  to { opacity: 1; }
+}
+/* JS fallback (no scroll timelines) */
+.gal > li[data-out] {
+  opacity: calc(1 - var(--out));
+  transform: perspective(900px) rotateX(calc(var(--out) * 28deg)) scale(calc(1 - var(--out) * 0.07));
+  filter: blur(calc(var(--out) * 8px)) saturate(calc(1 - var(--out) * 2.5)) contrast(calc(1 + var(--out) * 0.5));
+}
+.gal > li[data-out] .gal__tile::after { opacity: min(1, calc(var(--out) * 3)); }
+
+/* ---------- geo standby ---------- */
+.geo {
+  max-width: 46rem;
+  padding: 2rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.geo__status { display: flex; align-items: center; gap: 0.7em; margin: 0; }
+.geo__led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffb020;
+  box-shadow: 0 0 8px #ffb020;
+  animation: geo-blink 1.4s steps(2, jump-none) infinite;
+}
+@keyframes geo-blink { 50% { opacity: 0.25; } }
+.geo__sub { margin: 0.6rem 0 2rem; color: var(--ar-dim); }
+.geo__bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.geo__bars li {
+  display: grid;
+  grid-template-columns: 11rem 1fr 3ch;
+  align-items: center;
+  gap: 1rem;
+}
+.geo__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.geo__bar {
+  width: max(6px, calc(var(--w) * 100%));
+  height: 8px;
+  background: repeating-linear-gradient(to right, var(--ar-accent) 0 6px, transparent 6px 8px);
+  animation: geo-grow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(var(--i) * 60ms);
+}
+@keyframes geo-grow { from { clip-path: inset(0 100% 0 0); } }
+.geo__n { color: var(--ar-dim); text-align: right; }
+
+/* ---------- morph timing (only during archive transitions) ---------- */
+html[data-vt="archive"]::view-transition-group(*) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+html[data-vt="archive"]::view-transition-old(root),
+html[data-vt="archive"]::view-transition-new(root) {
+  animation-duration: 0.28s;
+}
+/* photos: no crossfade ghosting, just fly */
+html[data-vt="archive"]::view-transition-old(*):only-child,
+html[data-vt="archive"]::view-transition-new(*):only-child {
+  animation-duration: 0.3s;
+}
+
+/* ---------- narrow ---------- */
+@media (max-width: 760px) {
+  /* row 1: views + META · row 2: filter + count */
+  .hud { flex-wrap: wrap; height: auto; }
+  .hud > * { min-height: 2.6rem; }
+  .hud__path { display: none; }
+  .hud__views { flex: 1; }
+  .hud__view { flex: 1; justify-content: center; padding: 0 0.4rem; }
+  .hud__view .hud__key,
+  .hud__meta kbd { display: none; }
+  .hud__meta { padding: 0 0.8rem; border-right: 0; }
+  .hud__filter { order: 3; flex: 1 1 70%; border-top: 1px solid var(--ar-line); }
+  .hud__count { order: 4; border-top: 1px solid var(--ar-line); }
+}

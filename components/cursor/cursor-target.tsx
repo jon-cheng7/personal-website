@@ -1,7 +1,8 @@
 "use client";
 
 // How elements opt into cursor modes.
-// Fits: `data-cursor="mode"` on any element, or <CursorTarget cursor={config}>. Bare a/button → link mode.
+// Fits: `data-cursor="mode"` on any element, or <CursorTarget cursor={config}>. Bare a/button → link mode
+// (or the nearest ancestor's data-cursor-link mode).
 
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
@@ -42,7 +43,8 @@ function resolveHoveredTarget(start: Element | null): { el: Element; ref: Cursor
       return { el: node, ref: modeFromDataAttrs(node) };
     }
     if (node.matches("a, button")) {
-      return { el: node, ref: "link" };
+      // a section can restyle its links: data-cursor-link="mode" on any ancestor
+      return { el: node, ref: node.closest("[data-cursor-link]")?.getAttribute("data-cursor-link") || "link" };
     }
     node = node.parentElement;
   }

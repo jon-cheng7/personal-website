@@ -1,0 +1,105 @@
+/* PhotoViewer — fixed full-screen frame; photo box = its own aspect, as large as fits above the control bar. */
+
+.pv {
+  --bar-h: 3.25rem;
+  --pad: clamp(0.75rem, 3vw, 2.5rem);
+  position: fixed;
+  inset: 0;
+  z-index: 1100; /* above nav (1000) */
+  display: grid;
+  place-items: center;
+  padding: var(--pad) var(--pad) calc(var(--bar-h) + var(--pad));
+  background: rgba(5, 5, 5, 0.96);
+  color: #f5f5f5;
+  font-family: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
+  animation: pv-in 0.3s ease;
+}
+@keyframes pv-in { from { opacity: 0; } }
+
+.pv__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.pv {
+  overflow: hidden;
+  touch-action: none; /* pinch / drag go to the zoom handler, not the browser */
+}
+.pv__zoom { cursor: zoom-in; }
+.pv[data-zoomed] .pv__zoom,
+.pv[data-zoomed] .pv__backdrop { cursor: grab; }
+.pv[data-zoomed][data-dragging="1"] .pv__zoom,
+.pv[data-zoomed][data-dragging="1"] .pv__backdrop { cursor: grabbing; }
+
+.pv__fit {
+  position: relative;
+  width: min(100vw - 2 * var(--pad), (100svh - var(--bar-h) - 2 * var(--pad)) * var(--ar));
+  aspect-ratio: var(--ar);
+}
+/* zoom layer: transform (+ will-change while moving) written by use-zoom-pan; origin top-left = the math's origin */
+.pv__zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+}
+.pv__frame {
+  position: absolute;
+  inset: 0;
+  animation: pv-scan 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* HUD stays on the frame while the photo moves under it; brackets only so the photo stays visible */
+.pv[data-zoomed] .vf__chip { opacity: 0.35; }
+.pv__frame .photo { height: 100%; aspect-ratio: auto !important; }
+@keyframes pv-scan {
+  from { clip-path: inset(0 0 100% 0); filter: brightness(1.8) saturate(0); }
+  to { clip-path: inset(0); filter: none; }
+}
+
+.pv__bar {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--pad) * 0.5);
+  translate: -50% 0;
+  display: flex;
+  height: var(--bar-h);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 10, 0.9);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+.pv__bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0 1rem;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: rgba(245, 245, 245, 0.7);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.pv__bar button:last-child { border-right: 0; }
+.pv__bar button:disabled { opacity: 0.35; cursor: default; }
+.pv__bar { z-index: 2; }
+.pv__zoomctl { display: flex; border-right: 1px solid rgba(255, 255, 255, 0.12); }
+.pv__zoomctl button { padding: 0 0.75rem; }
+.pv__zoomctl button:last-child { border-right: 0; }
+.pv__zoomval { min-width: 5.5ch; justify-content: center; font-variant-numeric: tabular-nums; }
+.pv__bar button:hover,
+.pv__bar button:focus-visible { color: #f5f5f5; outline: 0; background: rgba(255, 255, 255, 0.06); }
+.pv__bar button[aria-pressed="true"] { color: var(--color-accent, #c5fb45); }
+.pv__bar kbd {
+  padding: 0.1em 0.4em;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+@media (max-width: 560px) {
+  .pv__bar kbd { display: none; }
+  .pv__bar button { padding: 0 0.7rem; }
+}

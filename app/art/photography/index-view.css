@@ -1,0 +1,233 @@
+/* IndexView — list (left) + sticky monitor (right). Column set changes with META (.ix[data-meta]). */
+
+.ix {
+  --row-h: 52px;
+  --sticky: calc(var(--hud-top) + var(--hud-h) + 1rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(320px, 38vw, 640px);
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: start;
+}
+
+/* ---------- columns ---------- */
+/* All 9 columns always exist; META columns (.ix__m) open from 0 width → the track list itself transitions.
+   Spacing is cell padding (not grid gap) so closed tracks leave no gap. rem, not ch: header + rows share tracks. */
+.ix__grid {
+  --c-time: 0rem;
+  --c-ap: 0rem;
+  --c-sh: 0rem;
+  --c-iso: 0rem;
+  display: grid;
+  grid-template-columns:
+    3.65rem calc(40px + 1.25rem) 7.25rem var(--c-time) minmax(8.25rem, 1fr)
+    4.85rem var(--c-ap) var(--c-sh) var(--c-iso);
+  align-items: center;
+  gap: 0;
+  transition: grid-template-columns 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.ix[data-meta] .ix__grid {
+  --c-time: 5.85rem;
+  --c-ap: 5.45rem;
+  --c-sh: 5.65rem;
+  --c-iso: 3.5rem;
+}
+.ix__grid > * {
+  min-width: 0;
+  padding-right: 1.25rem;
+}
+
+/* META cells: blur/slide/fade in after their track opens, staggered left → right; out fast, all at once */
+.ix__m {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateX(-8px);
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease,
+    transform 0.3s ease;
+}
+.ix[data-meta] .ix__m {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-duration: 0.45s, 0.45s, 0.5s;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(0.18s + var(--m, 0) * 70ms);
+}
+.ix__m.ix__c--time { --m: 0; }
+.ix__m.ix__c--aperture { --m: 1; }
+.ix__m.ix__c--shutter { --m: 2; }
+.ix__m.ix__c--iso { --m: 3; }
+
+.ix__head {
+  position: sticky;
+  top: calc(var(--hud-top) + var(--hud-h));
+  z-index: 5;
+  height: 2.2rem;
+  padding: 0 0.75rem;
+  border-bottom: 1px solid var(--ar-line);
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(8px);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  color: var(--ar-dim);
+}
+.ix__th {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  letter-spacing: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+span.ix__th { cursor: default; }
+button.ix__th:hover { color: var(--ar-fg); }
+.ix__th[aria-sort="ascending"],
+.ix__th[aria-sort="descending"] { color: var(--ar-accent); }
+.ix__arrow { font-size: 0.75em; opacity: 0.7; }
+
+/* ---------- rows ---------- */
+.ix__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ix__row {
+  position: relative;
+  width: 100%;
+  height: var(--row-h);
+  padding: 0 0.75rem;
+  border: 0;
+  border-bottom: 1px solid var(--ar-line);
+  background: transparent;
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  scroll-margin-top: calc(var(--hud-top) + var(--hud-h) + 2.2rem);
+  transition: background-color 0.15s ease;
+}
+.ix__row > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* active marker + sweep highlight */
+.ix__row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(197, 251, 69, 0.14), rgba(197, 251, 69, 0.02) 60%, transparent);
+  border-left: 2px solid var(--ar-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+.ix__row[data-active]::before { transform: scaleX(1); }
+.ix__row[data-active] .ix__c--no { color: var(--ar-accent); }
+.ix__row:focus-visible { outline: 1px solid var(--ar-accent); outline-offset: -1px; }
+
+.ix__c--no { color: var(--ar-dim); }
+.ix__c--thumb { height: 40px; }
+.ix__c--thumb .photo { width: 40px; }
+.ix__row .ix__c--thumb .photo__img { filter: grayscale(1) contrast(1.1); transition: filter 0.3s ease; }
+.ix__row[data-active] .ix__c--thumb .photo__img { filter: none; }
+.ix__dim { color: var(--ar-dim); }
+
+
+/* ---------- monitor ---------- */
+.ix__monitor {
+  position: sticky;
+  top: var(--sticky);
+  display: grid;
+  gap: 0.9rem;
+}
+.ix__screen {
+  --screen-h: min(58svh, 42vw);
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: var(--screen-h);
+  border: 1px solid var(--ar-line);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%),
+    #050505;
+  overflow: hidden;
+}
+/* largest box of the photo's aspect that fits the screen */
+.ix__fit {
+  position: relative;
+  width: min(100% - 2rem, (var(--screen-h) - 2rem) * var(--ar));
+  aspect-ratio: var(--ar);
+}
+.ix__frame {
+  position: absolute;
+  inset: 0;
+  animation: ix-scan-in 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ix__frame .photo { height: 100%; aspect-ratio: auto !important; background-color: transparent !important; }
+@keyframes ix-scan-in {
+  from { clip-path: inset(0 0 100% 0); filter: brightness(1.8) saturate(0); }
+  60% { filter: brightness(1.15) saturate(0.6); }
+  to { clip-path: inset(0 0 0 0); filter: none; }
+}
+
+.ix__readout {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+.ix__readout > div {
+  display: grid;
+  grid-template-columns: 9ch 1fr;
+  gap: 1rem;
+}
+.ix__readout dt { color: var(--ar-dim); }
+.ix__readout dd { margin: 0; overflow-wrap: anywhere; }
+.ix__hint {
+  margin: 0;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: var(--ar-dim);
+}
+.ix__hint kbd { margin-right: 0.25em; }
+
+/* ---------- narrow: list only, fewer columns ---------- */
+@media (max-width: 1000px) {
+  .ix { grid-template-columns: minmax(0, 1fr); }
+  .ix__monitor { display: none; }
+}
+@media (max-width: 640px) {
+  .ix__grid,
+  .ix[data-meta] .ix__grid { grid-template-columns: 2.75rem calc(40px + 0.75rem) minmax(0, 1fr) 3.4rem; transition: none; }
+  .ix__grid > * { padding-right: 0.75rem; }
+  .ix__c--date, .ix__m { display: none; }
+}
+
+/* ---------- scroll-out: rows blur + fade only once they pass under the sticky header ----------
+   Line = bottom of HUD + column header. exit 0% = row top at the line → exit 100% = row bottom at the line.
+   Scroll-driven where supported (compositor, no JS); elsewhere (Firefox) use-scroll-out.ts writes --out per row. */
+@supports (animation-timeline: view()) {
+  .ix__list > li {
+    animation: ix-out linear both;
+    animation-timeline: view(block calc(var(--hud-top) + var(--hud-h) + 2.2rem) 0px);
+    animation-range: exit 0% exit 100%;
+  }
+}
+@keyframes ix-out {
+  to { opacity: 0; filter: blur(5px); }
+}
+
+/* JS fallback: same curve driven by --out (0 → 1); only rows actually crossing get [data-out] */
+.ix__list > li[data-out] {
+  opacity: calc(1 - var(--out));
+  filter: blur(calc(var(--out) * 5px));
+}

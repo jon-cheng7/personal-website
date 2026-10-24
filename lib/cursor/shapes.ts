@@ -95,6 +95,27 @@ export const RETRO_HAND: CursorShape = {
   path: "M35 7.4 L39.4 3 L48.2 3 L52.6 7.4 L52.6 33.8 L61.4 33.8 L65.8 38.2 L70.2 38.2 L74.6 42.6 L79 42.6 L83.4 47 L83.4 73.4 L74.6 86.6 L74.6 95.4 L35 95.4 L35 86.6 L17.4 64.6 L13 55.8 L17.4 51.4 L26.2 51.4 L35 60.2 Z",
 };
 
+/* Pixel set (art archive). Traced from bitmaps on a 19-row grid (1 cell = 100/19 units),
+   so at 19px every bitmap pixel is exactly 1px (classic pointer size). Same grid → arrow/cross morph at matching scale. */
+
+/** Classic 12×19 pointer silhouette. Tip = (0, 0) → anchor { x: 0, y: 0 }. */
+export const PIXEL_ARROW: CursorShape = {
+  kind: "svg",
+  viewBox: "0 0 100 100",
+  width: 19,
+  height: 19,
+  path: "M0 0 L5.26 0 L5.26 5.26 L10.53 5.26 L10.53 10.53 L15.79 10.53 L15.79 15.79 L21.05 15.79 L21.05 21.05 L26.32 21.05 L26.32 26.32 L31.58 26.32 L31.58 31.58 L36.84 31.58 L36.84 36.84 L42.11 36.84 L42.11 42.11 L47.37 42.11 L47.37 47.37 L52.63 47.37 L52.63 52.63 L57.89 52.63 L57.89 57.89 L63.16 57.89 L63.16 63.16 L42.11 63.16 L42.11 73.68 L47.37 73.68 L47.37 84.21 L52.63 84.21 L52.63 94.74 L47.37 94.74 L47.37 100 L36.84 100 L36.84 94.74 L31.58 94.74 L31.58 84.21 L26.32 84.21 L26.32 73.68 L15.79 73.68 L15.79 78.95 L10.53 78.95 L10.53 84.21 L5.26 84.21 L5.26 89.47 L0 89.47 Z",
+};
+
+/** 11×11 plus (pan / move). Centre = (28.9, 28.9) → anchor { x: 0.289, y: 0.289 }. */
+export const PIXEL_CROSS: CursorShape = {
+  kind: "svg",
+  viewBox: "0 0 100 100",
+  width: 19,
+  height: 19,
+  path: "M21.05 0 L36.84 0 L36.84 21.05 L57.89 21.05 L57.89 36.84 L36.84 36.84 L36.84 57.89 L21.05 57.89 L21.05 36.84 L0 36.84 L0 21.05 L21.05 21.05 Z",
+};
+
 // ---- named visual variants actually referenced by lib/cursor/modes.ts ----
 // Each pair below shares its geometry with the base constant above by
 // reference (via `withBlend`'s shallow copy) — there is exactly one place

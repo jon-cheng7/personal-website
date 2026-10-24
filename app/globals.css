@@ -38,6 +38,28 @@ video {
   height: auto;
 }
 
+/* No text highlighting / image dragging site-wide (form fields stay editable + selectable).
+   Firefox ignores user-drag → components/interaction-guard.tsx cancels dragstart too. */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+img,
+svg,
+video,
+a {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none; /* iOS long-press save/preview */
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

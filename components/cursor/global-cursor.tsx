@@ -39,6 +39,47 @@ function resolveBlend(shape: CursorShape): CursorBlendMode {
   return shape.blend === "difference" ? "difference" : "normal";
 }
 
+/** Mode's hot-spot as a normalized point inside its box (null for px anchors). */
+function hotSpot(mode: CursorModeConfig): { x: number; y: number } | null {
+  const a = mode.anchor ?? { x: 0.5, y: 0.5 };
+  return a.unit === "px" ? null : { x: a.x, y: a.y };
+}
+
+/** Same shape/fill/outline as the morph path would end on, applied instantly (used mid-collapse). */
+function applyShapeNow(
+  mode: CursorModeConfig,
+  els: { shell: HTMLDivElement; svg: SVGSVGElement; path: SVGPathElement },
+) {
+  const { shell, svg, path } = els;
+  const s = mode.shape;
+  if (s.kind === "simple") {
+    gsap.set(shell, {
+      opacity: 1,
+      borderRadius: s.radius,
+      backgroundColor: mode.color ?? "transparent",
+      borderColor: mode.stroke?.color ?? "transparent",
+      borderWidth: mode.stroke?.width ?? 0,
+      rotate: s.rotate ?? 0,
+      skewX: s.skewX ?? 0,
+    });
+    svg.style.opacity = "0";
+  } else {
+    svg.setAttribute("viewBox", s.viewBox);
+    gsap.set(path, {
+      attr: {
+        d: s.path,
+        stroke: mode.stroke?.color ?? "none",
+        "stroke-width": mode.stroke?.width ?? 0,
+        "vector-effect": "non-scaling-stroke",
+        "stroke-linejoin": "miter",
+      },
+      fill: mode.color ?? "currentColor",
+    });
+    svg.style.opacity = "1";
+    gsap.set(shell, { opacity: 0 });
+  }
+}
+
 /** Fine pointers only. Position via GSAP ticker; mode changes via store subscription. */
 export function GlobalCursor() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -64,6 +105,8 @@ export function GlobalCursor() {
   }, [mode]);
 
   const prevShapeRef = useRef<CursorShape>(getCurrentMode().shape);
+  /** previous mode's hot-spot (normalized); null = px anchor / first mount */
+  const prevHotRef = useRef<{ x: number; y: number } | null>(hotSpot(getCurrentMode()));
   const activeMediaSrcRef = useRef<string | null>(null);
   const trackRef = useRef<{ moveX: (v: number) => void; moveY: (v: number) => void } | null>(null);
 
@@ -288,6 +331,40 @@ export function GlobalCursor() {
 
     const prevShape = prevShapeRef.current;
     const nextShape = mode.shape;
+
+    // --- hot-spot changes (dot centre ↔ arrow tip): collapse into the pointer, swap, grow back out ---
+    // Both shapes pass through a single point at the pointer → no visible jump, no half-morphed blob.
+    const prevHot = prevHotRef.current;
+    const nextHot = hotSpot(mode);
+    prevHotRef.current = nextHot;
+    if (prevHot && nextHot && (Math.abs(prevHot.x - nextHot.x) > 0.05 || Math.abs(prevHot.y - nextHot.y) > 0.05)) {
+      const half = Math.max(0.07, ((mode.transitionMs ?? DEFAULT_TRANSITION_MS) / 1000) * 0.55);
+      const size = renderSize(nextShape);
+      root.style.mixBlendMode = resolveBlend(nextShape);
+      const tl = gsap.timeline();
+      tl.to(anchor, { scale: 0, duration: half, ease: "power2.in", transformOrigin: `${prevHot.x * 100}% ${prevHot.y * 100}%` }, 0);
+      tl.to(contentEl, { opacity: 0, duration: 0.1 }, 0);
+      tl.call(() => {
+        gsap.set(anchor, {
+          width: size.width,
+          height: size.height,
+          xPercent: -nextHot.x * 100,
+          yPercent: -nextHot.y * 100,
+          x: 0,
+          y: 0,
+          transformOrigin: `${nextHot.x * 100}% ${nextHot.y * 100}%`,
+        });
+        applyShapeNow(mode, { shell, svg, path });
+        setRenderedContent(mode.content);
+      });
+      tl.to(anchor, { scale: 1, duration: half, ease: mode.appear === "steps" ? "steps(4)" : "power2.out" });
+      tl.to(contentEl, { opacity: 1, duration: 0.15 }, "<");
+      prevShapeRef.current = nextShape;
+      return () => {
+        tl.kill();
+        gsap.set(anchor, { scale: 1 });
+      };
+    }
     const technique = morphTechniqueFor(prevShape, nextShape);
     const durationS = (mode.transitionMs ?? DEFAULT_TRANSITION_MS) / 1000;
     const targetSize = renderSize(nextShape);
