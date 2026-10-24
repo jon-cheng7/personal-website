@@ -65,8 +65,23 @@ export type ActorConfig = {
   channels?: Record<string, ChannelKey[]>;
 };
 
-/** World point shown at screen top-left. */
-export type CameraKey = { at: Time; x?: Length; y?: Length; ease?: string; hold?: Time };
+/** Camera state at `at`. x/y = world point at screen top-left (at zoom 1). Omitted = carried over. */
+export type CameraKey = {
+  at: Time;
+  x?: Length;
+  y?: Length;
+  /** Scale about the screen centre (1 = none). "fit" = fit the `focus` element on screen. */
+  zoom?: number | "fit";
+  /** data-anchor name to centre on (sets x/y from the measured element). */
+  focus?: string;
+  /** With zoom "fit": share of the screen the focused element fills (default 0.9). */
+  fill?: number;
+  ease?: string;
+  hold?: Time;
+};
+
+/** Measured world rect of a [data-anchor] element (px). */
+export type AnchorRect = { x: number; y: number; w: number; h: number };
 
 /** Full scene config. */
 export type ChoreoVariant = {

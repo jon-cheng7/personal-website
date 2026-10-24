@@ -22,13 +22,14 @@ import {
   BUILT_IN_LOOKS,
   Smoother,
   channelAt,
+  project,
   resolveScene,
   stateAt,
   variantOf,
   type ResolvedScene,
   type State,
 } from "./engine";
-import type { ActorConfig, Choreo, ChoreoVariant, Look } from "./types";
+import type { ActorConfig, AnchorRect, Choreo, ChoreoVariant, Look } from "./types";
 import { resolveCues, toCss, toTime } from "./units";
 import { ChoreoDebug, type DebugSnapshot } from "./debug";
 import "./choreo.css";
@@ -110,8 +111,12 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
         vh: window.innerHeight,
         rem: parseFloat(getComputedStyle(document.documentElement).fontSize) || 16,
       };
+      const ease = (n: string) => gsap.parseEase(n) as (p: number) => number;
       try {
-        resolved = resolveScene(variant, vp, (n) => gsap.parseEase(n) as (p: number) => number);
+        // pass 1: actors only (camera focus needs actor positions) → measure anchors → pass 2
+        const pre = resolveScene(variant, vp, ease);
+        const anchors = measureAnchors(sceneEl, pre);
+        resolved = Object.keys(anchors).length ? resolveScene(variant, vp, ease, anchors) : pre;
       } catch (err) {
         console.error(err);
         resolved = null;
@@ -127,7 +132,7 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
       forceRef.current = true;
     };
 
-    const written = new Map<HTMLElement, { transform: string; opacity: string; filter: string }>();
+    const written = new Map<HTMLElement, Written>();
     const channelValues = new Map<string, number>();
     let lastRaw = NaN;
 
@@ -145,16 +150,20 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
       forceRef.current = false;
 
       const camT = camSmoother ? camSmoother.step(raw, dt) : raw;
-      const cam = stateAt(resolved.camera.keys, camT);
+      const cam = stateAt(resolved.camera.keys, camT, true);
       const debugActors: DebugSnapshot["actors"] = {};
 
       for (const [id, { el, listeners }] of registry.current) {
         const actor = resolved.actors[id];
         if (!actor) continue;
         const t = actor.space === "world" ? camT : (smoothers.get(id)?.step(raw, dt) ?? raw);
-        const s = stateAt(actor.keys, t);
-        const x = actor.space === "world" ? s.x - cam.x : s.x;
-        const y = actor.space === "world" ? s.y - cam.y : s.y;
+        let s = stateAt(actor.keys, t);
+        let x = s.x;
+        let y = s.y;
+        if (actor.space === "world") {
+          ({ x, y } = project(s.x, s.y, cam, vp));
+          if (cam.scale !== 1) s = { ...s, scale: s.scale * cam.scale };
+        }
         write(el, s, x, y, reduceMotion, written);
 
         for (const [name, cbs] of listeners) {
@@ -174,7 +183,7 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
           t: raw,
           length: resolved.length,
           cues: resolved.cues,
-          camera: { x: cam.x, y: cam.y },
+          camera: { x: cam.x, y: cam.y, zoom: cam.scale },
           vp,
           sceneTop,
           actors: debugActors,
@@ -189,11 +198,20 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
     };
     window.addEventListener("resize", onResize);
     document.fonts?.ready?.then(onResize);
+    // actor content changing size (late images, data) → re-measure anchors
+    let roFrame = 0;
+    const ro = new ResizeObserver(() => {
+      cancelAnimationFrame(roFrame);
+      roFrame = requestAnimationFrame(onResize);
+    });
+    sceneEl.querySelectorAll("[data-actor]").forEach((el) => ro.observe(el));
     gsap.ticker.add(tick);
     tick();
 
     return () => {
       gsap.ticker.remove(tick);
+      ro.disconnect();
+      cancelAnimationFrame(roFrame);
       window.removeEventListener("resize", onResize);
       for (const { el } of registry.current.values()) {
         el.style.transform = "";
@@ -201,6 +219,7 @@ export function Scene({ choreo, children, className, style, ...rest }: SceneProp
         el.style.filter = "";
         el.style.visibility = "";
         el.style.willChange = "";
+        el.style.transformOrigin = "";
       }
     };
   }, [variant, debug]);
@@ -229,7 +248,7 @@ function write(
   x: number,
   y: number,
   reduceMotion: boolean,
-  written: Map<HTMLElement, { transform: string; opacity: string; filter: string }>,
+  written: Map<HTMLElement, Written>,
 ) {
   let transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
   if (s.ax || s.ay) transform += ` translate(${(-s.ax * 100).toFixed(2)}%, ${(-s.ay * 100).toFixed(2)}%)`;
@@ -239,8 +258,12 @@ function write(
   const blur = reduceMotion ? 0 : s.blur;
   const filter = blur > 0.05 ? `blur(${blur.toFixed(2)}px)` : "";
 
+  // scale/rotate about the anchor point (so it stays put at x, y)
+  const origin = `${(s.ax * 100).toFixed(1)}% ${(s.ay * 100).toFixed(1)}%`;
+
   const prev = written.get(el);
   if (prev?.transform !== transform) el.style.transform = transform;
+  if (prev?.origin !== origin) el.style.transformOrigin = origin;
   if (prev?.opacity !== opacity) {
     el.style.opacity = opacity;
     el.style.visibility = opacity === "0.000" ? "hidden" : "";
@@ -249,7 +272,37 @@ function write(
     el.style.filter = filter;
     el.style.willChange = filter ? "transform, opacity, filter" : "";
   }
-  written.set(el, { transform, opacity, filter });
+  written.set(el, { transform, opacity, filter, origin });
+}
+
+type Written = { transform: string; opacity: string; filter: string; origin: string };
+
+/** World rects of [data-anchor] elements inside world actors, from layout (offsets) + the actor's first key. */
+function measureAnchors(root: HTMLElement, pre: ResolvedScene): Record<string, AnchorRect> {
+  const out: Record<string, AnchorRect> = {};
+  root.querySelectorAll<HTMLElement>("[data-anchor]").forEach((el) => {
+    const actorEl = el.closest<HTMLElement>("[data-actor]");
+    const actor = actorEl ? pre.actors[actorEl.dataset.actor!] : undefined;
+    const first = actor?.keys[0]?.state;
+    if (!actorEl || !actor || actor.space !== "world" || !first) return;
+    let ox = 0;
+    let oy = 0;
+    let n: HTMLElement | null = el;
+    while (n && n !== actorEl) {
+      ox += n.offsetLeft;
+      oy += n.offsetTop;
+      n = n.offsetParent as HTMLElement | null;
+    }
+    if (n !== actorEl) return;
+    const sc = first.scale;
+    out[el.dataset.anchor!] = {
+      x: first.x + (ox - first.ax * actorEl.offsetWidth) * sc,
+      y: first.y + (oy - first.ay * actorEl.offsetHeight) * sc,
+      w: el.offsetWidth * sc,
+      h: el.offsetHeight * sc,
+    };
+  });
+  return out;
 }
 
 type ActorProps = Omit<HTMLAttributes<HTMLDivElement>, "id"> & {
@@ -325,15 +378,18 @@ function initialStyle(a: ActorConfig, v: ChoreoVariant): CSSProperties {
   const [ax, ay] = ANCHORS[first?.anchor ?? "top-left"];
   let x = toCss(first?.x ?? 0);
   let y = toCss(first?.y ?? 0);
+  let hidden = opacity <= 0;
   if ((a.space ?? "screen") === "world") {
     const cam = v.camera?.keys[0];
+    if (cam?.focus || (cam?.zoom !== undefined && cam.zoom !== 1)) hidden = true; // needs measuring
     if (cam?.x !== undefined) x = `calc(${x} - ${toCss(cam.x)})`;
     if (cam?.y !== undefined) y = `calc(${y} - ${toCss(cam.y)})`;
   }
   return {
     transform: `translate3d(${x}, ${y}, 0) translate(${-ax * 100}%, ${-ay * 100}%)`,
+    transformOrigin: `${ax * 100}% ${ay * 100}%`,
     opacity: opacity < 1 ? opacity : undefined,
-    visibility: opacity <= 0 ? "hidden" : undefined,
+    visibility: hidden ? "hidden" : undefined,
     width: a.w !== undefined ? toCss(a.w) : undefined,
     height: a.h !== undefined ? toCss(a.h) : undefined,
     zIndex: a.z,

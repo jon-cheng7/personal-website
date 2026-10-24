@@ -11,7 +11,7 @@ export type DebugSnapshot = {
   t: number;
   length: number;
   cues: Record<string, number>;
-  camera: { x: number; y: number };
+  camera: { x: number; y: number; zoom: number };
   vp: { vw: number; vh: number };
   sceneTop: number;
   actors: Record<string, { x: number; y: number; space: "screen" | "world"; t: number }>;
@@ -88,6 +88,7 @@ export function ChoreoDebug({ snapshot }: { snapshot: RefObject<DebugSnapshot | 
         <span className="choreo-debug__t">t = {snap.t.toFixed(2)}</span>
         <span className="choreo-debug__muted">
           camera {vw(snap.camera.x, snap.vp)}, {vh(snap.camera.y, snap.vp)}
+          {snap.camera.zoom !== 1 && ` × ${snap.camera.zoom.toFixed(2)}`}
         </span>
         <button type="button" onClick={() => setOpen((o) => !o)}>
           {open ? "hide" : "show"}

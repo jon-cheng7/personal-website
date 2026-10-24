@@ -1,0 +1,22 @@
+# Goes in the RESUME repo (not this one): .github/workflows/notify-site.yml
+# On every push that changes resume.tex → tells the website to refetch (POST /api/revalidate/resume).
+# Resume repo → Settings → Secrets and variables → Actions → add:
+#   SITE_REVALIDATE_URL    = https://joncheng.ca/api/revalidate/resume
+#   SITE_REVALIDATE_SECRET = same value as the site's RESUME_REVALIDATE_SECRET
+
+name: Notify website
+
+on:
+  push:
+    paths: ["resume.tex"]
+  workflow_dispatch:
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh resume on joncheng.ca
+        run: curl --fail-with-body -sS -X POST "$URL" -H "Authorization: Bearer $SECRET"
+        env:
+          URL: ${{ secrets.SITE_REVALIDATE_URL }}
+          SECRET: ${{ secrets.SITE_REVALIDATE_SECRET }}

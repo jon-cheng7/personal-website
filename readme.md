@@ -17,8 +17,9 @@ components/
   cursor/                 custom cursor
   nav.tsx …               site chrome: nav, page shell, route wipe, scroll memory, smooth scroll
 lib/                      stores + utilities (gsap, lenis, theme, chrome-tone, intro, cursor/)
-content/                  data: nav links, social, photos
-public/                   images (photos/ for gallery)
+content/                  data: nav links, social, photos (photos.ts + photos/ manifest)
+public/                   static images (photos-cdn/ = local photo variants, gitignored)
+scripts/photos/           photo pipeline: masters → AVIF/WebP → R2 + manifest — see README
 ```
 
 ## Common tasks
@@ -26,7 +27,7 @@ public/                   images (photos/ for gallery)
 - Move / retime anything on Home → `app/_home/home.choreo.ts`; `?choreo` in URL for the overlay.
 - New home element → `<Actor id="x">` in `app/page.tsx` + `actors.x` in the choreo file.
 - Nav links → `content/nav.ts`.
-- Add photo → file in `public/photos/` (~2400–3000px long edge) + entry in `content/photos.ts`.
+- Add / replace / remove photo → change the masters folder, `pnpm photos`, commit `content/photos/manifest.json`. Hide/feature/alt → `content/photos/overrides.json`.
 - Cursor modes → `lib/cursor/modes.ts`; opt in with `data-cursor="mode"`.
 - Display font → `--font-display` in `app/globals.css`.
 

@@ -1,0 +1,27 @@
+/* Photo — placeholder sits under the real image; real image paints over it once decoded. */
+
+.photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* tiny 24px preview, blurred up to size */
+.photo__placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--photo-fit, cover);
+  filter: blur(16px);
+  transform: scale(1.08); /* hide blur's soft edge */
+}
+
+.photo__img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--photo-fit, cover);
+}

@@ -1,0 +1,198 @@
+/* Resume sheet: a letter-size page, classic document look (mirrors the LaTeX). Sizes in em of --sheet-fs (10pt).
+   --world: same sheet at big type for the camera (crisp when zoomed). Narrow screens: page reflows, no fixed aspect. */
+
+.resume-sheet {
+  --sheet-paper: #fbfaf7;
+  --sheet-ink: #111;
+  --sheet-mark: var(--color-accent, #c5fb45);
+  --sheet-font: "Latin Modern Roman", "CMU Serif", Charter, "Iowan Old Style", Georgia, serif;
+  --sheet-fs: 10pt;
+
+  position: relative; /* markup overlay box */
+  box-sizing: border-box;
+  width: min(100%, 61.2em);
+  aspect-ratio: 8.5 / 11;
+  margin: 0 auto;
+  padding: 3.96em 4.68em;
+  background: var(--sheet-paper);
+  color: var(--sheet-ink);
+  font: var(--sheet-fs) / 1.35 var(--sheet-font);
+  box-shadow: 0 3em 8em rgba(0, 0, 0, 0.45);
+  border-radius: 0.15em;
+}
+
+.resume-sheet--world {
+  --sheet-fs: 40px;
+  width: 61.2em;
+  margin: 0;
+  box-shadow: 0 2em 6em rgba(0, 0, 0, 0.6);
+}
+
+.resume-sheet a {
+  color: inherit;
+  text-decoration: none;
+}
+.resume-sheet a:hover {
+  text-decoration: underline;
+}
+
+.resume-sheet__head {
+  text-align: center;
+}
+/* reset page-level type (PageShell styles h1/p) so the sheet matches the PDF */
+.resume-sheet h1,
+.resume-sheet h2,
+.resume-sheet h3 {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+.resume-sheet p {
+  max-width: none;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+.resume-sheet .resume-sheet__head h1 {
+  margin: 0 0 0.4em;
+  font-size: 1.7em;
+  font-weight: 700;
+}
+.resume-sheet__contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+.resume-sheet__contact span {
+  white-space: nowrap;
+}
+.resume-sheet__contact span + span::before {
+  content: "|";
+  margin: 0 1em;
+}
+
+.resume-sheet__section h2 {
+  margin: 0.75em 0 0.42em;
+  padding-bottom: 0.08em;
+  border-bottom: 0.05em solid var(--sheet-ink);
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+/* highlighter behind a visited section's heading (scaleX from the mark channel) */
+.resume-sheet__mark {
+  position: relative;
+  z-index: 0;
+}
+.resume-sheet__mark-bar {
+  position: absolute;
+  z-index: -1;
+  left: -0.15em;
+  right: -0.15em;
+  bottom: 0.05em;
+  height: 0.5em;
+  background: var(--sheet-mark);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.resume-sheet__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+.resume-sheet__row h3 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 700;
+}
+.resume-sheet__row .resume-sheet__org {
+  font-size: 1.2em;
+}
+.resume-sheet__right {
+  flex-shrink: 0;
+  text-align: right;
+}
+.resume-sheet__right--i {
+  font-style: italic;
+  flex-shrink: 1;
+}
+
+.resume-sheet__group + .resume-sheet__group {
+  margin-top: 0.4em;
+}
+.resume-sheet__entry + .resume-sheet__entry {
+  margin-top: 0.2em;
+}
+.resume-sheet ul {
+  margin: 0.3em 0 0;
+  padding-left: 1.3em;
+}
+.resume-sheet li + li {
+  margin-top: 0.2em;
+}
+
+.resume-sheet__table {
+  margin: 0;
+}
+.resume-sheet__table div {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 0.6em;
+}
+.resume-sheet__table dt {
+  font-weight: 700;
+}
+.resume-sheet__table dd {
+  margin: 0;
+}
+
+.resume-error {
+  white-space: pre-wrap;
+  color: #c0392b;
+}
+
+@media screen and (max-width: 900px) {
+  .resume-sheet:not(.resume-sheet--world) {
+    --sheet-fs: 0.95rem;
+    width: 100%;
+    aspect-ratio: auto;
+    padding: 1.5rem 1.25rem;
+  }
+  .resume-sheet:not(.resume-sheet--world) .resume-sheet__row {
+    flex-wrap: wrap;
+    gap: 0 1em;
+  }
+}
+
+/* Page layout at full size, whatever the screen: page-view.tsx measures with this class to fit print */
+.resume-sheet.resume-sheet--fit,
+.resume-sheet.resume-sheet--fit:not(.resume-sheet--world) {
+  --sheet-fs: 10pt;
+  width: 61.2em;
+  aspect-ratio: 8.5 / 11;
+  padding: 3.96em 4.68em;
+}
+.resume-sheet.resume-sheet--fit .resume-sheet__row {
+  flex-wrap: nowrap;
+  gap: 1em;
+}
+
+/* Print = the on-screen page layout (so marks line up), the paper's padding as page margins,
+   scaled to one letter page (--print-zoom, set by page-view.tsx). */
+@media print {
+  .resume-sheet {
+    --sheet-fs: 10pt;
+    width: 61.2em;
+    aspect-ratio: 8.5 / 11;
+    margin: 0 auto;
+    padding: 3.96em 4.68em;
+    zoom: var(--print-zoom, 1);
+    box-shadow: none;
+    background: none;
+    border-radius: 0;
+  }
+  .resume-sheet__mark-bar {
+    display: none;
+  }
+}

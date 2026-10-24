@@ -1,0 +1,4098 @@
+{
+  "keyPrefix": "photos",
+  "photos": [
+    {
+      "id": "dsc04631",
+      "version": "2d59a4cb84cc",
+      "file": "DSC04631.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBQCdASoYACQAPu1oq1CppakiqrgMATAdiWUAzcBN6EEN3yDDDZ1juMV/wBGX38FrWd0AAP70rH3HgteaWjeROkiY3qvVl6pXm9CFGzQs357sSUvPuljiKqqZ2NgSDHSE7q33mN5K0PhxLZVYcpWeQa68JXsW208V2qB9f2cc18eZ1pcMNoGgW1zzPnGm8zRIXG+qkAA=",
+      "takenAt": "2026-08-15T06:38:52-04:00",
+      "geo": {
+        "lat": 52.973,
+        "lon": -9.43
+      },
+      "place": {
+        "sublocation": "Lislorkan North",
+        "city": "Ballysteen",
+        "region": "Clare",
+        "country": "Ireland",
+        "label": "Ballysteen, Ireland"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04596",
+      "version": "ba1e04179d91",
+      "file": "DSC04596.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZwC06CHaTRf2/Z8Et8AA/u+6ctY9FVQMNXh8lnj2jKv2pV+a2dtO4+AlCZkRx/m+nAPztkM2+zVEgx0AMCAA",
+      "takenAt": "2026-08-15T06:32:29-04:00",
+      "geo": {
+        "lat": 52.973,
+        "lon": -9.43
+      },
+      "place": {
+        "sublocation": "Lislorkan North",
+        "city": "Ballysteen",
+        "region": "Clare",
+        "country": "Ireland",
+        "label": "Ballysteen, Ireland"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 56,
+        "aperture": 5.6,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04568",
+      "version": "a0e0148854dd",
+      "file": "DSC04568.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JYwAAXK6mQ8pmY0SY+OAA/u/rk8/iASeAhi1R3acSG/rhMqBOrBlEbJi/4Vvr+7/bp5H6rW6Zsou88Ap/pYIID7h1Sjr/EYAzCyPbCGVgAA==",
+      "takenAt": "2026-08-15T05:58:29-04:00",
+      "geo": {
+        "lat": 52.973,
+        "lon": -9.43
+      },
+      "place": {
+        "sublocation": "Lislorkan North",
+        "city": "Ballysteen",
+        "region": "Clare",
+        "country": "Ireland",
+        "label": "Ballysteen, Ireland"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04486",
+      "version": "a2cae630767b",
+      "file": "DSC04486.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#98b8d8",
+      "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdAYzG5HQ8g/+07b5cut0AAP6LiKbHBL1P1zFbn9W93F/01WJVn1mnia+PU+0nWtvybzBauRZb1pzQEFX+r0qLFZlxWip6bvKrwqYuGQ8L9UyW67tuLwxaebMrYSA0s7cltbT8ErNKY3sEDSG6Vz1eironT104pBRQyQIVxia/48Bp+GOreX6Vz6LyzQdEAA==",
+      "takenAt": "2026-08-12T08:19:58-04:00",
+      "geo": {
+        "lat": 25.668,
+        "lon": 32.62
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Markaz al Uqşur",
+        "region": "Luxor",
+        "country": "Egypt",
+        "label": "Markaz al Uqşur, Egypt"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 31,
+        "aperture": 5,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04066",
+      "version": "8bc45ef2fc1d",
+      "file": "DSC04066.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8b8c8",
+      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBQCdASoYACQAPu1mrFAppSQiqrgMATAdiWMAvzhF7WXF7ElkhxVeZHZ3YBmHLRx8KPcPuZAA/sLfSPWFwuBHdk5TPGuLRusDV7wKVxEXECLK6045PWNXWydEbuHy49FqZRDwBNn27gPhNuxfXWXFl3DZJAzeOakSiwxKpIJYnEZhR+pZT7kJDYAAAA==",
+      "takenAt": "2026-08-11T02:34:00-04:00",
+      "geo": {
+        "lat": 29.982,
+        "lon": 31.132
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Al Ahram",
+        "region": "Giza",
+        "country": "Egypt",
+        "label": "Al Ahram, Egypt"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04060",
+      "version": "37467a35f624",
+      "file": "DSC04060.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8c8d8",
+      "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUI8DBTcM4Hva5uOF8AD+Utg+YSVS1IaKxwiHSSo3DEMzw4UGR3QVxsd8/8DvbUKR8oH7SyNb6gWHsvYrF8AAAA==",
+      "takenAt": "2026-08-11T02:31:36-04:00",
+      "geo": {
+        "lat": 29.982,
+        "lon": 31.132
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Al Ahram",
+        "region": "Giza",
+        "country": "Egypt",
+        "label": "Al Ahram, Egypt"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 51,
+        "aperture": 5.6,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04039",
+      "version": "6fa754a80e7f",
+      "file": "DSC04039.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JQBOkF/hgWPSsPR5ttF0qOgAA/ozrhUhUtQv0Tbl4uSIcZeMrbLZbb2GEr7c6pBKlkEiWeIOz/S0BPrqTXfRV2gODTags5PXE1lwmm/xKYT98PEAAAA==",
+      "takenAt": "2026-08-11T02:07:33-04:00",
+      "geo": {
+        "lat": 29.982,
+        "lon": 31.132
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Al Ahram",
+        "region": "Giza",
+        "country": "Egypt",
+        "label": "Al Ahram, Egypt"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03920",
+      "version": "99c7901c4658",
+      "file": "DSC03920.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#483828",
+      "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaACdMoBOACfF2Nz66HOFcfz0OAD+6eNK8eRirK6ki4RU1UZXpMKL6wPiOFxrYCCoJGSu4TRrwEWZ92Vz9wpVejWJNVpUliLuFXmytsDwg42liIjDy+mBZ9OMS8/5RzEe6q1rxWcZMmAqFCqWfHMXVAlGo4WBJBCzrlTWxKLui7+q76k9pkHCWiZDEVwA",
+      "takenAt": "2026-08-10T14:27:02-04:00",
+      "geo": {
+        "lat": 30.044,
+        "lon": 31.241
+      },
+      "place": {
+        "sublocation": "Ø§ÙØ¨ÙØ§ÙØ³Ø©",
+        "city": "Cairo",
+        "region": "Cairo",
+        "country": "Egypt",
+        "label": "Cairo, Egypt"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 1000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03865",
+      "version": "cb94c5cbfb8f",
+      "file": "DSC03865.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACQBQCdASoYACQAPu1gqk8ppSOiKrgN+TAdiUAW33tYbXmVKulFq2LuachkJD1jB3/JPbWiAAD+3l+XAeeGOZVtHr+YdURUM5hGfNyD7nOx+ZSepI9cL5ayDm5sQGtm0Ajck6dkzB4gJ3ArOuvEmCJqgTNPbP9E9kec4Ifjxk1RXfPsh4bELJbPQeCt0PlggmjeLuyZKnFwMrcPUTwX4z4zk7UEJM31tuzFMud5SwsB2FpQnvLh5lykSTxVjAAA",
+      "takenAt": "2026-08-09T12:28:21-04:00",
+      "geo": {
+        "lat": 35.055,
+        "lon": 24.924
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Kastellio",
+        "region": "Crete",
+        "country": "Greece",
+        "label": "Kastellio, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.01,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03850",
+      "version": "eb6f6a5517e8",
+      "file": "DSC03850.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBCo0OIZo7fVm2QUgAP7tWNDJph6aYNKzpULRHKFEf7TH0MTDymz5Y5uaA/dX3oD8nzaUH3Uuk/vIs11jiRCrwgrOsGNdZm4vfAqKMmLYaDxJQARjj8euvcHJdbXRMoixfYdkAAAA",
+      "takenAt": "2026-08-09T11:19:00-04:00",
+      "geo": {
+        "lat": 34.993,
+        "lon": 24.75
+      },
+      "place": {
+        "sublocation": "Matala",
+        "city": "Pitsidia",
+        "region": "Crete",
+        "country": "Greece",
+        "label": "Pitsidia, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03808",
+      "version": "ff769a4d82ac",
+      "file": "DSC03808.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAAAwBwCdASoYACQAPu1kqE8ppSOiKqwBMB2JQBlAtoyiu1eFSlIMglpU4aURJrarc/nv7064GDe3hxU7v4GLNnX+oAAA/qMKZ5OzC7cklg7Hy0BqrMEn2+doTdcFXv1ERHxx0G3ijP5itcTbMY6eVrH5TnvUktuGz8ftM1wuuMbVPY2/PO2tbzBe4qjK9bR2ooDrlLLg/t+ZHn6kvsWkFEozt/R3A6YJBHHaBBckm87KPI34OWuArHdUQIj19nw5KQHw8cew9YOX9kvG+X0pKgXK23MEzRrx/xrhggwM9kQoK2G20kmyy/p3x5gKCspFqPe7mXKuK7ooJZW+GtidCNNekSnV9fKJJEg+GGvaUOkxxHOQGqMmRtyKuMevEP9mc4PF54I38uhEAAAA",
+      "takenAt": "2026-08-09T03:36:30-04:00",
+      "geo": {
+        "lat": 35.377,
+        "lon": 24.201
+      },
+      "place": {
+        "sublocation": "Vryses",
+        "city": "Vrysses Apokoronou",
+        "region": "Crete",
+        "country": "Greece",
+        "label": "Vrysses Apokoronou, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 43,
+        "aperture": 5,
+        "shutter": 0.0125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03485",
+      "version": "faa671ed9d61",
+      "file": "DSC03485.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAACQBwCdASoYACQAPu1mq1CppSOisBVYATAdiUAYnyQPHvxSfM0gCS8oPClbD7Ft8GDHWBbP6/vaXWvDKOILqbcYVgSg5AAA/t7DBOWU+31404it9CuMXG+eb29TLLnpGJjz4lngnoofulAeo/73Ob7XbpbuCR0JXdWosaVrFTuOw+TbU9tiuUNTt8b4IwU9yppTPTkPpzaLPvDGo2D3xu46ERmnqtiajLjQsyPQ149HrhNHLCjvT56TqrgavZLNDv1xMoptvypnhH2RapA4MFOmwaQJtuYLo/ebGRQrNbFoJTE8T/2/54/LMK+2mbJ/77OY+IAAAAA=",
+      "takenAt": "2026-08-07T00:38:00-04:00",
+      "geo": {
+        "lat": 35.257,
+        "lon": 23.968
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Agia Roumeli",
+        "region": "Crete",
+        "country": "Greece",
+        "label": "Agia Roumeli, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03453",
+      "version": "44086e7ca90c",
+      "file": "DSC03453.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#4878a8",
+      "placeholder": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADwBACdASoYACQAPuleqU2pPaQiNVQMA7AdCWMAsR+YRxYsPBmPqLeLCeHkBLfVQAAA/uEhmj27oi9vIQ0THeqjhShOlVao4wQpngEoAXfM9GnX0udqMCt4lV4VA5fvvCBcs8il0q0WRoDbjp6oJM3K1cvhKHlDvC+E4nmFshbfKf6AayGHeCwUsFLbpBkCUr4ZqmtFXcgagwAIZMlnRZHTsriAFiTAAAA=",
+      "takenAt": "2026-08-06T00:16:45-04:00",
+      "geo": {
+        "lat": 36.423,
+        "lon": 25.428
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Thira Municipality",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Thira Municipality, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03352",
+      "version": "b349c0420e00",
+      "file": "DSC03352.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRhgBAABXRUJQVlA4IAwBAABwBwCdASoYACQAPu1urVIppiQipWsxMB2JYwDE+YNDsxANaYt3FYvtefVb5BEjA6J+rdT0EMv6qIBI/YIaWqU8wdhWAAD+i72O51SJy1f2CVElrex1LdldDz0cUoAGawMW9S5J/d7G88+c9VUvt2OO7m8F+q6TuNB7WNn7zev9HqnPLuM2+++Mx9LjoCWWfzGnInTguc57zDQz49RXUUPeiNjU2YzLJZ18XBb23NqVtXTMeLbG3NWxoN7tkbcfnNyjtRmXyWjkGMDgigDnH/uVXZ/y/Pi4gtiAY0RD5Hbn8ueecNZYi1peoB0W7jz9cxgyNGzXBBmXg/0j4vEXIwwoJiAQ3srKTDcfhGgA",
+      "takenAt": "2026-08-05T11:42:10-04:00",
+      "geo": {
+        "lat": 36.423,
+        "lon": 25.428
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Thira Municipality",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Thira Municipality, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 59,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03047",
+      "version": "c5a49f807618",
+      "file": "DSC03047.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC7ABuej3IfbmhGoAD9w7+iW5PvJJ+yJ04Kwp1/kPQwSjiQXTPbqRWAhwCut/VZk1qJT3VNLE/uq8q9RdKgekXUMt0SsHiHZuL0ipA8C97BBUbJSZY18yqgAA==",
+      "takenAt": "2026-08-05T02:27:12-04:00",
+      "geo": {
+        "lat": 36.46,
+        "lon": 25.37
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Oia",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Oia, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03020",
+      "version": "93d8e73cf019",
+      "file": "DSC03020.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182848",
+      "placeholder": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYgCdMoRwACnJcPm9Ia07MdgA/urSjTb472Mmu/rOZI/Wjy4RAhGtr1/OTyk3aiuKe0H3clSxwcliadJcDJJIxm+2se95YCu4/Zd6FGQ1U4ktmpQ8lXLD4AA=",
+      "takenAt": "2026-08-05T00:58:37-04:00",
+      "geo": {
+        "lat": 36.433,
+        "lon": 25.422
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Imerovigli",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Imerovigli, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 8,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03012",
+      "version": "3ea4e40eaa6c",
+      "file": "DSC03012.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8c8e8",
+      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUABpvQDBpjBFLtfp0AD+36Yv1Aec5+/4ATXN4grIGIP6LYkEUXyuIvUC+8OM62Ip7PT8ljXlysvX0qt9eR8AWxbFXiIk/RKjCxs0C05U3SssufnxfW2ri4E+XXPQ3XCcL9qfAAAA",
+      "takenAt": "2026-08-05T00:57:20-04:00",
+      "geo": {
+        "lat": 36.433,
+        "lon": 25.422
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Imerovigli",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Imerovigli, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 8,
+        "shutter": 0.004,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02957",
+      "version": "c19798f0586e",
+      "file": "DSC02957.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4IAgBAAAQBwCdASoYACQAPu1krU+ppSQiKrgMATAdiWMAvsGMqOXNOebdMPzEiJjHBnxX4wXduno6pdNdwf4VUbUdhVoJAAD+78IV+Ub1ewRwbnb8je6nP9Kf4IikyQA30VZUdcuq4s9eRGds3QXhaYovkNswryrdoe5l2sak+XADLjsnY+02aavTBGrwSPeEMhbbYPOdwstCkoSkVRy2MMEf47DsWvXbyuzbao8BYp9iCgcxq3KZuyXrTQktL5BCX6LueIDJxtyoRFYaYglN4hRaBxZVrZ60BdclRGiA4BAthVb7oimnsSC+iytQrY5ABP1b0/7xBp6rPsROIK1VQHTdwot8Ykifh2oAAAA=",
+      "takenAt": "2026-08-04T03:59:07-04:00",
+      "geo": {
+        "lat": 37.968,
+        "lon": 23.742
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 44,
+        "aperture": 5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02879",
+      "version": "6c011f15bf0a",
+      "file": "DSC02879.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdABZNvyDlZQflvACYxHAA/dJEuTOhjGxRHBeGzltMMIx61T2Ap/7BNEP/f1O/oFIB/eUuYo61b3tjIzbfLVPUIPwAJ+CI8Qd9VcxjiYPoF1nUCXAOafy7ixD/0vk8P3i/zN7kKKQA",
+      "takenAt": "2026-08-04T01:56:04-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.727
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 34,
+        "aperture": 5,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02839",
+      "version": "6ed6d5f7dbab",
+      "file": "DSC02839.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8d8f8",
+      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JYwCdACFri2GjCg494kuAAP7TeoLzIST0b7ltRDgSP0TiayMZnGp0r3ws595Zepg0dSqIjxHbxLwgjuVisN6+KehmJamgiVjSNYp+6EdLfWxpp0eZAAAA",
+      "takenAt": "2026-08-04T01:12:37-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.726
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02838",
+      "version": "66f2c81e8884",
+      "file": "DSC02838.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAABwBgCdASoYACQAPuVgp02pJaOiMBqtUSAciUAXZCowNJGk4sDcDsWcx2bEXqdedvDGhr/sU7v8NsxDHgAA/mi+OulJ+lYzdS7czYNzJdEVg2P++4ktkoD5mi4SJwzpEc/rPzgI/8tp+ZJsSJ7Crgx54wUy3FpX33AtEtVuo8MRLQ1w6TcoNSTKpmBnzDVVdAaPSAAG3UzpoK575UUPMUct4EtvYnmGvVq/zdob90W8nULIBET/xc+g0OcBuPbV4zex1fGW/ZgWrIBWEJ/tkpRC9n/99Jp8PWjukjfdw6f8TisM3WE0TGvoAAA=",
+      "takenAt": "2026-08-04T01:11:14-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.726
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02812",
+      "version": "e95b572830a0",
+      "file": "DSC02812.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8c8e8",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOgBDwuf4qCwiWqyQ+iIAD+rwYuVujGR0tsvdMuIWI4p+kd0E7rqX4PFDVfx9gxlODCEQJeNnY7sun4QQFM2t3OmF0DemjnspKAGF0mpHzfzPedbAmWVfk9efilgz9iQAAA",
+      "takenAt": "2026-08-04T01:05:56-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.726
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02809",
+      "version": "452dba1e6d76",
+      "file": "DSC02809.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#5888b8",
+      "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBQCdASoYACQAPu1orVCppaQipWzJMB2JQBhfBzwy+cUacXRkq+ujdArJMJ66ABwFQrwaWa+P+AD+uWYviZlL3/1K366JjvqrS3NmLM1eC0qImwkgBdEPzhM6g2mpAGg9mqzZj+ravZGHG7Jsp+iv1YMTmGPN1eWh/PKvCXTTJX4rXjZ26d4TcN2y8qwFWJc95L5zgk6OxO70p9l+iXqbysaKLfFLNc4AAA==",
+      "takenAt": "2026-08-04T01:05:50-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.726
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02804",
+      "version": "c17935621435",
+      "file": "DSC02804.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwCdH8ADAp2kDyvf1ucuMj3XgSAA/tNNJUyiuGMycWEm+M3pZ/otU4Uf9S1dnSOquOhe9BhwvHFwlzu6N53HyJAqRq/OegAL1fndLID6BUBCdJ5eQNNQ+SbNQ3PGkAA=",
+      "takenAt": "2026-08-04T01:05:30-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.726
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02803",
+      "version": "4ffb09bee3b8",
+      "file": "DSC02803.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBQCdASoYACQAPu1aqk4ppKOiMBqqqTAdiUAYz4HUgaj5ciWi7zYYzkmbBPXs6h+ekA14CfvMAPcEHbRon2xkKYjcLZAJ6+cGVPf60MpS4TiFC3z2/AvceIHkA/ano6UCSHTM0QC355alY+uIC1d1OpFS7dfAPrTxYUBYBkPYycGsgR+p2bKukNfKduIBAiy10G/9AV5ezqDz4vVztlSwOM7ZW/TD3D3I3dFuCK8Pap6ppqYP1OInf/CvEjLQnhPoPpBksAAAAA==",
+      "takenAt": "2026-08-04T01:04:02-04:00",
+      "geo": {
+        "lat": 37.972,
+        "lon": 23.725
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02786",
+      "version": "ec80840d28b1",
+      "file": "DSC02786.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYwDE2B8wExtFMEmjsCwwlAAA/pUHSLpeC73rjusg5a9ih3asxAWs4HiiSIfKvOU8qH1oOnRgx0583ykeQSVdDweCAW6N0mvtCZYrGIwW+Damhmu0ij1SeHLNiQuzghqeTe0eNZI2vhrjEXTjUjqt585XeAAA",
+      "takenAt": "2026-08-04T00:55:53-04:00",
+      "geo": {
+        "lat": 37.971,
+        "lon": 23.725
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.004,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02749",
+      "version": "e6a655f35793",
+      "file": "DSC02749.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOmUAS4gm8XcOU5RL4nuQW44AD+qh9dBWnFXodQXDdJv0ZhP+tyiVQvx6XfjHW4NAZ2lLxjgky9b5zuOqtud2kkBxAp3B6FWXtI6W44NpBpNHZPdYswLbtaPtAdLOmOHKuNk6e3gnnkxPWvrlLx5DWRPgVHsIGE8YFMvG3RJ+IvOZg7mxt8uukVb0vUdfZ+UWXi8lkoQRNHXleEVDTEF4IhGsbEMBwr6WNwzr913FsfkAA=",
+      "takenAt": "2026-08-03T09:35:40-04:00",
+      "geo": {
+        "lat": 37.976,
+        "lon": 23.722
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 3.5,
+        "shutter": 0.0008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02744",
+      "version": "29011327f89c",
+      "file": "DSC02744.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwC2yywBs5yf/oezjVH3HZAA/vHPIgexV/joRW+tGPo08nDtm7XBGO9dpwxtW3XUWGARoX1WVI9igIFa6YX810cRmZ3/x0EDr2N62qR7WfbwJ81LQn6LpclLfPP5wmtl7tAF6JadVw9sIt6ZkZfBG8WXqfIdFR4Ab9PAxiYliAAA",
+      "takenAt": "2026-08-03T09:30:51-04:00",
+      "geo": {
+        "lat": 37.976,
+        "lon": 23.722
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 29,
+        "aperture": 3.5,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02742",
+      "version": "e66ed0ec6b32",
+      "file": "DSC02742.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAADQBQCdASoYACQAPu1wrVMppiOipWmZMB2JYwC7AAwnXsYQu/1QSq4CQIPTr6fTfs4hCaOOUv0AAPfeOK2dIkGCTLy4+lR0j1tCxpsGg0IKyxjJ8zS78Psy555jN2sn2XzPia6DWgAMEbfrYNBet2n2SuI0ZwKmLy2aU5IsTbOPGnSIbHaGeU0jpY+Rh033LU6lQ7ZkawAlR0yqrVd9PQ2XwnPxn78lWd/Hb6zMooQgkr7UOO0ZWLgwjAibJdYfk0YUYlNDGjYLTuUQHS7LGh7kQf9WtbFUyPpCNu9FA0sWa2Qm7qwYJa4zZ5z8uc3MH+Ntvk4A",
+      "takenAt": "2026-08-03T09:30:45-04:00",
+      "geo": null,
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 33,
+        "aperture": 4,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02712",
+      "version": "afbbc4df56df",
+      "file": "DSC02712.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8e8e8",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZwCo9BA+O3+ml4Dh9TAA/mymA5S8mvc+VCjQyECQx0hRNltr3E4VRt+gVjSrj/qHg/ZQZZZ6SaXWJe59o29ibUBd1KhlbgwIuXhml5+gIgn26aU5wIyCx+HfU9D9jXAqzk/8Zns21BKUElVD5e0LpHWkSmwgogJgZAAA",
+      "takenAt": "2026-08-03T09:03:43-04:00",
+      "geo": {
+        "lat": 37.975,
+        "lon": 23.724
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 54,
+        "aperture": 5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02695",
+      "version": "d4cf3d69ed4a",
+      "file": "DSC02695.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRhgBAABXRUJQVlA4IAwBAABwBwCdASoYACQAPu1irVAppSQiqrgMATAdiWIAv2u+pwK4lBhjZ6AbLWlCrymqKOO9rwuROuNXz5lOiF9CQOiLlDV8gADM/WQU08RQ9Ja+7uEfTdZ3uiRTGOAo/Ycb4uhWSUctIexTmeSU+PUK4zYLk5ucr0FGTW8GA8PFIxgzYg04+NdVL/GOzOtL5k6EMr/qRO4C2IwthpFPHhDgWwRgBwuQkTeFl/H67AJxpAwY2eP5hMx9NsCsoHaqZdejLLhTHgB2X0KCLS0XeytqFAZlCWF5Y+EwZI8vyqVypNvIecIVgpNrXdTGYFRIP82L/FhLYY7b2QnwP83HR4SRPlVDaucHm8dU4BxjAAAA",
+      "takenAt": "2026-08-03T05:51:10-04:00",
+      "geo": {
+        "lat": 37.973,
+        "lon": 23.728
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 50,
+        "aperture": 5.6,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02645",
+      "version": "bbf904f2fe75",
+      "file": "DSC02645.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8c8c8",
+      "placeholder": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAAAQBgCdASoYACQAPu10slOppqSipWgBMB2JYwCw7FC7tTLJ5+x+SVunM3jDHOq+KaXAkF6g9gR99kAA/vYw9/BzjAS+xMLcX1/WwuhOgx2geFhZcLR3DdQAfnfBzd0g9PeAFgSc8hbD7OgbqJF0/8N/JwgKlmT6+7vr922JBmbnTZQiMWVMMMvwQdZktPgTSEkPr8or+UZNVjhmovkLpg+EdfRAU8KQqoFhih7BrQivJyNREi2VHWfW2rgeg0p2YtDicaCuaUuXoWFLgOVyQxIrtWpQB+MuY3JwzvVKnVElomYAAAA=",
+      "takenAt": "2026-08-02T12:40:59-04:00",
+      "geo": {
+        "lat": 37.967,
+        "lon": 23.721
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Athens",
+        "region": "Attica",
+        "country": "Greece",
+        "label": "Athens, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 54,
+        "aperture": 5,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02493",
+      "version": "461667ed9f11",
+      "file": "DSC02493.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#887868",
+      "placeholder": "data:image/webp;base64,UklGRj4BAABXRUJQVlA4IDIBAACQBgCdASoYACQAPu1urVCppqQiqqgBMB2JQBOmUAS5gPcDA446omJytvCaDkn7vGysnIH3uT77cq7v0x1AAP7Ne4hYPc+r/jHGQ0Xre/5htBtLoJk13wWt0iFMO3gYnlCyD41nB3RK35Oi0l70hSIFVv53oCtc34gaeoJAU7VdvHAArAunGRyUVmJS7w5yyyzcnP8V57oO8PmekIVEufHz8IcfgxEA2ZSC8G6A50VLyg19EQEk9w1P6bxOsk2LVjPrvv4DVL/ncp2YbLjUP7rmnYjEd5vDqys9tCNQR7V3lPiOT0C0gmLHMW0b1uRHafnrJQF0tvS7ldQYfH1HvdlVGGnxWAx/MRz2UkKupgq/0Mbw6IhmD2M9j1woQROc1R5tcCSI/4hcsYC7Aol6wBWHAAA=",
+      "takenAt": "2026-08-02T03:28:22-04:00",
+      "geo": {
+        "lat": 41.006,
+        "lon": 28.977
+      },
+      "place": {
+        "sublocation": "Sultan Ahmet",
+        "city": "Fatih",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Fatih, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 3.5,
+        "shutter": 0.03333333333333333,
+        "iso": 640
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02473",
+      "version": "4c37f645b7df",
+      "file": "DSC02473.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#7898b8",
+      "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoYABAAPu1kqU2ppaQiMAgBMB2JQBadAaq82H+b+xkwM2IA1oS85cJsmIXOvmcLWdKYjW2uidlBVQ2CIaREi8XE9ZLAG34w4iomzDws/PJyufK+K3ENSxG6XA1ETAAA",
+      "takenAt": "2026-08-01T12:46:50-04:00",
+      "geo": {
+        "lat": 41.038,
+        "lon": 28.986
+      },
+      "place": {
+        "sublocation": "GÃ¼mÃ¼Åsuyu",
+        "city": "Beyoğlu",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Beyoğlu, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 56,
+        "aperture": 5.6,
+        "shutter": 0.008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02446",
+      "version": "8bd25032ed40",
+      "file": "DSC02446.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAACwBgCdASoYACQAPu1aq04ppKQiMBqqqTAdiWMAwP0twciqhbsM8pIS/VQXqGQN43EFMZhVU38P84T/4mDjUAD+8rT6iktUeRzIC9/JEr5+9bXo5QMNOfZxuvRDrKdQNWUT484CYovaNJXtpgMcx/3Gn/xUeQPp+fSsECEF7IzgEVpJ6siPUzrn4tn5XnU2nbwBmRGARJo4VLGc01Dk7rQPAEcr+cOCwAWDUaTcAEHTbPQe/4Mdd5hATZV957J6QSgs4zthI0cL3EA6NBxyLj5MMFxb63+VVgEEwkkj0SV9xn1Q7JtKO2//iXqR/m0Pgbcdu2a+JjAzgxMYQ49mGgIclUhCgcMfCP4bEqDUCgAAAA==",
+      "takenAt": "2026-08-01T09:34:31-04:00",
+      "geo": {
+        "lat": 41.028,
+        "lon": 28.974
+      },
+      "place": {
+        "sublocation": "Åahkulu",
+        "city": "Beyoğlu",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Beyoğlu, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 69,
+        "aperture": 5.6,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02335",
+      "version": "64e63e4e9489",
+      "file": "DSC02335.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADwAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOgA2ay65FBJTORNr4AAP7F8teWO6Frp/bZIQGpDdpyBRXW4nDABQ6kn5Nilaq1DZMsIbJNfvDornjHGtrPIMgQdIbberepEwDHurYav+/6SwzSK5du9fIOsiCxqE40PByk6AVqf7fotbl869fYmbW5B0jpxgxH1RtvIjmim8ZJAAA=",
+      "takenAt": "2026-08-01T03:09:10-04:00",
+      "geo": {
+        "lat": 41.007,
+        "lon": 28.978
+      },
+      "place": {
+        "sublocation": "Cankurtaran",
+        "city": "Fatih",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Fatih, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02264",
+      "version": "63cd8fc512cd",
+      "file": "DSC02264.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQCdACK3k2Y59b6YlhvbbHIAAP7UUMMbUb0GiWqGPT1mN49lLErx8kBTLdsSNXcyBRVx/01JOn6XsneRaQvz/OfJZHt7GH3kDnEPyjmaV+TtCbNFUcae+MEnkcyC9ci2dPk67La+qPSvrvFtTMSM8K5Bo+kdarsA5xI6KAoqAAAA",
+      "takenAt": "2026-08-01T02:14:38-04:00",
+      "geo": {
+        "lat": 41.007,
+        "lon": 28.978
+      },
+      "place": {
+        "sublocation": "Cankurtaran",
+        "city": "Fatih",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Fatih, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02025",
+      "version": "118eb9eae836",
+      "file": "DSC02025.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdMoMsdEmJaZGghm9faAD+78gelufTKOZZVZbl+snoR0fJ2aUpyrrcJf0gktUetI7yDkEO2NuSg4rl1jqyy3NeLSUfTDMP2pW1oJJsZOxn29eXnAHjof5WFKQ3WKrIFdQA",
+      "takenAt": "2026-07-29T08:09:23-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.614
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Ravello",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Ravello, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02023",
+      "version": "131b279812b1",
+      "file": "DSC02023.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#5888b8",
+      "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdL144ACk8OGLwTAxg/gAA92LZzFd8y6ZST5I/pQhkQ8u+gnN+B3Pez97pnW4r0fPjj+85k0oEwNPpkrPdTNU1Pn3zWxNiRGVZkGHpISsgAAA=",
+      "takenAt": "2026-07-29T08:09:10-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.614
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Ravello",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Ravello, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02006",
+      "version": "a8a3f43fb388",
+      "file": "DSC02006.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAACQBgCdASoYACQAPtVan02oJSKiNUwBABqJQBdmariL5m6IW7qaEj9EPSGZdydq+j+nZZgBnZL/xmAf+MzAAP71aQsKXNM6w/5tn+78Hcqn7Lvj+QurBSaSyjHg0SmfEwZx7xj/MlFC7B8M3Lun8XbozVVN1NFRsmah9OH3LP9Y8btSpDURC/jTo02L8O8Ds54lMoU5YRTCybnmugx4zREvv+mLlwwqtyQpxVKgkVKDn4BAveh7YnONZCHr0lv4mZHRCBB/IQ1kJdAAAAA=",
+      "takenAt": "2026-07-29T07:59:48-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.614
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Ravello",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Ravello, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 4,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01996",
+      "version": "947c287c7bdb",
+      "file": "DSC01996.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#688898",
+      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdAAycA5W2zSJ29AAA/FKty+HfqpCE0m5aGigi8x1nHx14STfldmacHwSAfRl3AlNYf231p3GucFq8LmyadKxHyq6Sr9NDECdTyM37nQ0NfRrAP5BeaFgyJ4ArzyJFm++fpkvUIkAA",
+      "takenAt": "2026-07-29T07:55:58-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.614
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Ravello",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Ravello, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 60,
+        "aperture": 5.6,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01910",
+      "version": "5c6ac9c9b566",
+      "file": "DSC01910.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAABQBwCdASoYACQAPu1qsFEppaSipWsxMB2JagCdM0Exg+uivtDXK98n7kX2kglSPepjIOrAH7CgBuO7LSwnn3qVtfRYAPxdzbOKF5I3eJQbgtdWzzTFV86n46NGTVnPuodQ5vSOtLS8GjZ/ea6Vb6kPJs7DLUVlBzm+RCL0wVNnRU1KojK9iCXV+Wc4oma9dbuL2y/NFdypwH3xyJ9z7dO1TDeVWuAh1mscVUyxKTqibbSprACKtxJ16Fx/F9tEZdBmigw6eywVggV6lTkVfKOtXhod2OpSn49oi9NQCDaJ+qYfwOaEuuFLVj7OaPCBXjxEOcuDMmFwndqNuTzhJoJsjPUs44lkmbprXi8/Nl0sSplWdIgEiNHuNAv6QRkUx/rCvAAA",
+      "takenAt": "2026-07-29T03:50:46-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.491
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4.5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01866",
+      "version": "b48a27459924",
+      "file": "DSC01866.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#885808",
+      "placeholder": "data:image/webp;base64,UklGRpwBAABXRUJQVlA4IJABAABQCACdASoYACQAPu1kqU6ppaOiKqwBMB2JbACdOUFTvfwvDyjO4CVA90P8uH5muvRl5hy3HqEi/ZCAjNmHSh15g+svgvggG1PnEAAAzchq/3EcXFmcxyXNcS8XQdQpoZVnR5um8kKdopXWR7rnQvZui/xSG798He6WC8hDgO7J7Crhdf8VrZbz9KDoe8qA1Ne2SJsphyBXTPAWbUkrdsvF1oC/9N1NArrThGBfjnFsdxd0f9k7NI0poi7tjYATCssAE75E2ZRFQL8P2TABr0nO3m9fe2jJR0KsGwGlqAxer1z5UHpfsE7qDf6seuiSX2c3E2oMQPMo7lD3LZ3Y+THF2pRCl4liqdNDUxUPSuH5+/gliRb0vJv7DTeWKFDRmY2YUQ2M1bzFbfoRs39TFrx1nbaV4EMEu0nBMPmqcHGQd3nbnnSHK9kTjJ4oIUvGxtgxqOJlgHz+e3Z8d+lMRTrEJPGONdozWulR+msw67KlX0gj5LJ0vrHmAS97HtkfddffsxJw/McQOdUVqRn6gAAA",
+      "takenAt": "2026-07-28T13:36:00-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.487
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 800
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01691",
+      "version": "54742af3461e",
+      "file": "DSC01691.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRiQBAABXRUJQVlA4IBgBAABQBgCdASoYACQAPu1mq04ppaQiKqwBMB2JYgCzgAgMROygV7IyJx+FdM0/bW66HqIJNF+xbqEvNnklAAD+zz2MtKk2/MwJJhC8UDNcd5NdVbRBz+c4jB0VF1SHs+rWi1JAvrJX2l/TmYtPyyihmz/TVOtE4CTvmOpjEbFpEbZdj5m2LS91iMRb6fSH3d1kJePvNq/NZdtqmWixg3kOr4SEUY8ZAFafN7BeSPOiKnPi0u4tu3QwkN1qHOqhBoHL4PPtE4CtT1A25of4jekZauWQSBEJ18BvDt8m3oSBXmheOw3zKBrhmKx9QYNDs0SUlKV1R/7NmrtpxipUKy029TE0luiPcyN5AQAR7yYlrB48YA6OfY8mEAAA",
+      "takenAt": "2026-07-28T09:25:33-04:00",
+      "geo": {
+        "lat": 40.614,
+        "lon": 14.554
+      },
+      "place": {
+        "sublocation": "Punta Tavola",
+        "city": "Furore",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Furore, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01689",
+      "version": "7dfc101097c3",
+      "file": "DSC01689.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#282828",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQAB8wyQUTOoD+kVTiBJgAP6mkxYZGLNSQJlsY5T9ZG8OU8w9L6E0qkXfGIhfZDc7GY9LRZAGp633Rs0buF3kZuk9TVLz4HsKFPsarFuJWC9qFfpt3pF3irIBbuRK3BZ2Db+Y7mIWsxL3zSwv1hb2xMlALkp9JHfRhcAA",
+      "takenAt": "2026-07-28T09:25:28-04:00",
+      "geo": {
+        "lat": 40.614,
+        "lon": 14.554
+      },
+      "place": {
+        "sublocation": "Punta Tavola",
+        "city": "Furore",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Furore, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 4.5,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01687",
+      "version": "8a46edb4c081",
+      "file": "DSC01687.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAADQBgCdASoYACQAPu1sq0+ppiOiKrgMATAdiWIAsO8xocXFZphalGhMbi/7GMjhzOV425pRsC3oxExRxOgF5IAA/t00rAYIAIZHzXbLxnFvAuJpqWCp79T8vewXZZDeOszdSmZXy0RHLvCqPtVIxvM5hGmjGe0vc/0nW7o/z+gM4T/VLSTs9ZmarwqO8h0xQpjqJoPtaVoznZCIaVi3Z1u5v9VxdRUN1yLw0n7oJN6oT6QLMwbmZF7r7BOB4hl5/VlZmlW+Uhwlu2hkm7H9nNW60QuXkag020LErwcR6nmno6UYRx9jsqOdwOMZKYhjDDioa7V0TWB7py1S0ywJFUhbJj8cWoeXCoDrYELKQRnNGjFtgAA=",
+      "takenAt": "2026-07-28T09:25:25-04:00",
+      "geo": {
+        "lat": 40.614,
+        "lon": 14.554
+      },
+      "place": {
+        "sublocation": "Punta Tavola",
+        "city": "Furore",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Furore, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 4.5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01660",
+      "version": "0a1ae3fceb23",
+      "file": "DSC01660.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#88a8d8",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBFEQEBD6hy7jKXPAkAD+w5vqC9pgRjnIK01z8aNrRZVS9KZngWgpZwWksIaXXkkooMq+ESOENn8ouwIae0X0L1tLy2UN+CfQk1MUFfj6So08Y/3yREAnmAJJxi/Eb/UWIqoyMLEbNH5ZA+OaFk1gaDgPNU4xgAAA",
+      "takenAt": "2026-07-28T09:12:08-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.495
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01658",
+      "version": "b11b5139a2fe",
+      "file": "DSC01658.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#484848",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQCsABurp0+YoEY7151YcAD+7d5ET7J6wlF/9+ohOHxbycpErLtgAddEeRpJ+vN/lvzPSy99SPLSpSLtBMDZ+2xAmK4s1UQPUzua2LdoW5Ia9ecvE5Epe41eCybTFFIBEt8x60cFiiyXgFfBNadiDH4UcAAA",
+      "takenAt": "2026-07-28T09:12:06-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.495
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 52,
+        "aperture": 5.6,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01565",
+      "version": "58b97ebe52c9",
+      "file": "DSC01565.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8c8e8",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwBACdASoYABAAPu1kq04ppaQiMAgBMB2JQBOmUDX/xbGLedeF/NyIfR5qqofgAP7DUz2t0P0GEmglte130Wh0cNhjN6UCb9z4LhJQOisqgCNC7XmmU7ujcm9Z4n6EOD4e6DOZHGwtpL6Uj0lbJftfHZN960HdB+KibBc52t39KCJnmBAJZrJq1cU6kKw6JUHFTJHwkDOHYAAA",
+      "takenAt": "2026-07-28T07:42:03-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.488
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01513",
+      "version": "7fccb2f034d8",
+      "file": "DSC01513.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#486888",
+      "placeholder": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAADwBQCdASoYACQAPu1wr1KppiQipWmZMB2JQBibMZVFCY8U8SMBPB4/+7kCHO2jxDcvSnzgnWjUgAC9xSkl6CYGxLQAOD24ECTb93X78jsIWja+uLmyIhYPWDf5XL7iJFQa4pXMhqxyd1iwNVa9PKm04Rjy5qUvDopPOQ50DVb8JRk8vgIagrBot01xPNOwgalQhCAOddMO4IU2WJJsnU1dhShNm2mTIACXbMR74JnwIpqxtSpDOcV7E6fVbXjLRJ3Xb/GGXsC/CWd9KFx0uI3UM19yFT4w+WoOcmkSIAA=",
+      "takenAt": "2026-07-28T04:39:20-04:00",
+      "geo": {
+        "lat": 40.629,
+        "lon": 14.482
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01499",
+      "version": "2f8308a56b15",
+      "file": "DSC01499.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZAC06B7C5fayp+zVIuEAAPujTtt39OibspOY1Fh4/hLYpq2NOJtfu4tmtUVId1xnsjPTlQ31DccSVmSoubjSq11viM1GVXjwS6l5lMKJgw06JFa9IfLjpSO5tcv8XFf3cQxiC1FI1LjBB5o1oAAA",
+      "takenAt": "2026-07-28T03:56:39-04:00",
+      "geo": {
+        "lat": 40.627,
+        "lon": 14.486
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01494",
+      "version": "08828babd365",
+      "file": "DSC01494.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#085878",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdICY4AB/9J6b96YsB0+cjpgD90oBffkMoMv+NUYywmpINJeYKNq5vPrNQbHBbXulnlOo3v8UwZHyS5HqJFWHCMWp7cda2HOkuqPo9bxq5waD9EPO5/pcR8L4qpiQ7bpnNiqGv4OpmazZobuVT10B/ZBP3oGEwAAAA",
+      "takenAt": "2026-07-28T03:56:10-04:00",
+      "geo": {
+        "lat": 40.627,
+        "lon": 14.486
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01462",
+      "version": "95194fb28096",
+      "file": "DSC01462.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC+SB6Gs1W4nJRMmkokNkAA/gqBVBYbOdvoTyvz3mZWPEnN+u6PxNbKHlG5X1DruIB7HjaujjLiwb0vlAXqL1Vid4QpTWdW1dbZGT9Ou7ElLtAAAA==",
+      "takenAt": "2026-07-27T09:57:32-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.41
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Vico Equense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Vico Equense, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 32,
+        "aperture": 5,
+        "shutter": 0.0008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01450",
+      "version": "6fd5419a8823",
+      "file": "DSC01450.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbAC7L144ACl6FkfDko3GcEMqV/gAAP7tWK9g0XigCIg+v7aAtR2VYvKvMsuVPeX+6E/JLkKh0XcwRuWkuKw8t0YKu4uooxe3w2vc+v+XtwPU3J4MvoFcpKwj8hYZBh3NAse4JRM/uOikzPv8QwJFn53ESQkRccOw/nUGcj8kDAAA",
+      "takenAt": "2026-07-27T09:57:07-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.41
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Vico Equense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Vico Equense, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 35,
+        "aperture": 4.5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01445",
+      "version": "13e3b114e2bc",
+      "file": "DSC01445.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182808",
+      "placeholder": "data:image/webp;base64,UklGRkQBAABXRUJQVlA4IDgBAADQBwCdASoYACQAPu1qqlAppaOiqrgMATAdiWwAsR8NiDtB/FhaoB+3U2jnk6hAuxd5TgXZok1LvQh/RbDa6c51/GYhP2RTYAD+71F3XqA9KBsQP3OZFZ0XEIBCodHclShWHuCpfnF4jEpV71rRA9w7cZrjVY/SX/Xl2u0UKrLhWboHZRqp0WR3shhXFIf49tQJaG7Kq0151od1diNJE7fUzKtJNjpWZtFn87URzEPUpshgz8zXx9c0xnaCBmD08GVBljCwgJVNgaBC1MyEF467GmuPhJIva6RmPzGPqAIPaLAQwF3lD4CtyqqudOhFPm/6mv0nPM7tdZHE1bK3B34vonZlnrPUw7HJrfPwjQldjUxVIPRkvkhy3cKwxnsshqQBx1GOQC8g3W0a4O4wBW0SOqVdmtpAAAA=",
+      "takenAt": "2026-07-27T09:56:41-04:00",
+      "geo": {
+        "lat": 40.652,
+        "lon": 14.41
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Vico Equense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Vico Equense, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.004,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01354",
+      "version": "1665821d71c2",
+      "file": "DSC01354.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#98c8f8",
+      "placeholder": "data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAAAwCACdASoYACQAPu1oqlCppaOiqrgMATAdiWQAs7OV2if+0uIFw2qkG7XEo+Fjkwq/3S6wDnNRZQRZ2RGmPfiYy3FDHYRAjJPBGAD+SoZhGrMRg7WXUeLo+7B0WZmghJpIic9ZRK/ukr5zMCmwsv3TMiilsTD8+aNsvQINdxHJcZqHcrjsW5ax8qwf1C15vQJEfEnr6YUIUV1/XTJ6D/2zQs9FRpbMUHQgq/RSCcocsb+aD7/NpWf0huBW09jh5ir1Cppftl/oQhB2wspYwpGdSeGKRhRVtQS94kSQCLAPvGasrxgRL1euQQJLHCKDexnVc7blmHoMYwwIkyUH2mukewps2VWOQCz9UsiXfUwgO3WR73nr77TZiGhduXyNLeDJC6T3bPCcAdsEAAA=",
+      "takenAt": "2026-07-27T06:55:46-04:00",
+      "geo": {
+        "lat": 40.75,
+        "lon": 14.485
+      },
+      "place": {
+        "sublocation": "Masseria Curato",
+        "city": "Pompeii",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Pompeii, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 69,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01303",
+      "version": "11b7645eb808",
+      "file": "DSC01303.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#68b8f8",
+      "placeholder": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAACQBgCdASoYACQAPu1irVAppSQ4KrgMAwAdiWYAsR+0g7PAAeSv8G2omaFtFrDp4AU9iM07NPiNg7wIYvjAAP6Ltqv/EOtUV4Z+ojLQkHLAn2yV79reUURjE1rhBm8wfigvtnukwhDpI+ImU6kH8wRRX2I3dX5neetsk2nNTn1jaSGS03wuktUzY0OsOKeWXqLrsYkVeRJ8lRs7KFTCiCdJ54C8WABZ3uTpv0STddjMnnPlmeKmnXnQ1J3Kxtm1pO5zfznr3aqvnQjUwWR5pBc89I9htN9skZNot1V8fFxlO6fo3+Keqtk0AFDACyTNGAA=",
+      "takenAt": "2026-07-27T06:35:12-04:00",
+      "geo": null,
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01303-edit",
+      "version": "0039bd41b0d3",
+      "file": "DSC01303-Edit.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#78b8f8",
+      "placeholder": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAABwBgCdASoYACQAPu1eqU6ppKO2MBVdUsAdiWYAs7PCw7A5bLZb0jNOhHuIorFrdlpF+D1qH3MfKoeBRQAA/ou6MES5SY5zW4RYXOl/2e/RwN3s6mZoNiqCVfhIOU0RuZLvzR/+KEop5E6KSNL/6FPnm/sobebK3Oq7uIXWt0b9Qbk88JVCK3vdlUC72TaXwyK6v3tpxLEjuF/Bd71enyZaxq0+FtKUd4va6IQGjd23j7/kNcX98cI41y4MpfZch3JCFXGAgjS+G1XhoTxKNzDfrGunUV1WSxtd3TsJng6k+taiJWNCw7Y4zdkcvlybhAA=",
+      "takenAt": "2026-07-27T06:35:12-04:00",
+      "geo": {
+        "lat": 40.749,
+        "lon": 14.485
+      },
+      "place": {
+        "sublocation": "Masseria Curato",
+        "city": "Pompeii",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Pompeii, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00955",
+      "version": "630c56bbb623",
+      "file": "DSC00955.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBACdASoYABAAPu1mqk2ppaQiMAgBMB2JbAC7ACHfVXn+6pqOoDBlTeQAAP70Iw6+4cWh8CrE/KuEfaf/oybvs13+wsrFBUXevsqaQ7/SDXLGa+AoZo46DENn+c7t0N5Eabf3lw70uhyvkuHol7MKTN1KAQTZE6SWSOAA",
+      "takenAt": "2026-07-26T04:12:52-04:00",
+      "geo": {
+        "lat": 40.561,
+        "lon": 14.206
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Anacapri",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Anacapri, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.00625,
+        "iso": 12800
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00952",
+      "version": "9d76986612f2",
+      "file": "DSC00952.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoYABAAPu1kqk2ppaQiMAgBMB2JbAC06CHfTstCPw3Sg6UwAP7ym6SfTeXdK70yBdjySPj95/FzQOu4cyqrP1sP7mYIyJ/pgvu+lNt8zw73llu20Ga6H1soEOCJyIiYkWi+jMCLbhwAAA==",
+      "takenAt": "2026-07-26T04:12:46-04:00",
+      "geo": {
+        "lat": 40.561,
+        "lon": 14.206
+      },
+      "place": {
+        "sublocation": "Blue Grotto",
+        "city": "Anacapri",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Anacapri, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 3.5,
+        "shutter": 0.008,
+        "iso": 12800
+      },
+      "title": "Blue Grotto",
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00683",
+      "version": "a05081f59be1",
+      "file": "DSC00683.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#082858",
+      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAAAQBwCdASoYACQAPu1gqk6ppSOiKrgN+TAdiWQAnTK9sUAMRNEElwoyQDCe+SG5thxdkjn8hX9cGpPLyyCnlVHYAAD+9Fs7FJS1dsKg0euN3hBGBq+gftNXIw+N9qGxjLn1a3fDSGD6UOoBGgbZU+q6oxWSs8lXU+Q55q9q3/6CqVgwXeA2Q5ri2GsVEKSd0BeLN7Eg4UFm6ivrVamJmrM4uEzdkavtjwLHyT5cI93P7hj/lBRZaCZ0KFHq635Vu6pEXZD0VaZP5pVu1iEGiDU562bBUn+XEwsDKuPmh6MP9rsvApgDXiDVoxaoMSF5FRzdnrz7mIyAAA==",
+      "takenAt": "2026-07-25T14:33:30-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.03333333333333333,
+        "iso": 8000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00655",
+      "version": "29bdcc7a0f2f",
+      "file": "DSC00655.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRjQBAABXRUJQVlA4ICgBAABQBwCdASoYACQAPu1qqlAppiOiqrgMATAdiWMAqPrxXYEGRrCPAU5E1E7CmG0lDvDtnN3Zttxrr6vfsBkt/pU8RpPQAP7ql3EG29iIsYL+3mkC7yfyxCNua6w1jeSBtTimUigJdV/SrNVDhHW6IZ37UHXEs47VclCrxJjvHP1IBePPmdj/imIPMHLPNsUWoFX1FBFNo8lyXq1CWmqTms6hlGDYEKJvfDGDvCF02maaDzVQnC8qwOpUWrb0SqMEvCa7vu1iEjIQEwNa9wmel2NoeMRzJtU4wG3mELqAtiLiVGwfTq5prFGSat3xSOT9Qoh6jOouRDF0LSySIVV2tXGuJ6a8yNu3EzKFxtP7Kw9nf1ra/p7LIifhPN3udaHDAKPWAflsENAAAA==",
+      "takenAt": "2026-07-25T14:16:28-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 3200
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00653",
+      "version": "d4aeaf924cc0",
+      "file": "DSC00653.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAAAwCACdASoYACQAPu1oqE6ppiOiKqwBMB2JYwC4S0qtttS66j7Da3+FfjDRiXRSSc3zj8YTc79RTC9xZYGArt2hdtR892sEh6yYAAD+3qdx8fJMDj6slgEkI7o0nmXEFcDT0D39tC/u4fcGbg7tyFnrMJqlm3GgkQSF2upJwXxE0TWTIbyfF2dZZHuNiHFM2O2/HZS2uW1Icyw71t2cHxD8EMdHYfVt+yi6DPBZJTk0Klpb36ItQJUqD/995kKIDtpoynVzPVGm5UrRi27oQSUbk9ieBlvHUBqwW4KgWbO+c+9zcNLCEDb0JF3Frw8t6tCa/7czc9D8BZ3J3xflMGmL695AjDCeeSsjs7khhr4bIi0bND3w7AJ481arGCgXrYpFYwsbCNYISevWfAA=",
+      "takenAt": "2026-07-25T14:16:26-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 2500
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00648",
+      "version": "f31b4126ad5d",
+      "file": "DSC00648.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#c8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBwCdASoYACQAPu1wrFKppiOipWsxMB2JZQDDOAgdpJaRwtMGFCi1aZO2wGP6gJY4r06T/yQkoPLDr1nKTnlhIQ2gAP7v/qCwtVfxxaejbsCU0AQmUwTS7s7SHBrVNt3vWFKZXJiy/cG8rZo1BYCmPprpWJoTDhPzeKEjYhc60YzJ51akZTJPnIqZbGi7JRW1sFVzIKgA4bArg4Ei5d3AbdbGG8L+WrxAm01SAq87AQ6zLkufVrYeGNh2euvk6YgUsgrcHY+IApfukICzgwDLxAd9i32YvB5sz62+sLUwu2isw5p7DREknduBkfsTbKwWHSaAMIAAAA==",
+      "takenAt": "2026-07-25T14:16:20-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 2000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00636",
+      "version": "995f92b852ff",
+      "file": "DSC00636.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoYABAAPu1kqk4ppaQiMAgBMB2JQBOmUABfXNttpr1OGTC/QAD+mFZyRqn1DxP86SAD4pjdcsrmkvItl+9Yn4tD1CIfQ3zjaJsicPRKnAwUn/TSQ4q78mpExzOwlI/L4mYu249uInMUEP28hMlexVJ8hM0wHwMr1nrDqso0+6YkF/ab9seZ3tGKAAA=",
+      "takenAt": "2026-07-25T14:15:45-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 4000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00439",
+      "version": "36b2f5688804",
+      "file": "DSC00439.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#283808",
+      "placeholder": "data:image/webp;base64,UklGRoIBAABXRUJQVlA4IHYBAABQCACdASoYACQAPu1kqE8ppSOiKqwBMB2JQBS79G3/1K+KUnMDgKRbLwDdS5LEjQoendyH3SjoJCXP84CI2cjKH82IsiZwjqq3vAAA/r3vyLyzL85DtO7+Ksp662uCztf8RR0gVujwIVj6vtp95/bCi3yjMPPiJP5dXN2Ze4hMh3talOxgtxQZ82Lsril+twLkiED+9OmCDe4AFY4uoMnre/gAQnRXs00wmzwIQmf9ZLEAUKqEsxo2398aopQCvhlUTnnzNyXIJfPDu9D30ajThDmlBrlpRo798SqNCJF2gq4kkSI7+SBH7kBKT/QbdZFe7mfXlffEN/odFblXZrL7KcEHwf+WOr240FWR3nwHqX1I+ddxaWEYroU7yY8eaJZmtn7yH4ZctaupYIfNV1HpV5YLhgsnXlJD3H31S8d7h5eZ3srSXt6as4Mb/Lwqa7wOeh3lOAhzmS+jiXzUDZduj/QyIL7n54k00E48T5roQzk02IskAA==",
+      "takenAt": "2026-07-25T08:38:36-04:00",
+      "geo": {
+        "lat": 40.628,
+        "lon": 14.371
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Sorrento",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Sorrento, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 1.8,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00384",
+      "version": "b17678da30fb",
+      "file": "DSC00384.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#180818",
+      "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAACwBgCdASoYACQAPu1uslKppiSipWmZMB2JbAC2+6T/l0ngyRJ+mluFRdna49a7/8MyNx+yWdqAXaJwAsS+gAD++uZ+2fK5miwmMVXL/dwZJ0RKIo5gZB/DiPTHSTJSVvyU31qsr1/x/I+MnLhVn8A5fS1V/XSbOdm3zZg18DofRZ8nAdqQjeSxJ6bgeK7oprvk/ooqhpvlQSgHyTRjQ5vxqjMbHbrZ6chLOO62DaN5wMZLGHX2ZdFDIsO3dvWm1bVx2o/OpnRUz7d1PdrjFdTHybDqD+kyJOJKHwkwdbzWfBPLf71HBQdc8+vg5bEc7hHfLRD/YYBM1GVwWMknf+PdvKrlTy2+e6HAHb0ACE8fbWbEn6AAAA==",
+      "takenAt": "2026-07-17T20:54:11-04:00",
+      "geo": {
+        "lat": 43.652,
+        "lon": -79.406
+      },
+      "place": {
+        "sublocation": "Downtown Toronto",
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "Canada",
+        "label": "Toronto, Canada"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 1.8,
+        "shutter": 0.25,
+        "iso": 200
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08888",
+      "version": "f9133787b00b",
+      "file": "DSC08888.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACQBgCdASoYACQAPu1iqU+ppSOiMBVaqTAdiWMAs4AJ+bKk+akVmqTaiMLEFhJBh31CMd2Ax9grN6o4pfXwAP5pv9pWeVCKUKXs2Q5h2RsiiRYTPjtxiwftHFOTORuiIx3dOlV8AKBDrxMkjc1LRxZpP9oI0THIOeEjpFxeJDbrs5wjFUY0iH/cJHMFuyaqOGhz0hkJZEWjbG/CxMd337ECH+PK4KZNLdThqnXMxWBcbIcUcaJDGO9vNPfUYUd1gMqQRKYUE4AAAA==",
+      "takenAt": "2026-06-13T04:23:37-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.001,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08883",
+      "version": "045935afbe7b",
+      "file": "DSC08883.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#282828",
+      "placeholder": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAADwBQCdASoYACQAPu1krE2ppaSiKqwBMB2JQBhQAspjueFEJtGkyluRlDZjpUxAUrcxKgfPUvIgAAD9y3NoGindAZFza5+7XrPOZ4i9U6F5kSYlpozwUMl+Hq8wUgdhcHCP+jjnGCvguGnuufsiMlO368VDnC33j1fWTUESBjuwlpJhMvLX58lARHz/KQc1RuO4LqoTqKjkhJ5SrrLvS1LwZuEaVa/srZVYMtEcb9W82pG8B0sKhTWtAWKFfvv2ufdGYEPPKVmMZe5pvZD/YmDQAAAAAA==",
+      "takenAt": "2026-06-13T04:20:32-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.0008,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08860",
+      "version": "075c3ebad806",
+      "file": "DSC08860.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8c8d8",
+      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYACQAPu1cqU8pvKOiMBVdU5AdiWUAxNg2DgLQIadk84hHEusAAP7u9FedeHJs7BAcYSdEh0GXCYM++IhWIyv+iHP54Ej8N/ESuKoP//+sC7xDpDybqAdWRTVOVlVlCuOzlZC7AtULDZqPJftX36SnRB1u6mMaSemAliZGtwMc57ncZ4wu83TmEgAAAA==",
+      "takenAt": "2026-06-13T03:01:15-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.00025,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08840",
+      "version": "dbcefb4cccaf",
+      "file": "DSC08840.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#282828",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoYABAAPu1kqk4ppaQiMAgBMB2JZwDE2CHosSKLekbr27AAAP7xz/9Oqgtz2D1r1YaQHCG9i78RuMCPcT1Hu5IicfKkSnz/NEvB3acx98i3+lyxbCGot2EKKXLT8bt6O7j96ZCvCRQmAA==",
+      "takenAt": "2026-06-13T01:49:22-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.0004,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08807",
+      "version": "33cbec23b7b8",
+      "file": "DSC08807.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#686868",
+      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACwBQCdASoYACQAPu1oq0+ppiOiKqoBMB2JZQDG9AqTuyfpXj3ENTbe95zw+5jrS+0NTMmjVAAA/hZQ5Zd7qYvkpDIs6lsHkywFoJo/2WiFU5/xHrt/C4wbVnBuW8UEI0dxjAUB+Wa9N77AEPHRuc4ZjyuVMvvy108c/pRm7SoSNEXOKQro5xJmJ+taU6V7Y8LXlLz/D+dpcveC1WnXXSvOudlXMtAfkTu08gMoZXh8JNZODS+2BcslxYgAAAAA",
+      "takenAt": "2026-06-13T00:28:30-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.003125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08782",
+      "version": "23341c4215e4",
+      "file": "DSC08782.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACwBgCdASoYACQAPu1irVAppSQiqrgMATAdiWMAtvu+Q2vKnV8ytmAP8PrARzebMVT7nH+Tkgh7ADpZSV0eAAD+7U33KYjOs7jkdnunV3c6JXDz6D0JLSPCcIuWvyKg0aSm9Zq2kukIHzu08tC+nm5L/WHH5ayebAFMugksfEHI3TMJT5d3eFBDxTFsaIfM80ui9i61eRI/krJzsDAAAA==",
+      "takenAt": "2026-06-13T00:13:43-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.000625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08747",
+      "version": "1dc30ef7520b",
+      "file": "DSC08747.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwBQCdASoYACQAPu1urlIppiQipWsxMB2JZ2W0WeAX21MSezTj8V8nx3LFu3UKB/+nGpDgAP7zIwp+7sHdBO9aDQtLR9/hFjakHOdAZX6rtSHLVhYzBecDkoH2k6WZsdhii9GZ9UgTza6+mPF2SlN7wVzLSjZ704rlkMxYPxDQvAAAAAA=",
+      "takenAt": "2026-06-13T00:02:01-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08740",
+      "version": "f3da25021709",
+      "file": "DSC08740.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8c8d8",
+      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwCdMoACtbIzunyW8QUTDhnvAAD+6xLpHMNJM8AyrwYRkYlJdEpyqsNuE2KnyMERa5byFRmbTQX/Pr1icsvrO1htbESDP18C34+zV3pwQkFFRfoOAAAA",
+      "takenAt": "2026-06-12T23:36:22-04:00",
+      "geo": {
+        "lat": 29.047,
+        "lon": 110.482
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08714",
+      "version": "33e9f01c5c63",
+      "file": "DSC08714.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JZQC2yYwm33rbV1tQssj2oAD+8dQBJ6+ktNq6mxrR1lPQzkGUoWoQwFKUQufvfXhaovmY2aUoRRmHT/xTprvG3dti4I/MjVvcHQ0Ii3rmE35DCFGKLJxnZ+MchqTdLDRNc4zCOXZ94iAAVGM4JgAA",
+      "takenAt": "2026-06-11T22:55:13-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08677",
+      "version": "d1cc116c51a6",
+      "file": "DSC08677.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRkYBAABXRUJQVlA4IDoBAABwBwCdASoYACQAPu1urlIppiQiqrgIATAdiUAZIOrByKcQK2W9IKe/6W4PQegsXbyKvSFpa2d59aeAxSN+MtvINOLkAAD+bRYHL/xcCFAKQ0KfRG7MgHLHDlhO44KaNNXkMqWY7qxWggvdrC7uWD8eI7IvQyq+L6bqtXdr5hoygN8DmgWj9Q2NF+anoqMZ+CD1R2WF8ILe2ibcScISF8Ok9WJzaFVUXGwcO1/8ZZ0DXv0Li+R5Kqq5SBeEFFcnmriDjq9HAnTlNIjX3LDs1LeE3I0uCC6dJLjUNe+HFG6mHv2R29kICxlWdWTgMSjKmPDh2ysMyooTLxnahRKBzQ1yDu5Z0wBwgpisIpAWGrj5C+U0g0qw7mb6nF4zkbVhPyjPsCkfdpdNG0qgeFQwXnlc1B8WXUDYjx6gAA==",
+      "takenAt": "2026-06-11T03:29:12-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.016666666666666666,
+        "iso": 250
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08666",
+      "version": "7b774993f360",
+      "file": "DSC08666.jpg",
+      "width": 716,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABQBgCdASoYACIAPu1gq02ppaQiMBqqqTAdiUAXnAJJOLqVJWeQ1EVUPL6SujYqDbj/zxL07bjMebEHwAD+7qGJhuZo1UTGCoszors3TV9cf9o05kkg8nXrSaCh8+MxmoCWMJa48/swj4fESKpoabNz8uMnQNwo/FCtU3q8NnjIAwh3QSgbvew02Fq54yanXfodOcc3gegRw0VjaGbEGCMCQZFvZGsRMHaX/0U/GB1Aq+XPngcoav8tWkT/6XqObUeIGoNv2pVspZKIrkQaw7VQ0AA=",
+      "takenAt": "2026-06-11T03:25:31-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.016666666666666666,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08651",
+      "version": "58da8f856292",
+      "file": "DSC08651.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoR3ACWVZN0CdZEKIc2ggAD+zYe2tVGiLe9Z7npJf5fM0B5Qgsst530aJdlk+ydyCrGJTLImSZFE2Je4/nXY1HqD9KhRCzsYz0pYDzcZr5HugLrc8At4A5AY0rmpvw+XJcVp6e+19S/h3eLVlE5k4ESz8l7PeAAA",
+      "takenAt": "2026-06-11T03:06:28-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.016666666666666666,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08650",
+      "version": "5989eb634a94",
+      "file": "DSC08650.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181808",
+      "placeholder": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoBnArQPeYTbT9LejHzylAAA4T3QICUqAMVhhl18nNIFaW2LjKxgzdJxxxn+TP3vCPa9puC5cBiECZkRFxGfBTCOIrSDY2B2nCB158ZeDhqx2mtnKbXMUrP3PEOeAXnEHcJn5mhhp+JInf6tMEMD9jU3bOIqiisCmERm1NXhBNCJ818cjNT3bzJ1a5Qer/wckSGHcy1egAA=",
+      "takenAt": "2026-06-11T03:04:44-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 320
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08625",
+      "version": "23ba08945d6c",
+      "file": "DSC08625.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAADwBgCdASoYACQAPu1orVCppaQipWzJMB2JYwC1G1XFrplD28Gky/ncDO5Z7ehoNgDusGFJvrk8y4J/U32h8P4AAP7x1MzphzSfuQpwOKSiC/txk6v2+3u8bJSf2VbWIZpWNmo+m4/gAk2HROV7a2s2i937X8xkkMUuO+kUBE5p4onuYLcnz88FsJwPcC3XzKmlCNoFSjtl43hD5lwgDwzn0EZmC4rQczAlI54DCBy2EIdBbd757GBDg1xZWyOqOPICKuie9ywb4Xs8HjNMzZRvBDPcEw1GDJa+c5Bsxm5OreZHR0AAAA==",
+      "takenAt": "2026-06-11T01:09:56-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08604",
+      "version": "d108d319b548",
+      "file": "DSC08604.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAAAwBgCdASoYACQAPu1mqU8ppaOiKqwBMB2JQBhs+szpogV7racKHnXWYDCYVt0WqOtB9J8ZqL/SP4wAAP6DXIub/y4gLmTs67x9S8/7mrylN0LTShom9PrCih6AdL2oBlVq55S4QlxSAFTSMFp90ckAiroAzRkICjLNm+2p6PyT2c8Zl+w8QKwi2KuhzRa0mEeghMQ9FggWc+2XJYk3zMepAom6eJRzPOt+K/O4xst5/0AMKrb0cTcp6JPNvUkcGi2H8g+zJuoDTqHY8pmu+zH8zDL+xp3m2F9rdxqwpqgyATDWiFk03yXSlch94MTF18V36qm99fJaVdQiQ/RYAh1IAAA=",
+      "takenAt": "2026-06-10T22:03:28-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 1000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08597",
+      "version": "71b423f6f80f",
+      "file": "DSC08597.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#a8c8d8",
+      "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZACdAB6I4m10Y+12RMAnZwAA/sTRqJkaQyWGVlgpNt+p7Vm56yZcHVTOKFm3le7ZXIwmoJ9aXSdU3QNXajqmzDQc/BDLPahQblTgAcnZvQgub6sJCVaZ+F1SUnq1gAA=",
+      "takenAt": "2026-06-10T21:52:47-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.002,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08593",
+      "version": "3dc97c6387cb",
+      "file": "DSC08593.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#487898",
+      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOl8dA7n/JNZSRgxNtHAAD33ja2SAGdVvLW06gUpqFShIduh2Qsyyxg74CMVAg6hFJ9Lt8xiCwItdENsFqK7/q9SqnGEH0TnJvEYmHok6KCN7ReQZ3J2zswAA==",
+      "takenAt": "2026-06-10T21:29:44-04:00",
+      "geo": {
+        "lat": 29.117,
+        "lon": 110.479
+      },
+      "place": {
+        "sublocation": "Yongding District",
+        "city": "Zhangjiajie",
+        "region": "Hunan",
+        "country": "People's Republic of China",
+        "label": "Zhangjiajie, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08511",
+      "version": "832fd74912ac",
+      "file": "DSC08511.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAADwBgCdASoYACQAPu1qp0+ppiMiKqwBMB2JZgCdMyrF5SJw3kS4X0oU1m/UEwcFRs1+OTcbBVTv8PbZLBrEglW8AP6DVnPhz+5p6XprCChjQPNnWdqD5eOnCP9Hj7dB/tGDEAG1Yo/adTYdRR+EKYxiFdZbbwnzZ3uVMaoy6CQeSHVyU+xXUzXI2qfuB1isJso+xO4tftnLzKY9lTsA8wojMgCNNqdOXGjtdv0QOLSfqbti7b40qpFlSHe4jc94E5Va3cC4FowT6vMEy21El/CNEjsPuAXCBdTr42KCrmCuZCum9Ex/IQh5yvFTppw12j/xwarCmGofU9xJEHoz8ybhW6qWA9llLtgk9M6T8mhsHdPk8FzkbptIOQ7hwuLIJDAqweKjWB99oAAA",
+      "takenAt": "2026-06-07T23:33:25-04:00",
+      "geo": {
+        "lat": 31.04,
+        "lon": 103.197
+      },
+      "place": {
+        "sublocation": "Wenchuan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.0125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08469",
+      "version": "fc0a497a9ecf",
+      "file": "DSC08469.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182808",
+      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JagCsAB3ZIFXzNBqkUFIsgAD+6ZnBzAeuWYVQX6R0WxjewrqSuQ/bnXcaUt2lYS0UNwgYwSTwwciJzfPzjH7nISLqC3tm8YEONvdETnC0aYvtE2Li85N7t2+QqBvO7Ljei0wpGZHphJFFjrvkaIJZWttjMVtb8+RAPOnRAAA=",
+      "takenAt": "2026-06-07T06:40:59-04:00",
+      "geo": {
+        "lat": 31.547,
+        "lon": 103.511
+      },
+      "place": {
+        "sublocation": "Wenchuan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.16666666666666666,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08458",
+      "version": "b4fd228647bb",
+      "file": "DSC08458.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#383838",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAwBwCdASoYACQAPu1yslOppqSipWgBMB2JYwC07bJlSJr/PA28jDcj2PFILWL4wzUGRWzpDVmRJlc2BIrbZR+v7hAA/vRe62E69NM4H4RMeSUU40+5wbzlvGSTjmw7mZHnlYvcYZuR3LmlreSQr7MWPv+FaGDGyY+kAu4wZl9fybimyHgs10/MiZK0zNq9sVTb0kU2pwx+blDx7thVFXTlpgiLMehqmSGtHquGxkg1HEHGg6Xf/kUsNmw30bx/rBnRjPTJ4OV5Y/n67YWOtqubNw+oyoknfGdPlL8mbjNlm+ctMRsNMA0SIUObCZsCh/qCDQNdaAUllfW1rYL6B4KfCnO7i64ZHM/TswPuKwAAAA==",
+      "takenAt": "2026-06-07T06:27:54-04:00",
+      "geo": {
+        "lat": 31.547,
+        "lon": 103.511
+      },
+      "place": {
+        "sublocation": "Wenchuan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 2.8,
+        "shutter": 0.00625,
+        "iso": 1600
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08294",
+      "version": "c9ad79884ea8",
+      "file": "DSC08294.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYABAAPu1yrU+pp6QiMAgBMB2JaQABHufLtrIkr2xQAAD++qiV8UzNWGyZPMPueazyoDmgJCIuXAkDDOcs4Y+UO+93elVLajJrQgAA",
+      "takenAt": "2026-06-06T06:19:39-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08287",
+      "version": "ad7b15474fe2",
+      "file": "DSC08287.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#c8c8c8",
+      "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwDA/DZDMqauIy5pfkFGlZNFpAAA/rISXMmvZAABAkzwUkgkwphW2UsBtA2SxswqApL+8hz1YglyhaQIgTSfxGsHGqCAAAA=",
+      "takenAt": "2026-06-06T06:15:42-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08201",
+      "version": "f9d813cf8068",
+      "file": "DSC08201.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYABAAPu1krU2ppaSiMAgBMB2JYgCdEf/gPI3QktG/4Vf2diaAAP7fQAFaoszhrpv4MxGSNVMamk/yfdFS5NDaqw8zsDpPlpkgMrYbilDPD4jl/7I+bqC+zMv9GbIpVAC9IhNur0rd4beG1At22vuNiWQ8i7wvpYdkLq5hhlrsZt34737rL6dF01PoAA==",
+      "takenAt": "2026-06-06T05:57:12-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08199",
+      "version": "324bdd92f31b",
+      "file": "DSC08199.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBEBDPs7pNm348AD+7fqsqpUSrYkXPxgb1MRMlbP+TsLYhqARTpiOlveCs+8XCyUa2WaPgAzGPe/oSkzzPFw5m5SnNp2EJXSJNNW5J6yT4E3ZuQ5MUrvuEBF9EMs0HIeV62o7anMFaAqOl2gHhFwAAA==",
+      "takenAt": "2026-06-06T05:54:37-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08194",
+      "version": "90d38d6a4c7b",
+      "file": "DSC08194.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoYABAAPu1oqk6ppiQiMAgBMB2JQBOiP/wHkiOk6NiBRo7OoAD+6oNGO36e7g+GUa8FfInNsPaHJ2gCU5bwhJRr+SMjoZXuM0fcxT4zv4wkurB3zw+pfnZUOZHAIR2uQr2uPzVO3NegAA==",
+      "takenAt": "2026-06-06T05:51:28-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08158",
+      "version": "937d57f698a2",
+      "file": "DSC08158.jpg",
+      "width": 800,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8d8d8",
+      "placeholder": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwBACdASoYAB4APu1qsVAppiUiqAqpMB2JQBmaDSiGJgJhG84SdVkJwpx+RRLyywAA/vf5Ib3T1A0OON5cpPM8tYGUuLZWzLSCdQDukuRVEWEzvIpPpZP8igA6iARxwoD/fCAxETH3L9ejgBoLJ3hcHEJtO7HHdtuOCYyJRKReGvpODFqjxBR5AAA=",
+      "takenAt": "2026-06-06T04:46:57-04:00",
+      "geo": {
+        "lat": 32.737,
+        "lon": 103.707
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.016666666666666666,
+        "iso": 125
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08129",
+      "version": "19aa1f5ee3fe",
+      "file": "DSC08129.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAACwBgCdASoYACQAPu1mrVKppKQiqrgIATAdiWQAuwAitj0TtBL/hebdWR2l+PP7fVLl+NPZP/67J9aSwoJlgAD+2XUBSyIiFsCmgsi9Ys5YlhigU18TXjEKPucWnQ1QDdjJ5aF5dpaMrmrYjQCZBHzugjnlFQxErLYm6Qm/JVLbMmaxWdNoXR3qDKlS+0YGsjmwOyCOGOyfeWoqIt1HqE0D/qu2kis0VM3Fa4PvEfcyktz60oR8cvq9NBHGCwSiXbLP0GlnbDzGEjolI2DUogDDVZ8Hb1BCICha31UcCybndoPFZbm5aLxEBgYVfomfAWXizH7ibgG2+UnpdtTtoUU02jS5tpQARnNIGNfWJ9BCwasv1/qAAA==",
+      "takenAt": "2026-06-06T03:39:08-04:00",
+      "geo": {
+        "lat": 32.723,
+        "lon": 103.834
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 400
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08128",
+      "version": "8f685632d453",
+      "file": "DSC08128.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw8aglGVqSgkiOvfzvjAmgAP7sCnWhtL7qklONh/vb5WwfMqi/5uyVL0Vp6fAHLvvFWpRxsa3Y3MP12k4TOCFTPGhYDjMQqbV5KJzYvuiShffj9aqGbDhcfR1MR2a79QgRH//rp6kR7Kud1IRIxDz/g/xULm7B5yGMJMG+b4AA",
+      "takenAt": "2026-06-06T03:36:32-04:00",
+      "geo": {
+        "lat": 32.723,
+        "lon": 103.834
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 500
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08104",
+      "version": "f98f15c51368",
+      "file": "DSC08104.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#086868",
+      "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JbACdMoMljEI+BcnFzwG57H1PgAD0P6hIz/fuFqE55UFhuDHkFv2pYtik6LlvKbFYLdl0cyur06vuOkvuMHhoGST4UKUkLHo6h68x0p2pOPXKzzhJYLiO8FTdCG79M75HeXLS9clnG68OJK/51tInHDgVij/5OMXAm6B04Oj/j/mUOJddYf/RyZY1JsAA",
+      "takenAt": "2026-06-06T02:48:37-04:00",
+      "geo": {
+        "lat": 32.724,
+        "lon": 103.835
+      },
+      "place": {
+        "sublocation": "Songpan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07834",
+      "version": "7a9e438dbdb5",
+      "file": "DSC07834.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZgCdISG6gAcdZNPvEqIptbntqxAwAP7rao+LDTdtHJdFdesAvtwXbb81wh9DEqfhjD3qNDRmf9Vyrj9vAcGD4nkdY7EnncdGSFKnnEF4zUvpW9JO0L51bnBDjYIqVWwtiJ+1FyzRxe7btngOUB7v5wVOcmAA",
+      "takenAt": "2026-06-05T06:35:16-04:00",
+      "geo": {
+        "lat": 31.687,
+        "lon": 103.845
+      },
+      "place": {
+        "sublocation": "Mao County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.004,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07772",
+      "version": "586d37deb7aa",
+      "file": "DSC07772.jpg",
+      "width": 667,
+      "height": 1000,
+      "widths": [
+        480
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAADQBgCdASoYACQAPu1sqVAppiOiqrgMATAdiWIAuzOh70Aa2iJvo8gmwDiCLr6ZI6I63iUMkfmS3nWDFZ5Lz8AA/cX6tFoxEC0e7HaMRvAQVPcZ55xXG5nLmdW19N3+ap70JcNMLIWg2R9Jr3KDsQX1NRKKIGEuovnmNGNfM0yvpZd1m4zZDb5gP9K4uPqY/llUkLKCggGLdmFLs9hwfJbDNQDf8DmBs3XGn6/q8n7ucN8Vo3zUTcgxYbZ2Bs6ScSVhV27GzHqhPyZkQB50EN0X+U2S4X25G7eIDn241rhWpV+gqL3zJBqEZelZpctR19RD8YWyBUJyQboxvzRuV/WKqs6ftqUxleuzP7hFGHUnqnAA",
+      "takenAt": "2026-06-05T02:39:57-04:00",
+      "geo": {
+        "lat": 33.262,
+        "lon": 104.236
+      },
+      "place": {
+        "sublocation": "Jiuzhaigou County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07519",
+      "version": "bd1964d6097c",
+      "file": "DSC07519.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8d8d8",
+      "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoYABAAPu1kqk4ppaQiMAgBMB2JYwC06CBj7ztsN4D5keCreAD+6PA6xU/Y145LxmBywyGUtYuKmJVmkaZBZsT5N/0BKRjpordxEJpPLWiEN9897Bso+dSy97jEy8AA",
+      "takenAt": "2026-06-04T05:55:37-04:00",
+      "geo": {
+        "lat": 31.073,
+        "lon": 103.406
+      },
+      "place": {
+        "sublocation": "Wenchuan County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 2.8,
+        "shutter": 0.0005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    }
+  ]
+}

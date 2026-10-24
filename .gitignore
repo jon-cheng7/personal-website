@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local resume copy (pnpm resume:check --save)
+/.resume/
+
+# photo variants, local dev copies (pnpm photos with PHOTOS_TARGET=local)
+/public/photos-cdn/

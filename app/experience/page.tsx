@@ -1,25 +1,29 @@
-// /experience — resume placeholder.
-// Fits: PageShell content page.
+// /experience — resume, generated from resume.tex on GitHub (lib/resume). No resume text lives in this repo.
+// Fits: resume-experience.tsx (interactive canvas ↔ plain page). Everything generated from the data.
+// Dev: fetch/parse errors render on the page. Production: they fail the build (never ship a broken resume).
 
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { getResume, type Resume } from "@/lib/resume";
+import { ResumeExperience } from "./resume-experience";
+import { sceneSections } from "./scene-model";
 
 export const metadata: Metadata = {
   title: "Resume — Jon Cheng",
 };
 
-export default function ResumePage() {
-  return (
-    <PageShell>
-      <h1>Resume</h1>
-      <p>
-        Stand-in for now. The actual plan (see the project doc&rsquo;s
-        &ldquo;Decision: resume delivery&rdquo; section) is for this page to
-        automatically pull the latest compiled PDF from a private LaTeX
-        repo, so the resume never goes stale without a redeploy — not built
-        yet, so this is just a placeholder destination for the nav link in
-        the meantime.
-      </p>
-    </PageShell>
-  );
+export default async function ResumePage() {
+  let resume: Resume;
+  try {
+    resume = await getResume();
+  } catch (e) {
+    if (process.env.NODE_ENV === "production") throw e;
+    return (
+      <PageShell>
+        <h1>Resume</h1>
+        <pre className="resume-error">{(e as Error).message}</pre>
+      </PageShell>
+    );
+  }
+  return <ResumeExperience resume={resume} sections={sceneSections(resume)} />;
 }

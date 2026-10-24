@@ -4,6 +4,7 @@
 import type {
   ActorConfig,
   Anchor,
+  AnchorRect,
   CameraKey,
   ChannelKey,
   Choreo,
@@ -91,17 +92,19 @@ export function variantOf(choreo: Choreo, mobile: boolean): ChoreoVariant {
   };
 }
 
-/** Config → numbers for this viewport. Throws readable errors. */
+/** Config → numbers for this viewport. Throws readable errors.
+ * anchors: measured [data-anchor] rects for camera `focus` (null = not measured yet → focus keys skipped). */
 export function resolveScene(
   v: ChoreoVariant,
   vp: Viewport,
   parseEase: EaseParser,
+  anchors: Record<string, AnchorRect> | null = null,
 ): ResolvedScene {
   const cues = resolveCues(v.cues);
   const looks = { ...BUILT_IN_LOOKS, ...v.looks };
   const time = (t: Keyframe["at"]) => toTime(t, cues);
 
-  const resolveKeys = (keys: (Keyframe | CameraKey)[], label: string): ResolvedKey[] => {
+  const resolveKeys = (keys: (Keyframe | CameraKey)[], label: string, isCamera = false): ResolvedKey[] => {
     let prev: State = { x: 0, y: 0, ax: 0, ay: 0, scale: 1, rotate: 0, opacity: 1, blur: 0 };
     const out: ResolvedKey[] = [];
     for (const k of keys) {
@@ -114,6 +117,7 @@ export function resolveScene(
       }
       if (kf.x !== undefined) state.x = toPx(kf.x, vp);
       if (kf.y !== undefined) state.y = toPx(kf.y, vp);
+      if (isCamera) applyCamera(k as CameraKey, state, vp, anchors);
       if (kf.anchor !== undefined) [state.ax, state.ay] = ANCHORS[kf.anchor];
       for (const p of ["opacity", "blur", "scale", "rotate"] as const) {
         if (kf[p] !== undefined) state[p] = kf[p] as number;
@@ -152,15 +156,43 @@ export function resolveScene(
     length: time(v.length),
     cues,
     camera: {
-      keys: resolveKeys(v.camera?.keys ?? [{ at: 0, x: 0, y: 0 }], "camera"),
+      keys: resolveKeys(v.camera?.keys ?? [{ at: 0, x: 0, y: 0 }], "camera", true),
       smoothing: normSmoothing(v.camera?.smoothing, DEFAULT_CAMERA_SMOOTHING),
     },
     actors,
   };
 }
 
-/** State at t: before first = first; in hold = key; between = eased lerp; after last = last. */
-export function stateAt(keys: ResolvedKey[], t: number): State {
+/** Camera extras → state: focus centres x/y on an anchor; zoom (number | "fit") → state.scale. */
+function applyCamera(k: CameraKey, state: State, vp: Viewport, anchors: Record<string, AnchorRect> | null) {
+  const rect = k.focus && anchors ? anchors[k.focus] : undefined;
+  if (k.focus && anchors && !rect) console.error(`[choreo] camera focus: no [data-anchor="${k.focus}"] in a world actor`);
+  if (k.zoom === "fit") {
+    if (rect) {
+      const fill = k.fill ?? 0.9;
+      state.scale = Math.min((vp.vw * fill) / rect.w, (vp.vh * fill) / rect.h);
+    }
+  } else if (k.zoom !== undefined) {
+    state.scale = k.zoom;
+  }
+  if (rect) {
+    state.x = rect.x + rect.w / 2 - vp.vw / 2;
+    state.y = rect.y + rect.h / 2 - vp.vh / 2;
+  }
+}
+
+/** World point → screen point through the camera (zoom about screen centre). */
+export function project(wx: number, wy: number, cam: State, vp: { vw: number; vh: number }) {
+  const z = cam.scale;
+  return {
+    x: (wx - cam.x - vp.vw / 2) * z + vp.vw / 2,
+    y: (wy - cam.y - vp.vh / 2) * z + vp.vh / 2,
+  };
+}
+
+/** State at t: before first = first; in hold = key; between = eased lerp; after last = last.
+ * logScale: scale interpolates geometrically (camera zoom feels uniform). */
+export function stateAt(keys: ResolvedKey[], t: number, logScale = false): State {
   if (keys.length === 0) return { x: 0, y: 0, ax: 0, ay: 0, scale: 1, rotate: 0, opacity: 1, blur: 0 };
   if (t <= keys[0].t) return keys[0].state;
   for (let i = 0; i < keys.length; i++) {
@@ -173,6 +205,9 @@ export function stateAt(keys: ResolvedKey[], t: number): State {
       const p = span > 0 ? next.ease((t - k.hold) / span) : 1;
       const out = {} as State;
       for (const prop of NUMERIC) out[prop] = k.state[prop] + (next.state[prop] - k.state[prop]) * p;
+      const a = k.state.scale;
+      const b = next.state.scale;
+      if (logScale && a > 0 && b > 0 && a !== b) out.scale = a * Math.pow(b / a, p);
       return out;
     }
   }
