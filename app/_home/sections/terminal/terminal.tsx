@@ -166,7 +166,7 @@ function TerminalWindow() {
   // "/" from anywhere → focus prompt (only while the terminal is on screen)
   useEffect(() => {
     if (!ready) return;
-    const onDown = (e: KeyboardEvent) => {
+    const onDown = (e: globalThis.KeyboardEvent) => {
       if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
       const t = e.target as HTMLElement | null;
       if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;

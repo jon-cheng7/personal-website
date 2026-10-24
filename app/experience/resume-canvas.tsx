@@ -2,7 +2,7 @@
 
 // Interactive resume: every scene on one big canvas. Toolbar = overview + sections (+ per-scene dots) + sort.
 // Fits: resume-experience.tsx (interactive mode; owns read-state + sort so they survive view switches).
-// Layout → canvas/layout.ts (board region + random starts | sorted rows). Motion → canvas/float.ts. Flights → canvas/camera.ts.
+// Layout → canvas/board.ts (board region + random starts | sorted rows). Motion → canvas/float.ts. Flights → canvas/camera.ts.
 // Scattered: unfocused cards roam the whole board freely, steering clear of the focused one (pinned, still).
 // Sorted: cards settle into rows and drift gently. Start spots are random on every visit.
 // Input: wheel/touch/keys only move WITHIN the current scene (lights lines one by one) and BETWEEN scenes
@@ -14,7 +14,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { getLenisInstance } from "@/lib/lenis-store";
 import { easeInOut, easeOut, fit, flight, type View } from "./canvas/camera";
 import { FLOAT, roam, tether, waves, type Body } from "./canvas/float";
-import { CARD, bounds, randomPlace, region, sortedLayout } from "./canvas/layout";
+import { CARD, bounds, randomPlace, region, sortedLayout } from "./canvas/board";
 import { ItemScene, SkillsScene, itemSteps } from "./resume-scenes";
 import type { SceneSection } from "./scene-model";
 import "./resume-bar.css";

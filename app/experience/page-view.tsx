@@ -9,7 +9,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import type { Resume } from "@/lib/resume";
-import { hash } from "./canvas/layout";
+import { hash } from "./canvas/board";
 import { MarkupBar } from "./markup/markup-bar";
 import { MarkupLayer } from "./markup/markup-layer";
 import { useMarkup } from "./markup/markup-state";

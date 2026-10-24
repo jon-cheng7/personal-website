@@ -3,7 +3,7 @@
 // Sorted: cards spring to their row homes with a gentle drift. Tiny 2D sim, fixed substeps. Pure (no DOM).
 // Fits: resume-canvas.tsx calls roam() or tether() every frame, then writes positions to the cards.
 
-import { CARD, hash, mulberry32, type Placed, type Region } from "./layout";
+import { CARD, hash, mulberry32, type Placed, type Region } from "./board";
 
 export type Body = { x: number; y: number; vx: number; vy: number };
 

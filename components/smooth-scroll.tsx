@@ -4,15 +4,14 @@
 // Fits: mounted once in layout; instance shared via lib/lenis-store.
 
 import { useRef } from "react";
-import { ReactLenis } from "lenis/react";
-import type Lenis from "lenis";
+import { ReactLenis, type LenisRef } from "lenis/react";
 import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useGSAP } from "@/lib/gsap";
 import { setLenisInstance } from "@/lib/lenis-store";
 
 export function SmoothScroll() {
-  const lenisRef = useRef<{ lenis?: Lenis } | null>(null);
+  const lenisRef = useRef<LenisRef>(null);
 
   useGSAP(() => {
     function update(time: number) {
