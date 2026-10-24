@@ -3,31 +3,31 @@
   "photos": [
     {
       "id": "dsc04631",
-      "version": "2d59a4cb84cc",
+      "version": "3ca38a508964",
       "file": "DSC04631.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBQCdASoYACQAPu1oq1CppakiqrgMATAdiWUAzcBN6EEN3yDDDZ1juMV/wBGX38FrWd0AAP70rH3HgteaWjeROkiY3qvVl6pXm9CFGzQs357sSUvPuljiKqqZ2NgSDHSE7q33mN5K0PhxLZVYcpWeQa68JXsW208V2qB9f2cc18eZ1pcMNoGgW1zzPnGm8zRIXG+qkAA=",
+      "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAACwBQCdASoYACQAPu1srVIppaQipWsxMB2JQBlr9Dl2Z/CeUeH4CUt1mDat5d5qpyZhvkph9FgA/vXal4njRmvUcXtITkWX+uUUixBTRiHDSDRf70hFD7VIoCAampCy10B5JohiDIsVP+2qhQxjpFfn5+YEgHWolWP9WL2n5BiaWBFs13IEZ5fodeM2ZMbJ41A5l4iL4pbmlrfJSLaFWJk/enK8LABi1AVVcj2x6tH9E/CSUCfIH4ovdsNsKn0bAT/0bCPIqc439Dt7+yTaojtw7gA=",
       "takenAt": "2026-08-15T06:38:52-04:00",
       "geo": {
         "lat": 52.973,
         "lon": -9.43
       },
-      "place": {
-        "sublocation": "Lislorkan North",
-        "city": "Ballysteen",
-        "region": "Clare",
-        "country": "Ireland",
-        "label": "Ballysteen, Ireland"
-      },
+      "place": null,
       "camera": "SONY ILCE-7C",
       "lens": "FE 28-70mm F3.5-5.6 OSS",
       "exposure": {
@@ -44,32 +44,31 @@
     },
     {
       "id": "dsc04596",
-      "version": "ba1e04179d91",
+      "version": "b3445983513d",
       "file": "DSC04596.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#e8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZwC06CHaTRf2/Z8Et8AA/u+6ctY9FVQMNXh8lnj2jKv2pV+a2dtO4+AlCZkRx/m+nAPztkM2+zVEgx0AMCAA",
+      "color": "#a8b8c8",
+      "placeholder": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAwCdASoYABAAPu1kqU2ppaOiMAgBMB2JZQCAAAfR4w2pPnxHwqsAAP7tcWKH/4eZlT8Nro0HEbBwWZcKYX9KKH0qG4JIR3sZ4hYqfESctb1K6LAZpTr6DQ2AIZLlC33tf092MAA=",
       "takenAt": "2026-08-15T06:32:29-04:00",
       "geo": {
         "lat": 52.973,
         "lon": -9.43
       },
-      "place": {
-        "sublocation": "Lislorkan North",
-        "city": "Ballysteen",
-        "region": "Clare",
-        "country": "Ireland",
-        "label": "Ballysteen, Ireland"
-      },
+      "place": null,
       "camera": "SONY ILCE-7C",
       "lens": "FE 28-70mm F3.5-5.6 OSS",
       "exposure": {
@@ -86,32 +85,31 @@
     },
     {
       "id": "dsc04568",
-      "version": "a0e0148854dd",
+      "version": "b35ab0b91157",
       "file": "DSC04568.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5880,
+      "height": 3920,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5880
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#e8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JYwAAXK6mQ8pmY0SY+OAA/u/rk8/iASeAhi1R3acSG/rhMqBOrBlEbJi/4Vvr+7/bp5H6rW6Zsou88Ap/pYIID7h1Sjr/EYAzCyPbCGVgAA==",
+      "color": "#e8e8e8",
+      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZADE2CHaTd+ZavDESxoGEAD+7XmXAd6ukPZ2SgHHXpACp+D8aGecY3CzQRV9koLgnTLPYab1IDLIGRzuX27T+zUHfQkeFrrwUgSyoqKfRxpY/4ZT1TBaF0QAAA==",
       "takenAt": "2026-08-15T05:58:29-04:00",
       "geo": {
         "lat": 52.973,
         "lon": -9.43
       },
-      "place": {
-        "sublocation": "Lislorkan North",
-        "city": "Ballysteen",
-        "region": "Clare",
-        "country": "Ireland",
-        "label": "Ballysteen, Ireland"
-      },
+      "place": null,
       "camera": "SONY ILCE-7C",
       "lens": "FE 28-70mm F3.5-5.6 OSS",
       "exposure": {
@@ -128,20 +126,25 @@
     },
     {
       "id": "dsc04486",
-      "version": "a2cae630767b",
+      "version": "2fa8f5b60b96",
       "file": "DSC04486.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#98b8d8",
-      "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdAYzG5HQ8g/+07b5cut0AAP6LiKbHBL1P1zFbn9W93F/01WJVn1mnia+PU+0nWtvybzBauRZb1pzQEFX+r0qLFZlxWip6bvKrwqYuGQ8L9UyW67tuLwxaebMrYSA0s7cltbT8ErNKY3sEDSG6Vz1eironT104pBRQyQIVxia/48Bp+GOreX6Vz6LyzQdEAA==",
+      "placeholder": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdACKmrudwREjji1E0EAAA/ouGhNVYwmRX0sobfkx2jOL3xaJ6fJM8TYhGsbV8LcX2pWjd5iouu1MFmf1Q+O1hGRaKnpu8qvCpi0kTQ7x3Jsby7ifif1iaJMrYlyCCZjvDwwvf+s4fGXgWoFkkl+IJtQQ+kn95RHdqPUsl3HbOnYTQuc1od1fTWPYFAAA=",
       "takenAt": "2026-08-12T08:19:58-04:00",
       "geo": {
         "lat": 25.668,
@@ -170,30 +173,35 @@
     },
     {
       "id": "dsc04066",
-      "version": "8bc45ef2fc1d",
+      "version": "13fd896d78d9",
       "file": "DSC04066.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3808,
+      "height": 5712,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3808
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#a8b8c8",
-      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBQCdASoYACQAPu1mrFAppSQiqrgMATAdiWMAvzhF7WXF7ElkhxVeZHZ3YBmHLRx8KPcPuZAA/sLfSPWFwuBHdk5TPGuLRusDV7wKVxEXECLK6045PWNXWydEbuHy49FqZRDwBNn27gPhNuxfXWXFl3DZJAzeOakSiwxKpIJYnEZhR+pZT7kJDYAAAA==",
+      "color": "#b8c8d8",
+      "placeholder": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADwBQCdASoYACQAPu1oq0+ppaOiJW5hMB2JQBYdiJuh+kg8FDOwNoChB+pwLZteWNTvgSmNbU06YAD+00QK7lmWEmTtk3mxtMa0VaV55SOl5ghQbGKQJV6f41y5Yc28xCOexkXECqkONSyEapKiO2R1BB1VEEpOYJJY3tSBszmjwKvALnLx9MVhGVuyjwFpI5wwTTzRtwUzexUvOTn5BncV4AAAAA==",
       "takenAt": "2026-08-11T02:34:00-04:00",
       "geo": {
-        "lat": 29.982,
-        "lon": 31.132
+        "lat": 29.979,
+        "lon": 31.134
       },
       "place": {
-        "sublocation": null,
-        "city": "Al Ahram",
-        "region": "Giza",
-        "country": "Egypt",
-        "label": "Al Ahram, Egypt"
+        "sublocation": "Great Pyramid of Giza",
+        "city": "Cairo",
+        "region": null,
+        "country": null,
+        "label": "Cairo"
       },
       "camera": "SONY ILCE-7C",
       "lens": "FE 28-70mm F3.5-5.6 OSS",
@@ -211,20 +219,21 @@
     },
     {
       "id": "dsc04060",
-      "version": "37467a35f624",
+      "version": "250fb9a0358c",
       "file": "DSC04060.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#b8c8d8",
-      "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUI8DBTcM4Hva5uOF8AD+Utg+YSVS1IaKxwiHSSo3DEMzw4UGR3QVxsd8/8DvbUKR8oH7SyNb6gWHsvYrF8AAAA==",
+      "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JQBOmUI8DBTcM4Hva5ufrSAD+Utg+YSVS1IaKxwiHSSo3DEMzw4UGR3QVxsd8/8DvbUKVliL6yyNb6gWHsvYrF8AAAA==",
       "takenAt": "2026-08-11T02:31:36-04:00",
       "geo": {
         "lat": 29.982,
@@ -253,20 +262,25 @@
     },
     {
       "id": "dsc04039",
-      "version": "6fa754a80e7f",
+      "version": "f462dcb30b68",
       "file": "DSC04039.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JQBOkF/hgWPSsPR5ttF0qOgAA/ozrhUhUtQv0Tbl4uSIcZeMrbLZbb2GEr7c6pBKlkEiWeIOz/S0BPrqTXfRV2gODTags5PXE1lwmm/xKYT98PEAAAA==",
+      "color": "#e8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYgCdMoMpADwpad/7oGMPZKY6UAD+jTe9ivaFzolyU89MjOGdGxqKJWD9t9u3nd2Eq0v4m9uQgaQDX+k0R//VC2wQKPs23JEI8wl0nlk0CMXiJEUD5qwWcFRhKRJc1XegAA==",
       "takenAt": "2026-08-11T02:07:33-04:00",
       "geo": {
         "lat": 29.982,
@@ -295,20 +309,25 @@
     },
     {
       "id": "dsc03920",
-      "version": "99c7901c4658",
+      "version": "f685a1e3e44d",
       "file": "DSC03920.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#483828",
-      "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaACdMoBOACfF2Nz66HOFcfz0OAD+6eNK8eRirK6ki4RU1UZXpMKL6wPiOFxrYCCoJGSu4TRrwEWZ92Vz9wpVejWJNVpUliLuFXmytsDwg42liIjDy+mBZ9OMS8/5RzEe6q1rxWcZMmAqFCqWfHMXVAlGo4WBJBCzrlTWxKLui7+q76k9pkHCWiZDEVwA",
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoBOABybVHyU2zAfDEOzYAD+5nqBbLXo2Ojrf7S8vJxMXB3J1fcpftb1lcSgT7v/HjV8VC6fLZNTYMN0obrKCf5Q7eC9HpzDvKldkebkkE2eJIT84ON5ihIFZ442DZfByfZuqEffmcP4PcwsogaY29UOahVkaa5d384eb677QkfB5RwKvoiuAA==",
       "takenAt": "2026-08-10T14:27:02-04:00",
       "geo": {
         "lat": 30.044,
@@ -337,19 +356,25 @@
     },
     {
       "id": "dsc03865",
-      "version": "cb94c5cbfb8f",
+      "version": "5905b676c585",
       "file": "DSC03865.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#a8d8e8",
-      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACQBQCdASoYACQAPu1gqk8ppSOiKrgN+TAdiUAW33tYbXmVKulFq2LuachkJD1jB3/JPbWiAAD+3l+XAeeGOZVtHr+YdURUM5hGfNyD7nOx+ZSepI9cL5ayDm5sQGtm0Ajck6dkzB4gJ3ArOuvEmCJqgTNPbP9E9kec4Ifjxk1RXfPsh4bELJbPQeCt0PlggmjeLuyZKnFwMrcPUTwX4z4zk7UEJM31tuzFMud5SwsB2FpQnvLh5lykSTxVjAAA",
+      "color": "#c8d8e8",
+      "placeholder": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAABwBQCdASoYACQAPu1qrFEppaQipWzJMB2JYwC1G+kFrqxR7zQm8EZ8fY+ae5MXI3zWL/AAAP7vsyqBXPACAGov7vN8NHKbE/g2/t35JSmkMEXO3qHGbaGeGFMb1JhWsb0t2nT5TumZPgyRjkbgRuEJ/HrQgmn3OZhPtgSIp51ICuvmZiCaR1uQBUHPmCdf7itbW20+jJqcq0eK/6bMb5o5IrRbS8c7IfUyI+PPtymWacHuJo3ytnEWBEm22QmZwX4AAA==",
       "takenAt": "2026-08-09T12:28:21-04:00",
       "geo": {
         "lat": 35.055,
@@ -377,21 +402,67 @@
       "keywords": []
     },
     {
-      "id": "dsc03850",
-      "version": "eb6f6a5517e8",
-      "file": "DSC03850.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "img-1685",
+      "version": "be77f68df338",
+      "file": "IMG_1685.jpg",
+      "width": 5712,
+      "height": 4284,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5712
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#e8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBCo0OIZo7fVm2QUgAP7tWNDJph6aYNKzpULRHKFEf7TH0MTDymz5Y5uaA/dX3oD8nzaUH3Uuk/vIs11jiRCrwgrOsGNdZm4vfAqKMmLYaDxJQARjj8euvcHJdbXRMoixfYdkAAAA",
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAACwBACdASoYABIAPu1ur1KppiQiqAgBMB2JQAAFNZgPDIM/3g3wupa5hGOEmtAAAP7OAduxm6rDurSH0eSchRmx3tmtb9W51gS2dVAz2iMx7koWhg233oOw7cmEikTpPIy1HWwP5KCBnayRgarYzjXWnuNBqtXuAjnhqpdmi2o84vGDZ07sDDI1jaj3faVBYq2BcKIWgcddRGuLWgXVD4FGMqMX5lQvKAA=",
+      "takenAt": "2026-08-09T11:32:09+03:00",
+      "geo": {
+        "lat": 35.333,
+        "lon": 24.28
+      },
+      "place": null,
+      "camera": "Apple iPhone 16 Pro Max",
+      "lens": "iPhone 16 Pro Max back triple camera 6.765mm f/1.78",
+      "exposure": {
+        "focalLength": 6.764999865652793,
+        "aperture": 1.8,
+        "shutter": 0.0004166666666666667,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03850",
+      "version": "0c934f031bd0",
+      "file": "DSC03850.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#d8e8f8",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZACdMoRwFf/gNozF0J14EYR4EAD+7WEDoi1nIYt1p3YBhb1SE5KrCBFVeESZjSThTDj3yq/fXxnk1PtfraiS5mabAWQ2a7RjhC2gz99AzNZLfvcUBoBAK0gfynqKlU4KCwILE/c/Fuzir9oTex3ZfXh1LoAA",
       "takenAt": "2026-08-09T11:19:00-04:00",
       "geo": {
         "lat": 34.993,
@@ -419,20 +490,64 @@
       "keywords": []
     },
     {
+      "id": "dsc03810",
+      "version": "943ccd116344",
+      "file": "DSC03810.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#081808",
+      "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAACQBgCdASoYACQAPu1mqE8ppaOiKqwBMB2JQBb37auMKaACjihVleGaOZZj6LkxbCxu63HPLaQgGwQXvim4AP7p1WcrrtKqhH9xU2odHOENArrdgaUom4fX2Cc3ipOwNGUZ3fQ0TA19MWRILeH/PCKs//+F77Mqsy0sEpr6tGoO3oWvEGCGxkXMOPLNnFUamyYnyVrUX+D6th8wvV0+hSHlRhnAVxjJuLnK9uBE2J0SMcnX6X7oB42l+BRLzPmXQMicKzm+eN7XtKLGjENkg/2PyO4wxMO6aZJSnuZ4JgUtnw+93CvGQZ96993sQbtcMqA0YGYwhSOzvjiNf0/3q6U1s1fOQ2lBONudWlAkHZHb2iiIAAA=",
+      "takenAt": "2026-08-09T03:36:36-04:00",
+      "geo": {
+        "lat": 35.376,
+        "lon": 24.201
+      },
+      "place": {
+        "sublocation": "Vryses",
+        "city": "Vrysses Apokoronou",
+        "region": "Crete",
+        "country": "Greece",
+        "label": "Vrysses Apokoronou, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 49,
+        "aperture": 5,
+        "shutter": 0.016666666666666666,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
       "id": "dsc03808",
-      "version": "ff769a4d82ac",
+      "version": "6271d3bceacc",
       "file": "DSC03808.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAAAwBwCdASoYACQAPu1kqE8ppSOiKqwBMB2JQBlAtoyiu1eFSlIMglpU4aURJrarc/nv7064GDe3hxU7v4GLNnX+oAAA/qMKZ5OzC7cklg7Hy0BqrMEn2+doTdcFXv1ERHxx0G3ijP5itcTbMY6eVrH5TnvUktuGz8ftM1wuuMbVPY2/PO2tbzBe4qjK9bR2ooDrlLLg/t+ZHn6kvsWkFEozt/R3A6YJBHHaBBckm87KPI34OWuArHdUQIj19nw5KQHw8cew9YOX9kvG+X0pKgXK23MEzRrx/xrhggwM9kQoK2G20kmyy/p3x5gKCspFqPe7mXKuK7ooJZW+GtidCNNekSnV9fKJJEg+GGvaUOkxxHOQGqMmRtyKuMevEP9mc4PF54I38uhEAAAA",
+      "placeholder": "data:image/webp;base64,UklGRjwBAABXRUJQVlA4IDABAAAwBwCdASoYACQAPu1kqE8ppSOiKqwBMB2JQBf2tn4zA4FBW78Au+gVHUFBpnIePq9x5OXc7IA4HppliZI+pOqAMjAA/qMKRYQGp/xhmIjEY1Gj6Q7X1D+6werddn7lCKa3W9xeUarZUdTE7+GQpZ7lbc0ehXkiVPtqocNoJ4UND4FWbec0FN1KQDICQMwRgyasDjOZkTTnIFW4MWHtBzcWK/IrYwF4owJiflBJQXhRN1qSI8tJsvn7IrzKC0eH6CNsc/06Z/f4MpO3bjO9M4VnfyS/fn51oUS7/4Yk1Xwiz4xQllPSnPg+2kO88z0BL7QwMeCvZUhmgJrYS7gzZ8QUTY5lJ3Ez+JI5QtQtEP2NekysxmQ8GMh6/lRmd4fjonJq5U+2+AbrMIwslMAD2dgA",
       "takenAt": "2026-08-09T03:36:30-04:00",
       "geo": {
         "lat": 35.377,
@@ -460,20 +575,65 @@
       "keywords": []
     },
     {
-      "id": "dsc03485",
-      "version": "faa671ed9d61",
-      "file": "DSC03485.jpg",
-      "width": 667,
-      "height": 1000,
+      "id": "dsc03684",
+      "version": "adcaa31696ec",
+      "file": "DSC03684.jpg",
+      "width": 3169,
+      "height": 4753,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3169
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAACQBwCdASoYACQAPu1mq1CppSOisBVYATAdiUAYnyQPHvxSfM0gCS8oPClbD7Ft8GDHWBbP6/vaXWvDKOILqbcYVgSg5AAA/t7DBOWU+31404it9CuMXG+eb29TLLnpGJjz4lngnoofulAeo/73Ob7XbpbuCR0JXdWosaVrFTuOw+TbU9tiuUNTt8b4IwU9yppTPTkPpzaLPvDGo2D3xu46ERmnqtiajLjQsyPQ149HrhNHLCjvT56TqrgavZLNDv1xMoptvypnhH2RapA4MFOmwaQJtuYLo/ebGRQrNbFoJTE8T/2/54/LMK+2mbJ/77OY+IAAAAA=",
+      "color": "#b8a898",
+      "placeholder": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAAAQBgCdASoYACQAPu1kqVEppSOiqrgMATAdiUAVS4QRz8I7ec93gy2SNkgM2aKOT9+ft+UE+7vPAqAAzWQlUvvKwGyPclufH6dx1AgvDylpHqIabrS7IIlis8HOsJBBjLKi784casG2W1BP4n4XoGVeQA3HzOtt4PN1lkz51JgQMnPmdj67cubm60+gGGNR30LOcsrdjN2PuB/bGvVCLUX8J02tHLXN5DFJzL0El9lwE/m/OQf8Ie6MLHRvLPeUqaKjsjl1r5Rh9gqtR/stN3D/9dgWfTwYgMom0ZnzOrnXkGpCkwpLzIfsL1ltLTP2MRMg+4wA",
+      "takenAt": "2026-08-07T04:44:21-04:00",
+      "geo": {
+        "lat": 35.256,
+        "lon": 23.969
+      },
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 40,
+        "aperture": 4.5,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03485",
+      "version": "a3b0b01999eb",
+      "file": "DSC03485.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#385878",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAQBwCdASoYACQAPu1mrlGppSQiqrgKATAdiWgArk+TPOgo7IZQZy7YHx/XrsjAnTqTsSf7sKJjMPSNvHf/n8hCQAD+jEE7jzZ0XAkOM30EbqENUhWIZsmvTW//l82/QmGDFty9KoRrn/FnAlJ9eEc8u0MC8DAiExo/En4HY1c7wAVDDTKLP7HcOkL54jN7cE8C+4bxv7BtkfW/XpXO7Fl+0fCM8lslszPnJwtjWOgxmO88l1PB/qfFOaHD0+JFBwkQJbzdalSebQf0aRIXt7O/byJthBaPU+2QeQR5jrvhGGbe4s1jiOLs3IvjY+CzbFvS85x4+o3nTggK3CT6qzrD9zVXUXk7s9oXai0Il7ZAAA==",
       "takenAt": "2026-08-07T00:38:00-04:00",
       "geo": {
         "lat": 35.257,
@@ -501,27 +661,74 @@
       "keywords": []
     },
     {
-      "id": "dsc03453",
-      "version": "44086e7ca90c",
-      "file": "DSC03453.jpg",
-      "width": 667,
-      "height": 1000,
+      "id": "dsc03485-full-res-web-2",
+      "version": "61545ddbae03",
+      "file": "DSC03485-full Res web-2.jpg",
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#4878a8",
-      "placeholder": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADwBACdASoYACQAPuleqU2pPaQiNVQMA7AdCWMAsR+YRxYsPBmPqLeLCeHkBLfVQAAA/uEhmj27oi9vIQ0THeqjhShOlVao4wQpngEoAXfM9GnX0udqMCt4lV4VA5fvvCBcs8il0q0WRoDbjp6oJM3K1cvhKHlDvC+E4nmFshbfKf6AayGHeCwUsFLbpBkCUr4ZqmtFXcgagwAIZMlnRZHTsriAFiTAAAA=",
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4IPoAAAAQBwCdASoYACQAPu1srVCppiQiqrgKATAdiWYAxQtfb14Z11B/VveOcqAs5RtAE5JENSF/gEoNoYXXopjsJjY8QAD+jDydpel4r0Ln5AwDw34UDQSbzM8YKOjEjzKH0vovcY6T++Ry7XPHgz03ynSwdZUuPk38hUE/LF1NCThIOxXzU7OyA7vDU83OdO0y2LzGHzM6RFPplsOSDhV/508DUAH7VaGXo973SVkyX6roJ/dnyAZIL0fPebq0k7KsZES+wXE8uWbOie8ZV/UXr6RPG7nKKKAxZiDEHmCXuyQ4sagzLW61FZ6L0WrZsSr/PoMqFRSfIAAAAAAA",
+      "takenAt": "2026-08-07T00:38:00-04:00",
+      "geo": {
+        "lat": 35.308,
+        "lon": 23.918
+      },
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03453",
+      "version": "25860ab14630",
+      "file": "DSC03453.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#0868a8",
+      "placeholder": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAAAwBQCdASoYACQAPu1orVCppaQipWzJMB2JYgC7MxMJYFXnVUmW+QUOje2/JV6WmVI4AAD+6vsho4Xj5r4q9gfw5k7bFbP+LeLeLW/pZ5XJ/nW/a1jS7w2jTrzXVPnGHk8qvEPInKKJ4Vu7dhaL0P6RoBADbMVOvd2m3sY0KN2ayst+gyCQPJJpQ4BknKJI+9o/IeHpH2X+vN7kZRpeA0RCSQZA4AnMVhE/A3As6Rvb/nNBdpPI+r3CpAA=",
       "takenAt": "2026-08-06T00:16:45-04:00",
       "geo": {
         "lat": 36.423,
         "lon": 25.428
       },
       "place": {
-        "sublocation": null,
+        "sublocation": "Three Bells of Fira",
         "city": "Thira Municipality",
         "region": "South Aegean",
         "country": "Greece",
@@ -542,20 +749,64 @@
       "keywords": []
     },
     {
-      "id": "dsc03352",
-      "version": "b349c0420e00",
-      "file": "DSC03352.jpg",
-      "width": 667,
-      "height": 1000,
+      "id": "dsc03445",
+      "version": "253a7251ca45",
+      "file": "DSC03445.jpg",
+      "width": 6000,
+      "height": 4000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoYABAAPu1iqk2ppaQiMAgBMB2JYwC7ACHfrsztl1uHDP4AAP7v0X4nelNn3dJ18I3lu7+3HtWlU1a2nQGsHQzQCzgjpuqOqI/a0BP8huEx7G9u5fRQRMzprVzx7doX9UMXuz65K6kAAA==",
+      "takenAt": "2026-08-06T00:10:55-04:00",
+      "geo": null,
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 51,
+        "aperture": 5.6,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03352",
+      "version": "b9dd8a595a5f",
+      "file": "DSC03352.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRhgBAABXRUJQVlA4IAwBAABwBwCdASoYACQAPu1urVIppiQipWsxMB2JYwDE+YNDsxANaYt3FYvtefVb5BEjA6J+rdT0EMv6qIBI/YIaWqU8wdhWAAD+i72O51SJy1f2CVElrex1LdldDz0cUoAGawMW9S5J/d7G88+c9VUvt2OO7m8F+q6TuNB7WNn7zev9HqnPLuM2+++Mx9LjoCWWfzGnInTguc57zDQz49RXUUPeiNjU2YzLJZ18XBb23NqVtXTMeLbG3NWxoN7tkbcfnNyjtRmXyWjkGMDgigDnH/uVXZ/y/Pi4gtiAY0RD5Hbn8ueecNZYi1peoB0W7jz9cxgyNGzXBBmXg/0j4vEXIwwoJiAQ3srKTDcfhGgA",
+      "placeholder": "data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAABwBwCdASoYACQAPu1urlIppiQipWsxMB2JQBb3ZfsME0cPzqAxXpUxQPCXU8ivPNvjKuusiYKiJMx0JaZFS2A6vC8NsAD23zaw2lN7F+N5vVjnF5pvdUPN4ci10IJvyb61OU0z7J1lX5j7wrr81bg/CNdkIVyG5wtYwHhbeATqtael9yhC1+iLLA4VAH/Nnk0/wYcESGG9pouL+U6fzOYJJ1lNyjy6yr1gk5cD+yqwhKrPNhlhIWUAIoY6KKoV4Miw9hX0QfFmMRGvcXF2is0L+SHP0FD4vIrJ1QPTL0LND+M3jLcQb8GnkjOg060ZPdEMXXcyAsHNqCdcYdu9RMpWiMAAAA==",
       "takenAt": "2026-08-05T11:42:10-04:00",
       "geo": {
         "lat": 36.423,
@@ -583,21 +834,69 @@
       "keywords": []
     },
     {
-      "id": "dsc03047",
-      "version": "c5a49f807618",
-      "file": "DSC03047.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc03169",
+      "version": "21a61bd051b1",
+      "file": "DSC03169.jpg",
+      "width": 1080,
+      "height": 1616,
       "widths": [
         480,
-        960
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182878",
+      "placeholder": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACwBQCdASoYACQAPu1kqVEppSOiqrgMATAdiWYAtshOYJ1jzfQ4Uyi9wAQ75muaU+CtpyZ5QAAA/vItnNL9l+KHmt97JXrSNYEPOquNR6C/mcJ52Ba6znBRBMysp2dl/wcr5zxb8JcPTL8f8HNPRANC6gGX3zMHO/8hSvmo1sxEavDJor1Cd2Bbliy8QZlWUV4RIrCO/FUIQfSwqwQ2aXXTglH674aOW0UxUDaAMOjb5PfF3PvDIviRQtafsRuBvzzEWpiEjMgAAA==",
+      "takenAt": "2026-08-05T11:24:15-04:00",
+      "geo": {
+        "lat": 36.432,
+        "lon": 25.422
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Imerovigli",
+        "region": "South Aegean",
+        "country": "Greece",
+        "label": "Imerovigli, Greece"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "Sony FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 45,
+        "aperture": 5,
+        "shutter": 0.000625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc03047",
+      "version": "49f7031cfed3",
+      "file": "DSC03047.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC7ABuej3IfbmhGoAD9w7+iW5PvJJ+yJ04Kwp1/kPQwSjiQXTPbqRWAhwCut/VZk1qJT3VNLE/uq8q9RdKgekXUMt0SsHiHZuL0ipA8C97BBUbJSZY18yqgAA==",
+      "placeholder": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADwAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JZQDG9CICfuVCYLnQFmdIAP3D3REzd4A3FOB7zs8ct2Zo+MrQrbTdU3y5KSEMQZMIPZbo14p0cZu11lbszya4Hrbumcvfpin4rn/pShAPQIkfj2tISfUO1xj7Lv8Jv2ewMSvzIG2AAA==",
       "takenAt": "2026-08-05T02:27:12-04:00",
       "geo": {
         "lat": 36.46,
@@ -626,20 +925,21 @@
     },
     {
       "id": "dsc03020",
-      "version": "93d8e73cf019",
+      "version": "d21eccc7a1d3",
       "file": "DSC03020.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#182848",
-      "placeholder": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYgCdMoRwACnJcPm9Ia07MdgA/urSjTb472Mmu/rOZI/Wjy4RAhGtr1/OTyk3aiuKe0H3clSxwcliadJcDJJIxm+2se95YCu4/Zd6FGQ1U4ktmpQ8lXLD4AA=",
+      "placeholder": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdMoRwACnJcPsoMzq9s/kAAP7q0o02+O9jJrv6zmSP1o8uEQIRra9fzk8pMqOglZbqwW0D/g55KFTzRy2tN73c6p8HLuP4Ys+ABVg1FEFKHYeWf+EcAAA=",
       "takenAt": "2026-08-05T00:58:37-04:00",
       "geo": {
         "lat": 36.433,
@@ -667,21 +967,63 @@
       "keywords": []
     },
     {
+      "id": "dsc03020-full-res-web-2",
+      "version": "c37763a059da",
+      "file": "DSC03020-full Res web-2.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182848",
+      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUI4ABTkuH2TwuIuAZpAA/urSjTb472Mmu/rOZI/YIIC9G4G1tODAJ8LlA+AoGjTZNPWFd5+ltbBIQdnc82oNzNj3cTaxIlKGuiipwZ6yZWisQAAA",
+      "takenAt": "2026-08-05T00:58:37-04:00",
+      "geo": {
+        "lat": 36.433,
+        "lon": 25.422
+      },
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "Sony FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 8,
+        "shutter": 0.00625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
       "id": "dsc03012",
-      "version": "3ea4e40eaa6c",
+      "version": "93a6f8ddb838",
       "file": "DSC03012.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#a8c8e8",
-      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUABpvQDBpjBFLtfp0AD+36Yv1Aec5+/4ATXN4grIGIP6LYkEUXyuIvUC+8OM62Ip7PT8ljXlysvX0qt9eR8AWxbFXiIk/RKjCxs0C05U3SssufnxfW2ri4E+XXPQ3XCcL9qfAAAA",
+      "placeholder": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOmUABpvSeK6rPGOCixcQGIAP7fpi/UB5zn7/gBNc3iCsgYg/orb7b+sfnfizH2gMTNVnzbOOySRPCFrGM04ctoeFuwSTo9ojficfGE/u325Y4oYczve2SZp4Ouv67CezlaJrLJSN+uUPoAAA==",
       "takenAt": "2026-08-05T00:57:20-04:00",
       "geo": {
         "lat": 36.433,
@@ -709,62 +1051,22 @@
       "keywords": []
     },
     {
-      "id": "dsc02957",
-      "version": "c19798f0586e",
-      "file": "DSC02957.jpg",
-      "width": 667,
-      "height": 1000,
-      "widths": [
-        480
-      ],
-      "formats": [
-        "avif",
-        "webp"
-      ],
-      "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4IAgBAAAQBwCdASoYACQAPu1krU+ppSQiKrgMATAdiWMAvsGMqOXNOebdMPzEiJjHBnxX4wXduno6pdNdwf4VUbUdhVoJAAD+78IV+Ub1ewRwbnb8je6nP9Kf4IikyQA30VZUdcuq4s9eRGds3QXhaYovkNswryrdoe5l2sak+XADLjsnY+02aavTBGrwSPeEMhbbYPOdwstCkoSkVRy2MMEf47DsWvXbyuzbao8BYp9iCgcxq3KZuyXrTQktL5BCX6LueIDJxtyoRFYaYglN4hRaBxZVrZ60BdclRGiA4BAthVb7oimnsSC+iytQrY5ABP1b0/7xBp6rPsROIK1VQHTdwot8Ykifh2oAAAA=",
-      "takenAt": "2026-08-04T03:59:07-04:00",
-      "geo": {
-        "lat": 37.968,
-        "lon": 23.742
-      },
-      "place": {
-        "sublocation": null,
-        "city": "Athens",
-        "region": "Attica",
-        "country": "Greece",
-        "label": "Athens, Greece"
-      },
-      "camera": "SONY ILCE-7C",
-      "lens": "FE 28-70mm F3.5-5.6 OSS",
-      "exposure": {
-        "focalLength": 44,
-        "aperture": 5,
-        "shutter": 0.0015625,
-        "iso": 100
-      },
-      "title": null,
-      "caption": null,
-      "alt": null,
-      "rating": null,
-      "keywords": []
-    },
-    {
       "id": "dsc02879",
-      "version": "6c011f15bf0a",
+      "version": "185bc0d41b23",
       "file": "DSC02879.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCdABZNvyDlZQflvACYxHAA/dJEuTOhjGxRHBeGzltMMIx61T2Ap/7BNEP/f1O/oFIB/eUuYo61b3tjIzbfLVPUIPwAJ+CI8Qd9VcxjiYPoF1nUCXAOafy7ixD/0vk8P3i/zN7kKKQA",
+      "placeholder": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAwBACdASoYABAAPu1kqU2ppaOiMAgBMB2JYgCdABZT0DaBzqjhZO3ijYAA/dJEuTOhjGxRHBYiz1CzwT9Eol0l5o3+aKHTVMhYJRX9Z9P/hVzgg024nHAXwcMJP4UcSguIf46e7+6ERKIppYqlkPGSbE5aBvbeCx59F0eA0O1BWcTPbU4AAA==",
       "takenAt": "2026-08-04T01:56:04-04:00",
       "geo": {
         "lat": 37.972,
@@ -793,20 +1095,21 @@
     },
     {
       "id": "dsc02839",
-      "version": "6ed6d5f7dbab",
+      "version": "34b0db81452d",
       "file": "DSC02839.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#b8d8f8",
-      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JYwCdACFri2GjCg494kuAAP7TeoLzIST0b7ltRDgSP0TiayMZnGp0r3ws595Zepg0dSqIjxHbxLwgjuVisN6+KehmJamgiVjSNYp+6EdLfWxpp0eZAAAA",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwC7ACFlP/dxDJfE/9PGQAD+03qEPpOHu0TE/bqHJPcWihb/iB1JakzalJ3bR9WkfJnslZQO0DE5eEg9dfxoYYoPesnhj1pWtYp+6JXaeLWr4AAAAA==",
       "takenAt": "2026-08-04T01:12:37-04:00",
       "geo": {
         "lat": 37.972,
@@ -835,19 +1138,20 @@
     },
     {
       "id": "dsc02838",
-      "version": "66f2c81e8884",
+      "version": "89d23d4c2536",
       "file": "DSC02838.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAABwBgCdASoYACQAPuVgp02pJaOiMBqtUSAciUAXZCowNJGk4sDcDsWcx2bEXqdedvDGhr/sU7v8NsxDHgAA/mi+OulJ+lYzdS7czYNzJdEVg2P++4ktkoD5mi4SJwzpEc/rPzgI/8tp+ZJsSJ7Crgx54wUy3FpX33AtEtVuo8MRLQ1w6TcoNSTKpmBnzDVVdAaPSAAG3UzpoK575UUPMUct4EtvYnmGvVq/zdob90W8nULIBET/xc+g0OcBuPbV4zex1fGW/ZgWrIBWEJ/tkpRC9n/99Jp8PWjukjfdw6f8TisM3WE0TGvoAAA=",
+      "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAADQBgCdASoYACQAPuVep02pJSOiMBqtUSAciUAXZCvoNJGk4qvfjdYymAzjSlF658NhKZeAvQkBoWThSy/3t6AA/mi+OulJ+lYzdS7czYNzJdEVg2P++3BRF8/sOYNxilV2fNPLdmZSu3/spl1rOm54oIV1/44oJDMejy8GXPUNtsPEUjTaTo4VO+TmpLBUB1xumx5n15K6xvgmjP055SyPCYJHRLHstzJ+VwsbXRx9II9XZqtfgO54ObZHS9nBLiJch6GLiOlHFo/osG4PPbJSiF7EbKWuwJk8ivkglIkJqKN48J2ibcAAAAA=",
       "takenAt": "2026-08-04T01:11:14-04:00",
       "geo": {
         "lat": 37.972,
@@ -876,20 +1180,21 @@
     },
     {
       "id": "dsc02812",
-      "version": "e95b572830a0",
+      "version": "851696979cf8",
       "file": "DSC02812.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#a8c8e8",
-      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOgBDwuf4qCwiWqyQ+iIAD+rwYuVujGR0tsvdMuIWI4p+kd0E7rqX4PFDVfx9gxlODCEQJeNnY7sun4QQFM2t3OmF0DemjnspKAGF0mpHzfzPedbAmWVfk9efilgz9iQAAA",
+      "placeholder": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQBACdASoYABAAPu1kqU2ppaOiMAgBMB2JQBOgBDwuf4K1csUWOJKgwAD+rwYu6UElzMvGGEvK18Yf8mpWsLyPSNRkJUH53A7VCteU/lQtfF8w9DfqDyNJWLdV4tGbwgjBUM8hSTjqKxwk4JYCrCnKhdv2AXElu3cAAA==",
       "takenAt": "2026-08-04T01:05:56-04:00",
       "geo": {
         "lat": 37.972,
@@ -918,31 +1223,27 @@
     },
     {
       "id": "dsc02809",
-      "version": "452dba1e6d76",
+      "version": "6b3bf7296f79",
       "file": "DSC02809.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 1080,
+      "height": 1616,
       "widths": [
-        480
+        480,
+        960,
+        1080
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#5888b8",
-      "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBQCdASoYACQAPu1orVCppaQipWzJMB2JQBhfBzwy+cUacXRkq+ujdArJMJ66ABwFQrwaWa+P+AD+uWYviZlL3/1K366JjvqrS3NmLM1eC0qImwkgBdEPzhM6g2mpAGg9mqzZj+ravZGHG7Jsp+iv1YMTmGPN1eWh/PKvCXTTJX4rXjZ26d4TcN2y8qwFWJc95L5zgk6OxO70p9l+iXqbysaKLfFLNc4AAA==",
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABwBQCdASoYACQAPuFgqU2opaiiMBqtURAcCWMAzFhl2YS2dsixmrFk10ygmaY7NhQEVUFgAP72CvL/mO5xqeihu6gynp5r2KCEVjFKJT4qnyu7gSSzy72VzDFynsdMMlT32Hkbg48pismyZ2wj+FvUZiDA2srLbKzf1GNyAEIuhfufGzBmz7HH3R2bEMGUhUAipnr19kfdsheuyayOJV2U/cAAAA==",
       "takenAt": "2026-08-04T01:05:50-04:00",
       "geo": {
         "lat": 37.972,
         "lon": 23.726
       },
-      "place": {
-        "sublocation": null,
-        "city": "Athens",
-        "region": "Attica",
-        "country": "Greece",
-        "label": "Athens, Greece"
-      },
+      "place": null,
       "camera": "SONY ILCE-7C",
       "lens": "FE 28-70mm F3.5-5.6 OSS",
       "exposure": {
@@ -959,20 +1260,25 @@
     },
     {
       "id": "dsc02804",
-      "version": "c17935621435",
+      "version": "43988b9b9570",
       "file": "DSC02804.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwCdH8ADAp2kDyvf1ucuMj3XgSAA/tNNJUyiuGMycWEm+M3pZ/otU4Uf9S1dnSOquOhe9BhwvHFwlzu6N53HyJAqRq/OegAL1fndLID6BUBCdJ5eQNNQ+SbNQ3PGkAA=",
+      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JZQCdIA/DAz8arr/NZYyj07I6cAD+000nER5kFvxx/nJWLWjdYRoX9FKFc7cq3gZsVEviuUJ0HaAfrhDi8SWazrxCRpxDZKP/UjDNXmbVunSuEe7x5jCV8AAAAA==",
       "takenAt": "2026-08-04T01:05:30-04:00",
       "geo": {
         "lat": 37.972,
@@ -1001,19 +1307,25 @@
     },
     {
       "id": "dsc02803",
-      "version": "4ffb09bee3b8",
+      "version": "7d02d20d06d9",
       "file": "DSC02803.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBQCdASoYACQAPu1aqk4ppKOiMBqqqTAdiUAYz4HUgaj5ciWi7zYYzkmbBPXs6h+ekA14CfvMAPcEHbRon2xkKYjcLZAJ6+cGVPf60MpS4TiFC3z2/AvceIHkA/ano6UCSHTM0QC355alY+uIC1d1OpFS7dfAPrTxYUBYBkPYycGsgR+p2bKukNfKduIBAiy10G/9AV5ezqDz4vVztlSwOM7ZW/TD3D3I3dFuCK8Pap6ppqYP1OInf/CvEjLQnhPoPpBksAAAAA==",
+      "color": "#584848",
+      "placeholder": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAABwBgCdASoYACQAPuVao02pJSMiNVgMASAciUAY4qavkACaTClP0kP9GLxIxp7QwMXmwSrDsdE5EMvoRwAA+dLLsELJ2DHECcExzQxOR/18CjbHrWfZVtEC+AbSbRChLPqBmj/WabTwPlx5yIdyZ/WV1SqPNrRDy/ng+wqTHvT/GqwCWo8uBqVEOnsuLg3EFfi+tgzutuwnCnaGkTQ5vOYOvjwlwoDSpxR++jnfBpjPCW1E0qBt5wh8rkaPlFz6gqPJc/7AtLi5Qzh/X0psAAAA",
       "takenAt": "2026-08-04T01:04:02-04:00",
       "geo": {
         "lat": 37.972,
@@ -1042,20 +1354,25 @@
     },
     {
       "id": "dsc02786",
-      "version": "ec80840d28b1",
+      "version": "f88439a78eeb",
       "file": "DSC02786.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JYwDE2B8wExtFMEmjsCwwlAAA/pUHSLpeC73rjusg5a9ih3asxAWs4HiiSIfKvOU8qH1oOnRgx0583ykeQSVdDweCAW6N0mvtCZYrGIwW+Damhmu0ij1SeHLNiQuzghqeTe0eNZI2vhrjEXTjUjqt585XeAAA",
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBDzqKlSVFBIit5HgAPRs1R6fcRkVkTqO+oiy0szHnmqZMFwwCsEoXMNtLIaaLCF5/UHJb5OXjjoDT5DQnzk30cZ+UbQ2cLdas2XBqhRhyokAwfhriHZMHJM5ZPTwMt7SN2sS38hdAoWROlGu6E+XrG2u2mYkc+AA",
       "takenAt": "2026-08-04T00:55:53-04:00",
       "geo": {
         "lat": 37.971,
@@ -1084,20 +1401,25 @@
     },
     {
       "id": "dsc02749",
-      "version": "e6a655f35793",
+      "version": "9d240498fa2c",
       "file": "DSC02749.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOmUAS4gm8XcOU5RL4nuQW44AD+qh9dBWnFXodQXDdJv0ZhP+tyiVQvx6XfjHW4NAZ2lLxjgky9b5zuOqtud2kkBxAp3B6FWXtI6W44NpBpNHZPdYswLbtaPtAdLOmOHKuNk6e3gnnkxPWvrlLx5DWRPgVHsIGE8YFMvG3RJ+IvOZg7mxt8uukVb0vUdfZ+UWXi8lkoQRNHXleEVDTEF4IhGsbEMBwr6WNwzr913FsfkAA=",
+      "placeholder": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOmUAS4Afo9bKijBzCbXnPa2AD+qh9dBWmznqf7hZUmf2PudP3k+lSbS+YUvaViZQEw22qvfEis416no7dq/x2uLjz+deI1qzBqCO5EE7LH7ASuwuQhqeFjpAC2Vuo109NApL5//T9j/puZzhy/AM0a5/MJi/Zj3vJigQGi5dfhggtV28ZW+VpcHUSMn0kJQ3KrhSyTTd/4b1giWPtIRHfoJdqi81TMXUWY3ORNYKk/AAA=",
       "takenAt": "2026-08-03T09:35:40-04:00",
       "geo": {
         "lat": 37.976,
@@ -1126,20 +1448,25 @@
     },
     {
       "id": "dsc02744",
-      "version": "29011327f89c",
+      "version": "bc3bc5d36654",
       "file": "DSC02744.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#e8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwC2yywBs5yf/oezjVH3HZAA/vHPIgexV/joRW+tGPo08nDtm7XBGO9dpwxtW3XUWGARoX1WVI9igIFa6YX810cRmZ3/x0EDr2N62qR7WfbwJ81LQn6LpclLfPP5wmtl7tAF6JadVw9sIt6ZkZfBG8WXqfIdFR4Ab9PAxiYliAAA",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwC2yywBs5yg9N1sUam3z4Q0AAD+8c8iB7FX+OhFb60Y+jTycO2btcEY712nDG1WR22HrqH5v99ZMsC2h5jF2EJWdQKA9BO4sf3kRhS9RzSNPYrjfFmueTTgbntHvCcdSWMU0m4m5YeQfs2v+Rgx+jMgvPTHERp4BWRGY8PDwSAA",
       "takenAt": "2026-08-03T09:30:51-04:00",
       "geo": {
         "lat": 37.976,
@@ -1168,19 +1495,20 @@
     },
     {
       "id": "dsc02742",
-      "version": "e66ed0ec6b32",
+      "version": "d8e47d3750e2",
       "file": "DSC02742.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAADQBQCdASoYACQAPu1wrVMppiOipWmZMB2JYwC7AAwnXsYQu/1QSq4CQIPTr6fTfs4hCaOOUv0AAPfeOK2dIkGCTLy4+lR0j1tCxpsGg0IKyxjJ8zS78Psy555jN2sn2XzPia6DWgAMEbfrYNBet2n2SuI0ZwKmLy2aU5IsTbOPGnSIbHaGeU0jpY+Rh033LU6lQ7ZkawAlR0yqrVd9PQ2XwnPxn78lWd/Hb6zMooQgkr7UOO0ZWLgwjAibJdYfk0YUYlNDGjYLTuUQHS7LGh7kQf9WtbFUyPpCNu9FA0sWa2Qm7qwYJa4zZ5z8uc3MH+Ntvk4A",
+      "placeholder": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAAAQBgCdASoYACQAPu1wqlIppiOipWzJMB2JYwCnP0gATEkztD04g6MXJ4OHS7XpaLcGykIMskdTs7AA9944rZy03NZa3YpzeJRKiPw9EUHUzZm4YthY8u/D7NBUBuz2Fv538z3zd9NuAjHUO3QZcW0U7Hq4sNpvNdsqFWXLMbMg/ywsvpq+f17GpWxV9jIxCycEQl7mUCeoDSLycEASLUHVsKpozkEE2qg3VvQug94gz8Xc/R2kW3kSIqxHsrkerlZJ2mYdOJ+h9XG56HH1JHCgzQBHfH0I8A+8cr6VG/H6IqiK8TkV4y3pCqCyCDdM1bTzEtysSAA=",
       "takenAt": "2026-08-03T09:30:45-04:00",
       "geo": null,
       "place": null,
@@ -1200,20 +1528,25 @@
     },
     {
       "id": "dsc02712",
-      "version": "afbbc4df56df",
+      "version": "97a0c29a876a",
       "file": "DSC02712.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#e8e8e8",
-      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZwCo9BA+O3+ml4Dh9TAA/mymA5S8mvc+VCjQyECQx0hRNltr3E4VRt+gVjSrj/qHg/ZQZZZ6SaXWJe59o29ibUBd1KhlbgwIuXhml5+gIgn26aU5wIyCx+HfU9D9jXAqzk/8Zns21BKUElVD5e0LpHWkSmwgogJgZAAA",
+      "color": "#483828",
+      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBadAoN05Li9y4L4Bw8AAM4umJkVUlvfuqVijLxcame+SMfA4piyJvu+48uKipznHP7tradei0YU9wJG3miSI/qzq58MKOJ9bMHv+TzpiGQuXsG8Ev1B7hed6kIIjGxFinR+clFEZiB/tcF7E2NrlQAAAA==",
       "takenAt": "2026-08-03T09:03:43-04:00",
       "geo": {
         "lat": 37.975,
@@ -1242,19 +1575,25 @@
     },
     {
       "id": "dsc02695",
-      "version": "d4cf3d69ed4a",
+      "version": "58f3d778b2d6",
       "file": "DSC02695.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRhgBAABXRUJQVlA4IAwBAABwBwCdASoYACQAPu1irVAppSQiqrgMATAdiWIAv2u+pwK4lBhjZ6AbLWlCrymqKOO9rwuROuNXz5lOiF9CQOiLlDV8gADM/WQU08RQ9Ja+7uEfTdZ3uiRTGOAo/Ycb4uhWSUctIexTmeSU+PUK4zYLk5ucr0FGTW8GA8PFIxgzYg04+NdVL/GOzOtL5k6EMr/qRO4C2IwthpFPHhDgWwRgBwuQkTeFl/H67AJxpAwY2eP5hMx9NsCsoHaqZdejLLhTHgB2X0KCLS0XeytqFAZlCWF5Y+EwZI8vyqVypNvIecIVgpNrXdTGYFRIP82L/FhLYY7b2QnwP83HR4SRPlVDaucHm8dU4BxjAAAA",
+      "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAACwBgCdASoYACQAPu1irVAppSQiqrgMATAdiWIAwN8ww6yDlT0+G7qq8CuQQv1aN/Dcrl2Rsdj2KzEFMXxQwADNc0maGTnbpQyrb0C24YLwzK+V0wZupfcrCShhDoH0/yBQURHxbAdqUj8w2Vt9Ae+UHluwyiPVB8KIxbWGBISymmxxSnnfk3TcT3o37RmqCQKEJqoyJg8VAV63C2eke+WUYQcpgDheDGW2i8FJKpBrO6mhF88SxF3fPv0dU+Uq4NqmU5tfW7Y3EuluLaiDCTZn74oTO84nFfQWcgm6kwYaKMyZB49bUE3DfXx9dfeKN/J/lMlgQcqvcAYwbRAKENzM9LWeZrn9r7qqlciMSOyNSukIYAA=",
       "takenAt": "2026-08-03T05:51:10-04:00",
       "geo": {
         "lat": 37.973,
@@ -1283,19 +1622,25 @@
     },
     {
       "id": "dsc02645",
-      "version": "bbf904f2fe75",
+      "version": "10d64c2fe717",
       "file": "DSC02645.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#d8c8c8",
-      "placeholder": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAAAQBgCdASoYACQAPu10slOppqSipWgBMB2JYwCw7FC7tTLJ5+x+SVunM3jDHOq+KaXAkF6g9gR99kAA/vYw9/BzjAS+xMLcX1/WwuhOgx2geFhZcLR3DdQAfnfBzd0g9PeAFgSc8hbD7OgbqJF0/8N/JwgKlmT6+7vr922JBmbnTZQiMWVMMMvwQdZktPgTSEkPr8or+UZNVjhmovkLpg+EdfRAU8KQqoFhih7BrQivJyNREi2VHWfW2rgeg0p2YtDicaCuaUuXoWFLgOVyQxIrtWpQB+MuY3JwzvVKnVElomYAAAA=",
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAADwBQCdASoYACQAPu10slOppqSipWgBMB2JQBb9bSHHC4WmNS961STFNOVNEbYZCA4JJE8s1soyfAD+9/c3bxhbhMRMyUnR6RS7Oo5YLJ696PX4lx6n5m3CEsfkd7dTbIXu+taucL4Vc+75yTPgh85OfQ539cS/+p4fVtzBIbPB0/S+KA0DG18gAZLJs+DnIbnaExhV6E+GN3cBaTBaIGdjxhmbbOEfPdRe9Ei6KQarYqGJOlMRyOOBDKUJ/9s8wadXnDNBFbX/KGgLZePOCEzU5UNbVB3EXAwrBGrCwvmT8LIeBiVPZaLwzdq6iwMQ91KAk8vnrAAAAA==",
       "takenAt": "2026-08-02T12:40:59-04:00",
       "geo": {
         "lat": 37.967,
@@ -1324,19 +1669,25 @@
     },
     {
       "id": "dsc02493",
-      "version": "461667ed9f11",
+      "version": "9bf5745cd088",
       "file": "DSC02493.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#887868",
-      "placeholder": "data:image/webp;base64,UklGRj4BAABXRUJQVlA4IDIBAACQBgCdASoYACQAPu1urVCppqQiqqgBMB2JQBOmUAS5gPcDA446omJytvCaDkn7vGysnIH3uT77cq7v0x1AAP7Ne4hYPc+r/jHGQ0Xre/5htBtLoJk13wWt0iFMO3gYnlCyD41nB3RK35Oi0l70hSIFVv53oCtc34gaeoJAU7VdvHAArAunGRyUVmJS7w5yyyzcnP8V57oO8PmekIVEufHz8IcfgxEA2ZSC8G6A50VLyg19EQEk9w1P6bxOsk2LVjPrvv4DVL/ncp2YbLjUP7rmnYjEd5vDqys9tCNQR7V3lPiOT0C0gmLHMW0b1uRHafnrJQF0tvS7ldQYfH1HvdlVGGnxWAx/MRz2UkKupgq/0Mbw6IhmD2M9j1woQROc1R5tcCSI/4hcsYC7Aol6wBWHAAA=",
+      "placeholder": "data:image/webp;base64,UklGRjoBAABXRUJQVlA4IC4BAABQBwCdASoYACQAPu1wqFAppqOiqrgMATAdiUATpmFt/9SvG9obOmq7VNGKg4oYBZF2L0WOyCAu3C/ojBR5wCwIaJsAAP7acdw7ewGB+/pidICjD4OZ5Qf3U/KPPOCbugxL9Csbu+5xQ/qRBHC3L9uhPm6pQqUuzx1v+gQ3Tv1NGOE/iCUqYt+gLASvw9FH3spwqXsTp+9/H7SmnvZ/gjMgLtQ4BM2TDb6LPPfN0xDQD6c1w51aLdvdsb+fxvtH5IFEJwJ6WcuvKm8XwqZaaM3Vwol2WQyYzaa+spsl1dObUo+lxuHA8jWaCdKrScYiSK4GYbzM1xJTDHXH41A0g0ourZ2iJWOSkO8FxpoQ6BenQpLMWDizqrg8A/7UK4LzUSvGM+YoWpvm4DIjnHcYAA==",
       "takenAt": "2026-08-02T03:28:22-04:00",
       "geo": {
         "lat": 41.006,
@@ -1365,20 +1716,21 @@
     },
     {
       "id": "dsc02473",
-      "version": "4c37f645b7df",
+      "version": "90ff1fca31ef",
       "file": "DSC02473.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#7898b8",
-      "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoYABAAPu1kqU2ppaQiMAgBMB2JQBadAaq82H+b+xkwM2IA1oS85cJsmIXOvmcLWdKYjW2uidlBVQ2CIaREi8XE9ZLAG34w4iomzDws/PJyufK+K3ENSxG6XA1ETAAA",
+      "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoYABAAPu1mqk4ppaOiMAgBMB2JQBadAaq82NqWDpcag2AA1oS85cJsmIXOvmcLlTpTEa22RAUJAhMqqzGNG9IGucbj2wL4gEYxN4b1O7QWjAz4yESmMFtRjwAAAA==",
       "takenAt": "2026-08-01T12:46:50-04:00",
       "geo": {
         "lat": 41.038,
@@ -1407,19 +1759,20 @@
     },
     {
       "id": "dsc02446",
-      "version": "8bd25032ed40",
+      "version": "dd51a3d8641d",
       "file": "DSC02446.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAACwBgCdASoYACQAPu1aq04ppKQiMBqqqTAdiWMAwP0twciqhbsM8pIS/VQXqGQN43EFMZhVU38P84T/4mDjUAD+8rT6iktUeRzIC9/JEr5+9bXo5QMNOfZxuvRDrKdQNWUT484CYovaNJXtpgMcx/3Gn/xUeQPp+fSsECEF7IzgEVpJ6siPUzrn4tn5XnU2nbwBmRGARJo4VLGc01Dk7rQPAEcr+cOCwAWDUaTcAEHTbPQe/4Mdd5hATZV957J6QSgs4zthI0cL3EA6NBxyLj5MMFxb63+VVgEEwkkj0SV9xn1Q7JtKO2//iXqR/m0Pgbcdu2a+JjAzgxMYQ49mGgIclUhCgcMfCP4bEqDUCgAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAABQBgCdASoYACQAPu1iq04ppaQiKqwBMB2JYwC7IT5g1Qry/kX38r3eEaFrDhYavFkfVVhzKUK5Ecg+EAD+8v49RaWqHuHf35su5WfhzteyntNyWOI+TEbguME9od0VHliznGW4pHx7n51WIo8JgVLa3Dd+8H0yoMtKyTWzGcgC03KE8hR2+cm9tP6o80nX/rBfYhC9gYcOYwhpIs9YC78cFrlK298yAcMkXwYAGxplqVOwwpUVzAvKdGGF/SxglSpA+2EjRwvcSBnn0BBUJBIvtJmrthWLgUQQDaZoGEmuNX8PvLq83/5yLR1favYwjoIwjhU2reSkVDiEWUzXiDUBExJCwhnnBd6GQ1RJv4IQAAAA",
       "takenAt": "2026-08-01T09:34:31-04:00",
       "geo": {
         "lat": 41.028,
@@ -1447,21 +1800,63 @@
       "keywords": []
     },
     {
-      "id": "dsc02335",
-      "version": "64e63e4e9489",
-      "file": "DSC02335.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc02431",
+      "version": "c50dec2e0b2a",
+      "file": "DSC02431.jpg",
+      "width": 4000,
+      "height": 6000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADwAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOgA2ay65FBJTORNr4AAP7F8teWO6Frp/bZIQGpDdpyBRXW4nDABQ6kn5Nilaq1DZMsIbJNfvDornjHGtrPIMgQdIbberepEwDHurYav+/6SwzSK5du9fIOsiCxqE40PByk6AVqf7fotbl869fYmbW5B0jpxgxH1RtvIjmim8ZJAAA=",
+      "placeholder": "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADQBQCdASoYACQAPu1mrFAppSQiqrgMATAdiUAVhDJwETeT3KLpns1SPRwyGDc6dEFKDLeAXRWAAP7zL/Kz/b8mmZaq+OWMuy4XFcqUJR8ih3YoDprprbrptrqniLf3ddZsnbyRBb/WgBWeTDZn182XF/IHeL5AEHL8Nl+ICyzoEzFX0McEYn1/P3pP5tvW7ErSExYBAiEd6obZfGDt30IugInZjKr7Av4c+de5usBtkuarCOdBTAoSyAlvayznORPm/v+8cojlt2/RKEbIAVmT/gewAAAA",
+      "takenAt": "2026-08-01T09:27:28-04:00",
+      "geo": {
+        "lat": 41.026,
+        "lon": 28.974
+      },
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 64,
+        "aperture": 5.6,
+        "shutter": 0.01,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02335",
+      "version": "a4c4b33d153e",
+      "file": "DSC02335.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960,
+        1000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgtQax4MAhn/OtfbMAoStgAP7FoAdGKUEWqR0qssz1Xe2TeIOCs6HCgqd+TYpWp9D+OXxylqmDFUeXBApVwfXupDbbNGZuGg4syrtANItS+Om4Yuf/N3GjEHAz+IpSzqoOBIrD6BcNvOZK5OQTTP6kSRhH3FvKlHFWr5IwMYjgAAA=",
       "takenAt": "2026-08-01T03:09:10-04:00",
       "geo": {
         "lat": 41.007,
@@ -1490,20 +1885,21 @@
     },
     {
       "id": "dsc02264",
-      "version": "63cd8fc512cd",
+      "version": "46aedb27df05",
       "file": "DSC02264.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQCdACK3k2Y59b6YlhvbbHIAAP7UUMMbUb0GiWqGPT1mN49lLErx8kBTLdsSNXcyBRVx/01JOn6XsneRaQvz/OfJZHt7GH3kDnEPyjmaV+TtCbNFUcae+MEnkcyC9ci2dPk67La+qPSvrvFtTMSM8K5Bo+kdarsA5xI6KAoqAAAA",
+      "placeholder": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdACK3k2RfXEPZbGo4YAAA/tRQwxtRvQaJaoYjlNCHfJBVlFnRm2C7dwPYCIBNFifX2IQJ5u0Q8ejjHZrBMMuQgtUrmb42s4G4+TVl/H4Y3HHcoXgb/18isrrmb7kCfmfiUXhh7o2kepbymnym8/FKZg8TfSaPkxI3XAAAAA==",
       "takenAt": "2026-08-01T02:14:38-04:00",
       "geo": {
         "lat": 41.007,
@@ -1531,21 +1927,156 @@
       "keywords": []
     },
     {
-      "id": "dsc02025",
-      "version": "118eb9eae836",
-      "file": "DSC02025.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc02263",
+      "version": "e9434fd38972",
+      "file": "DSC02263.jpg",
+      "width": 1616,
+      "height": 1080,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        1616
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBadBEPjr/UfAvRkjGlLAAD+sNrGavjj1BLfAaz2K5jgdPMSDJQ0hDZPshjid5OCJ+pTY1vUBIgNgDWpfpM9oToPQKzDXWVaA2q5F4XZUsPfnQm+Q8fFKnfbq+ujrx+dGXcEhmC1dULdxvzXUvM6Y+l8aHdc+xquT9kmGxUKMAAA",
+      "takenAt": "2026-08-01T02:14:37-04:00",
+      "geo": {
+        "lat": 41.005,
+        "lon": 28.977
+      },
+      "place": {
+        "sublocation": "Sultan Ahmet",
+        "city": "Fatih",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Fatih, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "Sony FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02257",
+      "version": "88d5226abe84",
+      "file": "DSC02257.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#181808",
+      "placeholder": "data:image/webp;base64,UklGRkQBAABXRUJQVlA4IDgBAABQBwCdASoYACQAPu1kqU6ppaOiKqwBMB2JQBihafAvxpXbLSJnqyNSTNXq6qeyf0yP3+NOdYosxLh/cxmWwIjtZ2IAAP3BXPcdYYQi3373jn9KtSpBlkMwFGEnbJEhPCzxB9niwV5EpVvAoEGgo9jkFDM+MF5G8ERKLn4Ud6THnWewu9kJQA871KXcHYoNEMulzAzCpnML2FqKl5NX3KDlxFHCNyvRRoVecalUp7moKnYzArSsgmPS6fJZH2/jo+9/zVD5hDgkT8MTmY8JzA2kVYiq5DKGVw4blHQxotsL/0AAB/J9rKKaMErO8xN5T570kCQZ5ycKojDYKUCfMBJokJ00aTVakQs8Lq8WF7KjUtVqp9FqHFaZ1glZIzyi+Dj9wazOfIO+rRD9IuWpq25SkEM4VjOmAAA=",
+      "takenAt": "2026-08-01T02:10:57-04:00",
+      "geo": {
+        "lat": 41.005,
+        "lon": 28.977
+      },
+      "place": {
+        "sublocation": "Sultan Ahmet",
+        "city": "Fatih",
+        "region": "Istanbul",
+        "country": "Türkiye",
+        "label": "Fatih, Türkiye"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "Sony FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 4.5,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02034",
+      "version": "91914463a972",
+      "file": "DSC02034.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdMoMsdEmJaZGghm9faAD+78gelufTKOZZVZbl+snoR0fJ2aUpyrrcJf0gktUetI7yDkEO2NuSg4rl1jqyy3NeLSUfTDMP2pW1oJJsZOxn29eXnAHjof5WFKQ3WKrIFdQA",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYgCw7CHQWlHm/LFwhusQUAD+4AsJUXBQc2FXXb/Gru65L2bYGA78mfz8dji+94JSrUHFZlCBfzGbvKcOQDqwhEDQtLxyYZT186tYCXgyZ3mv+SRFVCn4SNvGQraaQ92kAIuuBVridBeIlnDfOzUdThVSO2PGcdOpgONCiPKYkgAA",
+      "takenAt": "2026-07-29T08:17:11-04:00",
+      "geo": {
+        "lat": 40.654,
+        "lon": 14.614
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Ravello",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Ravello, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 28,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc02025",
+      "version": "61f56f618a44",
+      "file": "DSC02025.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960,
+        1000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoYABAAPu1kqk2ppaQiMAgBMB2JYwCdMoMsdEmL7sj75ijDrBHwAP7vx89CdhFKRdv5NHigGj+RvlNZy7MW+SOrXVX2WxSvfvxp8O0EWlWR8i2BjR/TEbl2ksMyM1E+W82qio0vE1n7DXDIseHOOPS3QfDWGCujsF1s3FwAAAA=",
       "takenAt": "2026-07-29T08:09:23-04:00",
       "geo": {
         "lat": 40.652,
@@ -1574,20 +2105,21 @@
     },
     {
       "id": "dsc02023",
-      "version": "131b279812b1",
+      "version": "428b31710a49",
       "file": "DSC02023.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#5888b8",
-      "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdL144ACk8OGLwTAxg/gAA92LZzFd8y6ZST5I/pQhkQ8u+gnN+B3Pez97pnW4r0fPjj+85k0oEwNPpkrPdTNU1Pn3zWxNiRGVZkGHpISsgAAA=",
+      "placeholder": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCxG1AB0S98ZIc2XM/EAPfMRS56RwvBfONCsU+3yY12CMVLXqrZGUzjpcrk31q5PhQe3bqYewJISUTYda2RBfIK5cPTYFzlZA9DGS6ToAAA",
       "takenAt": "2026-07-29T08:09:10-04:00",
       "geo": {
         "lat": 40.652,
@@ -1616,19 +2148,25 @@
     },
     {
       "id": "dsc02006",
-      "version": "a8a3f43fb388",
+      "version": "cd0ac88287e9",
       "file": "DSC02006.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAACQBgCdASoYACQAPtVan02oJSKiNUwBABqJQBdmariL5m6IW7qaEj9EPSGZdydq+j+nZZgBnZL/xmAf+MzAAP71aQsKXNM6w/5tn+78Hcqn7Lvj+QurBSaSyjHg0SmfEwZx7xj/MlFC7B8M3Lun8XbozVVN1NFRsmah9OH3LP9Y8btSpDURC/jTo02L8O8Ds54lMoU5YRTCybnmugx4zREvv+mLlwwqtyQpxVKgkVKDn4BAveh7YnONZCHr0lv4mZHRCBB/IQ1kJdAAAAA=",
+      "placeholder": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAwBgCdASoYACQAPt1co02opSMiNUgBEBuJQBZ2cBCL5jUpE4hYbFt5+3v8uJBo2XbgS3M1Xh7WVPwAAP71aooyg0PH6PGfzjmCttSrwbm7p43WL+coVYjK5ao8bnQV5NCrfFs3Xtfica6RXYXveyFW2/EnjKewYCYm8w9U7fIYMlk3c+gOL3mmHAlOIcVN+W+LpWIDD9LW+S1tJR1+p+k9UOaLtwF+R55PNV366U3V36v2OAWafL5NrBbPhiepOIjEchisIAA=",
       "takenAt": "2026-07-29T07:59:48-04:00",
       "geo": {
         "lat": 40.652,
@@ -1657,20 +2195,21 @@
     },
     {
       "id": "dsc01996",
-      "version": "947c287c7bdb",
+      "version": "48f93b225d14",
       "file": "DSC01996.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#688898",
-      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdAAycA5W2zSJ29AAA/FKty+HfqpCE0m5aGigi8x1nHx14STfldmacHwSAfRl3AlNYf231p3GucFq8LmyadKxHyq6Sr9NDECdTyM37nQ0NfRrAP5BeaFgyJ4ArzyJFm++fpkvUIkAA",
+      "placeholder": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdAAycBUxjdYrx30AA/FKty+HfqpCE0m5aGigheC+h56NTBeSw0D7JkzMylad1UWJ5074654RBqPDeAEX3ZYVr3JrV9RrfVmNBM5W7gM156FWSwEAmeiiB+s3eXgeOimgu9jAAAA==",
       "takenAt": "2026-07-29T07:55:58-04:00",
       "geo": {
         "lat": 40.652,
@@ -1699,19 +2238,25 @@
     },
     {
       "id": "dsc01910",
-      "version": "5c6ac9c9b566",
+      "version": "3218da9970b8",
       "file": "DSC01910.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAABQBwCdASoYACQAPu1qsFEppaSipWsxMB2JagCdM0Exg+uivtDXK98n7kX2kglSPepjIOrAH7CgBuO7LSwnn3qVtfRYAPxdzbOKF5I3eJQbgtdWzzTFV86n46NGTVnPuodQ5vSOtLS8GjZ/ea6Vb6kPJs7DLUVlBzm+RCL0wVNnRU1KojK9iCXV+Wc4oma9dbuL2y/NFdypwH3xyJ9z7dO1TDeVWuAh1mscVUyxKTqibbSprACKtxJ16Fx/F9tEZdBmigw6eywVggV6lTkVfKOtXhod2OpSn49oi9NQCDaJ+qYfwOaEuuFLVj7OaPCBXjxEOcuDMmFwndqNuTzhJoJsjPUs44lkmbprXi8/Nl0sSplWdIgEiNHuNAv6QRkUx/rCvAAA",
+      "placeholder": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAADwBwCdASoYACQAPu1isFEppKSiqrgKATAdiWoAnTNCiKgImOJkAmxHH3JZvgo/6fMmUYuTOOavDsFR8OW5jwVkJtJ91DkPcMAA/F3NTBmkh+h9jph1WX5hp5NoTSV1BLW1xQGN1VT7qv7NJ3YqYrEO1hyXJ3cvKbcCwxwRmuUwFQkCc//Mawg0exAF3Kcy4bL+ut2+4oRftE72EnUJNi3l6CjvwTCIOw6psGxzHp6HAYm2dK2wBX2XO02hv3pZgCYF0GFLitskwUI8tfjQxVFMrSF+kqEg6Z/dYl2XhHreNEXS3cgvJcetKKAwWg5+ZJd4H+TQlYEsP+i3WbbwRFI1JKXBJoJsguqb8YNYeQAJPIXaT0XqOkm1AL1EDHneRIXJNxkMfiM3bpAA",
       "takenAt": "2026-07-29T03:50:46-04:00",
       "geo": {
         "lat": 40.628,
@@ -1740,19 +2285,25 @@
     },
     {
       "id": "dsc01866",
-      "version": "b48a27459924",
+      "version": "d46c3eb0959d",
       "file": "DSC01866.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#885808",
-      "placeholder": "data:image/webp;base64,UklGRpwBAABXRUJQVlA4IJABAABQCACdASoYACQAPu1kqU6ppaOiKqwBMB2JbACdOUFTvfwvDyjO4CVA90P8uH5muvRl5hy3HqEi/ZCAjNmHSh15g+svgvggG1PnEAAAzchq/3EcXFmcxyXNcS8XQdQpoZVnR5um8kKdopXWR7rnQvZui/xSG798He6WC8hDgO7J7Crhdf8VrZbz9KDoe8qA1Ne2SJsphyBXTPAWbUkrdsvF1oC/9N1NArrThGBfjnFsdxd0f9k7NI0poi7tjYATCssAE75E2ZRFQL8P2TABr0nO3m9fe2jJR0KsGwGlqAxer1z5UHpfsE7qDf6seuiSX2c3E2oMQPMo7lD3LZ3Y+THF2pRCl4liqdNDUxUPSuH5+/gliRb0vJv7DTeWKFDRmY2YUQ2M1bzFbfoRs39TFrx1nbaV4EMEu0nBMPmqcHGQd3nbnnSHK9kTjJ4oIUvGxtgxqOJlgHz+e3Z8d+lMRTrEJPGONdozWulR+msw67KlX0gj5LJ0vrHmAS97HtkfddffsxJw/McQOdUVqRn6gAAA",
+      "placeholder": "data:image/webp;base64,UklGRpQBAABXRUJQVlA4IIgBAAAwCACdASoYACQAPu1kqk6ppaOiKqwBMB2JbACdOUFR/hPQXmojilACVTtz38qH5ma096GLSo5ossPuY1kwlfR/s7imhh3M9PnDAADNyF6qMqAEbj6Mpxwk4o7NWXg7ESRLbTdMjxmkeMnqXjNFqZklKsm++mF7VknwAlyyFCdsTmggA9cWw9QdsDx0Yby2oFma6UkTaB+YCoHMOsd3/1c53S+9rIw4vw+CkTmFf5guW87NM2LHfa3dMJ/6dx4Ath0WE1/fmIdQSEnTMmk9l6Sw5R4nnLkri7k5+r5DecB7lkZolMK/DwrybBZau06JJXWAcfDxu8SW883/fXUZqTK+NQBKCklwesDF8i4BZ6WH/HREqVxw0FfkoJeeCK2bzZjXhRGAcxWcB2/HbeLbfFLAPt8jUI+c6dszuTbf/H4Asu9IRzehjfsS+gm8m3hVFRwI7c3q9UEn367vmvz4iNgLdK2HlyfLeiNuQ+TOjrXIB8nhK19cXHNks39muLYl3a+JRECO8aWgAA==",
       "takenAt": "2026-07-28T13:36:00-04:00",
       "geo": {
         "lat": 40.628,
@@ -1781,19 +2332,20 @@
     },
     {
       "id": "dsc01691",
-      "version": "54742af3461e",
+      "version": "4da16f84b698",
       "file": "DSC01691.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRiQBAABXRUJQVlA4IBgBAABQBgCdASoYACQAPu1mq04ppaQiKqwBMB2JYgCzgAgMROygV7IyJx+FdM0/bW66HqIJNF+xbqEvNnklAAD+zz2MtKk2/MwJJhC8UDNcd5NdVbRBz+c4jB0VF1SHs+rWi1JAvrJX2l/TmYtPyyihmz/TVOtE4CTvmOpjEbFpEbZdj5m2LS91iMRb6fSH3d1kJePvNq/NZdtqmWixg3kOr4SEUY8ZAFafN7BeSPOiKnPi0u4tu3QwkN1qHOqhBoHL4PPtE4CtT1A25of4jekZauWQSBEJ18BvDt8m3oSBXmheOw3zKBrhmKx9QYNDs0SUlKV1R/7NmrtpxipUKy029TE0luiPcyN5AQAR7yYlrB48YA6OfY8mEAAA",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAACwBwCdASoYACQAPu1ep04ppKMiMBqqqTAdiWIAs7OiRwZh4IYAbcRBGSnBU/4AqWN7UI29n/n701j7zxbbpARgG7fXbNAAAP7PAno3cJeKATyTCFsDiumLGjwsa2h5ChJATanOFtd9IFvsgQOhkEDAppsTvW/yyQg/sIb/BvHbtZaKcxuvHWTo7vQcadYUOGqAsgUpDlfVMtFjBvIc7X96/rjm8/PPvlaFCLee/ScJDDjGXruL3hpNdre7sFOFKboLPpCL1SNo+1KNl8rs4a2WA/orpArxUKxK70Vt5ifSzlnGCm5xLfZqoDTKXjTkxEcFaEi5zoU+4uu32YKPsSF4HSWZK+SlizAjqLVfkwgAAA==",
       "takenAt": "2026-07-28T09:25:33-04:00",
       "geo": {
         "lat": 40.614,
@@ -1822,20 +2374,21 @@
     },
     {
       "id": "dsc01689",
-      "version": "7dfc101097c3",
+      "version": "944d69cb38f5",
       "file": "DSC01689.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#282828",
-      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQAB8wyQUTOoD+kVTiBJgAP6mkxYZGLNSQJlsY5T9ZG8OU8w9L6E0qkXfGIhfZDc7GY9LRZAGp633Rs0buF3kZuk9TVLz4HsKFPsarFuJWC9qFfpt3pF3irIBbuRK3BZ2Db+Y7mIWsxL3zSwv1hb2xMlALkp9JHfRhcAA",
+      "color": "#181818",
+      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQAECAFuDZGrgy/RAWH4AAP6mlF5HDiEHwJTy26T2vWRG2HLs3PCwJIkJg8aWkJfb4O6bUQw7T74niRhwNN6DYDrztXN6JvoNi82RjHt5kkbI9BVx+ZFfPJoXBP/nFiI/MdzEex58ot08qToQwfInVXs2UvfDLHhTyAAA",
       "takenAt": "2026-07-28T09:25:28-04:00",
       "geo": {
         "lat": 40.614,
@@ -1864,19 +2417,25 @@
     },
     {
       "id": "dsc01687",
-      "version": "8a46edb4c081",
+      "version": "d0846266196f",
       "file": "DSC01687.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAADQBgCdASoYACQAPu1sq0+ppiOiKrgMATAdiWIAsO8xocXFZphalGhMbi/7GMjhzOV425pRsC3oxExRxOgF5IAA/t00rAYIAIZHzXbLxnFvAuJpqWCp79T8vewXZZDeOszdSmZXy0RHLvCqPtVIxvM5hGmjGe0vc/0nW7o/z+gM4T/VLSTs9ZmarwqO8h0xQpjqJoPtaVoznZCIaVi3Z1u5v9VxdRUN1yLw0n7oJN6oT6QLMwbmZF7r7BOB4hl5/VlZmlW+Uhwlu2hkm7H9nNW60QuXkag020LErwcR6nmno6UYRx9jsqOdwOMZKYhjDDioa7V0TWB7py1S0ywJFUhbJj8cWoeXCoDrYELKQRnNGjFtgAA=",
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAAAwBwCdASoYACQAPu1qq0+ppiOiKrgMATAdiWIAvntfjmu4nLLeuztlGqnaKEzAkj+A07hM+FEXaF3wrebHezlLHhAA/uYztgOipRKjaeacnS/j2G8bUzp5DTbbiJQnqg+4AjBt0mhfzPtUCuJBNVSteuBpXgT+OQLF0i6paiOzVHqt88qXDRjbK0fuLvCCvnqC/allsz0W/UyMzg5jZorwUIyOiqUDHjIS6GuLlUfVtbIsRZUrUUGp6ZZSle7GKtPpvCmegp0lFvaIcN/jU0x6Zsu38UUAhK1oRlc9CSiwH0AX8wHe+ICvPEKrrTUp7OctHpOqxhpZXeaNKmxOlC6nikvqGMM7dD6RAfQ4IOHxEkyp5QAAAA==",
       "takenAt": "2026-07-28T09:25:25-04:00",
       "geo": {
         "lat": 40.614,
@@ -1905,20 +2464,25 @@
     },
     {
       "id": "dsc01660",
-      "version": "0a1ae3fceb23",
+      "version": "12771bcda5fd",
       "file": "DSC01660.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5692,
+      "height": 3795,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5692
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#88a8d8",
-      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBFEQEBD6hy7jKXPAkAD+w5vqC9pgRjnIK01z8aNrRZVS9KZngWgpZwWksIaXXkkooMq+ESOENn8ouwIae0X0L1tLy2UN+CfQk1MUFfj6So08Y/3yREAnmAJJxi/Eb/UWIqoyMLEbNH5ZA+OaFk1gaDgPNU4xgAAA",
+      "color": "#b8c8e8",
+      "placeholder": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZACdMoMpJn/Ae5ka75tP3D39gAD+3pv5X2f2FTXVPEZkKLD82o/ryunmcXCPs9YKdUg04UJznlqsu3qbRpHAtLP5lUnL2cua4VV537RA0rW7vk8rsEf/D1TP91HLej8p4zHkwwepKT+z9sz5mBpFVGWGOW99m12lnpkwj2kE7oX+EFLt7GyENK+AAA==",
       "takenAt": "2026-07-28T09:12:08-04:00",
       "geo": {
         "lat": 40.628,
@@ -1947,20 +2511,21 @@
     },
     {
       "id": "dsc01658",
-      "version": "b11b5139a2fe",
+      "version": "f756817a9896",
       "file": "DSC01658.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#484848",
-      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQCsABurp0+YoEY7151YcAD+7d5ET7J6wlF/9+ohOHxbycpErLtgAddEeRpJ+vN/lvzPSy99SPLSpSLtBMDZ+2xAmK4s1UQPUzua2LdoW5Ia9ecvE5Epe41eCybTFFIBEt8x60cFiiyXgFfBNadiDH4UcAAA",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQCsMn8Ana0rl/GyWzx4Om9wAP7t3kRPsnrCUX/36iEri5pA4qfmXbAA66I8h9N2aBVBbzoY+SBfXotcQfDd855tWw14HwEt/b7hAPlDewPZ8Uux14LU5r3FpHV5YMOanGyhrNEZcFty9WwCvgoIX3Ib3WAA",
       "takenAt": "2026-07-28T09:12:06-04:00",
       "geo": {
         "lat": 40.628,
@@ -1989,20 +2554,21 @@
     },
     {
       "id": "dsc01565",
-      "version": "58b97ebe52c9",
+      "version": "15d5d24d034b",
       "file": "DSC01565.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#a8c8e8",
-      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwBACdASoYABAAPu1kq04ppaQiMAgBMB2JQBOmUDX/xbGLedeF/NyIfR5qqofgAP7DUz2t0P0GEmglte130Wh0cNhjN6UCb9z4LhJQOisqgCNC7XmmU7ujcm9Z4n6EOD4e6DOZHGwtpL6Uj0lbJftfHZN960HdB+KibBc52t39KCJnmBAJZrJq1cU6kKw6JUHFTJHwkDOHYAAA",
+      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBACdASoYABAAPu1mqk4ppaOiMAgBMB2JQBOmUDX/xa/7ed9a//GGbcu8DkpgAP7DUz2tzrdADf48CP3notDo3TgAxFzNvyazq0LVwROWYS0ZiZsWU7ujcm9Z4n6CUF58m25iAmQTOKAbE+VLcrnWqNw2IS3wdzPIZZ0x1q+zZIc6fKck1qDiQnCcGYthcky7jReF4AA=",
       "takenAt": "2026-07-28T07:42:03-04:00",
       "geo": {
         "lat": 40.628,
@@ -2030,20 +2596,67 @@
       "keywords": []
     },
     {
+      "id": "dsc01515",
+      "version": "09e0c693606a",
+      "file": "DSC01515.jpg",
+      "width": 3540,
+      "height": 5873,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3540
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#98b8d8",
+      "placeholder": "data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAABwBgCdASoYACgAPu1urlIppiQiqrgIATAdiWwAnTLLwCyBLFAmg5XxVaQLL8zuP4l0trsw6GbxJKSxJcAA/viwZ9ourT2SqD7bCtV1xKm4mZaLdQj7JppCJ5gbBjkWojxUrRtY7+qB7NJhjq797iy46sgGCi2HLe3kY8xxlTt+mw3eplpnc9U1UhENNuVbInF3VJsDDN9l/00FV3nAoz1v1WgqldBOvA29DZ66P/TRWpt098EGeRa2S+GOTGbNuKay7xPx82BUirWT41YWjjscCcChdnShE+UqScX7sEXiqUmceJGqRr8kgaVrtglYk5DjsYuR6d7nYhYt2j9qndSc7FMMAA==",
+      "takenAt": "2026-07-28T04:39:24-04:00",
+      "geo": {
+        "lat": 40.629,
+        "lon": 14.482
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Positano",
+        "region": "Salerno",
+        "country": "Italy",
+        "label": "Positano, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 59,
+        "aperture": 5.6,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
       "id": "dsc01513",
-      "version": "7fccb2f034d8",
+      "version": "67a0aac4da06",
       "file": "DSC01513.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#486888",
-      "placeholder": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAADwBQCdASoYACQAPu1wr1KppiQipWmZMB2JQBibMZVFCY8U8SMBPB4/+7kCHO2jxDcvSnzgnWjUgAC9xSkl6CYGxLQAOD24ECTb93X78jsIWja+uLmyIhYPWDf5XL7iJFQa4pXMhqxyd1iwNVa9PKm04Rjy5qUvDopPOQ50DVb8JRk8vgIagrBot01xPNOwgalQhCAOddMO4IU2WJJsnU1dhShNm2mTIACXbMR74JnwIpqxtSpDOcV7E6fVbXjLRJ3Xb/GGXsC/CWd9KFx0uI3UM19yFT4w+WoOcmkSIAA=",
+      "placeholder": "data:image/webp;base64,UklGRuwAAABXRUJQVlA4IOAAAAAQBgCdASoYACQAPu1wsFKppiSipWmZMB2JQBibO7XwlihjWY118KzNJol+iXkS0oI0s7WCMaXd1wAAvcUpJegmBsSz4Og7xYibteAvkdhC0bX1xc2RELB6wbuaKt5GZmqjOoejwXEp/MygEkvj4fP0sU2i1w0UczuNPOQsVqx2eXPULq8JnhY3uRqLKzfRVwXI0lNKpqz+/9pDq+IuXCo4oJPXPH6psX1Sw6yewT7qDKIY8vUQ6HrTg6h0djNKv0iaC1TDBjD1Y8ak7AejeicH/9LbdLhvZ7TgDny5bFAAAA==",
       "takenAt": "2026-07-28T04:39:20-04:00",
       "geo": {
         "lat": 40.629,
@@ -2072,20 +2685,25 @@
     },
     {
       "id": "dsc01499",
-      "version": "2f8308a56b15",
+      "version": "fc14bc82ea50",
       "file": "DSC01499.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZAC06B7C5fayp+zVIuEAAPujTtt39OibspOY1Fh4/hLYpq2NOJtfu4tmtUVId1xnsjPTlQ31DccSVmSoubjSq11viM1GVXjwS6l5lMKJgw06JFa9IfLjpSO5tcv8XFf3cQxiC1FI1LjBB5o1oAAA",
+      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZAC06B7C5fayp+zVJAXgAPujTtt39OibspOY1Fh4/hLYpq2NOJtfu4wNQQL9PDqn4LIEFWivJvnbrSeDA3ExOVacSplDI8DyQwaoi3AUS30ypcViCCrUAYIv+q8eu0bGjCl2rmh4kS4wQeb5ngAA",
       "takenAt": "2026-07-28T03:56:39-04:00",
       "geo": {
         "lat": 40.627,
@@ -2114,20 +2732,25 @@
     },
     {
       "id": "dsc01494",
-      "version": "08828babd365",
+      "version": "04a1dd4a81fd",
       "file": "DSC01494.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#085878",
-      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdICY4AB/9J6b96YsB0+cjpgD90oBffkMoMv+NUYywmpINJeYKNq5vPrNQbHBbXulnlOo3v8UwZHyS5HqJFWHCMWp7cda2HOkuqPo9bxq5waD9EPO5/pcR8L4qpiQ7bpnNiqGv4OpmazZobuVT10B/ZBP3oGEwAAAA",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdICXCq81lB9HSTR/tMUYgAP3SsjExiBmQnD7ni8WNnGjNVs2IpNKyUMssFiBBKzyjH1q9FPCMjPxMYOXI9RIqw4Ri0/TaBW7WLtsCb2sEqTQJ5Xr9zg9SEUb/MnYiK0qZFxHvkgBXrQ3mn62AiEKrdJcGVRME/eRIVmaEXAAA",
       "takenAt": "2026-07-28T03:56:10-04:00",
       "geo": {
         "lat": 40.627,
@@ -2155,21 +2778,156 @@
       "keywords": []
     },
     {
+      "id": "img-4176",
+      "version": "4cf97d6b2210",
+      "file": "IMG_4176.jpg",
+      "width": 3024,
+      "height": 4032,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3024
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABwBgCdASoYACAAPu1iq02ppaQiMBgMATAdiWwAnTKEdQejcUBkAKgALdR7IMsp+4l2kVJk5H+1oEYhygAA/oueaub2e2yWZjcz96IkkP94Q5JM0JH/4s7TJEK4BmzRYYchL4Zc4ML92J+6cEbRofA9xu2a5uUAWhN91x+0NjRy8hPszuvfW72eZuf8XdvMvXIOc7aKJH2NJX4FwdwbAAVCo//suWvM63rE0VqOQmxmwkIVXj1WZGjGZB/vQ5R1eGDvglDVDjK5YRU+3t7HdlMAAAA=",
+      "takenAt": "2026-07-27T19:57:25+02:00",
+      "geo": {
+        "lat": 40.611,
+        "lon": 14.345
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Massa Lubrense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Massa Lubrense, Italy"
+      },
+      "camera": "Apple iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "exposure": {
+        "focalLength": 16.890625,
+        "aperture": 2.8,
+        "shutter": 0.0015625,
+        "iso": 16
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "img-4168",
+      "version": "6c5c0f9c0701",
+      "file": "IMG_4168.jpg",
+      "width": 3024,
+      "height": 4032,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3024
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACQBQCdASoYACAAPu1mqk4ppaQiMAgBMB2JbACdMoR5n6bxpIW4KqYSGuQBsOtP6BRHD1vsAAD+0xWvaa3/Mk6rVrWt70BeU8TDpGbLq0pcchu9+7bFp+qEu6tfX4DxLdKRZAQgbfPf8ndVmLrEbbY0fltrShsAbiDIbq/FDBoqlLYXCL1CDF9q8uGE9DrgWVq+J+31LRJ7uBwcEKuHNcdBh0BygNmar/8zWGjqNS4e1E+8RKvAAA==",
+      "takenAt": "2026-07-27T19:57:03+02:00",
+      "geo": {
+        "lat": 40.611,
+        "lon": 14.345
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Massa Lubrense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Massa Lubrense, Italy"
+      },
+      "camera": "Apple iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "exposure": {
+        "focalLength": 16.890625,
+        "aperture": 2.8,
+        "shutter": 0.002173913043478261,
+        "iso": 16
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "img-4158",
+      "version": "ab07a149fc07",
+      "file": "IMG_4158.jpg",
+      "width": 1759,
+      "height": 2345,
+      "widths": [
+        480,
+        960,
+        1600,
+        1759
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f89808",
+      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACwBQCdASoYACAAPu1oq0+ppaOiMBgIATAdiWwAnTLs+17AL0wNKoh9Y3D9E+AumNPuW27BbQAA/up0oQ6+FFKQuaoHTm/F9jOVA/Kg7u/+s2d/ykwofRm97Xh//cf04D/y1ZbJl+pIKG5A48LDB3XK2DzCW6ng7McLZiEsuPjgjWlaDoqLtcMCKxMvwS6FaN8/N/OHtVb0UKqNVFKREv5GvRYP92rJOJBiaKQTBzQm1+8CHpWF7AFJoxicAAAA",
+      "takenAt": "2026-07-27T19:56:29+02:00",
+      "geo": {
+        "lat": 40.611,
+        "lon": 14.345
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Massa Lubrense",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Massa Lubrense, Italy"
+      },
+      "camera": "Apple iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "exposure": {
+        "focalLength": 16.890625,
+        "aperture": 2.8,
+        "shutter": 0.0011111111111111111,
+        "iso": 16
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
       "id": "dsc01462",
-      "version": "95194fb28096",
+      "version": "8eff7730048a",
       "file": "DSC01462.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#e8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC+SB6Gs1W4nJRMmkokNkAA/gqBVBYbOdvoTyvz3mZWPEnN+u6PxNbKHlG5X1DruIB7HjaujjLiwb0vlAXqL1Vid4QpTWdW1dbZGT9Ou7ElLtAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC2yB6JK1g1yVxcDWuAAP4KgVQWGznb6E8r895mVhEnwQCAy2TQb/RF1BHd6g2z47VuPI4K9F4Yo3gg6ZaZ0CsjQGYfT8/NafLM6w9XgAAA",
       "takenAt": "2026-07-27T09:57:32-04:00",
       "geo": {
         "lat": 40.652,
@@ -2198,20 +2956,21 @@
     },
     {
       "id": "dsc01450",
-      "version": "6fd5419a8823",
+      "version": "dd18802e741b",
       "file": "DSC01450.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbAC7L144ACl6FkfDko3GcEMqV/gAAP7tWK9g0XigCIg+v7aAtR2VYvKvMsuVPeX+6E/JLkKh0XcwRuWkuKw8t0YKu4uooxe3w2vc+v+XtwPU3J4MvoFcpKwj8hYZBh3NAse4JRM/uOikzPv8QwJFn53ESQkRccOw/nUGcj8kDAAA",
+      "placeholder": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbAC7L144ACl6Fke/IffLjNjzsQAA/u1Yr2DReKAIiD6/toC1HZVi8q8yy5BJ3bI0bGuFLqXui6yCX32fvZNFwxRZkQI5V0XsIoM1EyWd2Ei4IYgOFNGXXzh/NyvQK3qDNnqCpMvwZWpPkfutuSN4K9T2s76VBInAJemng5xWzx1jZwAAAA==",
       "takenAt": "2026-07-27T09:57:07-04:00",
       "geo": {
         "lat": 40.652,
@@ -2240,19 +2999,25 @@
     },
     {
       "id": "dsc01445",
-      "version": "13e3b114e2bc",
+      "version": "1cd501415e0a",
       "file": "DSC01445.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3875,
+      "height": 5812,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        3875
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#182808",
-      "placeholder": "data:image/webp;base64,UklGRkQBAABXRUJQVlA4IDgBAADQBwCdASoYACQAPu1qqlAppaOiqrgMATAdiWwAsR8NiDtB/FhaoB+3U2jnk6hAuxd5TgXZok1LvQh/RbDa6c51/GYhP2RTYAD+71F3XqA9KBsQP3OZFZ0XEIBCodHclShWHuCpfnF4jEpV71rRA9w7cZrjVY/SX/Xl2u0UKrLhWboHZRqp0WR3shhXFIf49tQJaG7Kq0151od1diNJE7fUzKtJNjpWZtFn87URzEPUpshgz8zXx9c0xnaCBmD08GVBljCwgJVNgaBC1MyEF467GmuPhJIva6RmPzGPqAIPaLAQwF3lD4CtyqqudOhFPm/6mv0nPM7tdZHE1bK3B34vonZlnrPUw7HJrfPwjQldjUxVIPRkvkhy3cKwxnsshqQBx1GOQC8g3W0a4O4wBW0SOqVdmtpAAAA=",
+      "placeholder": "data:image/webp;base64,UklGRjwBAABXRUJQVlA4IDABAAAwBwCdASoYACQAPu1kqk6ppaOiKrgN+TAdiWwAnTKDz66QEoiEIf7QZDx7IeS9J9Dhzua1AutDezyNFvJAPGhdk2gA/u9dAecEE7z6cZ3YcGv21K6qgS9LbP1zLy7MeutL0rfZNKv2YlEuU9wOOPPPkZRpT5jTg7qm7D50Q1O+bSDrLaKPgzMK6ulEYR/NjPX8TRTiLYAddoXLhgfHnQ47ggqJguf6Y3vQGEkQ5iHqU2Pm/qmGApuDMuvjEM0DMz+azhSC6EQCnuu/Psw2GflzNJsVHXf+5HF8X6lPkFgJLh3Kvm6QkdgWuUOZVm+TGP1r8UXbFV+koAPtMgSe0cW+RdStn/fNfGIijOx2I1ngedz0IxQBmN+M+TPLI+au8GVZBfu0pSDlS84cnzh4AAAA",
       "takenAt": "2026-07-27T09:56:41-04:00",
       "geo": {
         "lat": 40.652,
@@ -2281,19 +3046,25 @@
     },
     {
       "id": "dsc01354",
-      "version": "1665821d71c2",
+      "version": "c963f44da38b",
       "file": "DSC01354.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3987,
+      "height": 5980,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        3987
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#98c8f8",
-      "placeholder": "data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAAAwCACdASoYACQAPu1oqlCppaOiqrgMATAdiWQAs7OV2if+0uIFw2qkG7XEo+Fjkwq/3S6wDnNRZQRZ2RGmPfiYy3FDHYRAjJPBGAD+SoZhGrMRg7WXUeLo+7B0WZmghJpIic9ZRK/ukr5zMCmwsv3TMiilsTD8+aNsvQINdxHJcZqHcrjsW5ax8qwf1C15vQJEfEnr6YUIUV1/XTJ6D/2zQs9FRpbMUHQgq/RSCcocsb+aD7/NpWf0huBW09jh5ir1Cppftl/oQhB2wspYwpGdSeGKRhRVtQS94kSQCLAPvGasrxgRL1euQQJLHCKDexnVc7blmHoMYwwIkyUH2mukewps2VWOQCz9UsiXfUwgO3WR73nr77TZiGhduXyNLeDJC6T3bPCcAdsEAAA=",
+      "placeholder": "data:image/webp;base64,UklGRkABAABXRUJQVlA4IDQBAADQBwCdASoYACQAPu1oqlCppaOiqrgMATAdiWQArDOkGgf+4uEgxw8OQ1YMlGD9UgQtj7zke4b9pKUQ/NM+ZcyzdlwpLqVFAAD+SocCGrMRsHlNxHVLJ850WZsSIDIEfPeh/A5agxF1JmeUswQD2F+jFI57h29e2ttAMqHD1GgwvErq76slTX7dhY/yDmhE04NuFvkesGVlaStbdg5g2qzT20F7UxJGxp8QIb7Wn+mDaOSKkFHFx3/LRfcBfWNRIeo6OOsDBGXzQDpBhr63DX2B3n7AHXjzgycUVbUEqgRP0dXqSXmeky8NoijuzN9IJqfaQHBPD8UeqsYqRDOcBIB7xiKoQvLVCqBF1aAIFqwVCBTtGL3tqt+VcjvkZe0GptyNNxrH3X6WlDjF6T3l2ZrROS0AAA==",
       "takenAt": "2026-07-27T06:55:46-04:00",
       "geo": {
         "lat": 40.75,
@@ -2321,20 +3092,64 @@
       "keywords": []
     },
     {
+      "id": "dsc01328",
+      "version": "531012a70cc9",
+      "file": "DSC01328.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAADQBgCdASoYACQAPu1or1KppSQiqrgIATAdiUAU6ORA6sxdVS2fXSuTPrUbviCUTEusfvoB4zOggSzVIPQ8cMAA/voa08Yo+wJvu3rw3svTnfFY+nKXMSeoUIuTPMhEPNCsLf45XEtZAnMJCCShGg5bnntMvBYgapJHj0XKSZep86o24GxwZmsfrMa6U+UYRXasl5ALgRchpirDXfCSE0/iu1IrlStNBZjfn9upNMe8VUQ1xSMhiAxwGg0OhMgsLDuMgA1hl/JAPmtAeq+tihTZ3/QsHehYG1CE+z7HXyOhAKx5tPKiRpcle5lAAA==",
+      "takenAt": "2026-07-27T06:41:02-04:00",
+      "geo": {
+        "lat": 40.749,
+        "lon": 14.488
+      },
+      "place": {
+        "sublocation": "Masseria Curato",
+        "city": "Pompeii",
+        "region": "Naples",
+        "country": "Italy",
+        "label": "Pompeii, Italy"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 50,
+        "aperture": 5,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
       "id": "dsc01303",
-      "version": "11b7645eb808",
+      "version": "7a30d4cf2cb6",
       "file": "DSC01303.jpg",
       "width": 667,
       "height": 1000,
       "widths": [
-        480
+        480,
+        667
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#68b8f8",
-      "placeholder": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAACQBgCdASoYACQAPu1irVAppSQ4KrgMAwAdiWYAsR+0g7PAAeSv8G2omaFtFrDp4AU9iM07NPiNg7wIYvjAAP6Ltqv/EOtUV4Z+ojLQkHLAn2yV79reUURjE1rhBm8wfigvtnukwhDpI+ImU6kH8wRRX2I3dX5neetsk2nNTn1jaSGS03wuktUzY0OsOKeWXqLrsYkVeRJ8lRs7KFTCiCdJ54C8WABZ3uTpv0STddjMnnPlmeKmnXnQ1J3Kxtm1pO5zfznr3aqvnQjUwWR5pBc89I9htN9skZNot1V8fFxlO6fo3+Keqtk0AFDACyTNGAA=",
+      "placeholder": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAACwBgCdASoYACQAPu1irVAppSQ4KrgMAwAdiWYAp0fCwYUicZ1+OFt2YtachQsA3WlbGMCJQNFz0EI5qngqAAD+i7aoxvIM8FN/HXuxslbORqeLQgdinTY2e0huiNKpZX6iPlVQfKYXXR/iJlOnB4U8aHzvQ8V1xjt5jpECaJZ9QZ4TwsRIwgixOoasbV0D7quongrb38L9t/jORIolxSioEwzTfjAg9jFlMRO2F97C2c+WaGUBhdlbUURVPG6/4mLjBYgLoKy25znoGt2tYXb4P93MqiLEs6qD6zaGZB1vS14vmfAGYAj8ASSTJ4AA",
       "takenAt": "2026-07-27T06:35:12-04:00",
       "geo": null,
       "place": null,
@@ -2354,19 +3169,25 @@
     },
     {
       "id": "dsc01303-edit",
-      "version": "0039bd41b0d3",
+      "version": "dca2ea8f509e",
       "file": "DSC01303-Edit.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#78b8f8",
-      "placeholder": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAABwBgCdASoYACQAPu1eqU6ppKO2MBVdUsAdiWYAs7PCw7A5bLZb0jNOhHuIorFrdlpF+D1qH3MfKoeBRQAA/ou6MES5SY5zW4RYXOl/2e/RwN3s6mZoNiqCVfhIOU0RuZLvzR/+KEop5E6KSNL/6FPnm/sobebK3Oq7uIXWt0b9Qbk88JVCK3vdlUC72TaXwyK6v3tpxLEjuF/Bd71enyZaxq0+FtKUd4va6IQGjd23j7/kNcX98cI41y4MpfZch3JCFXGAgjS+G1XhoTxKNzDfrGunUV1WSxtd3TsJng6k+taiJWNCw7Y4zdkcvlybhAA=",
+      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABwBgCdASoYACQAPu1grVAppSQ4KrgMAwAdiWYAtvuYBQPAAeSv8jXGZbBzzFiUTK7cjPRma0y/b8OVtgAA/ou2q/8Q61RXhoDuBxoFLM4nvvMsChScP5j4UAPhse7qjdv4oL7Z7pMIQ6SPxXWPotVVlR+d6HjGo6/718cl/3qEU5AWX15dS5rVSuxzEJ/iB91svxyb5p9iiLV5N/ZEijBOk87IgbycCkJLXXUGkHHnrMtmM293trItuzzf8n1t51G/VuDvM71tsrmlzYkCFSKO1XDLaZmnOtIcdpu3cVnv6UU8E8y6c7DVKkC4GkeKeQswAdeMVjQAAA==",
       "takenAt": "2026-07-27T06:35:12-04:00",
       "geo": {
         "lat": 40.749,
@@ -2395,20 +3216,21 @@
     },
     {
       "id": "dsc00955",
-      "version": "630c56bbb623",
+      "version": "c5d20a44895d",
       "file": "DSC00955.jpg",
       "width": 1000,
       "height": 667,
       "widths": [
         480,
-        960
+        960,
+        1000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBACdASoYABAAPu1mqk2ppaQiMAgBMB2JbAC7ACHfVXn+6pqOoDBlTeQAAP70Iw6+4cWh8CrE/KuEfaf/oybvs13+wsrFBUXevsqaQ7/SDXLGa+AoZo46DENn+c7t0N5Eabf3lw70uhyvkuHol7MKTN1KAQTZE6SWSOAA",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBACdASoYABAAPu1mq04ppaQiMAgBMB2JbAC7ACHfVXvdwfsAk6VCx+AA/vQjDr7hxaHwKsT8ouB3K+qTtW8cvVfhEu7ofexndp/pBrljNfAUM0cdBrXqmeaNFHZs2n94yKvrCmd3FqwvYz1GeEx2YQ8QCOT7jtkjgAAA",
       "takenAt": "2026-07-26T04:12:52-04:00",
       "geo": {
         "lat": 40.561,
@@ -2436,21 +3258,59 @@
       "keywords": []
     },
     {
-      "id": "dsc00952",
-      "version": "9d76986612f2",
-      "file": "DSC00952.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc00955-full-res-web-2",
+      "version": "63d8bf3e5fd2",
+      "file": "DSC00955-full Res web-2.jpg",
+      "width": 1514,
+      "height": 1012,
       "widths": [
         480,
-        960
+        960,
+        1514
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoYABAAPu1kqk2ppaQiMAgBMB2JbAC06CHfTstCPw3Sg6UwAP7ym6SfTeXdK70yBdjySPj95/FzQOu4cyqrP1sP7mYIyJ/pgvu+lNt8zw73llu20Ga6H1soEOCJyIiYkWi+jMCLbhwAAA==",
+      "placeholder": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbADHIwFqlAWbTIuU9+W1zKbeAAD+9CMsZ5m0tV1vpeFf+6NIdKw52Spvbjy/38oywvF/GYgKGw3jU9txj7lAt4sDl/jgf+Loa0E6BVvkrkYU45yAel9D9mQRmyXKdQMGNbaPNAAAAA==",
+      "takenAt": "2026-07-26T04:12:52-04:00",
+      "geo": {
+        "lat": 40.561,
+        "lon": 14.206
+      },
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 28-70mm F3.5-5.6 OSS",
+      "exposure": {
+        "focalLength": 70,
+        "aperture": 5.6,
+        "shutter": 0.00625,
+        "iso": 12800
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc00952",
+      "version": "7b6cc6c6136a",
+      "file": "DSC00952.jpg",
+      "width": 1000,
+      "height": 667,
+      "widths": [
+        480,
+        960,
+        1000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoYABAAPu1oqk6ppiQiMAgBMB2JbAC06CHfTstCPkBPZwCAAP7ym6SfTeXdHG2983XcTWLeq8Zmd3q0ipXgrxByc+1QDF4Ic+UG9Wi+W8vQ2aoWCrXHiCop3GON17bdPql5Cj4cAAA=",
       "takenAt": "2026-07-26T04:12:46-04:00",
       "geo": {
         "lat": 40.561,
@@ -2479,19 +3339,25 @@
     },
     {
       "id": "dsc00683",
-      "version": "a05081f59be1",
+      "version": "cd12c6f5f6d9",
       "file": "DSC00683.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#082858",
-      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAAAQBwCdASoYACQAPu1gqk6ppSOiKrgN+TAdiWQAnTK9sUAMRNEElwoyQDCe+SG5thxdkjn8hX9cGpPLyyCnlVHYAAD+9Fs7FJS1dsKg0euN3hBGBq+gftNXIw+N9qGxjLn1a3fDSGD6UOoBGgbZU+q6oxWSs8lXU+Q55q9q3/6CqVgwXeA2Q5ri2GsVEKSd0BeLN7Eg4UFm6ivrVamJmrM4uEzdkavtjwLHyT5cI93P7hj/lBRZaCZ0KFHq635Vu6pEXZD0VaZP5pVu1iEGiDU562bBUn+XEwsDKuPmh6MP9rsvApgDXiDVoxaoMSF5FRzdnrz7mIyAAA==",
+      "color": "#081838",
+      "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAAAQBgCdASoYACQAPt1coU2opSMiNVv8ARAbiUAVyevoaSJUsJ1nOyPjGKlisjrloALcZCq6e5c5S1AA/vDzd7kSblLHHiH6i2Siy7TAXYPKjhaIpcEz6DuiwNLv3WsRkCAUW1VDq0fvdoxAUo1uhGgSEowAnWL6jpsHuBFcAd5Rb4Wp8h0Yco7O4CHK/Z3Br+fmrrQ0EblqGbk5llxit1xEffAITqNheYIAAA==",
       "takenAt": "2026-07-25T14:33:30-04:00",
       "geo": {
         "lat": 40.628,
@@ -2519,163 +3385,36 @@
       "keywords": []
     },
     {
-      "id": "dsc00655",
-      "version": "29bdcc7a0f2f",
-      "file": "DSC00655.jpg",
-      "width": 667,
-      "height": 1000,
-      "widths": [
-        480
-      ],
-      "formats": [
-        "avif",
-        "webp"
-      ],
-      "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRjQBAABXRUJQVlA4ICgBAABQBwCdASoYACQAPu1qqlAppiOiqrgMATAdiWMAqPrxXYEGRrCPAU5E1E7CmG0lDvDtnN3Zttxrr6vfsBkt/pU8RpPQAP7ql3EG29iIsYL+3mkC7yfyxCNua6w1jeSBtTimUigJdV/SrNVDhHW6IZ37UHXEs47VclCrxJjvHP1IBePPmdj/imIPMHLPNsUWoFX1FBFNo8lyXq1CWmqTms6hlGDYEKJvfDGDvCF02maaDzVQnC8qwOpUWrb0SqMEvCa7vu1iEjIQEwNa9wmel2NoeMRzJtU4wG3mELqAtiLiVGwfTq5prFGSat3xSOT9Qoh6jOouRDF0LSySIVV2tXGuJ6a8yNu3EzKFxtP7Kw9nf1ra/p7LIifhPN3udaHDAKPWAflsENAAAA==",
-      "takenAt": "2026-07-25T14:16:28-04:00",
-      "geo": {
-        "lat": 40.628,
-        "lon": 14.371
-      },
-      "place": {
-        "sublocation": null,
-        "city": "Sorrento",
-        "region": "Naples",
-        "country": "Italy",
-        "label": "Sorrento, Italy"
-      },
-      "camera": "SONY ILCE-7C",
-      "lens": "FE 85mm F1.8",
-      "exposure": {
-        "focalLength": 85,
-        "aperture": 4,
-        "shutter": 0.00625,
-        "iso": 3200
-      },
-      "title": null,
-      "caption": null,
-      "alt": null,
-      "rating": null,
-      "keywords": []
-    },
-    {
-      "id": "dsc00653",
-      "version": "d4aeaf924cc0",
-      "file": "DSC00653.jpg",
-      "width": 667,
-      "height": 1000,
-      "widths": [
-        480
-      ],
-      "formats": [
-        "avif",
-        "webp"
-      ],
-      "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAAAwCACdASoYACQAPu1oqE6ppiOiKqwBMB2JYwC4S0qtttS66j7Da3+FfjDRiXRSSc3zj8YTc79RTC9xZYGArt2hdtR892sEh6yYAAD+3qdx8fJMDj6slgEkI7o0nmXEFcDT0D39tC/u4fcGbg7tyFnrMJqlm3GgkQSF2upJwXxE0TWTIbyfF2dZZHuNiHFM2O2/HZS2uW1Icyw71t2cHxD8EMdHYfVt+yi6DPBZJTk0Klpb36ItQJUqD/995kKIDtpoynVzPVGm5UrRi27oQSUbk9ieBlvHUBqwW4KgWbO+c+9zcNLCEDb0JF3Frw8t6tCa/7czc9D8BZ3J3xflMGmL695AjDCeeSsjs7khhr4bIi0bND3w7AJ481arGCgXrYpFYwsbCNYISevWfAA=",
-      "takenAt": "2026-07-25T14:16:26-04:00",
-      "geo": {
-        "lat": 40.628,
-        "lon": 14.371
-      },
-      "place": {
-        "sublocation": null,
-        "city": "Sorrento",
-        "region": "Naples",
-        "country": "Italy",
-        "label": "Sorrento, Italy"
-      },
-      "camera": "SONY ILCE-7C",
-      "lens": "FE 85mm F1.8",
-      "exposure": {
-        "focalLength": 85,
-        "aperture": 4,
-        "shutter": 0.00625,
-        "iso": 2500
-      },
-      "title": null,
-      "caption": null,
-      "alt": null,
-      "rating": null,
-      "keywords": []
-    },
-    {
-      "id": "dsc00648",
-      "version": "f31b4126ad5d",
-      "file": "DSC00648.jpg",
-      "width": 667,
-      "height": 1000,
-      "widths": [
-        480
-      ],
-      "formats": [
-        "avif",
-        "webp"
-      ],
-      "color": "#c8d8e8",
-      "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBwCdASoYACQAPu1wrFKppiOipWsxMB2JZQDDOAgdpJaRwtMGFCi1aZO2wGP6gJY4r06T/yQkoPLDr1nKTnlhIQ2gAP7v/qCwtVfxxaejbsCU0AQmUwTS7s7SHBrVNt3vWFKZXJiy/cG8rZo1BYCmPprpWJoTDhPzeKEjYhc60YzJ51akZTJPnIqZbGi7JRW1sFVzIKgA4bArg4Ei5d3AbdbGG8L+WrxAm01SAq87AQ6zLkufVrYeGNh2euvk6YgUsgrcHY+IApfukICzgwDLxAd9i32YvB5sz62+sLUwu2isw5p7DREknduBkfsTbKwWHSaAMIAAAA==",
-      "takenAt": "2026-07-25T14:16:20-04:00",
-      "geo": {
-        "lat": 40.628,
-        "lon": 14.371
-      },
-      "place": {
-        "sublocation": null,
-        "city": "Sorrento",
-        "region": "Naples",
-        "country": "Italy",
-        "label": "Sorrento, Italy"
-      },
-      "camera": "SONY ILCE-7C",
-      "lens": "FE 85mm F1.8",
-      "exposure": {
-        "focalLength": 85,
-        "aperture": 4,
-        "shutter": 0.00625,
-        "iso": 2000
-      },
-      "title": null,
-      "caption": null,
-      "alt": null,
-      "rating": null,
-      "keywords": []
-    },
-    {
-      "id": "dsc00636",
-      "version": "995f92b852ff",
-      "file": "DSC00636.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc00526",
+      "version": "763a75ea7102",
+      "file": "DSC00526.jpg",
+      "width": 1616,
+      "height": 1080,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        1616
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoYABAAPu1kqk4ppaQiMAgBMB2JQBOmUABfXNttpr1OGTC/QAD+mFZyRqn1DxP86SAD4pjdcsrmkvItl+9Yn4tD1CIfQ3zjaJsicPRKnAwUn/TSQ4q78mpExzOwlI/L4mYu249uInMUEP28hMlexVJ8hM0wHwMr1nrDqso0+6YkF/ab9seZ3tGKAAA=",
-      "takenAt": "2026-07-25T14:15:45-04:00",
+      "color": "#282818",
+      "placeholder": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAADwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbAC7MoA9gHCuLBEatnRHCTAfPfFMqAAA/s3GL9QGapfAFKgTKXX+beOLA+hOY/ltJAk7pVc0qBDw/XgAYxKn5Zm8/RdtxI16G1rUGWSPbVFqYUl5NsTo/j698bHkOm7rGqTfhXNvhsr6dqZbjMbopn/5QrfBZm8aFeBSMlcIeFS2goAjmvPQt4B03aByLtf5Oe/7lvfe5i1lFyrD1SbAAAA=",
+      "takenAt": "2026-07-25T08:44:55-04:00",
       "geo": {
-        "lat": 40.628,
-        "lon": 14.371
+        "lat": 40.629,
+        "lon": 14.382
       },
-      "place": {
-        "sublocation": null,
-        "city": "Sorrento",
-        "region": "Naples",
-        "country": "Italy",
-        "label": "Sorrento, Italy"
-      },
+      "place": null,
       "camera": "SONY ILCE-7C",
       "lens": "FE 85mm F1.8",
       "exposure": {
         "focalLength": 85,
-        "aperture": 4,
-        "shutter": 0.00625,
-        "iso": 4000
+        "aperture": 1.8,
+        "shutter": 0.004,
+        "iso": 100
       },
       "title": null,
       "caption": null,
@@ -2685,19 +3424,25 @@
     },
     {
       "id": "dsc00439",
-      "version": "36b2f5688804",
+      "version": "6fdb341d19c0",
       "file": "DSC00439.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#283808",
-      "placeholder": "data:image/webp;base64,UklGRoIBAABXRUJQVlA4IHYBAABQCACdASoYACQAPu1kqE8ppSOiKqwBMB2JQBS79G3/1K+KUnMDgKRbLwDdS5LEjQoendyH3SjoJCXP84CI2cjKH82IsiZwjqq3vAAA/r3vyLyzL85DtO7+Ksp662uCztf8RR0gVujwIVj6vtp95/bCi3yjMPPiJP5dXN2Ze4hMh3talOxgtxQZ82Lsril+twLkiED+9OmCDe4AFY4uoMnre/gAQnRXs00wmzwIQmf9ZLEAUKqEsxo2398aopQCvhlUTnnzNyXIJfPDu9D30ajThDmlBrlpRo798SqNCJF2gq4kkSI7+SBH7kBKT/QbdZFe7mfXlffEN/odFblXZrL7KcEHwf+WOr240FWR3nwHqX1I+ddxaWEYroU7yY8eaJZmtn7yH4ZctaupYIfNV1HpV5YLhgsnXlJD3H31S8d7h5eZ3srSXt6as4Mb/Lwqa7wOeh3lOAhzmS+jiXzUDZduj/QyIL7n54k00E48T5roQzk02IskAA==",
+      "placeholder": "data:image/webp;base64,UklGRooBAABXRUJQVlA4IH4BAACwBwCdASoYACQAPu1mqE8ppaOiKqwBMB2JZADDZxiG+VwGAGlNZuDdS5LEjOZrscz9YEhrV/7DVtBruIAL8seZr7CAyEGYAP6+O44iL6cIwXEcpiYTCG0M93OQyVfzzNCmObvlfZjHfGwyxDTaTmuVVOfr5D0kpc3mxMxB3gGZUUy7M57+uDmcib/SDtrlixwC6mPG1eXNJLy44sxBnU47VkwFEoYF43pTOMl0PNV+Ie45fkMYunphNEnrbdUtCoSvo35qFz/6oZDRhvsnDq5fHGo4imPaeJpi33kBLzKKzSqiS7I6CooH3hj9ATZg16Im0IQqogie4FdhJwrYEXpJW0EARlAWf9YT6E8MTDaguatrXiO15eU0VhE0Hf2CJ7tit2zX8eKKeb9WPC3FXOZqlf/CslSMdBgKZgA9Okaf7HaofyYe/Ou+ZUerSXyZe+64WLHePeiKWYtrSErWJLxAkN1AcaLdOungoxH88J1zCyX9uH9osWWDgKFgLgAA",
       "takenAt": "2026-07-25T08:38:36-04:00",
       "geo": {
         "lat": 40.628,
@@ -2726,19 +3471,25 @@
     },
     {
       "id": "dsc00384",
-      "version": "b17678da30fb",
+      "version": "5d50321995ee",
       "file": "DSC00384.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#180818",
-      "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAACwBgCdASoYACQAPu1uslKppiSipWmZMB2JbAC2+6T/l0ngyRJ+mluFRdna49a7/8MyNx+yWdqAXaJwAsS+gAD++uZ+2fK5miwmMVXL/dwZJ0RKIo5gZB/DiPTHSTJSVvyU31qsr1/x/I+MnLhVn8A5fS1V/XSbOdm3zZg18DofRZ8nAdqQjeSxJ6bgeK7oprvk/ooqhpvlQSgHyTRjQ5vxqjMbHbrZ6chLOO62DaN5wMZLGHX2ZdFDIsO3dvWm1bVx2o/OpnRUz7d1PdrjFdTHybDqD+kyJOJKHwkwdbzWfBPLf71HBQdc8+vg5bEc7hHfLRD/YYBM1GVwWMknf+PdvKrlTy2+e6HAHb0ACE8fbWbEn6AAAA==",
+      "placeholder": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAACQBgCdASoYACQAPu1uslKppiSipWmZMB2JbACxH3WCg0mkyRJ+mluFRGpRQnTEsv0lh8fovQgKDl38nNzAAP765n7Z8rmaLCYPPcv93BerREoiAoEfGBm9TGpD+PpGtPg+tVlev+P5IUzgLqBN1QnkN8tkMEb8OPVn6rMPN8ojmFLl1oZFB7LOtcsQsyJjaM8vOi7erlKDCntS6bCHn+71y375JXxrwZ3Y9mmcowMZaNQaiNY+HHjz+7en0OeTpDPqJ2muV/33za4us3TNq8HuwWJK4DgHxED7JSSKa9FLbds9VivQT6sCMgnsVV5gGqneMFkYjBJ4p/WyRe6Kuavyzc7YK0SXfDM9RKYSKUw+nHAA",
       "takenAt": "2026-07-17T20:54:11-04:00",
       "geo": {
         "lat": 43.652,
@@ -2767,19 +3518,25 @@
     },
     {
       "id": "dsc08888",
-      "version": "f9133787b00b",
+      "version": "9549725149c0",
       "file": "DSC08888.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACQBgCdASoYACQAPu1iqU+ppSOiMBVaqTAdiWMAs4AJ+bKk+akVmqTaiMLEFhJBh31CMd2Ax9grN6o4pfXwAP5pv9pWeVCKUKXs2Q5h2RsiiRYTPjtxiwftHFOTORuiIx3dOlV8AKBDrxMkjc1LRxZpP9oI0THIOeEjpFxeJDbrs5wjFUY0iH/cJHMFuyaqOGhz0hkJZEWjbG/CxMd337ECH+PK4KZNLdThqnXMxWBcbIcUcaJDGO9vNPfUYUd1gMqQRKYUE4AAAA==",
+      "placeholder": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACQBgCdASoYACQAPu1iqVAppSOisBVaqTAdiWMAs4AJ+bKk5dNIeEE8ap8PCspxaf7AGlD3WHDXN/HJnhpgAP5pv9pWeVBy0BLQQKyixZHF30X7iyYogyAehhwI5YSpyWUzkRh6ZpO00KGYvJTkVI0axqm2LLsa3oCniOODRr1pcR0U8REH4A2lLK7VEQ2AYYHnESs4g6HGyqaX48fFhPBim6CDN6+GwwTD0eCoEsP7dUxMJIpqSYcA03ofIzKshyAAAA==",
       "takenAt": "2026-06-13T04:23:37-04:00",
       "geo": {
         "lat": 29.047,
@@ -2808,19 +3565,25 @@
     },
     {
       "id": "dsc08883",
-      "version": "045935afbe7b",
+      "version": "30f31fa85d95",
       "file": "DSC08883.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#282828",
-      "placeholder": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAADwBQCdASoYACQAPu1krE2ppaSiKqwBMB2JQBhQAspjueFEJtGkyluRlDZjpUxAUrcxKgfPUvIgAAD9y3NoGindAZFza5+7XrPOZ4i9U6F5kSYlpozwUMl+Hq8wUgdhcHCP+jjnGCvguGnuufsiMlO368VDnC33j1fWTUESBjuwlpJhMvLX58lARHz/KQc1RuO4LqoTqKjkhJ5SrrLvS1LwZuEaVa/srZVYMtEcb9W82pG8B0sKhTWtAWKFfvv2ufdGYEPPKVmMZe5pvZD/YmDQAAAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBgCdASoYACQAPu1mq04ppaQiKqwBMB2JQBhWcnBFoNBZf39xn3ipUopo3jVoyVgqNlJpeJcGL4k+RAAA/ctzaBop3N4wm8AGUCrPOZ4i9U6F5kSYlpsiw2oVpOcrBSB2FveOJ82BgfjXnymdc2iEwBwfHUO4ku4A5Fq7DrvNAcfIlT+EiQunu1kM9GRIpHhlYeV4sg8xCjOK4jB3HCBrI2rlx6IPKSHYPn49+lLpVgRiKff49ox/Szio6g2YJumBlEGeo+RLG/S+oClTyZJ2MyKygAAAAAA=",
       "takenAt": "2026-06-13T04:20:32-04:00",
       "geo": {
         "lat": 29.047,
@@ -2848,20 +3611,64 @@
       "keywords": []
     },
     {
-      "id": "dsc08860",
-      "version": "075c3ebad806",
-      "file": "DSC08860.jpg",
-      "width": 667,
-      "height": 1000,
+      "id": "dsc08870",
+      "version": "c90b0c16ca54",
+      "file": "DSC08870.jpg",
+      "width": 6000,
+      "height": 4000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#182818",
+      "placeholder": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZAC7ACLG+5uFzXPnYK6i3QnTyAD91LzvNljBFmhJF6ebIQRXCWA0SfsNMRiZgJcV+hOKSlGQth1KbWCIunaBeZibaprLoAIMYlFrT+kfQrt87f1YGT7SjKta4LM/4phVoPDcLoIEmkjJxwyOL4NdN67KSzRlLfQ1HkxY9wAAAA==",
+      "takenAt": "2026-06-13T04:13:19-04:00",
+      "geo": null,
+      "place": null,
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.0025,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc08860",
+      "version": "251cc65de6e7",
+      "file": "DSC08860.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#a8c8d8",
-      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYACQAPu1cqU8pvKOiMBVdU5AdiWUAxNg2DgLQIadk84hHEusAAP7u9FedeHJs7BAcYSdEh0GXCYM++IhWIyv+iHP54Ej8N/ESuKoP//+sC7xDpDybqAdWRTVOVlVlCuOzlZC7AtULDZqPJftX36SnRB1u6mMaSemAliZGtwMc57ncZ4wu83TmEgAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYACQAPu1cqU8pvKOjMBVdU5AdiWcAxNg2DgJ1H4/z10ovlgmAAP7u9FedeHJs8aCLGEnRIdBlwmBj/6sfiv4cEvzibxFZ3ToNkgDSgMrxNXXzidO9/u19yIW5TZXkZGfnG/DDTJdK+ewZfrxo2N74LK2Vi/iOx6gMNC1bKLj1hFWIS6lSMqsXiAAAAA==",
       "takenAt": "2026-06-13T03:01:15-04:00",
       "geo": {
         "lat": 29.047,
@@ -2890,20 +3697,25 @@
     },
     {
       "id": "dsc08840",
-      "version": "dbcefb4cccaf",
+      "version": "163c60dd0239",
       "file": "DSC08840.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#282828",
-      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoYABAAPu1kqk4ppaQiMAgBMB2JZwDE2CHosSKLekbr27AAAP7xz/9Oqgtz2D1r1YaQHCG9i78RuMCPcT1Hu5IicfKkSnz/NEvB3acx98i3+lyxbCGot2EKKXLT8bt6O7j96ZCvCRQmAA==",
+      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoYABAAPu1iqk2ppaQiMAgBMB2JZwDE2CHosSKLb4IufxlwAP7xz/9Oqgtz2D1r1YaQHCG9i78RuMCPcT1Hu5IicfKkZqngh7XtFGw+7H/WYlM64+vVryOeaQXP71L/PRkXoKPsqpsW+AAA",
       "takenAt": "2026-06-13T01:49:22-04:00",
       "geo": {
         "lat": 29.047,
@@ -2932,19 +3744,25 @@
     },
     {
       "id": "dsc08807",
-      "version": "33cbec23b7b8",
+      "version": "5e8939bea674",
       "file": "DSC08807.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3879,
+      "height": 5818,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        3879
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#686868",
-      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACwBQCdASoYACQAPu1oq0+ppiOiKqoBMB2JZQDG9AqTuyfpXj3ENTbe95zw+5jrS+0NTMmjVAAA/hZQ5Zd7qYvkpDIs6lsHkywFoJo/2WiFU5/xHrt/C4wbVnBuW8UEI0dxjAUB+Wa9N77AEPHRuc4ZjyuVMvvy108c/pRm7SoSNEXOKQro5xJmJ+taU6V7Y8LXlLz/D+dpcveC1WnXXSvOudlXMtAfkTu08gMoZXh8JNZODS+2BcslxYgAAAAA",
+      "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADwBQCdASoYACQAPu1orE+ppiQiKqoBMB2JZQDD7AgATEA4CLSzokdqdcM5tfBVrRjCbMj/WF7KAAD+FlDll3uo8zCMZlOGf89OJTt/8klqDRBVOf7hjxA82pwSDJKhLAjOk3uG2VaZVDDwuuu/mA7t80kMBaDkvQ9IoirM/lek459MAH9fK3sixeGE86Luw9BZoo+9cw/haqo1Zkew6SQ5PEYBglfnNrdlxSlN6weep4BONiLjwEWH+DLnRYAA",
       "takenAt": "2026-06-13T00:28:30-04:00",
       "geo": {
         "lat": 29.047,
@@ -2973,19 +3791,25 @@
     },
     {
       "id": "dsc08782",
-      "version": "23341c4215e4",
+      "version": "c85f5df7734e",
       "file": "DSC08782.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8d8e8",
-      "placeholder": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACwBgCdASoYACQAPu1irVAppSQiqrgMATAdiWMAtvu+Q2vKnV8ytmAP8PrARzebMVT7nH+Tkgh7ADpZSV0eAAD+7U33KYjOs7jkdnunV3c6JXDz6D0JLSPCcIuWvyKg0aSm9Zq2kukIHzu08tC+nm5L/WHH5ayebAFMugksfEHI3TMJT5d3eFBDxTFsaIfM80ui9i61eRI/krJzsDAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADQBgCdASoYACQAPu1gqlAppSOisBVaqTAdiWMAuzOwBIeVOsHkkp4xtyeH1PdR+gLv/l4Gow9pEhUJrFhwfAAA/u1N9eQytneq1OmmjMTTL7hC3P1yLRuJhZPKzjIlCt54CamGSOfzOU81xC4P7wZtUDYe9nkOqMwFOs+ljJ5OVb+DFKOgBHV5NrT0ILgMMUoMyAToAAA=",
       "takenAt": "2026-06-13T00:13:43-04:00",
       "geo": {
         "lat": 29.047,
@@ -3014,19 +3838,25 @@
     },
     {
       "id": "dsc08747",
-      "version": "1dc30ef7520b",
+      "version": "d0a5e1a174f5",
       "file": "DSC08747.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwBQCdASoYACQAPu1urlIppiQipWsxMB2JZ2W0WeAX21MSezTj8V8nx3LFu3UKB/+nGpDgAP7zIwp+7sHdBO9aDQtLR9/hFjakHOdAZX6rtSHLVhYzBecDkoH2k6WZsdhii9GZ9UgTza6+mPF2SlN7wVzLSjZ704rlkMxYPxDQvAAAAAA=",
+      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBQCdASoYACQAPu1urlIppiQipWsxMB2JZwDKAC5tZwhvJQshr5QQOA+vcB2x4/ihnh0degAA/vfi3UydtLe/V8QhHMmvexP3qsY4Uu8IgRA4+2a28zBaormkJPxJoG8MT4SFTUK6T0dwGBQvk7ifV+/XcwSCCYORD52HxeA272B6vjtOgAAA",
       "takenAt": "2026-06-13T00:02:01-04:00",
       "geo": {
         "lat": 29.047,
@@ -3055,20 +3885,25 @@
     },
     {
       "id": "dsc08740",
-      "version": "f3da25021709",
+      "version": "d15555cf2a26",
       "file": "DSC08740.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#b8c8d8",
-      "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwCdMoACtbIzunyW8QUTDhnvAAD+6xLpHMNJM8AyrwYRkYlJdEpyqsNuE2KnyMERa5byFRmbTQX/Pr1icsvrO1htbESDP18C34+zV3pwQkFFRfoOAAAA",
+      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdMoACtbIzunyW8QUTDhR0AAD+6xLpHMNJM8AyrwYRkYlJdFsDkQBMyDtj7gLEPqkxAkGnqCGod6pBs1rLuUJgJC/SoL/AgZEdO79rxwacHwAAAA==",
       "takenAt": "2026-06-12T23:36:22-04:00",
       "geo": {
         "lat": 29.047,
@@ -3097,20 +3932,25 @@
     },
     {
       "id": "dsc08714",
-      "version": "33e9f01c5c63",
+      "version": "33b9bf5a710a",
       "file": "DSC08714.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JZQC2yYwm33rbV1tQssj2oAD+8dQBJ6+ktNq6mxrR1lPQzkGUoWoQwFKUQufvfXhaovmY2aUoRRmHT/xTprvG3dti4I/MjVvcHQ0Ii3rmE35DCFGKLJxnZ+MchqTdLDRNc4zCOXZ94iAAVGM4JgAA",
+      "placeholder": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZQC2yYwm33rbV1tQssDc0AD+8dQBJ6+ktNq6mxrR1lPQzkGUoWoU9hhXEzv5O7Wu9VfFpUlh4q1l7kFV1MU48qNl8oUwlFmAruY/3QG676VUfWHqhTFnAQCc07Ws2v9RnnUJbNYm4SPpaABnVaQ1AAA=",
       "takenAt": "2026-06-11T22:55:13-04:00",
       "geo": {
         "lat": 29.117,
@@ -3139,19 +3979,25 @@
     },
     {
       "id": "dsc08677",
-      "version": "d1cc116c51a6",
+      "version": "b1046df044da",
       "file": "DSC08677.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRkYBAABXRUJQVlA4IDoBAABwBwCdASoYACQAPu1urlIppiQiqrgIATAdiUAZIOrByKcQK2W9IKe/6W4PQegsXbyKvSFpa2d59aeAxSN+MtvINOLkAAD+bRYHL/xcCFAKQ0KfRG7MgHLHDlhO44KaNNXkMqWY7qxWggvdrC7uWD8eI7IvQyq+L6bqtXdr5hoygN8DmgWj9Q2NF+anoqMZ+CD1R2WF8ILe2ibcScISF8Ok9WJzaFVUXGwcO1/8ZZ0DXv0Li+R5Kqq5SBeEFFcnmriDjq9HAnTlNIjX3LDs1LeE3I0uCC6dJLjUNe+HFG6mHv2R29kICxlWdWTgMSjKmPDh2ysMyooTLxnahRKBzQ1yDu5Z0wBwgpisIpAWGrj5C+U0g0qw7mb6nF4zkbVhPyjPsCkfdpdNG0qgeFQwXnlc1B8WXUDYjx6gAA==",
+      "placeholder": "data:image/webp;base64,UklGRkoBAABXRUJQVlA4ID4BAAAQBwCdASoYACQAPu1srlIppaQiqrgIATAdiWMAxNsvEHTaKA9zR2jOJlZhcud0wXzoBjf5AoMlw9iE2JwiAv5sgAD+bRYHL/0KqOVu1cyx4O4D805JL7Sy8xvxZL+7gdUfuUeYBvV9xnKoVdLz/cC8zoCD92s+327VX2L/GMEfIZWjRw4GQn3cAPH8gg2PCN7nZpomVuRZUBBkB6NxdU2JFjr0jzs1sObUPWaMiP8ecXpXfB7nHKrQruOGU12x+4+61iBD62bgjo1qP4faX184PbhFhOyzUw7UKxHEnPZJEdyaFqETrbCOWzBMNw7CG51H5YIEKzic0P8u3917nxsKPi4LIAQHTiCEYvQyV4wCV+gTobjbr8q5mixImOIFPW0izY+eKqyUcRO+sfHPtjJk/K4aepi4gJIzTCaAAAA=",
       "takenAt": "2026-06-11T03:29:12-04:00",
       "geo": {
         "lat": 29.117,
@@ -3180,19 +4026,24 @@
     },
     {
       "id": "dsc08666",
-      "version": "7b774993f360",
+      "version": "0d8322e8839a",
       "file": "DSC08666.jpg",
-      "width": 716,
-      "height": 1000,
+      "width": 3749,
+      "height": 5236,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3749
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABQBgCdASoYACIAPu1gq02ppaQiMBqqqTAdiUAXnAJJOLqVJWeQ1EVUPL6SujYqDbj/zxL07bjMebEHwAD+7qGJhuZo1UTGCoszors3TV9cf9o05kkg8nXrSaCh8+MxmoCWMJa48/swj4fESKpoabNz8uMnQNwo/FCtU3q8NnjIAwh3QSgbvew02Fq54yanXfodOcc3gegRw0VjaGbEGCMCQZFvZGsRMHaX/0U/GB1Aq+XPngcoav8tWkT/6XqObUeIGoNv2pVspZKIrkQaw7VQ0AA=",
+      "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAACwBgCdASoYACIAPu1iq02ppaQiMBqqqTAdiUAYUN4AGNPLf9IBQcHQ1ABEWALJZkUhUnDPO2rrJa2wWuCmAAD+7qGJd7rP+SckqiLi5tjcevGuP/aDzqkZKsUrAJp6zT4f9B8V7ikmYX9phnUlbrm9X4G59VSI+L3BsJ45TweZw7g01EVDY2wOih4fs+fguOKyQlDlYxbyEHj2K2EEm4RLUUaL10DnZdWa8e6CfXfAP25BeWq134qFQ5t/mmORSatXOH5Zpwyq4RjR46eq3QvSgAA=",
       "takenAt": "2026-06-11T03:25:31-04:00",
       "geo": {
         "lat": 29.117,
@@ -3221,20 +4072,25 @@
     },
     {
       "id": "dsc08651",
-      "version": "58da8f856292",
+      "version": "8bf82f8809a8",
       "file": "DSC08651.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoR3ACWVZN0CdZEKIc2ggAD+zYe2tVGiLe9Z7npJf5fM0B5Qgsst530aJdlk+ydyCrGJTLImSZFE2Je4/nXY1HqD9KhRCzsYz0pYDzcZr5HugLrc8At4A5AY0rmpvw+XJcVp6e+19S/h3eLVlE5k4ESz8l7PeAAA",
+      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoR3A8ABp4tG9Em+Ce8w5EWgAP7NJ7MSeOcx6eG21A+8t7a//uiyy3nfRol2WUxb1xTdpKqiI7CJHL+fl7PL6jSI+33vTTltRCWJyHUzR1xceRLiy9BNHvvoxEWhvBYTw/aWwy1IY/xqu4suTvBUPYwI4ESz8l7NgAA=",
       "takenAt": "2026-06-11T03:06:28-04:00",
       "geo": {
         "lat": 29.117,
@@ -3263,20 +4119,25 @@
     },
     {
       "id": "dsc08650",
-      "version": "5989eb634a94",
+      "version": "48da25e6a720",
       "file": "DSC08650.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181808",
-      "placeholder": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoBnArQPeYTbT9LejHzylAAA4T3QICUqAMVhhl18nNIFaW2LjKxgzdJxxxn+TP3vCPa9puC5cBiECZkRFxGfBTCOIrSDY2B2nCB158ZeDhqx2mtnKbXMUrP3PEOeAXnEHcJn5mhhp+JInf6tMEMD9jU3bOIqiisCmERm1NXhBNCJ818cjNT3bzJ1a5Qer/wckSGHcy1egAA=",
+      "placeholder": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoBOAbUMrKb8eWhxyfZ4NADhn3QQEoBiFVZndI+TgmLdeJ5AxPgXqt/4nZ/kkA4Phm1NpPZzghRFKPJ3BKu/BiLLxJcP30cHGYB+VltM3BcP5e7NdCFuuR6kgMac7wMcQjuid6l8uksgZ9V1eEIhMIowRiU0HgI8XrRdA93NS4xLEQ8bmlPvjlndRYpRP/ByRIYarkRcAAA=",
       "takenAt": "2026-06-11T03:04:44-04:00",
       "geo": {
         "lat": 29.117,
@@ -3305,19 +4166,25 @@
     },
     {
       "id": "dsc08625",
-      "version": "23ba08945d6c",
+      "version": "c849591b03b4",
       "file": "DSC08625.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3843,
+      "height": 5765,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        3843
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#b8e8f8",
-      "placeholder": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAADwBgCdASoYACQAPu1orVCppaQipWzJMB2JYwC1G1XFrplD28Gky/ncDO5Z7ehoNgDusGFJvrk8y4J/U32h8P4AAP7x1MzphzSfuQpwOKSiC/txk6v2+3u8bJSf2VbWIZpWNmo+m4/gAk2HROV7a2s2i937X8xkkMUuO+kUBE5p4onuYLcnz88FsJwPcC3XzKmlCNoFSjtl43hD5lwgDwzn0EZmC4rQczAlI54DCBy2EIdBbd757GBDg1xZWyOqOPICKuie9ywb4Xs8HjNMzZRvBDPcEw1GDJa+c5Bsxm5OreZHR0AAAA==",
+      "placeholder": "data:image/webp;base64,UklGRuwAAABXRUJQVlA4IOAAAADQBgCdASoYACQAPu1qrVCppaQipWzJMB2JYwCxH6aFrplD28Gky/nb//qL+1crLAY/lGgqC5zav6WZcQiFDAAA/vHUzOmHNJ+3s4HFJRBf24ydX7fb3eNkpP7DLmWVM78Ezki73b9TpJO1u7Gd9EaX8y5ctBmeDYW2A1R9Wid0h0MEjeIeiHNUS0BMbQGpaa5CbpnMaqHW1XIR8iQQNnT6PsXq4OGPRnACi1qMUmz5M2Q8YQSzF6kt6EtbIdz8x1heQuJIvJf53GD0lTzXQzqvPxXkFsH+CwDYXTjDJFZAAA==",
       "takenAt": "2026-06-11T01:09:56-04:00",
       "geo": {
         "lat": 29.117,
@@ -3346,19 +4213,25 @@
     },
     {
       "id": "dsc08604",
-      "version": "d108d319b548",
+      "version": "b194598afe45",
       "file": "DSC08604.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAAAwBgCdASoYACQAPu1mqU8ppaOiKqwBMB2JQBhs+szpogV7racKHnXWYDCYVt0WqOtB9J8ZqL/SP4wAAP6DXIub/y4gLmTs67x9S8/7mrylN0LTShom9PrCih6AdL2oBlVq55S4QlxSAFTSMFp90ckAiroAzRkICjLNm+2p6PyT2c8Zl+w8QKwi2KuhzRa0mEeghMQ9FggWc+2XJYk3zMepAom6eJRzPOt+K/O4xst5/0AMKrb0cTcp6JPNvUkcGi2H8g+zJuoDTqHY8pmu+zH8zDL+xp3m2F9rdxqwpqgyATDWiFk03yXSlch94MTF18V36qm99fJaVdQiQ/RYAh1IAAA=",
+      "placeholder": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4IPoAAABQBgCdASoYACQAPu1mqU6ppaOiKqwBMB2JQBfAcUzsQgV8LpAwJNeKRtBJNWTbAZEakVY9ylB4WJnoQAD+g2Mifs/oJWs3FYW/KaoVC4zigmlDRZmfWFFD29e4Rw6AvSSZXUPReYVNa20/fSEdvZV9vFL43yMeQsAwGHLbt/72SovNTwcw3qJ/lwPPqLhaRB8bIJ50AyLUNwAh8+rg/mHxGVd2KhXRr3vUnYnelgY7e2k4RSHLLNwCBS2HoHgRekCORn8NF/Eobq1omtDyyn4ZDX4sQ7SVA45q/IpZeLbuLUz4tq2v2PTEGeqjgcQ2gah0iJRAB+6HcoAA",
       "takenAt": "2026-06-10T22:03:28-04:00",
       "geo": {
         "lat": 29.117,
@@ -3387,20 +4260,25 @@
     },
     {
       "id": "dsc08597",
-      "version": "71b423f6f80f",
+      "version": "9d2beabae0c8",
       "file": "DSC08597.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5450,
+      "height": 3633,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5450
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#a8c8d8",
-      "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZACdAB6I4m10Y+12RMAnZwAA/sTRqJkaQyWGVlgpNt+p7Vm56yZcHVTOKFm3le7ZXIwmoJ9aXSdU3QNXajqmzDQc/BDLPahQblTgAcnZvQgub6sJCVaZ+F1SUnq1gAA=",
+      "placeholder": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JZACdAB6JInOSy5BV/kouwAD+xNGnMs1yA0ASvR5EJR448gsB9/NS91MNkJ1ThgFVsrhamW6ANnCNIdTZs4igh8stGeS0ejBPipf6T9pwplfU419+aZ+F1SUnq1gA",
       "takenAt": "2026-06-10T21:52:47-04:00",
       "geo": {
         "lat": 29.117,
@@ -3429,20 +4307,25 @@
     },
     {
       "id": "dsc08593",
-      "version": "3dc97c6387cb",
+      "version": "4982d65acdf0",
       "file": "DSC08593.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#487898",
-      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOl8dA7n/JNZSRgxNtHAAD33ja2SAGdVvLW06gUpqFShIduh2Qsyyxg74CMVAg6hFJ9Lt8xiCwItdENsFqK7/q9SqnGEH0TnJvEYmHok6KCN7ReQZ3J2zswAA==",
+      "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOl8dA7n/JNKuxvO+rAAPfeNrZIAZ1W8tbTqBSkRZkLmYtrUv9SUXkAsG9H2Wu9ybKtqvKAlxg34n/fw9sPREtIXMAD49vAwsNwjEwMKCV0SqlP63odVIwAAA==",
       "takenAt": "2026-06-10T21:29:44-04:00",
       "geo": {
         "lat": 29.117,
@@ -3471,19 +4354,25 @@
     },
     {
       "id": "dsc08511",
-      "version": "832fd74912ac",
+      "version": "c0734635f73d",
       "file": "DSC08511.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAADwBgCdASoYACQAPu1qp0+ppiMiKqwBMB2JZgCdMyrF5SJw3kS4X0oU1m/UEwcFRs1+OTcbBVTv8PbZLBrEglW8AP6DVnPhz+5p6XprCChjQPNnWdqD5eOnCP9Hj7dB/tGDEAG1Yo/adTYdRR+EKYxiFdZbbwnzZ3uVMaoy6CQeSHVyU+xXUzXI2qfuB1isJso+xO4tftnLzKY9lTsA8wojMgCNNqdOXGjtdv0QOLSfqbti7b40qpFlSHe4jc94E5Va3cC4FowT6vMEy21El/CNEjsPuAXCBdTr42KCrmCuZCum9Ex/IQh5yvFTppw12j/xwarCmGofU9xJEHoz8ybhW6qWA9llLtgk9M6T8mhsHdPk8FzkbptIOQ7hwuLIJDAqweKjWB99oAAA",
+      "placeholder": "data:image/webp;base64,UklGRjIBAABXRUJQVlA4ICYBAADwBgCdASoYACQAPu1qp08ppiMiKqwBMB2JZgCdM45+BSAA3kS4X0oU1m/UDGUB2ja7MvmScXh0Jn6j5HIyKYTAAP6DTNiMWtNhpwr2qI9EjJ1GyCsSOStBgVIUUpkYvPNfaON0BAACB4qX81g3u+NK+9/zauGm4yFW6TcgU79v7K2NoAmtBddlaFpMRHAwS+S6pWRfJWJe/qBf5qk0F/jeBzSGNzn1rt+iBw52XFmtxviU9YGo66CpCBxZyHZVhbO0LotQ2jMrh3GgDu6zn8I+PFzivV/hVg6vQ3E/aYv+u2dFazRjRYSblSqeHa2ONYu0fx5LYq5ulqlelHQUmlTIkc7cXecZ0jUWmApFEZGhW8rqoLI6N/RAoG8+TX9A0SHGeAAAAAA=",
       "takenAt": "2026-06-07T23:33:25-04:00",
       "geo": {
         "lat": 31.04,
@@ -3512,20 +4401,25 @@
     },
     {
       "id": "dsc08469",
-      "version": "fc0a497a9ecf",
+      "version": "ef5b73a8b0ca",
       "file": "DSC08469.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#182808",
-      "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JagCsAB3ZIFXzNBqkUFIsgAD+6ZnBzAeuWYVQX6R0WxjewrqSuQ/bnXcaUt2lYS0UNwgYwSTwwciJzfPzjH7nISLqC3tm8YEONvdETnC0aYvtE2Li85N7t2+QqBvO7Ljei0wpGZHphJFFjrvkaIJZWttjMVtb8+RAPOnRAAA=",
+      "placeholder": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JagCsAYx2xkUIEPiS/jKoydiYAP7pmcGkjQs3BkEzGEnR1xVkg0k1PmGTd8LYZtKY7gyQ+n03G0NGI1E5loaasi4HMGKiLNwQr0PRckVHAYXOpbH2iWLsdn/av7OoonVoWzfpnSWurdE9JQslbdZZjiI2o8TFbW/PkQDzp0QAAA==",
       "takenAt": "2026-06-07T06:40:59-04:00",
       "geo": {
         "lat": 31.547,
@@ -3554,19 +4448,24 @@
     },
     {
       "id": "dsc08458",
-      "version": "b4fd228647bb",
+      "version": "9c51cd5bf709",
       "file": "DSC08458.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 3431,
+      "height": 5146,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3431
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#383838",
-      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAwBwCdASoYACQAPu1yslOppqSipWgBMB2JYwC07bJlSJr/PA28jDcj2PFILWL4wzUGRWzpDVmRJlc2BIrbZR+v7hAA/vRe62E69NM4H4RMeSUU40+5wbzlvGSTjmw7mZHnlYvcYZuR3LmlreSQr7MWPv+FaGDGyY+kAu4wZl9fybimyHgs10/MiZK0zNq9sVTb0kU2pwx+blDx7thVFXTlpgiLMehqmSGtHquGxkg1HEHGg6Xf/kUsNmw30bx/rBnRjPTJ4OV5Y/n67YWOtqubNw+oyoknfGdPlL8mbjNlm+ctMRsNMA0SIUObCZsCh/qCDQNdaAUllfW1rYL6B4KfCnO7i64ZHM/TswPuKwAAAA==",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAADwBgCdASoYACQAPu1yslOppqSipWgBMB2JQBadZoF1Q4rs83xaOV0w5lsdem/MmvOOqLfYE9SaNC1r6St93GowAP70XutBM4H3iaPtIiNuVDgq6sQ+er/sABBUWhzMnlbQJogbfHYq1SRsWhERHu4b2YhrHgpUdMc9D3IsF3rlcxt7TjOupOat66ppOVZpvklHYN+T7no2q8iU+Uu4TOPbuW9posh1o+KfAkC2npMzALpCZNk/I4qeLLSIiTfuoLgZDIrtB0lkGKUucQseo+HhsQZgwEAAGBzPIpcpPhkL8wX2iVVNDfFFZZobbvjG23lS5Rk3jUJF9eGOHAsQe92otgTJmsni5Q/twMUJX7AAAA==",
       "takenAt": "2026-06-07T06:27:54-04:00",
       "geo": {
         "lat": 31.547,
@@ -3595,20 +4494,25 @@
     },
     {
       "id": "dsc08294",
-      "version": "c9ad79884ea8",
+      "version": "c71f0e02f72a",
       "file": "DSC08294.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8d8e8",
-      "placeholder": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYABAAPu1yrU+pp6QiMAgBMB2JaQABHufLtrIkr2xQAAD++qiV8UzNWGyZPMPueazyoDmgJCIuXAkDDOcs4Y+UO+93elVLajJrQgAA",
+      "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoYABAALrV2u12jqampiYC0S0gABc4qyl/50kNHb7QA/vTacFdK40oZon0A8Zh1XqfyLlXzqE1Jx33yas05dXbRXyNgSC1sAAA=",
       "takenAt": "2026-06-06T06:19:39-04:00",
       "geo": {
         "lat": 32.737,
@@ -3637,20 +4541,25 @@
     },
     {
       "id": "dsc08287",
-      "version": "ad7b15474fe2",
+      "version": "b255d0e86c72",
       "file": "DSC08287.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#c8c8c8",
-      "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYwDA/DZDMqauIy5pfkFGlZNFpAAA/rISXMmvZAABAkzwUkgkwphW2UsBtA2SxswqApL+8hz1YglyhaQIgTSfxGsHGqCAAAA=",
+      "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoYABAAPu1iqk4ppaQiMAgBMB2JYwDE+DZDMqauIzBvD+H9VO6QwXlAAP6yElzJr2PXtVubuHHDfYDhz0JxdZc70A0VMNke6PBwavOVeQlAgVDcQD4EQghdaYAAAA==",
       "takenAt": "2026-06-06T06:15:42-04:00",
       "geo": {
         "lat": 32.737,
@@ -3679,20 +4588,25 @@
     },
     {
       "id": "dsc08201",
-      "version": "f9d813cf8068",
+      "version": "81c7576bd532",
       "file": "DSC08201.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5191,
+      "height": 3461,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5191
       ],
       "formats": [
         "avif",
         "webp"
       ],
-      "color": "#d8d8e8",
-      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYABAAPu1krU2ppaSiMAgBMB2JYgCdEf/gPI3QktG/4Vf2diaAAP7fQAFaoszhrpv4MxGSNVMamk/yfdFS5NDaqw8zsDpPlpkgMrYbilDPD4jl/7I+bqC+zMv9GbIpVAC9IhNur0rd4beG1At22vuNiWQ8i7wvpYdkLq5hhlrsZt34737rL6dF01PoAA==",
+      "color": "#d8d8d8",
+      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPu1qrU8ppiQiMAgBMB2JYgC06CHbDtCG+7G+3RUmQAD+30ABWqLQ0pBmwGe+5kaglONJ/lFSMcYuXGk/OpvfPVibqsgjC5ZvO2bk6TL/2Mkg83TbSTOKhdWDI0hNsZuX1vEUK+zq1nN8JB1rvC+sTVqFBjItzrQ2lymRzmTYkM1YPAAA",
       "takenAt": "2026-06-06T05:57:12-04:00",
       "geo": {
         "lat": 32.737,
@@ -3721,20 +4635,25 @@
     },
     {
       "id": "dsc08199",
-      "version": "324bdd92f31b",
+      "version": "f129815642cb",
       "file": "DSC08199.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBEBDPs7pNm348AD+7fqsqpUSrYkXPxgb1MRMlbP+TsLYhqARTpiOlveCs+8XCyUa2WaPgAzGPe/oSkzzPFw5m5SnNp2EJXSJNNW5J6yT4E3ZuQ5MUrvuEBF9EMs0HIeV62o7anMFaAqOl2gHhFwAAA==",
+      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBD4QrAGTa2bfjwAA/u38whmt36JDnKQEek9IYoSfqt1d2tGeWnlfL+TqNFsdjBfGL7sSfzg0UCboIxUHg44GjP7foaeIoJfX7GhUqeIMwjJQLrAuQwrLI7PTXOZ069lhq0eo7anMFaAqOP1YRFwAAA==",
       "takenAt": "2026-06-06T05:54:37-04:00",
       "geo": {
         "lat": 32.737,
@@ -3763,20 +4682,25 @@
     },
     {
       "id": "dsc08194",
-      "version": "90d38d6a4c7b",
+      "version": "9e346c53e581",
       "file": "DSC08194.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5794,
+      "height": 3863,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5794
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#f8f8f8",
-      "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoYABAAPu1oqk6ppiQiMAgBMB2JQBOiP/wHkiOk6NiBRo7OoAD+6oNGO36e7g+GUa8FfInNsPaHJ2gCU5bwhJRr+SMjoZXuM0fcxT4zv4wkurB3zw+pfnZUOZHAIR2uQr2uPzVO3NegAA==",
+      "placeholder": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwBACdASoYABAAPu1krU6ppaSiMAgBMB2JQBOiP/wHkiOk6Mk9Y22+nIAA/uqCad0FUlVmsuvhKrcbILw5Gyy1sqdSs1p9zLlOpUPmPUvRKVBx0Mh38fdPAJ7PHBw6SiEtCFUKzxH4S6E7xOLyKL0AAAA=",
       "takenAt": "2026-06-06T05:51:28-04:00",
       "geo": {
         "lat": 32.737,
@@ -3805,19 +4729,22 @@
     },
     {
       "id": "dsc08158",
-      "version": "937d57f698a2",
+      "version": "1926e86723ec",
       "file": "DSC08158.jpg",
-      "width": 800,
-      "height": 1000,
+      "width": 2232,
+      "height": 2790,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2232
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8d8d8",
-      "placeholder": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwBACdASoYAB4APu1qsVAppiUiqAqpMB2JQBmaDSiGJgJhG84SdVkJwpx+RRLyywAA/vf5Ib3T1A0OON5cpPM8tYGUuLZWzLSCdQDukuRVEWEzvIpPpZP8igA6iARxwoD/fCAxETH3L9ejgBoLJ3hcHEJtO7HHdtuOCYyJRKReGvpODFqjxBR5AAA=",
+      "placeholder": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADQBACdASoYAB4APu1qr1AppaSiqAqpMB2JQBl0jSjnuKWM98pZ8e7LVR4vhpcPAAD++BhhPkayS3MNTMQNWgx2TrmCV75eL9B2/StHnARqEWYaL86Biz+Ldtfty7xWTFKolsMU1T9JcR0RSz3saie8BRP0X+ckci06mQlOziXO0GBzNzEeWobUAAA=",
       "takenAt": "2026-06-06T04:46:57-04:00",
       "geo": {
         "lat": 32.737,
@@ -3846,19 +4773,25 @@
     },
     {
       "id": "dsc08129",
-      "version": "19aa1f5ee3fe",
+      "version": "e6fb71075dd2",
       "file": "DSC08129.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAACwBgCdASoYACQAPu1mrVKppKQiqrgIATAdiWQAuwAitj0TtBL/hebdWR2l+PP7fVLl+NPZP/67J9aSwoJlgAD+2XUBSyIiFsCmgsi9Ys5YlhigU18TXjEKPucWnQ1QDdjJ5aF5dpaMrmrYjQCZBHzugjnlFQxErLYm6Qm/JVLbMmaxWdNoXR3qDKlS+0YGsjmwOyCOGOyfeWoqIt1HqE0D/qu2kis0VM3Fa4PvEfcyktz60oR8cvq9NBHGCwSiXbLP0GlnbDzGEjolI2DUogDDVZ8Hb1BCICha31UcCybndoPFZbm5aLxEBgYVfomfAWXizH7ibgG2+UnpdtTtoUU02jS5tpQARnNIGNfWJ9BCwasv1/qAAA==",
+      "placeholder": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAADwBgCdASoYACQAPu1mqE+ppSOiKrgN+TAdiWQAuy//S0arAM6596yHywxMH+KJp8m0TSMhgIirA6Y5xAZMHz+gAP7ZdQFLIgdEopy25GvQsbMhiIa+JzEyQXxDfOcZVITK/uDkG/NbJuYDzxixE4fL+2wFAWNv2iwVtz4Eo6JhtjVaiXiWn13Z33QyM/RrCoujUEAURpY30qU/VOUTrlEuc1WzGALUv75C63suECsjKQz8EkV+y9ppihCSWOqYp3MAQLVegQxhID7UbV8CtxisSh2uAeNm3EdPhY4/JSUxyCI2Cb6OsGEH2iExkNSsGPuf2nbccBy6Fl/td+PoNt/p933wP5Tml2WA3gX4nR1uQAAA",
       "takenAt": "2026-06-06T03:39:08-04:00",
       "geo": {
         "lat": 32.723,
@@ -3887,20 +4820,25 @@
     },
     {
       "id": "dsc08128",
-      "version": "8f685632d453",
+      "version": "3cb51e686586",
       "file": "DSC08128.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#181818",
-      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw8aglGVqSgkiOvfzvjAmgAP7sCnWhtL7qklONh/vb5WwfMqi/5uyVL0Vp6fAHLvvFWpRxsa3Y3MP12k4TOCFTPGhYDjMQqbV5KJzYvuiShffj9aqGbDhcfR1MR2a79QgRH//rp6kR7Kud1IRIxDz/g/xULm7B5yGMJMG+b4AA",
+      "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCw8aglM5p0gkiLeVOzq8F8AP7sCnXN54ZBL8nzm/l81KPF95EerVLDbTb09wzX84whzghjtCw4lUDoHwz2zB+b0u/CLema7Xu4BeH3MwjCQiCQqVNrDS+RpEUFPrYmAduiIjbkRjO6uV/e0RqhIhfjlM08mfYPq5aU20K92yAA",
       "takenAt": "2026-06-06T03:36:32-04:00",
       "geo": {
         "lat": 32.723,
@@ -3929,20 +4867,25 @@
     },
     {
       "id": "dsc08104",
-      "version": "f98f15c51368",
+      "version": "aa5a3a89f80b",
       "file": "DSC08104.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 6000,
+      "height": 4000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#086868",
-      "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JbACdMoMljEI+BcnFzwG57H1PgAD0P6hIz/fuFqE55UFhuDHkFv2pYtik6LlvKbFYLdl0cyur06vuOkvuMHhoGST4UKUkLHo6h68x0p2pOPXKzzhJYLiO8FTdCG79M75HeXLS9clnG68OJK/51tInHDgVij/5OMXAm6B04Oj/j/mUOJddYf/RyZY1JsAA",
+      "placeholder": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoCGACBe8qvLEROJcgAA7750PNrxwte7SmDnBXsfSMNCOiWQkLwYmcOgDW/KJ5GMuMbS3OUFkKyyPwBG5gdeirQu00lnXmOl0rzwimohJS6LddUAn6e+/8IW87kZz7+ri/DqjACQHa27bmrhjRhrg52PI5UzK/yW7sAvQlO5s/4/5lDiXWcs/9HJllNxKwAA",
       "takenAt": "2026-06-06T02:48:37-04:00",
       "geo": {
         "lat": 32.724,
@@ -3971,20 +4914,25 @@
     },
     {
       "id": "dsc07834",
-      "version": "7a9e438dbdb5",
+      "version": "22be8841f13a",
       "file": "DSC07834.jpg",
-      "width": 1000,
-      "height": 667,
+      "width": 5869,
+      "height": 3913,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        5869
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JZgCdISG6gAcdZNPvEqIptbntqxAwAP7rao+LDTdtHJdFdesAvtwXbb81wh9DEqfhjD3qNDRmf9Vyrj9vAcGD4nkdY7EnncdGSFKnnEF4zUvpW9JO0L51bnBDjYIqVWwtiJ+1FyzRxe7btngOUB7v5wVOcmAA",
+      "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdISG6gAcc6/GWfTRLBeOgEAD+6D9MGo8BFjV5vXDzYdesjj3bS+Ng3TF29wU+GMPeo0NGZ/1btXvbFdQfT9iff/OGiPtVa/tbPTVDbkcV2FDzcU4H0LT39VzB/C7E59NJZjooGf2C9T6SrXghW658Xn8AAAA=",
       "takenAt": "2026-06-05T06:35:16-04:00",
       "geo": {
         "lat": 31.687,
@@ -4013,19 +4961,25 @@
     },
     {
       "id": "dsc07772",
-      "version": "586d37deb7aa",
+      "version": "ca29961420b2",
       "file": "DSC07772.jpg",
-      "width": 667,
-      "height": 1000,
+      "width": 4000,
+      "height": 6000,
       "widths": [
-        480
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#080808",
-      "placeholder": "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAADQBgCdASoYACQAPu1sqVAppiOiqrgMATAdiWIAuzOh70Aa2iJvo8gmwDiCLr6ZI6I63iUMkfmS3nWDFZ5Lz8AA/cX6tFoxEC0e7HaMRvAQVPcZ55xXG5nLmdW19N3+ap70JcNMLIWg2R9Jr3KDsQX1NRKKIGEuovnmNGNfM0yvpZd1m4zZDb5gP9K4uPqY/llUkLKCggGLdmFLs9hwfJbDNQDf8DmBs3XGn6/q8n7ucN8Vo3zUTcgxYbZ2Bs6ScSVhV27GzHqhPyZkQB50EN0X+U2S4X25G7eIDn241rhWpV+gqL3zJBqEZelZpctR19RD8YWyBUJyQboxvzRuV/WKqs6ftqUxleuzP7hFGHUnqnAA",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAACwBgCdASoYACQAPu1uqVCppqOiqrgMATAdiWIAs7OTr14a2j9esKyAdjUIuvpkjojrdGrhvKZJnH9eSl9EwAD9xfq0WjEQLR7sdoxDx/PF/qCBo3MCLPaqb6bv81T3oS4UgqV+3++d7K7DiJjWvWN0Ehgs2eL35isJIvf0su6zcqod2RyGXN8CMKqm+T8fgQPxyWx1ZTfRR1nBmo4jLHJdbIJIpeq4ZPhABql6C/vzc9et88iQUyOouEAswTjswnRuS34Vdo/uFvLIEeqe80kpVQK/XlJDQS37+BfmNb8lpgw9R9mrJM2g23TVwPz227kz8eGjpMOFXQfHum04o2h+O2M5mBZQpCsWGFLb2OnAAA==",
       "takenAt": "2026-06-05T02:39:57-04:00",
       "geo": {
         "lat": 33.262,
@@ -4053,21 +5007,73 @@
       "keywords": []
     },
     {
-      "id": "dsc07519",
-      "version": "bd1964d6097c",
-      "file": "DSC07519.jpg",
-      "width": 1000,
-      "height": 667,
+      "id": "dsc07559",
+      "version": "48dae369b66c",
+      "file": "DSC07559.jpg",
+      "width": 4000,
+      "height": 6000,
       "widths": [
         480,
-        960
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#78a8f8",
+      "placeholder": "data:image/webp;base64,UklGRiYBAABXRUJQVlA4IBoBAADQBwCdASoYACQAPu1wrFKppiOipWsxMB2JbACxHxfKr7Nxqd/Ze/UdcwLl+NCd8O9tKwdrr+Vnu/lnUR1z0JonP/qjDc7PAAD+i1VmZ7/Dz1ntHM/VzbJADtJkVL/qpaEYMrDQXGjP9zNVFVsCKDfxnYRzfCHpqcAIjm6yLFYLRMerkXQZxQGiM5OT4Hs0rW/lGVRFG5o0iHGsNEpMeS78FdMFsujkW8CEUSKfY8IiTaryj897eM+GFgIyFY500RCLqEG6GTwTk4i9wKaH9yMDPytsR4aacVuxuSeFGcOsbljrnX+BG8/DYUuYIALEVW3sYlelAVejuHah+pyudRw+HbO5/a1dW1BsG6GG3vzTCRjBWcnlBGJ2AAA=",
+      "takenAt": "2026-06-04T22:12:03-04:00",
+      "geo": {
+        "lat": 33.262,
+        "lon": 104.236
+      },
+      "place": {
+        "sublocation": "Jiuzhaigou County",
+        "city": "Ngawa Tibetan and Qiang Autonomous Prefecture",
+        "region": "Sichuan",
+        "country": "People's Republic of China",
+        "label": "Ngawa Tibetan and Qiang Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 2.2,
+        "shutter": 0.001,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07519",
+      "version": "286d2862c6a9",
+      "file": "DSC07519.jpg",
+      "width": 4464,
+      "height": 2976,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4464
       ],
       "formats": [
         "avif",
         "webp"
       ],
       "color": "#d8d8d8",
-      "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoYABAAPu1kqk4ppaQiMAgBMB2JYwC06CBj7ztsN4D5keCreAD+6PA6xU/Y145LxmBywyGUtYuKmJVmkaZBZsT5N/0BKRjpordxEJpPLWiEN9897Bso+dSy97jEy8AA",
+      "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwBACdASoYABAAPu1iqk4ppaQiMAgBMB2JYwC06CBj7ztsVHoBd+yTKwAA/ujwOsVP2NeOS8ZgcsMhlLWFzeuHCACutY8G0Vtw56TU50zzOwYZusSyAY4o6wGFGtwvNHXwAA==",
       "takenAt": "2026-06-04T05:55:37-04:00",
       "geo": {
         "lat": 31.073,
@@ -4087,6 +5093,920 @@
         "aperture": 2.8,
         "shutter": 0.0005,
         "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07385",
+      "version": "49124f19cc2d",
+      "file": "DSC07385.jpg",
+      "width": 3854,
+      "height": 5781,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        3854
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAQBwCdASoYACQAPu1urVCppqQiqrgKATAdiUAVJPGn6gldn81lCBmcAXqR9SV0U+r9J8z1C/eFLTqaJucBxD7wgAD+7E1oUmCIaOAjMZ00j60VbNORM/k1sHNBM0T3efCPhsnhgglV4dtLpezobz5baTtq84J8vTPPxqBoJeIkm/nDfs/CBQOMq1Uy3PKfqdPxwZ7fn10io6mFgqdYs+mYri4QskBv7Ourzysj7FdNe53Sr1rY2GVnLwwecbev2DyaxVm9fXyvGCWltLIxuqniy9yaJcu3bMMnHnNn8KPbgJkBqhAFAbQcduZqPbOSjaDI3CV75LM3f5hnWX58mkUtX3oNA0AOsaYX4PEOuSfoAA==",
+      "takenAt": "2026-05-31T10:41:37-04:00",
+      "geo": {
+        "lat": 29.565,
+        "lon": 106.578
+      },
+      "place": {
+        "sublocation": "Yuzhong District",
+        "city": null,
+        "region": "Chongqing",
+        "country": "People's Republic of China",
+        "label": "People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 2,
+        "shutter": 0.00625,
+        "iso": 5000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07381",
+      "version": "8a438b3058f6",
+      "file": "DSC07381.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRhIBAABXRUJQVlA4IAYBAACQBwCdASoYACQAPu1kqk6ppaOiKrgN+TAdiWgAwrOETU+/qNagUMKPeZO37UYfbvaIHLKMTd1U05meCpChXOGQlP04swAA/vm82f2t/TYkfQWd7RK7Bkm3fC0NawmSIUWlU3rQCcW3OwjDDruXAyVr8bQo6sQeKBwtONjemDVVbw4i4y4aodU5B65LtuWoCmNB+oOwPl2Zzfxo542VEYgvPD8UohmZ/vlPDWaXQxhDvRgA64x1RId6juAYInzG47UAsVzfNh1OpXRckiwnyTGwrLoFSHFAYp66uD+e9kqV1HZ9jHk08eSizxuxn+J2qRUa+TOsrAcSlbRuYWqxhdUfMno80IAA",
+      "takenAt": "2026-05-31T09:33:45-04:00",
+      "geo": {
+        "lat": 29.565,
+        "lon": 106.574
+      },
+      "place": {
+        "sublocation": "Yuzhong District",
+        "city": null,
+        "region": "Chongqing",
+        "country": "People's Republic of China",
+        "label": "People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 2,
+        "shutter": 0.00625,
+        "iso": 1600
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07368",
+      "version": "7d2e102a262a",
+      "file": "DSC07368.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#68a8b8",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBACdASoYABAAPu1iqk4ppaQiMAgBMB2JbACdMvUrZE4hYWzC4aWeFlYgAPxLvQk5vcAMX8FXhz780MuXLqraJAilo8pl9ZT8Hv+wXvt5ON2SL3XezcETTiihr7Jkdh3d1oy/Biw9LdhSCX0gxEfI7XkLirrNegjb0AAA",
+      "takenAt": "2026-05-31T05:17:44-04:00",
+      "geo": {
+        "lat": 29.56,
+        "lon": 106.591
+      },
+      "place": {
+        "sublocation": "Nan'an District",
+        "city": null,
+        "region": "Chongqing",
+        "country": "People's Republic of China",
+        "label": "People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.00125,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07309",
+      "version": "da8504a3078a",
+      "file": "DSC07309.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdAB6JnMa7gITVgJ7fAAD+8zToht1NC572Ru/7uD8wPzs8VhMjmd4WZXtY7hP7u2lwu+Rq+OWsNW5htBejFzxUFlY31je07fCcHDlrkYVNklKZMI4gNe3ASAk8AAA=",
+      "takenAt": "2026-05-30T08:51:59-04:00",
+      "geo": {
+        "lat": 29.56,
+        "lon": 106.591
+      },
+      "place": {
+        "sublocation": "Nan'an District",
+        "city": null,
+        "region": "Chongqing",
+        "country": "People's Republic of China",
+        "label": "People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.016666666666666666,
+        "iso": 4000
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc07075",
+      "version": "ed3b8eca45f1",
+      "file": "DSC07075.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRj4BAABXRUJQVlA4IDIBAAAQBwCdASoYACQAPu1kq04ppaQiKqwBMB2JZQC4qzCgf1okPvebZ3JjV+5Ntfo1owK2lyd2xslOoCjoYddqgVt9AAD+83Bn7jUFQbSvseFAREBa/uaCWaCCADKqe4dlnQFYOOQUpHQ3E5k6/FPBwk+yNVbGS2oolsAzx+y5df5ouJ/CL6tAX9UrSDy8Oto0XawkvSKDzcUtQM46FTDvvoCKHNsCOze+/FWtsWHnXj6RcgFL0g2mZ1BYl8gy3N977yvdSJiS0B8CZYNIF+WEqMJfTDmQZurLbLfV+GtWWx2ky9zJCc4ozLvzwpfMzmlj6WWnIKjuqUrnLaeqHxKDZXlh5kFyHP0KCVoDAxgh87p242ArfRyynF0eYWnKOXBIZ2FzI8NF4HLhN0OieaTzgE2AAAA=",
+      "takenAt": "2026-05-29T00:18:05-04:00",
+      "geo": {
+        "lat": 24.774,
+        "lon": 110.508
+      },
+      "place": {
+        "sublocation": "Yangshuo County",
+        "city": "Guilin",
+        "region": "Guangxi",
+        "country": "People's Republic of China",
+        "label": "Guilin, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.004,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "img-5835",
+      "version": "ad8baad27ee7",
+      "file": "IMG_5835.jpg",
+      "width": 4032,
+      "height": 3024,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4032
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#083868",
+      "placeholder": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAACQBQCdASoYABIAPu1qq1EppaOiqAqpMB2JZgCdMujOABFEN0T/p0tssTDLAJ0RJbYYYiXJ4AD+0F1VbxUyeT1GF1vLykgeWxOZys54USco3+CHMLMFWqLQL9Qlo8hu5kaIeUyiF2q52UBd7aaADJG5XQ1GuQERwaNb5M1XNwLLbqiHLzX+y60+EUV0j+8WXBs72MPxLNoTFxhH2An0ogMayim74vMHLXyPEwwE2sQ8K4abSi+gENcoTasbK0maimiRqKfToKEwikzEhGIhzoAA",
+      "takenAt": "2026-05-26T12:50:24+08:00",
+      "geo": {
+        "lat": 27.834,
+        "lon": 99.652
+      },
+      "place": {
+        "sublocation": "Shangri-La City",
+        "city": "Diqing Tibetan Autonomous Prefecture",
+        "region": "Yunnan",
+        "country": "People's Republic of China",
+        "label": "Diqing Tibetan Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "Apple iPhone 16 Pro Max",
+      "lens": "iPhone 16 Pro Max back triple camera 2.22mm f/2.2",
+      "exposure": {
+        "focalLength": 2.220000028611935,
+        "aperture": 2.2,
+        "shutter": 0.0003333333333333333,
+        "iso": 50
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc06950",
+      "version": "80fe13ea6129",
+      "file": "DSC06950.jpg",
+      "width": 978,
+      "height": 1463,
+      "widths": [
+        480,
+        960,
+        978
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAAAQBwCdASoYACQAPu1wrFKppiOipWsxMB2JQBkC9G3/zwaFzazL1fAdox6T8NvKgfN0KlMHOKR9d1gcmQ296FLKgAD++bzy8v8iJ47u8uD3NvMVLA2XR2D9MraMExBWUpeha7WOZ1dzZogx1z8Jq3O/HVYY5gGegCZJLNm21tn0+XpHulo3PaqSJJGbfvZb6YGZ1TgghNBk/46qswrOOsM4LN0tU5fkFpbutnMCnIvmPPOkbUXrxUxCEVob8K5BoZntUC2837+yiKQaJW7izWXVAOzMa9lGdi9PdBtFBvMqWGgNo0w4q3kAAAA=",
+      "takenAt": "2026-05-26T04:09:18-04:00",
+      "geo": {
+        "lat": 27.84,
+        "lon": 99.743
+      },
+      "place": {
+        "sublocation": "Shangri-La City",
+        "city": "Diqing Tibetan Autonomous Prefecture",
+        "region": "Yunnan",
+        "country": "People's Republic of China",
+        "label": "Diqing Tibetan Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.016666666666666666,
+        "iso": 125
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc06925",
+      "version": "ff8aa3d2543f",
+      "file": "DSC06925.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#c8b8b8",
+      "placeholder": "data:image/webp;base64,UklGRnYBAABXRUJQVlA4IGoBAABQCQCdASoYACQAPu1mp08ppaMiKqwBMB2JbACdMoR3p7H9gHuB4iRi/dHnh7Azf1Ncw6CIZwfefbSTGmko3uJ/d/aBFwJU9xR4+sii+5/hd7px8AD+prO4fjq8H+3XPWcQaENepAGh1bfX4/4pBphRJ8Bls7csEPRO7jzBYIE/hpzE2VqsQ2s+WQLA6BcnutTeV3TNN7yqUIJANveMUkyyfWvtlJdtqBKJDRLz82C5JwyYicc806N9jrrwdItCsW56tXQpugwXCn3g/btaNkF099F0efPWf93Y+0kW4dw6tuKQFi+bImDgFrfaKyv1VdjFHYR28nm17sLBtXFMamV5I3y37oZaz9AElwZ50yNOZEpUx7JDnc7CE0AuDD/4fBTToXkHSY/S3qUL88RmhM6jfwNh32WO1Pfd3Q+gKGQUsCasOkHAKxao6iP13j6WzgtELHI+GYAwEKHKVE4Uw5zXCmugk6gD4uAAAA==",
+      "takenAt": "2026-05-26T03:44:22-04:00",
+      "geo": {
+        "lat": 27.863,
+        "lon": 99.705
+      },
+      "place": {
+        "sublocation": "Songzanlin Temple",
+        "city": "Shangri-La City",
+        "region": null,
+        "country": null,
+        "label": "Shangri-La City"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.0015625,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc06571",
+      "version": "21a6daf22417",
+      "file": "DSC06571.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080818",
+      "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAADwBgCdASoYACQAPu1mqlCppSOiqrgMATAdiWIAtRto5c4X+vdTPH95P1bGwuKQSOs+ArGDXE9nb78l8pUfatnAAPpgxMeWoa7cHKHuRLkbOF/iJ/7XNHViKJQMTYH0aAfm1JwWHV7VWndf226iVPozv5Y/BoqLSjwdtApwPn/eI/nRxRXlZccsLO3Q8Kpa8EJdqgT8lCFWQ8Lj0WmWusbqNfkFl5NuD4uP65AEH72SL4l1yN5U9qAhe2bw5EzdNU9+NGoY9wsvX5JOA7p7ziGO9VERdR2AA4QRIOZQNaO5LiOtxU67a3zFe0urzkSuLgXriVSNP7WRzYw1JFzkWK9ULMj7G1TbGjksSAUZNjQgEAsQgAA=",
+      "takenAt": "2026-05-25T23:58:13-04:00",
+      "geo": {
+        "lat": 27.833,
+        "lon": 99.652
+      },
+      "place": {
+        "sublocation": "Shangri-La City",
+        "city": "Diqing Tibetan Autonomous Prefecture",
+        "region": "Yunnan",
+        "country": "People's Republic of China",
+        "label": "Diqing Tibetan Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "Sony FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 1.8,
+        "shutter": 0.00025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc06138",
+      "version": "51972ac93c45",
+      "file": "DSC06138.jpg",
+      "width": 1080,
+      "height": 1616,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#e8e8e8",
+      "placeholder": "data:image/webp;base64,UklGRloBAABXRUJQVlA4IE4BAABwBwCdASoYACQAPu1wr1KppiQipWmZMB2JQBibZdgNq0GMtboB3UXs6JVGhI9G7K1NMNbrxlFF2Q+sk2CkRytWXMOiAAD+6H2M+h3MHgUDZOvf0zFKMCMleZLJcfukmgnPw/4+yxDuKaVGdxOZ/bOHg+jNW1VVQ5OFcPZGBAIAt0f+EqkjXGv2YvDGgwwh3iurbm8AOL55cq4Ft2iVLmHn9TjbtidW+qVOqIzPX5aAk6zUD8D6PNbStLA5u9mHNUdOWQY4hRkBC/LoKJ05jkJAecU/NtHAZetgK00DUgDpxXBxVC1IFnPKEK+F2ujSny4kkpTIfF70JzbUm1WivVgBTfVoPvyCbH22yudbl4R+orYLjwY5H7w3WTSNV6BjNaCMhirhwve4KLIQkIEX47Cqa1QSa6EEVdymG9nle1eSeVsJ1teMyXsnzk8PQAAA",
+      "takenAt": "2026-05-23T20:52:02-04:00",
+      "geo": {
+        "lat": 25.734,
+        "lon": 100.176
+      },
+      "place": {
+        "sublocation": "Dali",
+        "city": "Dali Bai Autonomous Prefecture",
+        "region": "Yunnan",
+        "country": "People's Republic of China",
+        "label": "Dali Bai Autonomous Prefecture, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "img-5435",
+      "version": "8bc83493d192",
+      "file": "IMG_5435.jpg",
+      "width": 4284,
+      "height": 5712,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4284
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#382818",
+      "placeholder": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAABQBQCdASoYACAAPu1ur1IppiQiqAgBMB2JbACdMuN+AGuQC3P7yM4d7jSA0Y79QVCEyKAA/u0l0qkaQI7G7q07/Q3y7WUoE+11wC/ETXkzIp6WOlTfh+UO6Pf/hbpCV4/NvAHTqFiFozzq4wekjKijjzry9goILkb96JjTaveUW/ZMnu0hH0w91mywU2TVjL9nfEAC3JKOteP+vN80cXnftEBNBMpvxIWHmm+5KZEs+gJBlHK1SMtM40wMmoMFzZeDDQAAAAA=",
+      "takenAt": "2026-05-22T14:05:58+08:00",
+      "geo": {
+        "lat": 22.519,
+        "lon": 113.946
+      },
+      "place": {
+        "sublocation": "Nanshan District",
+        "city": "Shenzhen",
+        "region": "Guangdong",
+        "country": "People's Republic of China",
+        "label": "Shenzhen, People's Republic of China"
+      },
+      "camera": "Apple iPhone 16 Pro Max",
+      "lens": "iPhone 16 Pro Max back triple camera 6.765mm f/1.78",
+      "exposure": {
+        "focalLength": 6.764999866370901,
+        "aperture": 1.8,
+        "shutter": 0.0034482758620689655,
+        "iso": 80
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc05914",
+      "version": "774975b55ac4",
+      "file": "DSC05914.jpg",
+      "width": 1080,
+      "height": 1489,
+      "widths": [
+        480,
+        960,
+        1080
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#281818",
+      "placeholder": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQBACdASoYACEAPu1mp0+ppbCiKqwCEB2JQBjeggnFaKqRUF0QqDNbPHY/V17DqAD+6pXn3Zw8AsRt7ZSAEi9sq0EIK4REoP68U8ta+hXXYktxCMW/KztCuRV4/X1UQvvN6ZxbYYuMwKFD9J3Gs6s1XHCOM+Uzjh1IAAAA",
+      "takenAt": "2026-05-22T01:57:01-04:00",
+      "geo": {
+        "lat": 22.515,
+        "lon": 113.949
+      },
+      "place": {
+        "sublocation": "Nanshan District",
+        "city": "Shenzhen",
+        "region": "Guangdong",
+        "country": "People's Republic of China",
+        "label": "Shenzhen, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 3.2,
+        "shutter": 0.008,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc05707",
+      "version": "18c256f631ef",
+      "file": "DSC05707.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAAAQCACdASoYACQAPu1mqFAppSOiqqoBMB2JaACdMw5GB8JYFyzNJ20IIG5/PvlOxMUTWKSuLBGU3aUcDIl+9FooTGKIYhQFj1AAAP4IuooqM+aHx7eV3rGsMrYcDWWlx/N+gDbi994KzRzntvbvrTnuK8MQlE7hbQhA9aEdSVjmrjg3eIPhZJ07TtHGAZT7beHBj4JIH+iO5zzZfi6wUT2vVi4CCEAzUUg84poRMT0hNzTAPxIma3g9i7kXXwhhQTQCyj2tZHaxaV3OFoTKJzDOS6IoiEPf2D7zziu9tzDf3u/xf/JP7zmY6T4T0LbrQ8jFJYULShlQxzCNATQvYZt4HB9vUjqUzjcuwJyitL5GG4JUw0yj0lIA5WLzMm29v849FckjhIDqPSeQz1yNQ2ktqdPZIuBW8BaQeolvyDH4lM3AEU3YtoOHoiuKQE+/+kFTv63uRyNXizu4NlDJFf9P66te820NwyL+4oBcAdVEI4u1l+281nT2AAA=",
+      "takenAt": "2026-05-22T01:01:29-04:00",
+      "geo": {
+        "lat": 22.278,
+        "lon": 114.171
+      },
+      "place": {
+        "sublocation": "Wan Chai",
+        "city": null,
+        "region": null,
+        "country": "Hong Kong",
+        "label": "Hong Kong"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.00625,
+        "iso": 125
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc05704",
+      "version": "310cd99f119d",
+      "file": "DSC05704.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#080808",
+      "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAADwBQCdASoYACQAPu1qrFEppaQipWzJMB2JQBlr4dC10xVkgqPtPmHtzOAMQDn2ovUau6TfKugyMAD+9/lT3RH8o0EOYj69DfwP/S2cmn0sFemnlLDgT2eYEKk3Yzg+bAGt/8OAvXAzXPzDeHDSOdEK78fo+p0lbxsVoRrkDtGI+R7K7hNBsv5yfO6rCTb3sq43ZaSXvFk53I/mzWd1tUiJczVxRGWYocHzKfkqI3arCmBmjLlzQSN7yFzgZIY62dkB8SpeoKIxSH8h2W/uv9bS7YX1wBKvCdyguIHL5L98IcaxRINaSlB+AAA=",
+      "takenAt": "2026-05-22T00:53:07-04:00",
+      "geo": {
+        "lat": 22.278,
+        "lon": 114.171
+      },
+      "place": {
+        "sublocation": "Wan Chai",
+        "city": null,
+        "region": null,
+        "country": "Hong Kong",
+        "label": "Hong Kong"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 5,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc05782",
+      "version": "bef41cda7e06",
+      "file": "DSC05782.jpg",
+      "width": 1616,
+      "height": 1080,
+      "widths": [
+        480,
+        960,
+        1600,
+        1616
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8a888",
+      "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JYgCdMoACDtzg116OY4ogVwAA+NFd2e3TFuSueAuGrDFXPxaUh5Oxc10RPi3Zsw2rgdlqI4P+gf3bfxVn4mj4BHKJyl3r8AVjWwKmPVyF+RJh7Ghr1iow28LwaL+yVCMvq+FhpoMOFEFs0X/mzCpt3rAAAA==",
+      "takenAt": "2026-05-21T23:31:35-04:00",
+      "geo": {
+        "lat": 22.515,
+        "lon": 113.949
+      },
+      "place": {
+        "sublocation": "Nanshan District",
+        "city": "Shenzhen",
+        "region": "Guangdong",
+        "country": "People's Republic of China",
+        "label": "Shenzhen, People's Republic of China"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4.5,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc05683",
+      "version": "ff6eaf615af3",
+      "file": "DSC05683.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYABAAPu1iqk4ppaQiMAgBMB2JZwAFEB7z0Gbg/w7uZlJ9QJKAAP7xzXsrIis6f0buT1QQm3S6TmECP0p5S0DXSg8Fgls27rZy0i3LmsiU2+UEQ8upUkZH3LhnkduIWdQvysjzv8/f9SQgHu/H8ffojnc1SxYlD8d7pKibXExIWVc3g8R9ZAPMFEAAAA==",
+      "takenAt": "2026-05-21T23:19:52-04:00",
+      "geo": {
+        "lat": 22.278,
+        "lon": 114.171
+      },
+      "place": {
+        "sublocation": "Wan Chai",
+        "city": null,
+        "region": null,
+        "country": "Hong Kong",
+        "label": "Hong Kong"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 4,
+        "shutter": 0.002,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04769",
+      "version": "7111cdb2919c",
+      "file": "DSC04769.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#081818",
+      "placeholder": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAAAQBgCdASoYACQAPu1qqE8ppiOiKqwBMB2JZwDRvA+XiEyMYbDfyLBeprP92m9qxmqJUFjDv3+erzAA/oEY4eF3Ls83NNUfjX+oc9DusQhzygypDXnmBkOvLIlrLVlskbr2DvZqHLhqzwc3Ys/YWCymmiZf8FaG824wW+UNsIYslu50oYwVuR+BytQapLc/cR366kK4PvJFz/j7xWMyOJJ0CYZH7W5eIj39Lpj+kPlMv27IJ5Go8iFhdnK28svGghVdmKtSPKD7+xNHZSj4NqoooVSo4JKx9VOri99iaQCvj5UAAAA=",
+      "takenAt": "2026-01-03T14:42:34-04:00",
+      "geo": {
+        "lat": 44.84,
+        "lon": -79.318
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Kilworthy",
+        "region": "Ontario",
+        "country": "Canada",
+        "label": "Kilworthy, Canada"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 85mm F1.8",
+      "exposure": {
+        "focalLength": 85,
+        "aperture": 8,
+        "shutter": 0.005,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04751",
+      "version": "ffedcc7d8e27",
+      "file": "DSC04751.jpg",
+      "width": 6000,
+      "height": 4000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        6000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#b8b8b8",
+      "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoYABAAPu1iqU2ppaQiMAgBMB2JZQC7ABJAI60Rn30GR90oAAD+0fzoq23tqbTchm35ICaOW77b7iKyWhe4/QysAqiJgerJHnlfxkOnzs8xvBpNUjy5+9GaxeZa8VWIyB6p1hiZ1RXeXmi2ITil+Se7GX4DMzG+pwc+QAAA",
+      "takenAt": "2026-01-03T14:35:47-04:00",
+      "geo": {
+        "lat": 44.84,
+        "lon": -79.318
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Kilworthy",
+        "region": "Ontario",
+        "country": "Canada",
+        "label": "Kilworthy, Canada"
+      },
+      "camera": "SONY ILCE-7C",
+      "lens": "FE 55mm F1.8 ZA",
+      "exposure": {
+        "focalLength": 55,
+        "aperture": 10,
+        "shutter": 0.0025,
+        "iso": 100
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc01850",
+      "version": "f4fc5e448a70",
+      "file": "DSC01850.jpg",
+      "width": 2000,
+      "height": 3000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#f8f8f8",
+      "placeholder": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAAAQBwCdASoYACQAPulgpE2pJaMiNVQMASAdCUAYIfHd6AWwFudOmxWx993IjY5A73qwyqnkNw1RNyQO0+4vrduhkAD+9wePReYnFIx8Ah0xbU2MURxBsdbVoKloACe2UN/UX8klpSfde7EYGZ93OBYBi40NnL8hDEXb2ZkcHWfQ5MiiexZrvWuO1JwmDRenPH1pokm1sz3FwigugWZtQMrBH3I/asL7fWQY0fLLjIQRlBjpkD6cKXGi5wpZa6bKKt/LZ0lDr03OXa+IJ9iGqQpfYJ1eHkOhGpCJikoGvCTz76IukvMW+KHU8cGEAA==",
+      "takenAt": null,
+      "geo": {
+        "lat": 43.673,
+        "lon": -78.817
+      },
+      "place": {
+        "sublocation": null,
+        "city": null,
+        "region": "Ontario",
+        "country": "Canada",
+        "label": "Canada"
+      },
+      "camera": null,
+      "lens": null,
+      "exposure": {
+        "focalLength": null,
+        "aperture": null,
+        "shutter": null,
+        "iso": null
+      },
+      "title": null,
+      "caption": null,
+      "alt": null,
+      "rating": null,
+      "keywords": []
+    },
+    {
+      "id": "dsc04490-2",
+      "version": "56b76d75dcc2",
+      "file": "DSC04490-2.jpg",
+      "width": 4000,
+      "height": 6000,
+      "widths": [
+        480,
+        960,
+        1600,
+        2400,
+        3200,
+        3840,
+        4000
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "color": "#180808",
+      "placeholder": "data:image/webp;base64,UklGRlQBAABXRUJQVlA4IEgBAACwBgCdASoYACQAPu1or08ppiSiKqoBMB2JZgCdMvJONjVIU7Ca3zelUUniQmLcPMAEKbtwt3M9YkIh/n0zIAD+cH6OG+A5La3dZpHMKeLm2fAF0bQ3tXCK2mcEkEPu5nXwoTNFxpL+fV1r9IM8ZKIDWwiiFKfv7leovC+l/S2A7H2bktnh5Q6vxzgTfvju7omycbxxoBvinbjQD+zksWlz62muahQhBK0qmMYL/5J4a0sZLOSRwO7f5ikBlfDZGaWugJHo0tHDexD26x1G/IpFWlBKkX3SYZME4AU3wwBOgWZLpXNokIDr/a3V2m9fe5MlBWqlNAF+7nZ2yHOqh5ACYdjn0nm10B68PfdQo3k3MIG7CyXRDTquFDCuCb11bvaCLEGCSUSgAffuJsaryhj4Tk6S2VZb3XAN4tm7MWTN8dq2jQSj5pAA",
+      "takenAt": null,
+      "geo": {
+        "lat": 43.656,
+        "lon": -79.391
+      },
+      "place": {
+        "sublocation": null,
+        "city": "Toronto",
+        "region": null,
+        "country": null,
+        "label": "Toronto"
+      },
+      "camera": null,
+      "lens": null,
+      "exposure": {
+        "focalLength": null,
+        "aperture": null,
+        "shutter": null,
+        "iso": null
       },
       "title": null,
       "caption": null,

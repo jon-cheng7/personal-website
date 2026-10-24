@@ -155,7 +155,16 @@ export function PhotoArchive({ initialView = null, initialPhoto = null }: Props)
           />
         )}
         {view === "gallery" && <GalleryView photos={list} meta={meta} onOpen={setViewer} />}
-        {view === "geo" && <GeoView photos={list} />}
+        {view === "geo" && (
+          <GeoView
+            photos={list}
+            onOpen={setViewer}
+            onFilter={(q) => {
+              setQuery(q);
+              changeView("index");
+            }}
+          />
+        )}
         {!list.length && (
           <p className="archive__empty">
             NO MATCH FOR &ldquo;{query}&rdquo; · <button type="button" onClick={() => setQuery("")}>CLEAR</button>

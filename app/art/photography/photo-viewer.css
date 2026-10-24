@@ -51,7 +51,8 @@
   animation: pv-scan 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* HUD stays on the frame while the photo moves under it; brackets only so the photo stays visible */
-.pv[data-zoomed] .vf__chip { opacity: 0.35; }
+/* dim chips while zoomed — only when META is on (else they stay hidden) */
+.pv[data-zoomed] .vf[data-on] .vf__chip { opacity: 0.35; }
 .pv__frame .photo { height: 100%; aspect-ratio: auto !important; }
 @keyframes pv-scan {
   from { clip-path: inset(0 0 100% 0); filter: brightness(1.8) saturate(0); }

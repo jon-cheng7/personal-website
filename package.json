@@ -15,7 +15,8 @@
     "resume:check": "node --env-file=.env.local scripts/check-resume.mjs",
     "resume:save": "node --env-file=.env.local scripts/check-resume.mjs --save",
     "photos": "node --env-file=.env.local scripts/photos/sync.mjs",
-    "photos:dry": "node --env-file=.env.local scripts/photos/sync.mjs --dry"
+    "photos:dry": "node --env-file=.env.local scripts/photos/sync.mjs --dry",
+    "geo": "node scripts/geo/build-geo.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
@@ -32,6 +33,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "d3-geo": "3.1.1",
     "eslint": "^9",
     "eslint-config-next": "^16.3.0",
     "exifr": "7.1.3",

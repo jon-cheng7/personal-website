@@ -1,4 +1,5 @@
-/* ViewfinderHud — off: invisible, no work. on: brackets draw, scanline sweeps once, chips fade in behind it (--d = delay). */
+/* ViewfinderHud — on: brackets draw, scanline sweeps down, chips fade in behind it (--d = delay).
+   off ([data-closing] for ~0.7s): text scrambles out first, then scanline sweeps up, chips fade, brackets retract. */
 
 .vf {
   --vf-accent: var(--color-accent, #c5fb45);
@@ -23,14 +24,14 @@
   stroke-width: 1.5;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.45s cubic-bezier(0.6, 0, 0.2, 1);
+  transition: stroke-dashoffset 0.4s cubic-bezier(0.6, 0, 0.2, 1) 0.35s; /* close: after the text has scrambled out */
   overflow: visible;
 }
 .vf__corner--tl { top: var(--vf-inset); left: var(--vf-inset); }
 .vf__corner--tr { top: var(--vf-inset); right: var(--vf-inset); transform: scaleX(-1); }
 .vf__corner--br { bottom: var(--vf-inset); right: var(--vf-inset); transform: scale(-1); }
 .vf__corner--bl { bottom: var(--vf-inset); left: var(--vf-inset); transform: scaleY(-1); }
-.vf[data-on] .vf__corner { stroke-dashoffset: 0; }
+.vf[data-on] .vf__corner { stroke-dashoffset: 0; transition-delay: 0s; }
 
 /* --- scanline: one pass per photo while on --- */
 .vf__scan {
@@ -46,6 +47,14 @@
 .vf[data-on] .vf__scan {
   animation: vf-sweep var(--vf-sweep) cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+.vf[data-closing] .vf__scan {
+  animation: vf-sweep-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s backwards;
+}
+@keyframes vf-sweep-up {
+  0% { opacity: 1; transform: translateY(560%) scaleY(-1); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-100%) scaleY(-1); }
+}
 @keyframes vf-sweep {
   0% { opacity: 1; transform: translateY(-100%); }
   85% { opacity: 1; }
@@ -55,31 +64,61 @@
 /* --- chips (readouts) --- */
 .vf__chip {
   position: absolute;
+  max-width: 100%;
+  overflow: hidden;
   padding: 0.3em 0.55em;
   background: rgba(8, 8, 8, 0.62);
   white-space: nowrap;
   opacity: 0;
   transform: translateY(4px);
+  /* close: hold while the text scrambles out, then fade */
   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+    opacity 0.25s ease 0.4s,
+    transform 0.25s ease 0.4s;
 }
 .vf[data-on] .vf__chip {
   opacity: 1;
   transform: none;
   transition-delay: var(--d, 0ms);
 }
-.vf__tl { top: calc(var(--vf-inset) + 6px); left: calc(var(--vf-inset) + 6px); }
-.vf__tr { top: calc(var(--vf-inset) + 6px); right: calc(var(--vf-inset) + 6px); text-align: right; }
+.vf__chip--end { text-align: right; }
+
+/* full: two rows that wrap instead of colliding (portrait frames) */
+.vf__row {
+  position: absolute;
+  left: calc(var(--vf-inset) + 6px);
+  right: calc(var(--vf-inset) + 6px);
+  display: flex;
+  justify-content: space-between;
+  gap: 4px 8px;
+}
+.vf__row .vf__chip { position: relative; }
+.vf__row--top {
+  top: calc(var(--vf-inset) + 6px);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+/* wrap-reverse: if the row breaks, the second chip stacks ABOVE the first (stays off the bottom edge) */
+.vf__row--bottom {
+  bottom: calc(var(--vf-inset) + 6px);
+  flex-wrap: wrap-reverse;
+  align-items: flex-end;
+}
+.vf__row .vf__chip--end:first-child,
+.vf__row .vf__chip + .vf__chip--end { margin-left: auto; }
+
+/* mini (gallery tiles) keeps absolute corners */
 .vf__bl { bottom: calc(var(--vf-inset) + 6px); left: calc(var(--vf-inset) + 6px); }
 .vf__br { bottom: calc(var(--vf-inset) + 6px); right: calc(var(--vf-inset) + 6px); }
 
 .vf__exp {
   display: flex;
-  gap: 1.1em;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0 1em;
 }
+
 .vf__dim { color: rgba(245, 245, 245, 0.55); }
-.vf__rec { color: #ff383c; }
 
 /* centre crosshair + bottom tick ruler (full only) */
 .vf__cross {
@@ -118,3 +157,4 @@
 .vf--mini .vf__chip { padding: 0.2em 0.45em; }
 .vf--mini .vf__bl { bottom: 22px; left: 6px; max-width: calc(100% - 12px); overflow: hidden; text-overflow: ellipsis; }
 .vf--mini .vf__br { bottom: 6px; right: auto; left: 6px; }
+.vf--mini .vf__exp { justify-content: flex-start; }

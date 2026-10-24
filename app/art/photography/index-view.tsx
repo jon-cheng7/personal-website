@@ -2,7 +2,8 @@
 
 // IndexView — the data view: sortable list of every frame + a sticky "monitor" showing the active one.
 // Fits: PhotoArchive view "index". Hover / focus / ↑↓ sets active; click / Enter opens the viewer.
-// META on → exposure columns ease open (track width → blur/slide/fade, values decode) + viewfinder HUD on the monitor.
+// META on → exposure columns ease open (track width → blur/slide/fade, values decode); off = exact reverse
+// (values scramble out → fade → tracks fold). Viewfinder HUD on the monitor.
 // Rows blur/fade once they pass under the sticky header (CSS scroll timeline, JS fallback). Narrow screens: list only.
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -122,12 +123,12 @@ export function IndexView({ photos, total, meta, sort, onSort, current, onSelect
                   <Photo photo={p} sizes="48px" aspect="1" />
                 </span>
                 <span className="ix__c--date">{fmtDate(p.takenAt)}</span>
-                <ScrambleText className="ix__c--time ix__m ix__dim" text={fmtTime(p.takenAt)} play={play} delay={260} />
+                <ScrambleText className="ix__c--time ix__m ix__dim" text={fmtTime(p.takenAt)} play={play} hide={!meta} delay={260} />
                 <span className="ix__c--place">{placeShort(p)}</span>
                 <span className="ix__c--focal">{fmtFocal(p.exposure.focalLength)}</span>
-                <ScrambleText className="ix__c--aperture ix__m" text={fmtAperture(p.exposure.aperture)} play={play} delay={330} />
-                <ScrambleText className="ix__c--shutter ix__m" text={fmtShutter(p.exposure.shutter)} play={play} delay={400} />
-                <ScrambleText className="ix__c--iso ix__m ix__dim" text={String(p.exposure.iso ?? "—")} play={play} delay={470} />
+                <ScrambleText className="ix__c--aperture ix__m" text={fmtAperture(p.exposure.aperture)} play={play} hide={!meta} delay={330} />
+                <ScrambleText className="ix__c--shutter ix__m" text={fmtShutter(p.exposure.shutter)} play={play} hide={!meta} delay={400} />
+                <ScrambleText className="ix__c--iso ix__m ix__dim" text={String(p.exposure.iso ?? "—")} play={play} hide={!meta} delay={470} />
               </button>
             </li>
           ))}

@@ -10,50 +10,52 @@
 }
 
 /* ---------- columns ---------- */
-/* All 9 columns always exist; META columns (.ix__m) open from 0 width → the track list itself transitions.
-   Spacing is cell padding (not grid gap) so closed tracks leave no gap. rem, not ch: header + rows share tracks. */
+/* All 9 columns always exist. META columns (.ix__m) sit in `auto` tracks and animate their own width
+   (0 ↔ --w, padding included), so the track follows every frame — header + rows stay aligned because they
+   share the same rules. Spacing is cell padding, not grid gap, so a closed column leaves no gap. rem, not ch. */
 .ix__grid {
-  --c-time: 0rem;
-  --c-ap: 0rem;
-  --c-sh: 0rem;
-  --c-iso: 0rem;
   display: grid;
   grid-template-columns:
-    3.65rem calc(40px + 1.25rem) 7.25rem var(--c-time) minmax(8.25rem, 1fr)
-    4.85rem var(--c-ap) var(--c-sh) var(--c-iso);
+    3.65rem calc(40px + 1.25rem) 7.25rem auto minmax(8.25rem, 1fr)
+    4.85rem auto auto auto;
   align-items: center;
   gap: 0;
-  transition: grid-template-columns 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-}
-.ix[data-meta] .ix__grid {
-  --c-time: 5.85rem;
-  --c-ap: 5.45rem;
-  --c-sh: 5.65rem;
-  --c-iso: 3.5rem;
 }
 .ix__grid > * {
   min-width: 0;
   padding-right: 1.25rem;
 }
 
-/* META cells: blur/slide/fade in after their track opens, staggered left → right; out fast, all at once */
-.ix__m {
+/* META cells. Open: column widens, then each value blurs/slides in and decodes, staggered left → right.
+   Close = the reverse: values scramble out (ScrambleText hide) → cells fade/blur → columns fold. */
+.ix__grid > .ix__m {
+  width: 0;
+  padding-right: 0;
+  overflow: hidden;
   opacity: 0;
   filter: blur(4px);
   transform: translateX(-8px);
   transition:
-    opacity 0.25s ease,
-    filter 0.25s ease,
-    transform 0.3s ease;
+    width 0.5s cubic-bezier(0.65, 0, 0.35, 1) 0.36s,
+    padding-right 0.5s cubic-bezier(0.65, 0, 0.35, 1) 0.36s,
+    opacity 0.22s ease 0.26s,
+    filter 0.22s ease 0.26s,
+    transform 0.25s ease 0.26s;
 }
-.ix[data-meta] .ix__m {
+.ix[data-meta] .ix__grid > .ix__m {
+  width: var(--w);
+  padding-right: 1.25rem;
   opacity: 1;
   filter: none;
   transform: none;
-  transition-duration: 0.45s, 0.45s, 0.5s;
-  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-  transition-delay: calc(0.18s + var(--m, 0) * 70ms);
+  transition-duration: 0.55s, 0.55s, 0.45s, 0.45s, 0.5s;
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1), cubic-bezier(0.65, 0, 0.35, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: 0s, 0s, calc(0.2s + var(--m, 0) * 70ms), calc(0.2s + var(--m, 0) * 70ms), calc(0.2s + var(--m, 0) * 70ms);
 }
+.ix__m.ix__c--time { --w: 5.85rem; }
+.ix__m.ix__c--aperture { --w: 5.45rem; }
+.ix__m.ix__c--shutter { --w: 5.65rem; }
+.ix__m.ix__c--iso { --w: 3.5rem; }
 .ix__m.ix__c--time { --m: 0; }
 .ix__m.ix__c--aperture { --m: 1; }
 .ix__m.ix__c--shutter { --m: 2; }

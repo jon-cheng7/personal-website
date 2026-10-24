@@ -157,7 +157,9 @@ export function useZoomPan(stageRef: RefObject<HTMLElement | null>, layerRef: Re
     };
 
     const onWheel = (e: WheelEvent) => {
+      // zoom only — never let the wheel reach the page / Lenis behind the viewer
       e.preventDefault();
+      e.stopPropagation();
       // mouse notches (~100px) and trackpad pinch (ctrl + small deltas) both map to a gentle factor; target accumulates
       const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
       const k = e.ctrlKey ? 0.01 : 0.0022;

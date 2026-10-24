@@ -28,3 +28,9 @@
 .odo[data-zeroed] .odo__strip {
   transition: none;
 }
+
+/* roll-out: quicker, accelerating down to 0 */
+.odo[data-out] .odo__strip {
+  transition-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.5, 0, 0.75, 0);
+}

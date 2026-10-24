@@ -42,8 +42,12 @@ export function PhotoViewer({ photos, id, meta, onMeta, onChange, onClose }: Pro
     const lenis = getLenisInstance();
     lenis?.stop();
     document.documentElement.style.overflow = "hidden";
+    // belt and braces: no wheel may scroll the page while the viewer is open (zoom handler still receives it)
+    const blockWheel = (e: WheelEvent) => e.preventDefault();
+    window.addEventListener("wheel", blockWheel, { passive: false, capture: true });
     closeRef.current?.focus();
     return () => {
+      window.removeEventListener("wheel", blockWheel, { capture: true });
       lenis?.start();
       document.documentElement.style.overflow = "";
       prev?.focus?.({ preventScroll: true });
@@ -79,6 +83,7 @@ export function PhotoViewer({ photos, id, meta, onMeta, onChange, onClose }: Pro
     <div
       ref={stageRef}
       className="pv"
+      data-lenis-prevent
       data-cursor={zoomed ? "pixelMove" : "pixel"}
       data-zoomed={zoomed || undefined}
       role="dialog"
